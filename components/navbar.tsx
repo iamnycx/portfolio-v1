@@ -32,16 +32,18 @@ export default function Navbar() {
 	}, []);
 
 	return (
-		<Container className='flex items-center justify-between z-50 bg-linear-to-b from-background to-transparent backdrop-blur-xs py-4 border-b fixed inset-x-32'>
+		<Container className='flex items-center justify-between z-50 bg-linear-to-b from-background to-transparent backdrop-blur-xs py-4 border-b fixed md:inset-x-32 inset-x-4 top-4 md:top-0'>
 			<div className='flex items-center space-x-6'>
 				<h1 className='flex items-center gap-2'>
 					<span>{'nycx@dev'}</span>
 					<span className='text-orange-200'>{'~'}</span>
 					<span>{'$'}</span>
 				</h1>
-				<h2>{time ? <span>{time}</span> : <span>00:00:00</span>}</h2>
+				<h2 className='hidden md:block'>
+					{time ? <span>{time}</span> : <span>00:00:00</span>}
+				</h2>
 			</div>
-			<div className='flex space-x-6'>
+			<div className='space-x-6 md:flex hidden'>
 				{links.map((link, idx) => (
 					<Link
 						href={link.href}
@@ -64,14 +66,18 @@ export default function Navbar() {
 					</Link>
 				))}
 			</div>
-			<div>
-				<Link
-					href={'mailto:25nikmehta@gmail.com'}
-					className='border px-2 py-1 border-neutral-400 border-dotted hover:border-orange-200 hover:text-orange-200 transition-colors duration-300 ease-in-out'
-				>
-					{'./contact.sh'}
-				</Link>
-			</div>
+			<Link
+				href={'mailto:25nikmehta@gmail.com'}
+				className='border px-2 py-1 border-neutral-400 border-dotted hover:border-orange-200 hover:text-orange-200 transition-colors duration-300 ease-in-out hidden md:block'
+			>
+				{'./contact.sh'}
+			</Link>
+            <Link
+				href={'mailto:25nikmehta@gmail.com'}
+				className='border px-2 py-1 border-neutral-400 border-dotted hover:border-orange-200 hover:text-orange-200 transition-colors duration-300 ease-in-out md:hidden block'
+			>
+				{'./menu.sh'}
+			</Link>
 		</Container>
 	);
 }

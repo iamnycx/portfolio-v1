@@ -92,7 +92,7 @@ export default function Contribution(): JSX.Element {
 									delay: 0.1 * index + 1,
 								}}
 								key={index}
-								className={`w-4 h-4 m-[0.15px]`}
+								className={`w-4 h-4 m-[0.15px] rounded-full`}
 								style={{ backgroundColor: color }}
 								title={`${format(day, 'PPP')}: ${
 									contribution?.count || 0
@@ -153,7 +153,7 @@ export default function Contribution(): JSX.Element {
 								ease: 'easeInOut',
 							}}
 							key={index}
-							className='w-3 h-3'
+							className='w-3 h-3 rounded-full'
 							style={{ backgroundColor: color }}
 						/>
 					))}

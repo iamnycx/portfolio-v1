@@ -26,8 +26,8 @@ export default function Home() {
 			>
 				<Hero />
 				<Contribution />
-				<Stack />
 				<Experience />
+				<Stack />
 			</motion.div>
 		</Container>
 	);

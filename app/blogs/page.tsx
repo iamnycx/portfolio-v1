@@ -25,7 +25,7 @@ export default function Blogs() {
 								<p className='text-muted-foreground line-clamp-1'>
 									{blog.description}
 								</p>
-								<div className='flex flex-wrap gap-4'>
+								<div className='flex flex-wrap gap-4 pt-2'>
 									{blog.tags.map(
 										(tag: string, idx: number) => (
 											<span
