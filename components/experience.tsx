@@ -45,7 +45,7 @@ export default function Experience() {
 
 function ExperienceCard({ data }: { data: experienceDataType }) {
 	return (
-		<div className='border group border-dotted border-neutral-600 hover:border-orange-200 transition-colors duration-300 ease-in-out relative group-[card] p-6 space-y-4'>
+		<div className='border group border-dotted border-neutral-600 hover:border-orange-200 transition-colors duration-300 ease-in-out relative group-[card] pt-4 p-6 space-y-4'>
 			<div className='flex justify-between'>
 				<div className='space-y-1'>
 					<h1 className='text-xl font-bold tracking-tight flex items-center gap-2'>
