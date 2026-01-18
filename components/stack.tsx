@@ -6,14 +6,14 @@ const stackData = {
     { title: "TypeScript" },
     { title: "React" },
     { title: "Next" },
-    { title: "Node" },
-    { title: "GraphQL" },
-    { title: "tRPC" },
-    { title: "WebSockets" },
-    { title: "PostgreSQL" },
-    { title: "MongoDB" },
-    { title: "Redis" },
     { title: "Tailwind" },
+    { title: "Motion" },
+    { title: "Node" },
+    { title: "PostgreSQL" },
+    { title: "tRPC" },
+    { title: "GraphQL" },
+    { title: "WebSockets" },
+    { title: "MongoDB" },
     { title: "Bun" },
     { title: "Python" },
     { title: "Django" },
@@ -21,23 +21,19 @@ const stackData = {
   DevOps: [
     { title: "Docker" },
     { title: "Linux" },
-    { title: "Kubernetes" },
-    { title: "AWS" },
-    { title: "Azure" },
-    { title: "Google Cloud" },
-    { title: "Vercel" },
-    { title: "Netlify" },
     { title: "CI/CD" },
     { title: "Monorepos" },
     { title: "Cloudflare" },
     { title: "Sentry" },
+    { title: "AWS" },
+    { title: "Google Cloud" },
+    { title: "Vercel" },
+    { title: "Netlify" },
   ],
   Web3: [
     { title: "Solidity" },
     { title: "Rust" },
-    { title: "Hardhat" },
     { title: "Foundry" },
-    { title: "Brownie" },
     { title: "MetaMask" },
     { title: "Chainlink" },
     { title: "EVM" },
@@ -62,7 +58,7 @@ export default function Stack() {
         {Object.entries(stackData).map(([category, items]) => (
           <div key={category} className="space-y-4">
             <h2 className="flex w-fit items-center gap-1 border border-dotted border-neutral-400 px-2 py-1 tracking-tighter lowercase">
-              <BoxIcon size={16} strokeWidth={1.5}/>
+              <BoxIcon size={16} strokeWidth={1.5} />
               {category}
             </h2>
             <div className="relative mx-6 flex flex-wrap gap-x-3.5 gap-y-2">

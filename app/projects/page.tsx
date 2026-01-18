@@ -4,20 +4,30 @@ import Container from "@/components/container";
 import { useDirection } from "@/components/DirectionContext";
 import { TextScramble } from "@/components/text-scramble";
 import { pageVariants } from "@/lib/pageVariants";
-import { Github, Globe } from "lucide-react";
+import { BoxIcon, Github, Globe, Sparkle } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 
 const projects = [
   {
-    name: "mini-git",
-    description: "a personalized workspace for learning with ai",
+    name: "zag - personalized learning",
+    type: "ongoing",
     stack: ["nextjs", "gemini", "ai-sdk", "postgresql"],
+    site: "http",
+    repo: "https://www.github.com/iamnycx",
+    points: [
+      "Developed and maintained full-stack web applications using modern technologies",
+    ],
   },
   {
-    name: "zag",
-    description: "a personalized workspace for learning with ai",
-    stack: ["nextjs", "gemini", "ai-sdk", "postgresql"],
+    name: "tinta - text to pallete",
+    type: "ai",
+    stack: ["nextjs", "gemini", "postgresql"],
+    site: "http",
+    repo: "https://www.github.com/iamnycx",
+    points: [
+      "Developed and maintained full-stack web applications using modern technologies",
+    ],
   },
 ];
 
@@ -41,7 +51,7 @@ export default function Projects() {
         <p className="text-neutral-400">
           {"a collection of personal projects and experiments."}
         </p>
-        <div className="my-8 grid md:grid-cols-2 gap-4">
+        <div className="my-8 grid gap-4 md:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project.name} project={project} />
           ))}
@@ -58,27 +68,43 @@ export default function Projects() {
 function ProjectCard({ project }: { project?: (typeof projects)[0] }) {
   return (
     <div className="group w-full space-y-4 border border-dotted border-neutral-400 p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold transition-colors duration-300 ease-in-out group-hover:text-orange-200">
-          {project?.name}
-        </h2>
+      <div className="flex items-start justify-between">
+        <div className="space-y-1">
+          <h1 className="line-clamp-1 text-xl font-bold tracking-tight">
+            {project?.name}
+          </h1>
+          <h2 className="text-neutral-400 transition-colors duration-300 ease-in-out group-hover:text-orange-200">
+            {project?.type}
+          </h2>
+        </div>
         <div className="flex items-center gap-2">
           <Link
-            href={"#"}
+            href={project?.repo}
             className="border border-dotted border-transparent p-1 opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
           >
             <Github size={20} strokeWidth={1} />
           </Link>
           <Link
-            href={"#"}
+            href={project?.site}
             className="border border-dotted border-transparent p-1 opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
           >
             <Globe size={20} strokeWidth={1} />
           </Link>
         </div>
       </div>
-      <p className="text-muted-foreground">{project?.description}</p>
-      <div className="flex flex-wrap gap-4">
+      <ul className="list-inside space-y-1 tracking-wider text-balance lowercase">
+        {project?.points.map((point, index) => (
+          <li key={index} className="flex gap-2">
+            <Sparkle
+              size={26}
+              strokeWidth={1.5}
+              className="origin-center transition-all duration-300 ease-in-out group-hover:rotate-45 group-hover:text-orange-200"
+            />
+            <span>{point}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="flex flex-wrap gap-4 py-2">
         {project?.stack.map((tag: string, idx: number) => (
           <span
             key={idx}
