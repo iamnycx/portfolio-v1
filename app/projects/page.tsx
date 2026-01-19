@@ -8,7 +8,16 @@ import { BoxIcon, Github, Globe, Sparkle } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 
-const projects = [
+interface Project {
+  name: string;
+  type: string;
+  stack: string[];
+  site: string;
+  repo: string;
+  points: string[];
+}
+
+const projects: Project[] = [
   {
     name: "zag - personalized learning",
     type: "ongoing",
@@ -52,7 +61,7 @@ export default function Projects() {
           {"a collection of personal projects and experiments."}
         </p>
         <div className="my-8 grid gap-4 md:grid-cols-2">
-          {projects.map((project) => (
+          {projects.map((project: Project) => (
             <ProjectCard key={project.name} project={project} />
           ))}
         </div>
@@ -65,7 +74,7 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project }: { project?: (typeof projects)[0] }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="group w-full space-y-4 border border-dotted border-neutral-400 p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
       <div className="flex items-start justify-between">
@@ -93,7 +102,7 @@ function ProjectCard({ project }: { project?: (typeof projects)[0] }) {
         </div>
       </div>
       <ul className="list-inside space-y-1 tracking-wider text-balance lowercase">
-        {project?.points.map((point, index) => (
+        {project?.points.map((point: string, index: number) => (
           <li key={index} className="flex gap-2">
             <Sparkle
               size={26}
