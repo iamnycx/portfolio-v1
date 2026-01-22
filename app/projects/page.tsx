@@ -14,29 +14,63 @@ interface Project {
   stack: string[];
   site: string;
   repo: string;
-  points: string[];
+  description: string;
 }
 
 const projects: Project[] = [
+  {
+    name: "sandscape",
+    type: "hackathon project",
+    stack: ["nextjs", "fastapi", "docker", "machine learning"],
+    site: "http",
+    repo: "https://www.github.com/iamnycx",
+    description:
+      "Developed the whole backend and frontend for sand grain analysis system",
+  },
+  {
+    name: "lume - social network",
+    type: "full stack project",
+    stack: ["react", "django", "docker", "postgresql"],
+    site: "http",
+    repo: "https://github.com/iamnycx/Lume",
+    description:
+      "Full-stack social media app with React, Django, JWT auth, images, interactions",
+  },
+  {
+    name: "fund-me",
+    type: "smart-contract",
+    stack: ["solidity", "foundry", "chainlink", "ethereum"],
+    site: "",
+    repo: "https://github.com/iamnycx/fund-me",
+    description:
+      "A decentralized crowdfunding smart contract that enforces a minimum USD-based ETH contribution using Chainlink price feeds",
+  },
+  {
+    name: "raffle",
+    type: "smart-contract",
+    stack: ["solidity", "foundry", "chainlink"],
+    site: "",
+    repo: "https://github.com/iamnycx/raffle",
+    description:
+      "A decentralized automated raffle that picks a provably random winner using Chainlink VRF",
+  },
+  {
+    name: "tinta - text to pallete",
+    type: "mini project",
+    stack: ["nextjs", "gemini", "postgresql"],
+    site: "http",
+    repo: "https://www.github.com/iamnycx",
+    description:
+      "a simple project to generate a color pallete from text using large language models",
+  },
   {
     name: "zag - personalized learning",
     type: "ongoing",
     stack: ["nextjs", "gemini", "ai-sdk", "postgresql"],
     site: "http",
     repo: "https://www.github.com/iamnycx",
-    points: [
-      "Developed and maintained full-stack web applications using modern technologies",
-    ],
-  },
-  {
-    name: "tinta - text to pallete",
-    type: "ai",
-    stack: ["nextjs", "gemini", "postgresql"],
-    site: "http",
-    repo: "https://www.github.com/iamnycx",
-    points: [
-      "Developed and maintained full-stack web applications using modern technologies",
-    ],
+    description:
+      "Developing a notion like workspace to help users with thier learnings with ai tools",
   },
 ];
 
@@ -66,8 +100,18 @@ export default function Projects() {
           ))}
         </div>
 
-        <div>
-          <p className="text-neutral-600">{"└─ End of projects list"}</p>
+        <div className="flex items-center justify-between text-neutral-600">
+          <p>{"└─ End of projects list"}</p>
+          <p>
+            visit my{" "}
+            <Link
+              href="https://github.com/iamnycx"
+              target="_blank"
+              className="text-orange-200 underline-offset-4 hover:underline"
+            >
+              github
+            </Link>
+          </p>
         </div>
       </motion.div>
     </Container>
@@ -87,32 +131,29 @@ function ProjectCard({ project }: { project: Project }) {
           </h2>
         </div>
         <div className="flex items-center gap-2">
-          <Link
-            href={project?.repo}
-            className="border border-dotted border-transparent p-1 opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
-          >
-            <Github size={20} strokeWidth={1} />
-          </Link>
-          <Link
-            href={project?.site}
-            className="border border-dotted border-transparent p-1 opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
-          >
-            <Globe size={20} strokeWidth={1} />
-          </Link>
+          {project.repo !== "" && (
+            <Link
+              href={project?.repo}
+              target="_blank"
+              className="border border-dotted border-transparent p-1 opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
+            >
+              <Github size={20} strokeWidth={1} />
+            </Link>
+          )}
+          {project.site !== "" && (
+            <Link
+              href={project?.site}
+              target="_blank"
+              className="border border-dotted border-transparent p-1 opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
+            >
+              <Globe size={20} strokeWidth={1} />
+            </Link>
+          )}
         </div>
       </div>
-      <ul className="list-inside space-y-1 tracking-wider text-balance lowercase">
-        {project?.points.map((point: string, index: number) => (
-          <li key={index} className="flex gap-2">
-            <Sparkle
-              size={26}
-              strokeWidth={1.5}
-              className="origin-center transition-all duration-300 ease-in-out group-hover:rotate-45 group-hover:text-orange-200"
-            />
-            <span>{point}</span>
-          </li>
-        ))}
-      </ul>
+      <p className="tracking-wider text-balance lowercase">
+        {project.description}
+      </p>
       <div className="flex flex-wrap gap-4 py-2">
         {project?.stack.map((tag: string, idx: number) => (
           <span

@@ -1,4 +1,10 @@
+"use client";
+
 export default function Footer() {
+  const currentDate = new Date()
+    .toLocaleDateString("en-US", { month: "short", year: "numeric" })
+    .toLowerCase();
+
   return (
     <>
       <div className="mx-auto max-w-6xl border-x border-dotted border-neutral-400 px-4 md:px-6">
@@ -14,7 +20,7 @@ export default function Footer() {
           </p>
           <p className="text-neutral-400">
             <span>updated: </span>
-            <span>dec 2025</span>
+            <span>{currentDate}</span>
           </p>
         </div>
       </div>

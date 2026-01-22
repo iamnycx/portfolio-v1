@@ -1,7 +1,7 @@
 import { Building2, Hash, MapPin, Sparkle, Triangle } from "lucide-react";
 import { TextScramble } from "./text-scramble";
 
-const experienceData = [
+const workData = [
   {
     orgnization: "webkul",
     designation: "software developer",
@@ -13,9 +13,33 @@ const experienceData = [
     ],
     technologies: ["python", "django", "react", "postgresql"],
   },
+  {
+    orgnization: "freelance",
+    designation: "web developer",
+    location: "Haldwani, India",
+    from: "june 25",
+    to: "sept 25",
+    points: [
+      "worked with teams to develop websites for various clients using modern web technologies",
+      "leveraged frameworks like react and nextjs to build dynamic web applications",
+      "gained experience in both frontend and backend development, ensuring seamless integration",
+      "collaborated with clients to gather requirements and deliver tailored solutions",
+    ],
+    technologies: [
+      "react",
+      "nextjs",
+      "node",
+      "mongodb",
+      "postgresql",
+      "tailwind",
+      "motion",
+      "cloudinary",
+      "figma",
+    ],
+  },
 ];
 
-type experienceDataType = {
+type workDataType = {
   orgnization: string;
   designation: string;
   location: string;
@@ -25,22 +49,22 @@ type experienceDataType = {
   technologies: string[];
 };
 
-export default function Experience() {
+export default function Work() {
   return (
-    <div id="experience">
+    <div id="work">
       <h1 className="text-xl font-bold tracking-tight">
-        <TextScramble>experience</TextScramble>
+        <TextScramble>work</TextScramble>
       </h1>
       <div className="space-y-6 py-8">
-        {experienceData.map((data) => (
-          <ExperienceCard key={data.orgnization} data={data} />
+        {workData.map((data) => (
+          <WorkCard key={data.orgnization} data={data} />
         ))}
       </div>
     </div>
   );
 }
 
-function ExperienceCard({ data }: { data: experienceDataType }) {
+function WorkCard({ data }: { data: workDataType }) {
   return (
     <div className="group group-[card] relative space-y-4 border border-dotted border-neutral-600 p-6 pt-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
       <div className="flex justify-between">

@@ -158,7 +158,7 @@ export default function Contribution(): JSX.Element {
           <span className="text-sm">more</span>
         </div>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto overflow-y-hidden">
         <div className="flex min-w-max">
           <div className="mt-3 mr-1 flex flex-col justify-between sm:mt-5.5 sm:mr-2">
             {dayLabels.map((day, index) => (

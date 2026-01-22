@@ -14,9 +14,9 @@ const stackData = {
     { title: "GraphQL" },
     { title: "WebSockets" },
     { title: "MongoDB" },
-    { title: "Bun" },
     { title: "Python" },
     { title: "Django" },
+    { title: "FastAPI" },
   ],
   DevOps: [
     { title: "Docker" },
