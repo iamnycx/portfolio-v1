@@ -3,17 +3,6 @@ import { TextScramble } from "./text-scramble";
 
 const workData = [
   {
-    orgnization: "webkul",
-    designation: "software developer",
-    location: "noida, india",
-    from: "feb 26",
-    to: "unknown",
-    points: [
-      "Expected to join in feb for the Associate Software Developer role",
-    ],
-    technologies: ["python", "django", "react", "postgresql"],
-  },
-  {
     orgnization: "freelance",
     designation: "web developer",
     location: "Haldwani, India",
