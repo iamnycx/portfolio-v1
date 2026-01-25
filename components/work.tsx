@@ -5,7 +5,7 @@ const workData = [
   {
     orgnization: "freelance",
     designation: "web developer",
-    location: "Haldwani, India",
+    location: "uttarakhand, india",
     from: "june 25",
     to: "sept 25",
     points: [
@@ -88,7 +88,7 @@ function WorkCard({ data }: { data: workDataType }) {
           </li>
         ))}
       </ul>
-      <div className="space-x-4 pt-2">
+      <div className="space-x-4 space-y-4 pt-2">
         {data.technologies.map((tech) => (
           <span
             key={tech}

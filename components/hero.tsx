@@ -1,4 +1,4 @@
-import { MapPinIcon, UniversityIcon } from "lucide-react";
+import { Computer, MapPinIcon, UniversityIcon } from "lucide-react";
 import { TextScramble } from "./text-scramble";
 import Spotify from "./spotify";
 
@@ -17,6 +17,10 @@ export default function Hero() {
           <p className="flex items-center space-x-2 text-neutral-400">
             <UniversityIcon size={14} />
             <span>{"cs_ug"}</span>
+          </p>
+          <p className="flex items-center space-x-2 text-neutral-400">
+            <Computer size={14} />
+            <span>{"arch_linux"}</span>
           </p>
         </div>
       </div>

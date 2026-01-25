@@ -39,6 +39,18 @@ export default function Blogs() {
             </Link>
           ))}
         </div>
+        <div className="flex justify-center pt-8">
+          <p>
+            follow on{" "}
+            <Link
+              href="https://x.com/ok_nycx"
+              target="_blank"
+              className="text-orange-200 underline-offset-4 hover:underline"
+            >
+              twitter
+            </Link>
+          </p>
+        </div>
       </div>
     </Container>
   );

@@ -10,8 +10,8 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl border-x border-dotted border-neutral-400 px-4 md:px-6">
         <div className="h-6 border-x border-t border-dotted border-neutral-600" />
       </div>
-      <div className="mx-auto max-w-6xl border-x border-t border-dotted border-neutral-400 px-4 md:px-6">
-        <div className="flex flex-col items-center justify-between py-4 md:flex-row">
+      <div className="mx-auto max-w-6xl border-x border-t border-dotted border-neutral-400 px-4 text-sm md:px-6 md:text-base">
+        <div className="flex flex-col space-y-1 items-center justify-between py-4 md:flex-row">
           <p className="text-neutral-400">
             <span>println!</span>
             <span>{"("}</span>
