@@ -12,8 +12,8 @@ interface Project {
   name: string;
   type: string;
   stack: string[];
-  site: string;
-  repo: string;
+  site?: string;
+  repo?: string;
   description: string;
 }
 
@@ -22,8 +22,7 @@ const projects: Project[] = [
     name: "sandscape",
     type: "hackathon project",
     stack: ["nextjs", "fastapi", "docker", "machine learning"],
-    site: "http",
-    repo: "https://www.github.com/iamnycx",
+    repo: "https://www.github.com/iamnycx/sandscape",
     description:
       "Developed the whole backend and frontend for sand grain analysis system",
   },
@@ -31,8 +30,8 @@ const projects: Project[] = [
     name: "lume - social network",
     type: "full stack project",
     stack: ["react", "django", "docker", "postgresql"],
-    site: "http",
-    repo: "https://github.com/iamnycx/Lume",
+    site: "https://social-network-eight-eta.vercel.app",
+    repo: "https://github.com/iamnycx/lume",
     description:
       "Full-stack social media app with React, Django, JWT auth, images, interactions",
   },
@@ -40,7 +39,6 @@ const projects: Project[] = [
     name: "fund-me",
     type: "smart-contract",
     stack: ["solidity", "foundry", "chainlink", "ethereum"],
-    site: "",
     repo: "https://github.com/iamnycx/fund-me",
     description:
       "A decentralized crowdfunding smart contract that enforces a minimum USD-based ETH contribution using Chainlink price feeds",
@@ -49,7 +47,6 @@ const projects: Project[] = [
     name: "raffle",
     type: "smart-contract",
     stack: ["solidity", "foundry", "chainlink"],
-    site: "",
     repo: "https://github.com/iamnycx/raffle",
     description:
       "A decentralized automated raffle that picks a provably random winner using Chainlink VRF",
@@ -58,8 +55,8 @@ const projects: Project[] = [
     name: "tinta - text to pallete",
     type: "mini project",
     stack: ["nextjs", "gemini", "postgresql"],
-    site: "http",
-    repo: "https://www.github.com/iamnycx",
+    site: "https://tinta-flax.vercel.app",
+    repo: "https://github.com/iamnycx/tinta",
     description:
       "a simple project to generate a color pallete from text using large language models",
   },
@@ -67,8 +64,8 @@ const projects: Project[] = [
     name: "zag - personalized learning",
     type: "ongoing",
     stack: ["nextjs", "gemini", "ai-sdk", "postgresql"],
-    site: "http",
-    repo: "https://www.github.com/iamnycx",
+    site: "zag-rosy.vercel.app",
+    repo: "https://github.com/iamnycx/zag",
     description:
       "Developing a notion like workspace to help users with thier learnings with ai tools",
   },
@@ -131,7 +128,7 @@ function ProjectCard({ project }: { project: Project }) {
           </h2>
         </div>
         <div className="flex items-center gap-2">
-          {project.repo !== "" && (
+          {project.repo && (
             <Link
               href={project?.repo}
               target="_blank"
@@ -140,7 +137,7 @@ function ProjectCard({ project }: { project: Project }) {
               <Github size={20} strokeWidth={1} />
             </Link>
           )}
-          {project.site !== "" && (
+          {project.site && (
             <Link
               href={project?.site}
               target="_blank"
