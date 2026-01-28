@@ -19,10 +19,10 @@ export default function Blogs() {
         <div className="my-8 grid gap-4">
           {blogs.map((blog) => (
             <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
-              <div className="group w-full space-y-2 border border-dotted border-neutral-400 p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+              <div className="group flex w-full flex-col gap-2 border border-dotted border-neutral-400 p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
                 <Heading title={blog.title} />
                 <Date date={blog.date} readTime={blog.readTime} />
-                <p className="text-muted-foreground line-clamp-1">
+                <p className="text-muted-foreground line-clamp-1 lowercase">
                   {blog.description}
                 </p>
                 <div className="flex flex-wrap gap-4 pt-2">

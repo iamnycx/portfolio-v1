@@ -10,6 +10,7 @@ import { pageVariants } from "@/lib/pageVariants";
 
 import Work from "@/components/work";
 import { motion } from "motion/react";
+import Seperator from "@/components/seperator";
 
 export default function Home() {
   const direction = useDirection();
@@ -26,9 +27,13 @@ export default function Home() {
         className="pt-16"
       >
         <Hero />
+        <Seperator title="contribution" />
         <Contribution />
+        <Seperator title="work history" />
         <Work />
+        <Seperator title="tech stack" />
         <Stack />
+        <Seperator title="social links" />
         <Links />
       </motion.div>
     </Container>

@@ -10,7 +10,6 @@ import {
   eachDayOfInterval,
   isSameDay,
 } from "date-fns";
-import { TextScramble } from "./text-scramble";
 import axios from "axios";
 import { motion } from "motion/react";
 
@@ -24,13 +23,7 @@ export default function Contribution(): JSX.Element {
   const today = new Date();
   const startDate = subDays(today, 364);
   const weeks = 53;
-  const colors = [
-    "#262626", // neutral-800 (keep as-is)
-    "#ffedd5", // orange-100
-    "#fed7aa", // orange-200
-    "#fb923c", // orange-400
-    "#ea580c", // orange-600
-  ];
+  const colors = ["#262626", "#ffedd5", "#fed7aa", "#fb923c", "#ea580c"];
   const username = "iamnycx";
 
   useEffect(() => {
@@ -135,29 +128,6 @@ export default function Contribution(): JSX.Element {
 
   return (
     <div className="space-y-4 py-6 sm:space-y-8 sm:py-12">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-lg font-bold tracking-tight sm:text-xl">
-          <TextScramble>contributions</TextScramble>
-        </h1>
-        <div className="flex items-center gap-2">
-          <span className="text-sm">less</span>
-          {colors.map((color, index) => (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                delay: 0.1 * index,
-                duration: 0.3,
-                ease: "easeInOut",
-              }}
-              key={index}
-              className="h-2 w-2 rounded-full sm:h-3 sm:w-3"
-              style={{ backgroundColor: color }}
-            />
-          ))}
-          <span className="text-sm">more</span>
-        </div>
-      </div>
       <div className="overflow-x-auto overflow-y-hidden">
         <div className="flex min-w-max">
           <div className="mt-3 mr-1 flex flex-col justify-between sm:mt-5.5 sm:mr-2">
@@ -185,6 +155,25 @@ export default function Contribution(): JSX.Element {
             <div className="flex gap-0.5 sm:gap-1">{renderWeeks()}</div>
           </div>
         </div>
+      </div>
+
+      <div className="mx-auto flex w-fit pt-4 items-center gap-2">
+        <span className="text-sm">less</span>
+        {colors.map((color, index) => (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: 0.1 * index,
+              duration: 0.3,
+              ease: "easeInOut",
+            }}
+            key={index}
+            className="h-2 w-2 rounded-full sm:h-3 sm:w-3"
+            style={{ backgroundColor: color }}
+          />
+        ))}
+        <span className="text-sm">more</span>
       </div>
     </div>
   );

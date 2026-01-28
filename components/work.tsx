@@ -1,5 +1,4 @@
-import { Building2, Hash, MapPin, Sparkle, Triangle } from "lucide-react";
-import { TextScramble } from "./text-scramble";
+import { Building2, Sparkle } from "lucide-react";
 
 const workData = [
   {
@@ -41,9 +40,6 @@ type workDataType = {
 export default function Work() {
   return (
     <div id="work">
-      <h1 className="text-xl font-bold tracking-tight">
-        <TextScramble>work</TextScramble>
-      </h1>
       <div className="space-y-6 py-8">
         {workData.map((data) => (
           <WorkCard key={data.orgnization} data={data} />
@@ -55,7 +51,7 @@ export default function Work() {
 
 function WorkCard({ data }: { data: workDataType }) {
   return (
-    <div className="group group-[card] relative space-y-4 border border-dotted border-neutral-600 p-6 pt-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group group-[card] relative flex flex-col gap-4 border border-dotted border-neutral-600 p-6 transition-colors duration-300 ease-in-out hover:border-orange-200">
       <div className="flex justify-between">
         <div className="space-y-1">
           <h1 className="flex items-center gap-2 text-xl font-bold tracking-tight">
@@ -70,10 +66,7 @@ function WorkCard({ data }: { data: workDataType }) {
           <p className="text-sm text-neutral-400">
             {data.from} - {data.to}
           </p>
-          <p className="flex items-center gap-1 text-sm text-neutral-400">
-            <Hash size={12} />
-            {data.location}
-          </p>
+          <p className="text-sm text-neutral-400">{data.location}</p>
         </div>
       </div>
       <ul className="list-inside space-y-1 tracking-wider text-balance lowercase">
@@ -88,7 +81,7 @@ function WorkCard({ data }: { data: workDataType }) {
           </li>
         ))}
       </ul>
-      <div className="space-x-4 space-y-4 pt-2">
+      <div className="space-y-4 space-x-4 pt-2">
         {data.technologies.map((tech) => (
           <span
             key={tech}

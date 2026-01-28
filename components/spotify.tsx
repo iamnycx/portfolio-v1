@@ -1,134 +1,219 @@
-'use client';
+"use client";
 
-import axios from 'axios';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import Image from "next/image";
+import AppleMusic from "./apple-music";
+import { Play, Pause } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import DolbyAtmos from "./dolby-atmos";
 
-const token =
-	'BQCZylfeswlhPp-s76IWMwrdy_eeIRiELGvTa4qK81V1Lyk99dYly5kMmOfigmh3H8Bg12ifQ6jmjvYDCtjyuzsUBH2Em6e1vWKGyK5e9UxCw57kLu-KnzonQbYcKIfr7cI9zbSy7-eRyk3eG5sugyXuL6X0Yby3u9C6GKGs7EYfCl720OvPMMrAtIvv7_vETul2pu8cgFx-pbQzqIKp6sgEWruzz-Y2GFbCer939m1R6MBVPNuwQmW9Pzai2lKk2u2jW5oFZYr0uMFBzGxtDPWaWB2eoJDkQrcLu-UmyLC5ocgjJtHkt5HdJBfwxLNl0-27';
-
-export type ExternalUrls = { spotify: string };
-
-export type Image = {
-	height: number;
-	url: string;
-	width: number;
-};
-
-export type Artist = {
-	external_urls: ExternalUrls;
-	href: string;
-	id: string;
-	name: string;
-	type: string;
-	uri: string;
-};
-
-export type Album = {
-	album_type: string;
-	artists: Artist[];
-	available_markets: string[];
-	external_urls: ExternalUrls;
-	href: string;
-	id: string;
-	images: Image[];
-	is_playable?: boolean;
-	name: string;
-	release_date: string;
-	release_date_precision: string;
-	total_tracks: number;
-	type: string;
-	uri: string;
-};
-
-export type ExternalIds = { isrc?: string };
-
-export type TopTrackItem = {
-	album: Album;
-	artists: Artist[];
-	available_markets: string[];
-	disc_number: number;
-	duration_ms: number;
-	explicit: boolean;
-	external_ids?: ExternalIds;
-	external_urls: ExternalUrls;
-	href: string;
-	id: string;
-	is_local: boolean;
-	is_playable?: boolean;
-	name: string;
-	popularity: number;
-	preview_url?: string | null;
-	track_number: number;
-	type: string;
-	uri: string;
-};
-
-export type TopTrackType = {
-	items: TopTrackItem[];
-	total: number;
-	limit: number;
-	offset: number;
-	href: string;
-	next?: string | null;
-	previous?: string | null;
-};
+const AUDIO_SRC = "/music/Tikkle Me - Blow My Brains Out.ogx";
+const SEGMENTS = 18;
+const FILLED_CHAR = "▓";
+const EMPTY_CHAR = "▒";
 
 export default function Spotify() {
-	const [topTrack, setTopTrack] = useState<TopTrackType>();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const progressBarRef = useRef<HTMLDivElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [isSeeking, setIsSeeking] = useState(false);
 
-	useEffect(() => {
-		(async (): Promise<void> => {
-			try {
-				const res = await axios.get<TopTrackType>(
-					'https://api.spotify.com/v1/me/player/recently-played?limit=1',
-					{
-						headers: {
-							Authorization: `Bearer ${token}`,
-						},
-					}
-				);
-				setTopTrack(res.data);
-			} catch (err) {
-				console.error(err);
-			}
-		})();
-	}, []);
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
 
-	if (!topTrack) return null;
+    const handleLoadedMetadata = () => {
+      if (!Number.isNaN(audio.duration)) {
+        setDuration(audio.duration);
+      }
+    };
 
-	return (
-		<div className='space-y-4 py-4 px-6 flex flex-col justify-center w-fit border border-dotted border-neutral-600 hover:border-orange-400 transition-colors duration-300 ease-in-out group'>
-			<h1 className='text-sm text-center'>listening rn</h1>
-			<div>
-				<Link
-					href={topTrack.items[0].external_urls.spotify}
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					<h1 className='text-xs space-x-2 text-neutral-400'>
-						<span>listening:</span>
-						<span className='group-hover:text-orange-400 transition-colors duration-300 ease-in-out hover:underline'>
-							{topTrack?.items[0]?.name.toLowerCase()}
-						</span>
-					</h1>
-				</Link>
-				<div className='text-xs text-neutral-400 flex flex-wrap gap-3'>
-					<span>by:</span>
-					{topTrack?.items[0]?.artists.map((artist) => (
-						<Link
-							key={artist.id}
-							href={artist.external_urls.spotify}
-							target='_blank'
-							rel='noopener noreferrer'
-							className='hover:underline flex items-center'
-						>
-							<span>{artist.name.toLowerCase()}</span>
-						</Link>
-					))}
-				</div>
-			</div>
-		</div>
-	);
+    const handleTimeUpdate = () => {
+      if (!isSeeking) {
+        setCurrentTime(audio.currentTime || 0);
+      }
+    };
+
+    const handleEnded = () => {
+      setIsPlaying(false);
+      setCurrentTime(0);
+    };
+
+    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("ended", handleEnded);
+
+    return () => {
+      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audio.removeEventListener("ended", handleEnded);
+    };
+  }, [isSeeking]);
+
+  useEffect(() => {
+    if (!isSeeking) return;
+
+    const handleMouseMove = (event: MouseEvent) => {
+      seekToClientX(event.clientX);
+    };
+
+    const handleMouseUp = () => {
+      setIsSeeking(false);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isSeeking, duration]);
+
+  const formatTime = (seconds: number) => {
+    if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, "0");
+    return `${minutes}:${secs}`;
+  };
+
+  const progress =
+    duration > 0 ? Math.min(1, Math.max(0, currentTime / duration)) : 0;
+  const activeSegments = Math.round(progress * SEGMENTS);
+
+  const togglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch(() => {
+          // ignore play errors (e.g. autoplay restrictions)
+        });
+    }
+  };
+
+  const seekToClientX = (clientX: number) => {
+    const bar = progressBarRef.current;
+    const audio = audioRef.current;
+    if (!bar || !audio || duration <= 0) return;
+
+    const rect = bar.getBoundingClientRect();
+    if (rect.width === 0) return;
+
+    let ratio = (clientX - rect.left) / rect.width;
+    ratio = Math.min(1, Math.max(0, ratio));
+
+    const newTime = ratio * duration;
+    audio.currentTime = newTime;
+    setCurrentTime(newTime);
+  };
+
+  const handleProgressClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    seekToClientX(event.clientX);
+  };
+
+  const handleProgressMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+    setIsSeeking(true);
+    seekToClientX(event.clientX);
+  };
+
+  return (
+    <div className="group to-muted/25 from-muted hover:border-foreground relative mt-16 flex gap-4 border border-dotted border-neutral-600 bg-linear-to-bl to-30% p-4 transition-all duration-300 ease-in-out hover:to-75%">
+      <DolbyAtmos />
+      <audio ref={audioRef} src={AUDIO_SRC} />
+      <Image
+        src="/img/blow-my-brains-out.jpg"
+        alt="Blow My Brains Out"
+        width={48}
+        height={48}
+        className="ring-muted/50 w-36 ring contrast-125"
+      />
+      <div className="flex w-full flex-col">
+        <div className="flex items-center gap-2 pb-2">
+          <AppleMusic />
+          <Link
+            href="https://music.apple.com/in/playlist/been-a-rough-day/pl.u-6mo4lEZtKPgMoBx?ls"
+            target="_blank"
+            className="underline-offset-4 hover:underline"
+          >
+            Been A Rough Day
+          </Link>
+        </div>
+        <Link
+          href="https://music.apple.com/in/album/blow-my-brains-out/358119484?i=358119693&ls"
+          className="w-fit text-xl font-bold underline-offset-4 hover:underline"
+        >
+          Blow My Brains Out
+        </Link>
+        <p>
+          <span>by </span>
+          <Link
+            href="https://music.apple.com/in/artist/tikkle-me/317477566?ls"
+            className="underline-offset-4 hover:underline"
+          >
+            Tikkle Me
+          </Link>
+        </p>
+        <div className="full flex items-center justify-between">
+          <div className="text-muted-foreground mt-2 flex items-center gap-2">
+            <span>{formatTime(currentTime)}</span>
+            <div
+              className="flex items-center gap-0"
+              style={{
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                userSelect: "none",
+              }}
+            >
+              <div
+                className="flex items-center gap-0"
+                ref={progressBarRef}
+                onClick={handleProgressClick}
+                onMouseDown={handleProgressMouseDown}
+              >
+                <span>[</span>
+                {Array.from({ length: SEGMENTS }).map((_, index) => (
+                  <span
+                    key={index}
+                    style={{
+                      color:
+                        index < activeSegments
+                          ? "hsl(var(--primary))"
+                          : "currentColor",
+                    }}
+                  >
+                    {index < activeSegments ? FILLED_CHAR : EMPTY_CHAR}
+                  </span>
+                ))}
+                <span>]</span>
+              </div>
+            </div>
+            <span>{formatTime(duration || 0)}</span>
+          </div>
+          <div
+            className="ring-accent hover:bg-muted/75 bg-muted/50 hover:border-foreground translate-y-1 cursor-pointer p-1 ring transition-all duration-300 ease-in-out active:scale-95"
+            onClick={togglePlay}
+          >
+            {isPlaying ? (
+              <Pause size={12} fill="var(--foreground)" stroke="none" />
+            ) : (
+              <Play size={12} fill="var(--foreground)" stroke="none" />
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

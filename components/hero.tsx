@@ -1,10 +1,11 @@
 import { Computer, MapPinIcon, UniversityIcon } from "lucide-react";
 import { TextScramble } from "./text-scramble";
 import Spotify from "./spotify";
+import { MemoizedAsciiAvatar } from "./ascii-avatar";
 
 export default function Hero() {
   return (
-    <div className="space-y-12 py-12">
+    <div className="space-y-12 pt-12 pb-8">
       <div className="flex flex-col items-center justify-between space-y-2 md:flex-row md:items-baseline-last">
         <h1 className="text-xl font-bold tracking-tight">
           <TextScramble>nikhil singh mehta</TextScramble>
@@ -34,11 +35,12 @@ export default function Hero() {
               }
             </span>
           </p>
-          <p className="hidden tracking-tight text-neutral-400 md:block">
+          <p className="text-muted-foreground hidden tracking-tight md:block">
             press : to open command palette
           </p>
+          <Spotify />
         </div>
-        {/* <Spotify /> */}
+        <MemoizedAsciiAvatar />
       </div>
     </div>
   );

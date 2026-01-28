@@ -1,5 +1,4 @@
 import { BoxIcon } from "lucide-react";
-import { TextScramble } from "./text-scramble";
 
 const stackData = {
   Web2: [
@@ -30,6 +29,16 @@ const stackData = {
     { title: "Vercel" },
     { title: "Netlify" },
   ],
+  Tools: [
+    { title: "Git" },
+    { title: "GitHub" },
+    { title: "GitLab" },
+    { title: "Figma" },
+    { title: "Bruno" },
+    { title: "Nvim" },
+    { title: "Postman" },
+    { title: "Notion" },
+  ],
   Web3: [
     { title: "Solidity" },
     { title: "Rust" },
@@ -39,21 +48,11 @@ const stackData = {
     { title: "EVM" },
     { title: "Smart Contracts" },
   ],
-  Others: [
-    { title: "Git" },
-    { title: "GitHub" },
-    { title: "GitLab" },
-    { title: "Figma" },
-    { title: "Bruno" },
-  ],
 };
 
 export default function Stack() {
   return (
     <div id="experience">
-      <h1 className="text-xl font-bold tracking-tight">
-        <TextScramble>tech stack</TextScramble>
-      </h1>
       <div className="grid space-y-8 py-8 md:grid-cols-4">
         {Object.entries(stackData).map(([category, items]) => (
           <div key={category} className="space-y-4">

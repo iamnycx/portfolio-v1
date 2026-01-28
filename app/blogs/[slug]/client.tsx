@@ -1,18 +1,14 @@
 "use client";
 
-import { mdxComponents } from "@/components/mdx";
-import { mdxRemoteOptions } from "@/lib/mdx";
 import { MoveLeft } from "lucide-react";
-import { MDXContent } from "mdx/types";
 import { motion } from "motion/react";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 
 export function Heading({ title }: { title: string }) {
   return (
     <motion.h1
       layoutId={`blog-title-${title}`}
-      className="text-4xl font-bold tracking-tight"
+      className="text-4xl font-bold tracking-tight lowercase"
     >
       {title}
     </motion.h1>
@@ -22,7 +18,6 @@ export function Heading({ title }: { title: string }) {
 export function Date({
   date,
   readTime,
-  title,
 }: {
   date: string;
   readTime?: number;
@@ -32,7 +27,7 @@ export function Date({
     <motion.p layoutId={`blog-date-${date}`} className="text-neutral-400">
       {date}{" "}
       {readTime && (
-        <span className="text-neutral-600 py-2">({readTime} min read)</span>
+        <span className="py-2 text-neutral-600">({readTime} min read)</span>
       )}
     </motion.p>
   );

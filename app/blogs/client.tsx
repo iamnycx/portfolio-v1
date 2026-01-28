@@ -6,7 +6,7 @@ export function Heading({ title }: { title: string }) {
   return (
     <motion.h2
       layoutId={`blog-title-${title}`}
-      className="line-clamp-1 text-xl font-semibold transition-colors duration-300 ease-in-out group-hover:text-orange-200"
+      className="line-clamp-1 text-xl font-semibold lowercase transition-colors duration-300 ease-in-out group-hover:text-orange-200"
     >
       {title}
     </motion.h2>
@@ -18,7 +18,7 @@ export function Date({ date, readTime }: { date: string; readTime?: number }) {
     <motion.p layoutId={`blog-date-${date}`} className="text-muted-foreground">
       {date}
       {readTime && (
-        <span className="text-neutral-600 pl-2">({readTime} min read)</span>
+        <span className="pl-2 text-neutral-600">({readTime} min read)</span>
       )}
     </motion.p>
   );

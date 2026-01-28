@@ -8,15 +8,15 @@ import { ChevronRight } from "lucide-react";
 
 const links = [
   {
-    text: "[1]home",
+    text: "home",
     href: "/",
   },
   {
-    text: "[2]projects",
+    text: "projects",
     href: "/projects",
   },
   {
-    text: "[3]blogs",
+    text: "blogs",
     href: "/blogs",
   },
 ];
@@ -34,7 +34,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="from-background fixed inset-x-0 top-0 z-50 mx-auto flex max-w-6xl items-center justify-between border-b border-dotted border-neutral-400 bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-xs md:inset-x-32 md:border-x md:px-6">
+    <div className="from-background fixed inset-x-0 top-0 z-50 mx-auto flex max-w-6xl items-center justify-between border-b border-dotted border-neutral-400 bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-xs md:border-x md:px-6">
       <div className="flex items-center space-x-6">
         <h1 className="flex items-center gap-2">
           <span>{"nycx@dev"}</span>
@@ -123,9 +123,9 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
                   onClose();
                 }
               }}
-              className="cursor-pointer border border-dotted border-transparent px-2 py-1 transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 flex items-center gap-2"
+              className="flex cursor-pointer items-center gap-2 border border-dotted border-transparent px-2 py-1 transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200"
             >
-              <ChevronRight size={16}/>
+              <ChevronRight size={16} />
               {item.text}
             </div>
           ))}

@@ -91,7 +91,7 @@ export default function Projects() {
         <p className="text-neutral-400">
           {"a collection of personal projects and experiments."}
         </p>
-        <div className="my-8 grid gap-4 md:grid-cols-2">
+        <div className="my-8 grid gap-6 md:grid-cols-2">
           {projects.map((project: Project) => (
             <ProjectCard key={project.name} project={project} />
           ))}
@@ -117,7 +117,7 @@ export default function Projects() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group w-full space-y-4 border border-dotted border-neutral-400 p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group w-full gap-4 flex flex-col border border-dotted border-neutral-400 p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
       <div className="flex items-start justify-between">
         <div className="space-y-1">
           <h1 className="line-clamp-1 text-xl font-bold tracking-tight">

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { TextScramble } from "./text-scramble";
 import { SquareArrowOutUpRightIcon } from "lucide-react";
 
 export default function Links() {
@@ -9,7 +8,7 @@ export default function Links() {
       href: "mailto:25nikmehta@gmail.com",
     },
     {
-      title: "x",
+      title: "twitter",
       href: "https://x.com/ok_nycx",
     },
     {
@@ -23,22 +22,20 @@ export default function Links() {
   ];
 
   return (
-    <div>
-      <h1 className="text-xl font-bold tracking-tight">
-        <TextScramble>links</TextScramble>
-      </h1>
-      <div className="flex-col justify-center space-y-4 space-x-4 py-4 md:flex md:flex-row md:justify-start md:py-8">
+    <div className="pb-16 space-y-8">
+      <p className="text-center text-muted-foreground">feel free to reach out</p>
+      <div className="flex justify-center gap-8">
         {links.map((link) => (
           <Link
             key={link.title}
             href={link.href}
             target="_blank"
-            className="group flex items-center gap-1 py-2 text-center transition-colors duration-300 ease-in-out hover:text-orange-200 md:text-left"
+            className="group flex items-center gap-1 border border-dotted px-2 py-1 text-center transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 md:text-left"
           >
             {link.title}
             <SquareArrowOutUpRightIcon
               size={14}
-              className="opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+              className="opacity-25 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
             />
           </Link>
         ))}
