@@ -5,7 +5,6 @@ import AppleMusic from "./apple-music";
 import { Play, Pause } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import DolbyAtmos from "./dolby-atmos";
 
 const AUDIO_SRC = "/music/Tikkle Me - Blow My Brains Out.ogx";
 const SEGMENTS = 18;
@@ -130,8 +129,7 @@ export default function Spotify() {
   };
 
   return (
-    <div className="group to-muted/25 from-muted hover:border-foreground relative mt-16 flex gap-4 border border-dotted border-neutral-600 bg-linear-to-bl to-30% p-4 transition-all duration-300 ease-in-out hover:to-75%">
-      <DolbyAtmos />
+    <div className="group to-muted/25 from-muted hover:border-foreground mt-16 flex gap-4 border border-dotted border-neutral-600 bg-linear-to-bl to-30% p-4 transition-all duration-300 ease-in-out hover:to-75%">
       <audio ref={audioRef} src={AUDIO_SRC} />
       <Image
         src="/img/blow-my-brains-out.jpg"
@@ -144,11 +142,11 @@ export default function Spotify() {
         <div className="flex items-center gap-2 pb-2">
           <AppleMusic />
           <Link
-            href="https://music.apple.com/in/playlist/been-a-rough-day/pl.u-6mo4lEZtKPgMoBx?ls"
+            href="https://music.apple.com/in/playlist/everything-everywhere-all-at-once/pl.u-6mo4lEZtKPgMoBx?ls"
             target="_blank"
             className="underline-offset-4 hover:underline"
           >
-            Been A Rough Day
+            Everything Everywhere All At Once
           </Link>
         </div>
         <Link

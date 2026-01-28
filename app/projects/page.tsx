@@ -24,16 +24,7 @@ const projects: Project[] = [
     stack: ["nextjs", "fastapi", "docker", "machine learning"],
     repo: "https://www.github.com/iamnycx/sandscape",
     description:
-      "Developed the whole backend and frontend for sand grain analysis system",
-  },
-  {
-    name: "lume - social network",
-    type: "full stack project",
-    stack: ["react", "django", "docker", "postgresql"],
-    site: "https://social-network-eight-eta.vercel.app",
-    repo: "https://github.com/iamnycx/lume",
-    description:
-      "Full-stack social media app with React, Django, JWT auth, images, interactions",
+      "Developed the backend and frontend for sand grain analysis system, dockerized each service for seamless local setup and deployment",
   },
   {
     name: "fund-me",
@@ -44,12 +35,21 @@ const projects: Project[] = [
       "A decentralized crowdfunding smart contract that enforces a minimum USD-based ETH contribution using Chainlink price feeds",
   },
   {
+    name: "lume - social network",
+    type: "full stack project",
+    stack: ["react", "django", "docker", "postgresql"],
+    site: "https://social-network-eight-eta.vercel.app",
+    repo: "https://github.com/iamnycx/lume",
+    description:
+      "Full-stack social media app with React for frontend and Django for backend. implemented JWT auth, images, interactions (like/dislike)",
+  },
+  {
     name: "raffle",
     type: "smart-contract",
     stack: ["solidity", "foundry", "chainlink"],
     repo: "https://github.com/iamnycx/raffle",
     description:
-      "A decentralized automated raffle that picks a provably random winner using Chainlink VRF",
+      "A decentralized automated raffle contract written with solidity that picks a provably random winner using Chainlink VRF",
   },
   {
     name: "tinta - text to pallete",
@@ -58,16 +58,16 @@ const projects: Project[] = [
     site: "https://tinta-flax.vercel.app",
     repo: "https://github.com/iamnycx/tinta",
     description:
-      "a simple project to generate a color pallete from text using large language models",
+      "a simple project to generate a color pallete from simple text prompts using large language models. used gemini as llm provider",
   },
   {
     name: "zag - personalized learning",
     type: "ongoing",
     stack: ["nextjs", "gemini", "ai-sdk", "postgresql"],
-    site: "zag-rosy.vercel.app",
+    site: "https://zag-rosy.vercel.app",
     repo: "https://github.com/iamnycx/zag",
     description:
-      "Developing a notion like workspace to help users with thier learnings with ai tools",
+      "Developing a notion like workspace to help users with thier studies with ai assistance. used vercel's ai-sdk for llm integration",
   },
 ];
 
@@ -117,7 +117,7 @@ export default function Projects() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group w-full gap-4 flex flex-col border border-dotted border-neutral-400 p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group flex w-full flex-col gap-4 border border-dotted border-neutral-400 p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
       <div className="flex items-start justify-between">
         <div className="space-y-1">
           <h1 className="line-clamp-1 text-xl font-bold tracking-tight">

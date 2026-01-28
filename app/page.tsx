@@ -9,7 +9,7 @@ import Stack from "@/components/stack";
 import { pageVariants } from "@/lib/pageVariants";
 
 import Work from "@/components/work";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import Seperator from "@/components/seperator";
 
 export default function Home() {
@@ -17,25 +17,27 @@ export default function Home() {
 
   return (
     <Container>
-      <motion.div
-        custom={direction}
-        variants={pageVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ ease: "easeInOut" }}
-        className="pt-16"
-      >
-        <Hero />
-        <Seperator title="contribution" />
-        <Contribution />
-        <Seperator title="work history" />
-        <Work />
-        <Seperator title="tech stack" />
-        <Stack />
-        <Seperator title="social links" />
-        <Links />
-      </motion.div>
+      <AnimatePresence>
+        <motion.div
+          custom={direction}
+          variants={pageVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={{ ease: "easeInOut" }}
+          className="pt-16"
+        >
+          <Hero />
+          <Seperator title="contribution" />
+          <Contribution />
+          <Seperator title="work history" />
+          <Work />
+          <Seperator title="tech stack" />
+          <Stack />
+          <Seperator title="social links" />
+          <Links />
+        </motion.div>
+      </AnimatePresence>
     </Container>
   );
 }
