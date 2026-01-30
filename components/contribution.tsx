@@ -18,6 +18,14 @@ type ContributionItem = {
   count: number;
 };
 
+type CachedData = {
+  contributions: ContributionItem[];
+  timestamp: number;
+};
+
+const CACHE_KEY = "github_contributions_cache";
+const CACHE_DURATION = 24 * 60 * 60 * 1000;
+
 export default function Contribution(): JSX.Element {
   const [contributions, setContributions] = useState<ContributionItem[]>([]);
   const today = new Date();
@@ -29,14 +37,39 @@ export default function Contribution(): JSX.Element {
   useEffect(() => {
     (async (): Promise<void> => {
       try {
+        const cachedData = localStorage.getItem(CACHE_KEY);
+        if (cachedData) {
+          const parsed: CachedData = JSON.parse(cachedData);
+          const now = Date.now();
+
+          if (now - parsed.timestamp < CACHE_DURATION) {
+            setContributions(parsed.contributions);
+            return;
+          }
+        }
+
         const res = await axios.get<{
           contributions: ContributionItem[];
         }>(`https://github-contributions-api.jogruber.de/v4/${username}`);
 
-        setContributions(res.data.contributions || []);
+        const newContributions = res.data.contributions || [];
+        setContributions(newContributions);
+
+        const cacheData: CachedData = {
+          contributions: newContributions,
+          timestamp: Date.now(),
+        };
+        localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
       } catch (err) {
         console.error(err);
-        setContributions([]);
+
+        const cachedData = localStorage.getItem(CACHE_KEY);
+        if (cachedData) {
+          const parsed: CachedData = JSON.parse(cachedData);
+          setContributions(parsed.contributions);
+        } else {
+          setContributions([]);
+        }
       }
     })();
   }, []);

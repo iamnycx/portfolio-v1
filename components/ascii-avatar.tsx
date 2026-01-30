@@ -141,19 +141,20 @@ function AsciiAvatar(): JSX.Element {
   }, []);
 
   return (
-    <div className="relative mask-b-from-80%">
+    <div className="relative">
       <motion.div
-        className="text-muted-foreground absolute top-20 left-0 -translate-x-14 md:-translate-x-24"
+        className="text-muted-foreground absolute top-20 left-0 -translate-x-12 md:-translate-x-20"
         variants={textFlickerVariants}
         animate={canAnimate ? "flicker" : undefined}
         style={{ willChange: "transform, opacity" }}
       >
-        [call me] <span className="text-orange-200">{name}</span>
+        [i am] <span className="text-orange-200">{name}</span>
       </motion.div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={250}
         viewBox="0 0 800 1080"
+        className="mask-b-from-80%"
         aria-label="ASCII art avatar"
       >
         <defs>
