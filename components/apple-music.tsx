@@ -1,10 +1,10 @@
 export default function AppleMusic() {
   return (
-    <div className="group h-5 w-5">
+    <div className="group h-4 w-4">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 361 361"
-        className="h-full w-full md:saturate-0 transition-all duration-300 ease-out group-hover:drop-shadow-[0_0_5px_rgba(251,92,116,0.8)] group-hover:saturate-100"
+        className="h-full w-full transition-all duration-300 ease-out group-hover:drop-shadow-[0_0_5px_rgba(251,92,116,0.8)] group-hover:saturate-100 md:saturate-0"
         aria-label="Apple Music Logo"
       >
         <defs>

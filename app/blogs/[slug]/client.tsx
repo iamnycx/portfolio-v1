@@ -48,7 +48,7 @@ export function NavItems({ slug }: { slug: string }) {
         <MoveLeft />
         <span>cd ..</span>
       </Link>
-      <p className="text-neutral-600">$ cat {slug}.mdx</p>
+      <p className="text-neutral-600 hidden md:block">$ cat {slug}.mdx</p>
     </motion.div>
   );
 }

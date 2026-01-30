@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { mono } from "./font";
-import { ThemeProvider } from "@/components/theme/theme-provider";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import React from "react";
 import ClientComponents from "@/components/client-components";
-import { DirectionProvider } from "@/components/DirectionContext";
-import { AnimatePresence } from "motion/react";
+import { ThemeProvider } from "@/app/providers/theme-provider";
+import { DirectionProvider } from "@/app/providers/direction-provider";
+import LenisScrollProvider from "./providers/lenis-provider";
 
 export const metadata: Metadata = {
   title: "nycx@dev",
@@ -53,9 +53,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <DirectionProvider>
-            <AnimatePresence mode="sync">{children}</AnimatePresence>
-          </DirectionProvider>
+          <LenisScrollProvider>
+            <DirectionProvider> {children} </DirectionProvider>
+          </LenisScrollProvider>
           <Footer />
           <ClientComponents />
         </ThemeProvider>

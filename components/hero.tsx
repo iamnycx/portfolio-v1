@@ -42,7 +42,7 @@ export default function Hero() {
             <Spotify />
           </div>
         </div>
-        <div className="translate-x-[20vw] md:translate-x-0">
+        <div className="ml-auto">
           <MemoizedAsciiAvatar />
         </div>
       </div>

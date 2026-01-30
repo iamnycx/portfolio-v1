@@ -18,7 +18,7 @@ export default function CommandPalette() {
           initial={{ y: 100 }}
           animate={{ y: 0 }}
           exit={{ y: 100 }}
-          className="bg-background border-muted-foreground absolute inset-x-80 top-1/2 z-50 mx-auto -translate-y-1/2 border border-dotted px-6 py-4"
+          className="bg-background/75 border-muted-foreground rounded-md absolute inset-x-32 top-1/2 z-50 mx-auto -translate-y-1/2 border border-dotted px-6 py-4"
         >
           <input
             onChange={(e) => setCommand(e.target.value)}

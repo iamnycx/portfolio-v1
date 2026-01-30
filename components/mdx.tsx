@@ -20,13 +20,40 @@ export const mdxComponents = {
     <ul className="list-disc space-y-2 pl-8" {...props} />
   ),
   li: (props: ComponentProps<"li">) => <li className="pl-1" {...props} />,
-  a: (props: ComponentProps<typeof Link>) => (
-    <Link
-      target="_blank"
-      className="text-orange-200 underline-offset-4 hover:underline"
-      {...props}
-    />
-  ),
+  a: ({ href, children, ...props }: ComponentProps<"a">) => {
+    const className = [
+      "text-orange-200 underline-offset-4 hover:underline",
+      props.className,
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    // MDX allows <a> without href; Next <Link> does not.
+    if (!href) {
+      return (
+        <a
+          target="_blank"
+          rel="noreferrer noopener"
+          {...props}
+          className={className}
+        >
+          {children}
+        </a>
+      );
+    }
+
+    return (
+      <Link
+        href={href}
+        target="_blank"
+        rel="noreferrer noopener"
+        {...(props as Omit<ComponentProps<typeof Link>, "href">)}
+        className={className}
+      >
+        {children}
+      </Link>
+    );
+  },
   blockquote: (props: ComponentProps<"blockquote">) => (
     <blockquote
       className="my-8 ml-2 border-l-2 border-dotted border-orange-200 pl-4 text-orange-200"

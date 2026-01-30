@@ -154,7 +154,7 @@ export default function Spotify() {
   };
 
   return (
-    <div className="group to-muted/25 from-muted hover:to-muted/50 relative mt-8 overflow-hidden border border-dotted border-neutral-600 bg-linear-to-bl to-30% p-3 transition-all duration-300 ease-in-out sm:mt-16 sm:p-4">
+    <div className="group to-muted/25 from-muted hover:to-muted/50 relative mt-8 overflow-hidden rounded-md border border-dotted border-neutral-600 bg-linear-to-bl to-30% p-3 transition-all duration-300 ease-in-out sm:mt-16 sm:p-4">
       <audio ref={audioRef} src={AUDIO_SRC} />
       <div className="flex gap-3 sm:gap-4">
         <div className="flex shrink-0 items-center self-stretch">
@@ -163,7 +163,7 @@ export default function Spotify() {
             alt="Blow My Brains Out"
             width={144}
             height={144}
-            className="ring-muted/50 h-auto w-24 object-cover ring contrast-125 saturate-100 md:w-28"
+            className="ring-muted/50 h-auto w-24 rounded-xs object-cover ring contrast-125 saturate-100 md:w-28"
           />
         </div>
         <div className="flex min-w-0 flex-1 flex-col justify-between">
@@ -173,7 +173,7 @@ export default function Spotify() {
               <Link
                 href="https://music.apple.com/in/playlist/rest-in-noise/pl.u-6mo4lEZtKPgMoBx"
                 target="_blank"
-                className="truncate text-xs underline-offset-4 hover:underline sm:text-sm"
+                className="truncate font-semibold text-xs underline-offset-4 hover:underline sm:text-sm"
               >
                 Rest In Noise
               </Link>

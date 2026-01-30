@@ -2,7 +2,7 @@
 
 import Container from "@/components/container";
 import Contribution from "@/components/contribution";
-import { useDirection } from "@/components/DirectionContext";
+import { useDirection } from "@/app/providers/direction-provider";
 import Hero from "@/components/hero";
 import Links from "@/components/links";
 import Stack from "@/components/stack";

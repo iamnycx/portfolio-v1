@@ -1,7 +1,7 @@
 "use client";
 
 import Container from "@/components/container";
-import { useDirection } from "@/components/DirectionContext";
+import { useDirection } from "@/app/providers/direction-provider";
 import { TextScramble } from "@/components/text-scramble";
 import { pageVariants } from "@/lib/pageVariants";
 import { Github, Globe } from "lucide-react";
@@ -99,8 +99,8 @@ export default function Projects() {
 
         <div className="flex flex-col gap-2 text-neutral-600 sm:flex-row sm:items-center sm:justify-between">
           <p>{"└─ End of projects list"}</p>
-          <p>
-            visit my{" "}
+          <p className="ml-auto">
+            Visit my{" "}
             <Link
               href="https://github.com/iamnycx"
               target="_blank"

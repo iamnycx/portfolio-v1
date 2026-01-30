@@ -47,8 +47,9 @@ export default function Blogs() {
               target="_blank"
               className="text-orange-200 underline-offset-4 hover:underline"
             >
-              Twitter
+              X{" "}
             </Link>
+            for more updates
           </p>
         </div>
       </div>

@@ -60,7 +60,7 @@ export default function Contribution(): JSX.Element {
       });
 
       weeksArray.push(
-        <div key={i} className="flex flex-col gap-2">
+        <div key={i} className="flex flex-col gap-1">
           {weekDays.map((day, index) => {
             const contribution = contributions.find((c) =>
               isSameDay(new Date(c.date), day),
@@ -83,7 +83,7 @@ export default function Contribution(): JSX.Element {
                   delay: 0.1 * index + 1,
                 }}
                 key={index}
-                className={`m-[0.15px] h-2 w-2 rounded-full sm:h-3 sm:w-3 md:h-4 md:w-4`}
+                className="m-[0.15px] h-4 w-4 rounded-full"
                 style={{ backgroundColor: color }}
                 title={`${format(day, "PPP")}: ${
                   contribution?.count || 0
@@ -130,7 +130,7 @@ export default function Contribution(): JSX.Element {
     <div className="space-y-4 py-6 sm:space-y-8 sm:py-12">
       <div className="overflow-x-auto overflow-y-hidden">
         <div className="flex min-w-max">
-          <div className="mt-3 mr-1 flex flex-col justify-between sm:mt-5.5 sm:mr-2">
+          <div className="mt-5.5 mr-2 flex flex-col justify-between">
             {dayLabels.map((day, index) => (
               <motion.span
                 initial={{ opacity: 0, scale: 0 }}
@@ -142,17 +142,17 @@ export default function Contribution(): JSX.Element {
                   damping: 10,
                 }}
                 key={index}
-                className="h-2 text-xs text-neutral-400 sm:h-3"
+                className="h-3 text-xs text-neutral-400"
               >
                 {day}
               </motion.span>
             ))}
           </div>
           <div className="flex w-full flex-col items-stretch">
-            <div className="mb-1 flex w-full justify-between gap-2 sm:mb-2 sm:gap-4">
+            <div className="mb-2 flex w-full justify-between gap-4">
               {renderMonthLabels()}
             </div>
-            <div className="flex gap-0.5 sm:gap-1">{renderWeeks()}</div>
+            <div className="flex h-[8.5rem] gap-1">{renderWeeks()}</div>
           </div>
         </div>
       </div>
@@ -169,7 +169,7 @@ export default function Contribution(): JSX.Element {
               ease: "easeInOut",
             }}
             key={index}
-            className="h-2 w-2 rounded-full sm:h-3 sm:w-3"
+            className="h-3 w-3 rounded-full"
             style={{ backgroundColor: color }}
           />
         ))}

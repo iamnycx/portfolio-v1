@@ -36,11 +36,14 @@ export default function Navbar() {
     <>
       <div className="from-background fixed inset-x-0 top-0 z-50 mx-auto flex max-w-6xl items-center justify-between border-b border-dotted border-neutral-400 bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-xs md:border-x md:px-6">
         <div className="flex items-center gap-4 sm:gap-6">
-          <h1 className="flex items-center gap-2 text-sm sm:text-base">
+          <Link
+            href="/"
+            className="flex cursor-pointer items-center gap-2 text-sm sm:text-base"
+          >
             <span>{"nycx@dev"}</span>
             <span className="text-orange-200">{"~"}</span>
             <span>{"$"}</span>
-          </h1>
+          </Link>
           <h2 className="hidden text-sm sm:text-base md:block">
             {time ? <span>{time}</span> : <span>00:00:00</span>}
           </h2>

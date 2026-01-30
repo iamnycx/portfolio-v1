@@ -32,7 +32,7 @@ export default async function BlogPostPage({
         <div className="my-8">
           <MDXRemote
             source={content}
-            components={mdxComponents}
+            components={mdxComponents as any}
             options={mdxRemoteOptions}
           />
         </div>

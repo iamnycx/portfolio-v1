@@ -11,10 +11,10 @@ export default function Footer() {
     const updateUptime = () => {
       setUptimeDays(differenceInDays(new Date(), date_of_deployment));
     };
-    
+
     updateUptime(); // Initial update
     const interval = setInterval(updateUptime, 86400000);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -23,7 +23,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl border-x border-dotted border-neutral-400 px-4 md:px-6">
         <div className="h-6 border-x border-t border-dotted border-neutral-600" />
       </div>
-      <div className="mx-auto max-w-6xl border-x border-t border-dotted border-neutral-400 px-4 text-sm md:px-6 md:text-base">
+      <div className="mx-auto max-w-6xl border-x border-t border-dotted border-neutral-400 px-4 md:px-6">
         <div className="flex flex-col items-center justify-between gap-2 py-4 sm:flex-row sm:gap-0">
           <p className="text-neutral-400">
             <span>println!</span>

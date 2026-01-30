@@ -35,23 +35,16 @@ const workData = [
       "HDX / UN Datasets",
     ],
   },
-  //   {
-  //     title: "TechSprint-48",
-  //     location: "Dehradun",
-  //     points: [
-  //       "Among Top 5 teams nationwide under SIH25037",
-  //       "Low-cost camera-based beach sand grain size mapping system to aid coastal management",
-  //     ],
-  //     organizer: "Graphic Era University, Dehradun",
-  //     techStack: [
-  //       "Python",
-  //       "OpenCV",
-  //       "Ultralytics",
-  //       "FastAPI",
-  //       "React",
-  //       "Raspberry-Pi",
-  //     ],
-  //   },
+  {
+    title: "TechSprint-48",
+    location: "Dehradun",
+    points: [
+      "AI-powered career guidance website that assists students through LLM conversations",
+      "Generates personalized visual career roadmap based on interests, market demand and skills",
+    ],
+    organizer: "Graphic Era University, Dehradun",
+    techStack: ["NextJS", "Gemini", "AI-SDK", "React-Flow"],
+  },
   {
     title: "Build for GEHU",
     location: "Bhimtal",
@@ -60,12 +53,7 @@ const workData = [
       "Basic routing logic to reduce peak-hour traffic jams",
     ],
     organizer: "Graphic Era Hill University, Bhimtal",
-    techStack: [
-      "Python",
-      "Routing Algorithms",
-      "OpenStreetMap (OSM)",
-      "FastAPI",
-    ],
+    techStack: ["React", "Routing Algorithms", "OpenStreetMap (OSM)"],
   },
 ];
 
