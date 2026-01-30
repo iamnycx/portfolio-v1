@@ -4,7 +4,7 @@ import Container from "@/components/container";
 import { useDirection } from "@/app/providers/direction-provider";
 import { TextScramble } from "@/components/text-scramble";
 import { pageVariants } from "@/lib/pageVariants";
-import { Github, Globe } from "lucide-react";
+import { Github, Globe, Triangle } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 
@@ -148,7 +148,13 @@ function ProjectCard({ project }: { project: Project }) {
           )}
         </div>
       </div>
-      <p className="tracking-wider text-balance">{project.description}</p>
+      <div className="flex gap-2">
+        <Triangle
+          size={14}
+          className="fill-muted mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:fill-orange-200"
+        />
+        <p className="tracking-wider text-balance">{project.description}</p>
+      </div>
       <div className="flex flex-wrap gap-2 pt-2">
         {project?.stack.map((tag: string, idx: number) => (
           <span

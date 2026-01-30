@@ -8,7 +8,6 @@ import ClientComponents from "@/components/client-components";
 import { ThemeProvider } from "@/app/providers/theme-provider";
 import { DirectionProvider } from "@/app/providers/direction-provider";
 import LenisScrollProvider from "./providers/lenis-provider";
-import { PostHogProvider } from "@/app/providers/posthog-provider";
 
 export const metadata: Metadata = {
   title: "nycx@dev",
@@ -48,21 +47,19 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${mono.className} antialiased`}>
         <Suspense>
-          <PostHogProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <Navbar />
-              <LenisScrollProvider>
-                <DirectionProvider> {children} </DirectionProvider>
-              </LenisScrollProvider>
-              <Footer />
-              <ClientComponents />
-            </ThemeProvider>
-          </PostHogProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
+            <LenisScrollProvider>
+              <DirectionProvider> {children} </DirectionProvider>
+            </LenisScrollProvider>
+            <Footer />
+            <ClientComponents />
+          </ThemeProvider>
         </Suspense>
       </body>
     </html>

@@ -78,10 +78,10 @@ export default function Navbar() {
           {"./contact.sh"}
         </Link>
         <button
-          onClick={() => setIsMobileMenuOpen(true)}
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
           className="block border border-dotted border-neutral-600 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 sm:text-base lg:hidden"
         >
-          {"./menu.sh"}
+          {isMobileMenuOpen ? "./close.sh" : "./menu.sh"}
         </button>
       </div>
       <AnimatePresence>
@@ -93,48 +93,83 @@ export default function Navbar() {
   );
 }
 
+const NAVBAR_HEIGHT = "4rem";
+
 function MobileMenu({ onClose }: { onClose: () => void }) {
   const menuItems = [
-    { text: "home", href: "/" },
-    { text: "projects", href: "/projects" },
-    { text: "blogs", href: "/blogs" },
-    { text: "contact.sh", href: "mailto:25nikmehta@gmail.com" },
-    { text: "close.sh", action: onClose },
+    { text: "Home", href: "/" },
+    { text: "Projects", href: "/projects" },
+    { text: "Blogs", href: "/blogs" },
+    { text: "Contact", href: "mailto:25nikmehta@gmail.com" },
   ];
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-100 flex items-center justify-center bg-black/95 backdrop-blur-sm"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 40,
+      }}
+      className="bg-black/60 backdrop-blur-sm"
+      onClick={onClose}
     >
-      <div className="from-accent/60 to-background mx-4 w-full max-w-sm border border-dotted border-orange-200 bg-linear-to-bl to-50% p-6">
-        <div className="mb-4 text-center">
-          <span className="text-orange-200">nycx@dev:~$ </span>
-          <span>menu</span>
+      <motion.div
+        initial={{ y: "-100%" }}
+        animate={{ y: 0 }}
+        exit={{ y: "-100%" }}
+        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+        style={{
+          top: NAVBAR_HEIGHT,
+          position: "absolute",
+          left: 0,
+          right: 0,
+        }}
+        className="mx-auto max-w-6xl px-4 md:px-6"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="border-muted-foreground bg-background/50 overflow-hidden border-x border-b border-dotted backdrop-blur-md">
+          <nav className="divide-y divide-dotted divide-muted-foreground">
+            {menuItems.map((item, idx) => {
+              const isMailto = item.href?.startsWith("mailto:");
+              const content = (
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.08, duration: 0.3 }}
+                  className="group flex items-center justify-between px-6 py-4 transition-colors duration-200 hover:bg-orange-200/5"
+                >
+                  <span className="text-base font-medium transition-colors duration-200 group-hover:text-orange-200">
+                    {item.text}
+                  </span>
+                  <ChevronRight
+                    size={18}
+                    className="text-neutral-600 transition-all duration-200 group-hover:translate-x-1 group-hover:text-orange-200"
+                  />
+                </motion.div>
+              );
+
+              return isMailto ? (
+                <a key={item.text} href={item.href} className="block">
+                  {content}
+                </a>
+              ) : (
+                <Link
+                  key={item.text}
+                  href={item.href ?? "/"}
+                  onClick={onClose}
+                  className="block"
+                >
+                  {content}
+                </Link>
+              );
+            })}
+          </nav>
         </div>
-        <div className="space-y-2">
-          {menuItems.map((item) => (
-            <div
-              key={item.text}
-              onClick={() => {
-                if (item.action) {
-                  item.action();
-                } else if (item.href) {
-                  window.location.href = item.href;
-                  onClose();
-                }
-              }}
-              className="flex cursor-pointer items-center gap-2 border border-dotted border-transparent px-2 py-1 transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200"
-            >
-              <ChevronRight size={16} />
-              {item.text}
-            </div>
-          ))}
-        </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

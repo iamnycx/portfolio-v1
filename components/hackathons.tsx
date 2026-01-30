@@ -94,8 +94,7 @@ function HackathonCard({ data }: { data: workDataType }) {
           <li key={index} className="flex gap-2">
             <Triangle
               size={14}
-              strokeWidth={1.5}
-              className="mt-1 shrink-0 origin-center transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:text-orange-200"
+              className="fill-muted mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:fill-orange-200"
             />
             <span>{d}</span>
           </li>

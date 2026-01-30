@@ -8,7 +8,7 @@ export default function Links() {
       href: "mailto:25nikmehta@gmail.com",
     },
     {
-      title: "Twitter",
+      title: "X",
       href: "https://x.com/ok_nycx",
     },
     {
@@ -24,7 +24,7 @@ export default function Links() {
   return (
     <div className="space-y-8 pb-16">
       <p className="text-center text-neutral-400">Feel Free to Reach Out</p>
-      <div className="flex flex-wrap items-center justify-center gap-4 px-12 sm:gap-8">
+      <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
         {links.map((link) => (
           <Link
             key={link.title}

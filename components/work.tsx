@@ -73,8 +73,7 @@ function WorkCard({ data }: { data: workDataType }) {
           <li key={index} className="flex gap-2">
             <Triangle
               size={14}
-              strokeWidth={1.5}
-              className="mt-1 shrink-0 origin-center transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:text-orange-200"
+              className="mt-1 shrink-0 stroke-none fill-muted origin-center transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:fill-orange-200"
             />
             <span>{point}</span>
           </li>
