@@ -1,4 +1,4 @@
-import { JSX, memo } from "react";
+import { JSX, memo, useEffect, useState } from "react";
 import { motion, Variants } from "motion/react";
 import { avatarData } from "./avatar-data";
 
@@ -28,13 +28,45 @@ const glitchVariants: Variants = {
   },
 };
 
+const textFlickerVariants: Variants = {
+  flicker: {
+    opacity: [1, 0.5, 1, 0.4, 1, 0.6, 1],
+    transition: {
+      duration: 0.6,
+      repeat: Infinity,
+      repeatDelay: 0.3,
+      ease: "linear",
+    },
+  },
+};
+
+const name_options = ["Nikhil", "Batman"] as const;
+
 function AsciiAvatar(): JSX.Element {
+  const [name, setName] = useState<(typeof name_options)[number]>("Nikhil");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setName((prev) => {
+        const currentIndex = name_options.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % name_options.length;
+        return name_options[nextIndex];
+      });
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="relative">
-      <div className="text-muted-foreground absolute top-16 left-0 -translate-x-16">
-        [i am] <span className="text-orange-200">batman</span>
-      </div>
-
+      <motion.div
+        className="text-muted-foreground absolute top-20 left-0 -translate-x-12 md:-translate-x-20"
+        variants={textFlickerVariants}
+        animate="flicker"
+        style={{ willChange: "transform, opacity" }}
+      >
+        [i am] <span className="text-orange-200">{name}</span>
+      </motion.div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={250}
@@ -56,7 +88,6 @@ function AsciiAvatar(): JSX.Element {
                 repeatCount="indefinite"
               />
             </feTurbulence>
-
             <feDisplacementMap in="SourceGraphic" scale={14}>
               <animate
                 attributeName="scale"
@@ -67,7 +98,6 @@ function AsciiAvatar(): JSX.Element {
             </feDisplacementMap>
           </filter>
         </defs>
-
         <g filter="url(#glitch-noise)">
           {avatarData.map((element, index) => (
             <motion.text

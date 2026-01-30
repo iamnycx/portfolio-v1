@@ -142,14 +142,14 @@ export default function Contribution(): JSX.Element {
                   damping: 10,
                 }}
                 key={index}
-                className="h-2 text-xs text-neutral-400 lowercase sm:h-3"
+                className="h-2 text-xs text-neutral-400 sm:h-3"
               >
                 {day}
               </motion.span>
             ))}
           </div>
           <div className="flex w-full flex-col items-stretch">
-            <div className="mb-1 flex w-full justify-between gap-2 lowercase sm:mb-2 sm:gap-4">
+            <div className="mb-1 flex w-full justify-between gap-2 sm:mb-2 sm:gap-4">
               {renderMonthLabels()}
             </div>
             <div className="flex gap-0.5 sm:gap-1">{renderWeeks()}</div>
@@ -157,8 +157,8 @@ export default function Contribution(): JSX.Element {
         </div>
       </div>
 
-      <div className="mx-auto flex w-fit pt-4 items-center gap-2">
-        <span className="text-sm">less</span>
+      <div className="mx-auto flex w-fit items-center gap-2 pt-4">
+        <span className="text-sm">Less</span>
         {colors.map((color, index) => (
           <motion.div
             initial={{ opacity: 0 }}
@@ -173,7 +173,7 @@ export default function Contribution(): JSX.Element {
             style={{ backgroundColor: color }}
           />
         ))}
-        <span className="text-sm">more</span>
+        <span className="text-sm">More</span>
       </div>
     </div>
   );

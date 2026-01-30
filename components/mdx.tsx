@@ -1,19 +1,17 @@
 import Link from "next/link";
-import type { ComponentProps } from "react";
+import type { ComponentProps, ReactNode } from "react";
+import { isValidElement } from "react";
 import CopyButton from "./codeblock";
 
 export const mdxComponents = {
   h2: (props: ComponentProps<"h2">) => (
-    <h2 className="my-6 text-2xl font-bold lowercase" {...props} />
+    <h2 className="my-6 text-2xl font-bold" {...props} />
   ),
   h3: (props: ComponentProps<"h3">) => (
-    <h2 className="my-4 text-xl font-bold lowercase" {...props} />
+    <h2 className="my-4 text-xl font-bold" {...props} />
   ),
   p: (props: ComponentProps<"p">) => (
-    <p
-      className="my-4 text-lg leading-relaxed text-neutral-400 lowercase"
-      {...props}
-    />
+    <p className="my-4 text-lg leading-relaxed text-neutral-400" {...props} />
   ),
   ol: (props: ComponentProps<"ol">) => (
     <ol className="my-4 list-decimal space-y-2 pl-8" {...props} />
@@ -24,6 +22,7 @@ export const mdxComponents = {
   li: (props: ComponentProps<"li">) => <li className="pl-1" {...props} />,
   a: (props: ComponentProps<typeof Link>) => (
     <Link
+      target="_blank"
       className="text-orange-200 underline-offset-4 hover:underline"
       {...props}
     />
@@ -38,17 +37,43 @@ export const mdxComponents = {
     props: ComponentProps<"pre"> & {
       "data-language"?: string;
     },
-  ) => (
-    <div className="group bg-neutral-900 my-6 transition-colors duration-300 ease-in-out hover:from-neutral-900">
-      <figcaption className="flex h-8 items-center justify-between border border-b-0 border-dotted border-neutral-400 pl-4 tracking-wide text-neutral-600 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:text-orange-200">
-        {props["data-language"]}
-        <CopyButton code="" />
-      </figcaption>
-      <pre
-        className="relative overflow-x-auto border border-dotted border-neutral-400 px-0 py-4 leading-relaxed tracking-wide transition-colors duration-300 ease-in-out group-hover:border-orange-200"
-        {...props}
-      />
-    </div>
+  ) => {
+    const extractCodeText = (node: ReactNode): string => {
+      if (typeof node === "string") {
+        return node;
+      }
+      if (typeof node === "number") {
+        return String(node);
+      }
+      if (Array.isArray(node)) {
+        return node.map(extractCodeText).join("");
+      }
+      if (isValidElement(node)) {
+        const props = node.props as { children?: ReactNode };
+        if (props.children) {
+          return extractCodeText(props.children);
+        }
+      }
+      return "";
+    };
+
+    const codeText = extractCodeText(props.children);
+
+    return (
+      <div className="group my-6 bg-neutral-900 transition-colors duration-300 ease-in-out hover:from-neutral-900">
+        <figcaption className="flex h-8 items-center justify-between border border-b-0 border-dotted border-neutral-400 pl-4 tracking-wide text-neutral-600 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:text-orange-200">
+          {props["data-language"]}
+          <CopyButton code={codeText} />
+        </figcaption>
+        <pre
+          className="relative overflow-x-auto border border-dotted border-neutral-400 px-0 py-4 leading-relaxed tracking-wide transition-colors duration-300 ease-in-out group-hover:border-orange-200"
+          {...props}
+        />
+      </div>
+    );
+  },
+  code: (props: ComponentProps<"code">) => (
+    <code className="text-orange-200" {...props} />
   ),
   hr: (props: ComponentProps<"hr">) => <hr className="my-4" {...props} />,
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (

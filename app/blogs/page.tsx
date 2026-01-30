@@ -11,25 +11,25 @@ export default function Blogs() {
     <Container className="pt-16">
       <div className="space-y-4 py-12">
         <h1 className="text-xl font-bold tracking-tight">
-          <TextScramble>blogs</TextScramble>
+          <TextScramble>Blogs</TextScramble>
         </h1>
         <p className="text-neutral-400">
-          {"some thoughts, learnings and hacks."}
+          {"Some Thoughts, Learnings and Hacks"}
         </p>
-        <div className="my-8 grid gap-4">
+        <div className="my-8 grid grid-cols-1 gap-4">
           {blogs.map((blog) => (
             <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
-              <div className="group flex w-full flex-col gap-2 border border-dotted border-neutral-400 p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+              <div className="group from-accent/30 flex w-full flex-col gap-2 border border-dotted border-neutral-400 bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
                 <Heading title={blog.title} />
                 <Date date={blog.date} readTime={blog.readTime} />
-                <p className="text-muted-foreground line-clamp-1 lowercase">
+                <p className="text-muted-foreground line-clamp-2 tracking-wider">
                   {blog.description}
                 </p>
-                <div className="flex flex-wrap gap-4 pt-2">
+                <div className="flex flex-wrap gap-2 pt-2">
                   {blog.tags.map((tag: string, idx: number) => (
                     <span
                       key={idx}
-                      className="inline-block border border-dotted bg-neutral-400/10 px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:bg-orange-200/5 group-hover:text-orange-200"
+                      className="from-accent/30 inline-block border border-dotted bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:text-orange-200"
                     >
                       {tag}
                     </span>
@@ -39,15 +39,15 @@ export default function Blogs() {
             </Link>
           ))}
         </div>
-        <div className="flex justify-center pt-8">
+        <div className="flex justify-center pt-8 text-sm text-neutral-400 sm:text-base">
           <p>
-            follow on{" "}
+            Follow on{" "}
             <Link
               href="https://x.com/ok_nycx"
               target="_blank"
               className="text-orange-200 underline-offset-4 hover:underline"
             >
-              twitter
+              Twitter
             </Link>
           </p>
         </div>

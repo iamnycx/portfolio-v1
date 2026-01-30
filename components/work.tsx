@@ -1,28 +1,28 @@
-import { Building2, Sparkle } from "lucide-react";
+import { Triangle } from "lucide-react";
 
 const workData = [
   {
-    orgnization: "freelance",
-    designation: "web developer",
-    location: "uttarakhand, india",
-    from: "june 25",
-    to: "sept 25",
+    orgnization: "Freelance",
+    designation: "Web Developer",
+    location: "Uttarakhand, India",
+    from: "June 25",
+    to: "Sept 25",
     points: [
-      "worked with teams to develop websites for various clients using modern web technologies",
-      "leveraged frameworks like react and nextjs to build dynamic web applications",
-      "gained experience in both frontend and backend development, ensuring seamless integration",
-      "collaborated with clients to gather requirements and deliver tailored solutions",
+      "Worked with teams to develop websites for various clients using modern web technologies",
+      "Leveraged frameworks like React and Next.js to build dynamic web applications",
+      "Gained experience in both frontend and backend development, ensuring seamless integration",
+      "Collaborated with clients to gather requirements and deliver tailored solutions",
     ],
     technologies: [
-      "react",
-      "nextjs",
-      "node",
-      "mongodb",
-      "postgresql",
-      "tailwind",
-      "motion",
-      "cloudinary",
-      "figma",
+      "React",
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "PostgreSQL",
+      "Tailwind",
+      "Motion",
+      "Cloudinary",
+      "Figma",
     ],
   },
 ];
@@ -51,41 +51,40 @@ export default function Work() {
 
 function WorkCard({ data }: { data: workDataType }) {
   return (
-    <div className="group group-[card] relative flex flex-col gap-4 border border-dotted border-neutral-600 p-6 transition-colors duration-300 ease-in-out hover:border-orange-200">
-      <div className="flex justify-between">
+    <div className="group group-[card] from-accent/30 hover:from-accent/50 relative flex flex-col gap-4 border border-dotted border-neutral-600 bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-orange-200">
+      <div className="flex flex-col gap-2 sm:flex-row sm:justify-between">
         <div className="space-y-1">
-          <h1 className="flex items-center gap-2 text-xl font-bold tracking-tight">
-            <Building2 size={18} />
+          <h1 className="text-xl font-bold tracking-tight">
             {data.orgnization}
           </h1>
           <h2 className="text-neutral-400 transition-colors duration-300 ease-in-out group-hover:text-orange-200">
             {data.designation}
           </h2>
         </div>
-        <div className="flex flex-col items-end">
-          <p className="text-sm text-neutral-400">
+        <div className="flex flex-col text-neutral-400 sm:items-end sm:text-right">
+          <p className="text-sm">
             {data.from} - {data.to}
           </p>
-          <p className="text-sm text-neutral-400">{data.location}</p>
+          <p className="text-sm">{data.location}</p>
         </div>
       </div>
-      <ul className="list-inside space-y-1 tracking-wider text-balance lowercase">
+      <ul className="list-inside space-y-1 tracking-wider text-balance">
         {data.points.map((point, index) => (
-          <li key={index} className="flex items-center gap-2">
-            <Sparkle
+          <li key={index} className="flex gap-2">
+            <Triangle
               size={14}
               strokeWidth={1.5}
-              className="origin-center transition-all duration-300 ease-in-out group-hover:rotate-45 group-hover:text-orange-200"
+              className="mt-1 shrink-0 origin-center transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:text-orange-200"
             />
             <span>{point}</span>
           </li>
         ))}
       </ul>
-      <div className="space-y-4 space-x-4 pt-2">
+      <div className="flex flex-wrap gap-2 pt-2">
         {data.technologies.map((tech) => (
           <span
             key={tech}
-            className="inline-block border border-dotted bg-neutral-400/10 px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:bg-orange-200/5 group-hover:text-orange-200"
+            className="from-accent/30 inline-block border border-dotted bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:text-orange-200"
           >
             {tech}
           </span>

@@ -3,9 +3,7 @@ import { getBlogBySlug } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Container from "@/components/container";
 import { mdxComponents } from "@/components/mdx";
-import Link from "next/link";
 import { Date, Heading, NavItems } from "./client";
-import { MoveLeft } from "lucide-react";
 import { mdxRemoteOptions } from "@/lib/mdx";
 
 export default async function BlogPostPage({
@@ -38,7 +36,7 @@ export default async function BlogPostPage({
             options={mdxRemoteOptions}
           />
         </div>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-2 pt-2">
           {data.tags.map((tag: string, idx: number) => (
             <span
               key={idx}

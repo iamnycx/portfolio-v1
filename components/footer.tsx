@@ -8,9 +8,14 @@ export default function Footer() {
   const [uptime_days, setUptimeDays] = useState(0);
 
   useEffect(() => {
-    setInterval(() => {
+    const updateUptime = () => {
       setUptimeDays(differenceInDays(new Date(), date_of_deployment));
-    }, 86400000);
+    };
+    
+    updateUptime(); // Initial update
+    const interval = setInterval(updateUptime, 86400000);
+    
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -19,11 +24,11 @@ export default function Footer() {
         <div className="h-6 border-x border-t border-dotted border-neutral-600" />
       </div>
       <div className="mx-auto max-w-6xl border-x border-t border-dotted border-neutral-400 px-4 text-sm md:px-6 md:text-base">
-        <div className="flex flex-col items-center justify-between space-y-1 py-4 md:flex-row">
-          <p className="text-secondary">
+        <div className="flex flex-col items-center justify-between gap-2 py-4 sm:flex-row sm:gap-0">
+          <p className="text-neutral-400">
             <span>println!</span>
             <span>{"("}</span>
-            <span className="text-muted-foreground">{"'uptime: {}', "}</span>
+            <span className="text-neutral-500">{"'uptime: {}', "}</span>
             <span className="text-orange-200">{"uptime_in_days"}</span>
             <span>{");"}</span>
           </p>

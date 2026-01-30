@@ -4,7 +4,7 @@ import Container from "@/components/container";
 import { useDirection } from "@/components/DirectionContext";
 import { TextScramble } from "@/components/text-scramble";
 import { pageVariants } from "@/lib/pageVariants";
-import { BoxIcon, Github, Globe, Sparkle } from "lucide-react";
+import { Github, Globe } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 
@@ -19,55 +19,55 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "sandscape",
-    type: "hackathon project",
-    stack: ["nextjs", "fastapi", "docker", "machine learning"],
+    name: "Sandscape",
+    type: "Hackathon Project",
+    stack: ["NextJS", "FastAPI", "Docker", "Machine Learning"],
     repo: "https://www.github.com/iamnycx/sandscape",
     description:
-      "Developed the backend and frontend for sand grain analysis system, dockerized each service for seamless local setup and deployment",
+      "Developed the Backend and Frontend for sand grain analysis system, dockerized each service for seamless local setup and deployment",
   },
   {
-    name: "fund-me",
-    type: "smart-contract",
-    stack: ["solidity", "foundry", "chainlink", "ethereum"],
+    name: "Fund-Me",
+    type: "Smart-Contract",
+    stack: ["Solidity", "Foundry", "Chainlink", "Ethereum"],
     repo: "https://github.com/iamnycx/fund-me",
     description:
-      "A decentralized crowdfunding smart contract that enforces a minimum USD-based ETH contribution using Chainlink price feeds",
+      "A Decentralized crowdfunding smart Contract that enforces a minimum USD-based ETH contribution using Chainlink price feeds",
   },
   {
-    name: "lume - social network",
-    type: "full stack project",
-    stack: ["react", "django", "docker", "postgresql"],
+    name: "Lume - Social Network",
+    type: "Full Stack Project",
+    stack: ["React", "Django", "Docker", "PostgreSQL"],
     site: "https://social-network-eight-eta.vercel.app",
     repo: "https://github.com/iamnycx/lume",
     description:
       "Full-stack social media app with React for frontend and Django for backend. implemented JWT auth, images, interactions (like/dislike)",
   },
   {
-    name: "raffle",
-    type: "smart-contract",
-    stack: ["solidity", "foundry", "chainlink"],
+    name: "Raffle",
+    type: "Smart-Contract",
+    stack: ["Solidity", "Foundry", "Chainlink", "Ethereum"],
     repo: "https://github.com/iamnycx/raffle",
     description:
-      "A decentralized automated raffle contract written with solidity that picks a provably random winner using Chainlink VRF",
+      "A Decentralized automated raffle Contract written with Solidity that picks a provably random winner using Chainlink VRF",
   },
   {
-    name: "tinta - text to pallete",
-    type: "mini project",
-    stack: ["nextjs", "gemini", "postgresql"],
+    name: "Tinta - Text to Pallete",
+    type: "Mini Project",
+    stack: ["NextJS", "Gemini", "PostgreSQL"],
     site: "https://tinta-flax.vercel.app",
     repo: "https://github.com/iamnycx/tinta",
     description:
-      "a simple project to generate a color pallete from simple text prompts using large language models. used gemini as llm provider",
+      "A simple project to generate a color pallete from simple text prompts using large language models. Used Gemini as LLM provider",
   },
   {
-    name: "zag - personalized learning",
-    type: "ongoing",
-    stack: ["nextjs", "gemini", "ai-sdk", "postgresql"],
+    name: "Zag - Personalized Learning",
+    type: "Ongoing",
+    stack: ["NextJS", "Gemini", "AI-SDK", "PostgreSQL"],
     site: "https://zag-rosy.vercel.app",
     repo: "https://github.com/iamnycx/zag",
     description:
-      "Developing a notion like workspace to help users with thier studies with ai assistance. used vercel's ai-sdk for llm integration",
+      "Developing a notion like workspace to help users with their studies with AI assistance. Used Vercel's AI-SDK for LLM integration",
   },
 ];
 
@@ -86,18 +86,18 @@ export default function Projects() {
         className="space-y-4 py-12"
       >
         <h1 className="text-xl font-bold tracking-tight">
-          <TextScramble>projects</TextScramble>
+          <TextScramble>Projects</TextScramble>
         </h1>
         <p className="text-neutral-400">
-          {"a collection of personal projects and experiments."}
+          {"A collection of Personal Projects and Experiments"}
         </p>
-        <div className="my-8 grid gap-6 md:grid-cols-2">
+        <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {projects.map((project: Project) => (
             <ProjectCard key={project.name} project={project} />
           ))}
         </div>
 
-        <div className="flex items-center justify-between text-neutral-600">
+        <div className="flex flex-col gap-2 text-neutral-600 sm:flex-row sm:items-center sm:justify-between">
           <p>{"└─ End of projects list"}</p>
           <p>
             visit my{" "}
@@ -106,7 +106,7 @@ export default function Projects() {
               target="_blank"
               className="text-orange-200 underline-offset-4 hover:underline"
             >
-              github
+              Github
             </Link>
           </p>
         </div>
@@ -117,9 +117,9 @@ export default function Projects() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group flex w-full flex-col gap-4 border border-dotted border-neutral-400 p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
-      <div className="flex items-start justify-between">
-        <div className="space-y-1">
+    <div className="group from-accent/30 flex w-full flex-col gap-4 border border-dotted border-neutral-400 bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+      <div className="flex items-start justify-between gap-2">
+        <div className="min-w-0 flex-1 space-y-1">
           <h1 className="line-clamp-1 text-xl font-bold tracking-tight">
             {project?.name}
           </h1>
@@ -127,7 +127,7 @@ function ProjectCard({ project }: { project: Project }) {
             {project?.type}
           </h2>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           {project.repo && (
             <Link
               href={project?.repo}
@@ -148,14 +148,12 @@ function ProjectCard({ project }: { project: Project }) {
           )}
         </div>
       </div>
-      <p className="tracking-wider text-balance lowercase">
-        {project.description}
-      </p>
-      <div className="flex flex-wrap gap-4 py-2">
+      <p className="tracking-wider text-balance">{project.description}</p>
+      <div className="flex flex-wrap gap-2 pt-2">
         {project?.stack.map((tag: string, idx: number) => (
           <span
             key={idx}
-            className="inline-block border border-dotted bg-neutral-400/10 px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:bg-orange-200/5 group-hover:text-orange-200"
+            className="from-accent/30 inline-block border border-dotted bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:text-orange-200"
           >
             {tag}
           </span>

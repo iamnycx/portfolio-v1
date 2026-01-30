@@ -58,16 +58,30 @@ export default function Spotify() {
       seekToClientX(event.clientX);
     };
 
+    const handleTouchMove = (event: TouchEvent) => {
+      if (event.touches.length > 0) {
+        seekToClientX(event.touches[0].clientX);
+      }
+    };
+
     const handleMouseUp = () => {
+      setIsSeeking(false);
+    };
+
+    const handleTouchEnd = () => {
       setIsSeeking(false);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchend", handleTouchEnd);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, [isSeeking, duration]);
 
@@ -124,91 +138,122 @@ export default function Spotify() {
   };
 
   const handleProgressMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
     setIsSeeking(true);
     seekToClientX(event.clientX);
   };
 
+  const handleProgressTouchStart = (
+    event: React.TouchEvent<HTMLDivElement>,
+  ) => {
+    event.preventDefault();
+    setIsSeeking(true);
+    if (event.touches.length > 0) {
+      seekToClientX(event.touches[0].clientX);
+    }
+  };
+
   return (
-    <div className="group to-muted/25 from-muted hover:border-foreground mt-16 flex gap-4 border border-dotted border-neutral-600 bg-linear-to-bl to-30% p-4 transition-all duration-300 ease-in-out hover:to-75%">
+    <div className="group to-muted/25 from-muted hover:to-muted/50 relative mt-8 overflow-hidden border border-dotted border-neutral-600 bg-linear-to-bl to-30% p-3 transition-all duration-300 ease-in-out sm:mt-16 sm:p-4">
       <audio ref={audioRef} src={AUDIO_SRC} />
-      <Image
-        src="/img/blow-my-brains-out.jpg"
-        alt="Blow My Brains Out"
-        width={48}
-        height={48}
-        className="ring-muted/50 w-36 ring contrast-125"
-      />
-      <div className="flex w-full flex-col">
-        <div className="flex items-center gap-2 pb-2">
-          <AppleMusic />
-          <Link
-            href="https://music.apple.com/in/playlist/everything-everywhere-all-at-once/pl.u-6mo4lEZtKPgMoBx?ls"
-            target="_blank"
-            className="underline-offset-4 hover:underline"
-          >
-            Everything Everywhere All At Once
-          </Link>
+      <div className="flex gap-3 sm:gap-4">
+        <div className="flex shrink-0 items-center self-stretch">
+          <Image
+            src="/img/blow-my-brains-out.jpg"
+            alt="Blow My Brains Out"
+            width={144}
+            height={144}
+            className="ring-muted/50 h-auto w-24 object-cover ring contrast-125 saturate-100 md:w-28"
+          />
         </div>
-        <Link
-          href="https://music.apple.com/in/album/blow-my-brains-out/358119484?i=358119693&ls"
-          className="w-fit text-xl font-bold underline-offset-4 hover:underline"
-        >
-          Blow My Brains Out
-        </Link>
-        <p>
-          <span>by </span>
-          <Link
-            href="https://music.apple.com/in/artist/tikkle-me/317477566?ls"
-            className="underline-offset-4 hover:underline"
-          >
-            Tikkle Me
-          </Link>
-        </p>
-        <div className="full flex items-center justify-between">
-          <div className="text-muted-foreground mt-2 flex items-center gap-2">
-            <span>{formatTime(currentTime)}</span>
-            <div
-              className="flex items-center gap-0"
-              style={{
-                overflow: "hidden",
-                whiteSpace: "nowrap",
-                userSelect: "none",
-              }}
-            >
-              <div
-                className="flex items-center gap-0"
-                ref={progressBarRef}
-                onClick={handleProgressClick}
-                onMouseDown={handleProgressMouseDown}
+        <div className="flex min-w-0 flex-1 flex-col justify-between">
+          <div className="space-y-0.5 sm:space-y-1">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <AppleMusic />
+              <Link
+                href="https://music.apple.com/in/playlist/rest-in-noise/pl.u-6mo4lEZtKPgMoBx"
+                target="_blank"
+                className="truncate text-xs underline-offset-4 hover:underline sm:text-sm"
               >
-                <span>[</span>
-                {Array.from({ length: SEGMENTS }).map((_, index) => (
-                  <span
-                    key={index}
-                    style={{
-                      color:
-                        index < activeSegments
-                          ? "hsl(var(--primary))"
-                          : "currentColor",
-                    }}
-                  >
-                    {index < activeSegments ? FILLED_CHAR : EMPTY_CHAR}
-                  </span>
-                ))}
-                <span>]</span>
-              </div>
+                Rest In Noise
+              </Link>
             </div>
-            <span>{formatTime(duration || 0)}</span>
+            <div>
+              <Link
+                href="https://music.apple.com/in/album/blow-my-brains-out/358119484?i=358119693&ls"
+                className="line-clamp-1 block text-base font-bold underline-offset-4 hover:underline sm:line-clamp-2 sm:text-lg md:text-xl"
+              >
+                Blow My Brains Out
+              </Link>
+            </div>
+            <p className="truncate text-xs sm:text-sm md:text-base">
+              <span>by </span>
+              <Link
+                href="https://music.apple.com/in/artist/tikkle-me/317477566?ls"
+                className="underline-offset-4 hover:underline"
+              >
+                Tikkle Me
+              </Link>
+            </p>
           </div>
-          <div
-            className="ring-accent hover:bg-muted/75 bg-muted/50 hover:border-foreground translate-y-1 cursor-pointer p-1 ring transition-all duration-300 ease-in-out active:scale-95"
-            onClick={togglePlay}
-          >
-            {isPlaying ? (
-              <Pause size={12} fill="var(--foreground)" stroke="none" />
-            ) : (
-              <Play size={12} fill="var(--foreground)" stroke="none" />
-            )}
+
+          <div className="mt-2 flex items-center justify-between gap-2 sm:mt-3 sm:gap-4">
+            <div className="text-muted-foreground flex min-w-0 flex-1 items-center gap-1.5 sm:gap-2">
+              <span className="shrink-0 text-xs">
+                {formatTime(currentTime)}
+              </span>
+              <div
+                className="flex min-w-0 flex-1 items-center gap-0"
+                style={{
+                  overflow: "hidden",
+                  whiteSpace: "nowrap",
+                  userSelect: "none",
+                }}
+              >
+                <div
+                  className="flex cursor-pointer touch-none items-center gap-0 text-xs sm:text-sm"
+                  ref={progressBarRef}
+                  onClick={handleProgressClick}
+                  onMouseDown={handleProgressMouseDown}
+                  onTouchStart={handleProgressTouchStart}
+                >
+                  <span>[</span>
+                  {Array.from({ length: SEGMENTS }).map((_, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        color:
+                          index < activeSegments
+                            ? "hsl(var(--primary))"
+                            : "currentColor",
+                      }}
+                    >
+                      {index < activeSegments ? FILLED_CHAR : EMPTY_CHAR}
+                    </span>
+                  ))}
+                  <span>]</span>
+                </div>
+              </div>
+              <span className="shrink-0 text-xs">
+                {formatTime(duration || 0)}
+              </span>
+            </div>
+            <div
+              className="ring-accent hover:bg-muted bg-muted/50 hover:border-foreground shrink-0 cursor-pointer rounded-full p-1.5 ring transition-all duration-300 ease-in-out active:scale-75 sm:p-1 sm:active:scale-50"
+              onClick={togglePlay}
+            >
+              {isPlaying ? (
+                <Pause
+                  size={14}
+                  className="fill-foreground stroke-none sm:h-3 sm:w-3"
+                />
+              ) : (
+                <Play
+                  size={14}
+                  className="fill-foreground stroke-none sm:h-3 sm:w-3"
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>

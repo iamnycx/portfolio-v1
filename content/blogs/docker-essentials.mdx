@@ -1,13 +1,11 @@
 ---
-title: "docker essentials"
-description: "a practical guide to using docker in your developement workflow. from basic containers to docker-compose"
-date: "2025-01-01"
-tags: ["docker", "devops", "web-developement"]
+title: "Docker Essentials"
+description: "A practical guide to using Docker in your development workflow. From basic containers to Docker Compose for multi-container apps."
+date: "2025-11-02"
+tags: ["Docker", "DevOps", "Web Development"]
 ---
 
-# Docker for Web Devs: Let's Keep It Simple
-
-Hey, if you're like me and have heard about Docker but aren't sure where to start, this post is for you. I'm gonna explain Docker in a way that actually makes sense, without all the confusing tech jargon. Let's just build something cool together.
+Hey, if you're like me and have heard about Docker but aren't sure where to start, this post is for you. I'm gonna explain Docker in a way that actually makes sense. Let's just build something cool together.
 
 ## What's Docker Anyway?
 
@@ -54,7 +52,7 @@ Let's run Nginx, a popular web server:
 docker run -d -p 8080:80 nginx
 ```
 
-- `-d` means run in background
+- `-d` means detached (run in background)
 - `-p 8080:80` maps your computer's port 8080 to the container's port 80
 
 Go to http://localhost:8080 in your browser. Boom – web server running!
@@ -65,6 +63,9 @@ To stop it:
 docker ps  # find the container ID
 docker stop <container-id>
 ```
+
+- `docker ps` lists all running containers
+- `docker stop` stops a container by its ID
 
 ## Building Your Own Stuff
 
@@ -83,6 +84,13 @@ COPY . .
 EXPOSE 3000
 CMD ["npm", "start"]
 ```
+
+- `FROM` specifies the base image (Node.js on Alpine Linux)
+- `WORKDIR` sets the working directory inside the container
+- `COPY` copies files from your computer to the container
+- `RUN` runs commands during the build (like installing packages)
+- `EXPOSE` tells Docker which port your app listens on
+- `CMD` specifies the command to run when the container starts
 
 **package.json**
 
@@ -114,7 +122,12 @@ docker build -t my-app .
 docker run -p 3000:3000 my-app
 ```
 
-Visit localhost:3000. Your app's running in a container!
+- `docker build` creates your image
+- `-t my-app` tags it with a name
+- `.` means "use the current directory for the Dockerfile"
+- `docker run` starts your app in a container
+
+Visit [localhost:3000](http://localhost:3000). Your app's running in a container!
 
 ## Docker Compose for Bigger Projects
 
@@ -137,6 +150,10 @@ services:
       - "5432:5432"
 ```
 
+- `services` defines multiple containers
+- `api` builds your Node app
+- `db` uses a Postgres image
+
 Run everything with:
 
 ```bash
@@ -154,6 +171,6 @@ That's it. Your whole stack starts together.
 
 ## That's the Basics
 
-Docker takes practice, but start small. Containerize one of your projects this week. You'll wonder how you lived without it.
+Docker takes practice, but start small. Containerize one of your projects first.
 
 Got questions? The Docker docs are great. Or hit me up – I'm always happy to chat about this stuff.

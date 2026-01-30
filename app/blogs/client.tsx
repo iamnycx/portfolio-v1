@@ -6,7 +6,7 @@ export function Heading({ title }: { title: string }) {
   return (
     <motion.h2
       layoutId={`blog-title-${title}`}
-      className="line-clamp-1 text-xl font-semibold lowercase transition-colors duration-300 ease-in-out group-hover:text-orange-200"
+      className="line-clamp-1 text-xl font-semibold transition-colors duration-300 ease-in-out group-hover:text-orange-200"
     >
       {title}
     </motion.h2>

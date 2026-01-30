@@ -11,6 +11,7 @@ import { pageVariants } from "@/lib/pageVariants";
 import Work from "@/components/work";
 import { AnimatePresence, motion } from "motion/react";
 import Seperator from "@/components/seperator";
+import Hackathons from "@/components/hackathons";
 
 export default function Home() {
   const direction = useDirection();
@@ -30,6 +31,8 @@ export default function Home() {
           <Hero />
           <Seperator title="contribution" />
           <Contribution />
+          <Seperator title="hackathons" />
+          <Hackathons />
           <Seperator title="work history" />
           <Work />
           <Seperator title="tech stack" />
