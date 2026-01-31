@@ -1,62 +1,90 @@
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export default function CommandPalette() {
-  const [helpOpen, setHelpOpen] = useState(false);
   const [command, setCommand] = useState("");
+  const [isOpen, setIsOpen] = useState(true);
+  const [message, setMessage] = useState("enter a command");
+  const router = useRouter();
 
-  const runCommand = () => {
-    if (command === "help") {
-      setHelpOpen(true);
+  const runCommand = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const [cmd, ...args] = command.trim().split(" ");
+
+    switch (cmd) {
+      case "exit":
+        setIsOpen(false);
+        break;
+      case "cd":
+        if (args.length > 0) {
+          const destination = args[0];
+          if (destination === "home") {
+            setMessage("navigating to: home");
+            router.push("/");
+          } else if (["projects", "blog"].includes(destination)) {
+            setMessage(`navigating to: ${destination}`);
+            router.push(`/${destination}`);
+          } else {
+            setMessage(`invalid destination: ${destination}`);
+          }
+        }
+        break;
+      default:
+        setMessage(`unknown command: ${cmd}`);
     }
+
+    setCommand("");
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  if (!isOpen) return null;
+
   return (
-    <div className="bg-background/10 absolute inset-0 z-50 backdrop-blur-xs">
+    <>
       <AnimatePresence>
-        <motion.div
-          initial={{ y: 100 }}
-          animate={{ y: 0 }}
-          exit={{ y: 100 }}
-          className="bg-background/75 border-muted-foreground rounded-md absolute inset-x-32 top-1/2 z-50 mx-auto -translate-y-1/2 border border-dotted px-6 py-4"
-        >
-          <input
-            onChange={(e) => setCommand(e.target.value)}
-            autoFocus
-            placeholder="enter a command or type help (esc for exit)"
-            className="ml-4 w-1/2 bg-transparent ring-0 outline-0"
-          />
-          <span className="absolute left-6 text-neutral-500">{":"}</span>
-        </motion.div>
-      </AnimatePresence>
-      {helpOpen && <CommandHelper />}
-    </div>
-  );
-}
-
-function CommandHelper() {
-  const commands = [
-    {
-      command: "cd",
-      arguments: ["home", "projects", "blog"],
-    },
-  ];
-
-  return (
-    <div className="to-accent/20 fixed inset-x-56 inset-y-28 border border-dotted border-neutral-400 bg-radial from-50% p-8 shadow-2xl backdrop-blur-lg">
-      <h1 className="text-xl font-bold">available commands</h1>
-      <div className="my-6">
-        {commands.map((cmd) => (
-          <div key={cmd.command} className="flex gap-4">
-            <h2 className="font-bold text-purple-400">: {cmd.command}</h2>
-            <div className="space-y-2">
-              {cmd.arguments.map((arg) => (
-                <h3 key={arg}>{arg}</h3>
-              ))}
+        {isOpen && (
+          <motion.div
+            key="command-palette"
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            exit={{ y: 100 }}
+            transition={{
+              ease: "easeInOut",
+            }}
+            className="border-muted-foreground bg-background fixed inset-x-0 bottom-0 z-50 mx-auto border border-b-0 border-dotted px-6 py-4 md:max-w-6xl"
+          >
+            <div className="relative h-full w-full">
+              <form onSubmit={runCommand}>
+                <input
+                  onChange={(e) => setCommand(e.target.value)}
+                  value={command}
+                  autoFocus
+                  placeholder={"cd <destination> (exit to close)"}
+                  className="ml-4 w-1/2 bg-transparent ring-0 outline-0"
+                />
+                <span className="text-muted-foreground absolute left-0">
+                  {":"}
+                </span>
+              </form>
+              <div className="text-muted-foreground absolute inset-y-0 right-0 flex items-center">
+                {message}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

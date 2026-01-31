@@ -39,10 +39,10 @@ export default function Footer() {
               ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
             </div>
             {visitorCount === null ? (
-              <span className="shrink-0 px-1 md:pl-2">***</span>
+              <span className="shrink-0 px-1 md:pl-2">null</span>
             ) : (
               <span className="shrink-0 px-1 md:pl-2">
-                {visitorCount !== null ? visitorCount : "N/A"}
+                {visitorCount !== null ? visitorCount : "null"}
               </span>
             )}
             <div className="text-muted-foreground/30 min-w-0 flex-1 overflow-hidden whitespace-nowrap md:hidden">
