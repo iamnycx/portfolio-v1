@@ -1,26 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getVisitorCount } from "@/app/actions/VisitorCounter";
 
 export default function Footer() {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchVisitorCount() {
+    const fetchVisitorCount = async () => {
       try {
-        const response = await fetch("/api/visitor-count?days=30");
-        const data = await response.json();
-        setVisitorCount(data.count);
-      } catch (error) {
-        console.error("Error fetching visitor count:", error);
-      } finally {
-        setLoading(false);
+        const count = await getVisitorCount();
+        setVisitorCount(count);
+      } catch (err) {
+        console.error("Error fetching visitor count:", err);
       }
-    }
+    };
+
     fetchVisitorCount();
-    const interval = setInterval(fetchVisitorCount, 5 * 60 * 1000);
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -42,7 +38,7 @@ export default function Footer() {
             <div className="text-muted-foreground/30 min-w-0 flex-1 overflow-hidden whitespace-nowrap">
               ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
             </div>
-            {loading ? (
+            {visitorCount === null ? (
               <span className="shrink-0 px-1 md:pl-2">***</span>
             ) : (
               <span className="shrink-0 px-1 md:pl-2">
