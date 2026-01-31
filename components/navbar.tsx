@@ -132,7 +132,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="border-muted-foreground bg-background/50 overflow-hidden border-x border-b border-dotted backdrop-blur-md">
-          <nav className="divide-y divide-dotted divide-muted-foreground">
+          <nav className="divide-muted-foreground divide-y divide-dotted">
             {menuItems.map((item, idx) => {
               const isMailto = item.href?.startsWith("mailto:");
               const content = (
