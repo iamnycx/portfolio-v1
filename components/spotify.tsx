@@ -6,7 +6,7 @@ import { Play, Pause } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const AUDIO_SRC = "/music/Tikkle Me - Blow My Brains Out.ogx";
+const AUDIO_SRC = "/music/Disclosure - Latch (feat. Sam Smith).m4a.mp4";
 const SEGMENTS = 18;
 const FILLED_CHAR = "▓";
 const EMPTY_CHAR = "▒";
@@ -159,8 +159,8 @@ export default function Spotify() {
       <div className="flex gap-3 sm:gap-4">
         <div className="flex shrink-0 items-center self-stretch">
           <Image
-            src="/img/blow-my-brains-out.jpg"
-            alt="Blow My Brains Out"
+            src="/img/Latch.jpg"
+            alt="Latch (feat. Sam Smith)"
             width={144}
             height={144}
             className="ring-muted/50 h-auto w-24 rounded-xs object-cover ring contrast-125 saturate-100 md:w-28"
@@ -173,26 +173,26 @@ export default function Spotify() {
               <Link
                 href="https://music.apple.com/in/playlist/rest-in-noise/pl.u-6mo4lEZtKPgMoBx"
                 target="_blank"
-                className="truncate font-semibold text-xs underline-offset-4 hover:underline sm:text-sm"
+                className="truncate text-xs font-semibold underline-offset-4 hover:underline sm:text-sm"
               >
                 Rest In Noise
               </Link>
             </div>
             <div>
               <Link
-                href="https://music.apple.com/in/album/blow-my-brains-out/358119484?i=358119693&ls"
+                href="https://music.apple.com/in/song/latch-feat-sam-smith/1440856647"
                 className="line-clamp-1 block text-base font-bold underline-offset-4 hover:underline sm:line-clamp-2 sm:text-lg md:text-xl"
               >
-                Blow My Brains Out
+                Latch (feat. Sam Smith)
               </Link>
             </div>
             <p className="truncate text-xs sm:text-sm md:text-base">
               <span>by </span>
               <Link
-                href="https://music.apple.com/in/artist/tikkle-me/317477566?ls"
+                href="https://music.apple.com/in/artist/disclosure/520848228"
                 className="underline-offset-4 hover:underline"
               >
-                Tikkle Me
+                Disclosure
               </Link>
             </p>
           </div>
