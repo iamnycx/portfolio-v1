@@ -181,7 +181,7 @@ export default function Spotify() {
             <div>
               <Link
                 href="https://music.apple.com/in/song/latch-feat-sam-smith/1440856647"
-                className="line-clamp-1 block text-base font-bold underline-offset-4 hover:underline sm:text-lg md:text-xl"
+                className="line-clamp-1 block text-base font-bold underline-offset-4 sm:line-clamp-2 truncate hover:underline sm:text-lg md:text-xl"
               >
                 Latch (feat. Sam Smith)
               </Link>

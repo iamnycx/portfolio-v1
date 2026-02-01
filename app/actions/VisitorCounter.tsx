@@ -8,10 +8,17 @@ export async function getVisitorCount() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          authorization: `Bearer ${process.env.POSTHOG_PERSONAL_API_KEY}`,
+          Authorization: `Bearer ${process.env.POSTHOG_PERSONAL_API_KEY}`,
         },
         body: JSON.stringify({
           events: [{ id: "$pageview", type: "events" }],
+          date_from: "-90d",
+          display: "ActionsLineGraph",
+          interval: "day",
+          properties: [],
+          breakdown: null,
+          insight: "TRENDS",
+          filter_test_accounts: false,
         }),
       },
     );
