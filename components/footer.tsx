@@ -21,10 +21,10 @@ export default function Footer() {
 
   return (
     <>
-      <div className="mx-auto max-w-6xl md:border-x border-dotted border-neutral-400 px-4 md:px-6">
+      <div className="mx-auto max-w-6xl border-dotted border-neutral-400 px-4 md:border-x md:px-6">
         <div className="h-6 border-x border-t border-dotted border-neutral-600" />
       </div>
-      <div className="mx-auto max-w-6xl border-x border-t border-dotted border-neutral-400 px-2 md:px-6">
+      <div className="mx-auto max-w-6xl border-t border-dotted border-neutral-400 px-2 md:border-x md:px-6">
         <div className="flex min-w-0 flex-col items-center justify-between gap-2 overflow-hidden py-4 sm:flex-row sm:gap-0">
           <p className="shrink-0 text-neutral-400 md:mr-2">
             <span>println!</span>

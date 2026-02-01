@@ -31,7 +31,7 @@ export default function Hero() {
           <p className="text-justify tracking-tight">
             <span>
               {
-                "Developer based in India, final year CS undergrad. I'm into films, design, coding and i like to go down rabbit holes. Wanna create something that will live forever on the internet."
+                "Developer based in India, final year CS undergrad. I'm into films, design, coding and I like to go down rabbit holes. Wanna create something that will live forever on the internet."
               }
             </span>
           </p>
