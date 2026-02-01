@@ -21,7 +21,7 @@ export default function Footer() {
 
   return (
     <>
-      <div className="mx-auto max-w-6xl border-x border-dotted border-neutral-400 px-4 md:px-6">
+      <div className="mx-auto max-w-6xl md:border-x border-dotted border-neutral-400 px-4 md:px-6">
         <div className="h-6 border-x border-t border-dotted border-neutral-600" />
       </div>
       <div className="mx-auto max-w-6xl border-x border-t border-dotted border-neutral-400 px-2 md:px-6">

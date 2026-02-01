@@ -24,7 +24,6 @@ const stackData = {
     { title: "CI/CD" },
     { title: "Monorepos" },
     { title: "Cloudflare" },
-    { title: "Sentry" },
     { title: "AWS" },
     { title: "Google Cloud" },
     { title: "Vercel" },
@@ -39,6 +38,8 @@ const stackData = {
     { title: "Nvim" },
     { title: "Postman" },
     { title: "Notion" },
+    { title: "Posthog" },
+    { title: "Sentry" },
   ],
   Web3: [
     { title: "Solidity" },

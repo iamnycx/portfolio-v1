@@ -3,7 +3,7 @@
 export async function getVisitorCount() {
   try {
     const response = await fetch(
-      `https://us.posthog.com/api/projects/${process.env.POSTHOG_PROJECT_ID}/insights/trends/`,
+      `https://us.i.posthog.com/api/projects/${process.env.POSTHOG_PROJECT_ID}/insights/trends/`,
       {
         method: "POST",
         headers: {

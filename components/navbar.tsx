@@ -24,9 +24,21 @@ export default function Navbar() {
   const [time, setTime] = useState<string | null>(null);
   const [activePage, setActivePage] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    const update = () => setTime(new Date().toISOString().slice(11, 19));
+    setIsClient(true);
+    const update = () => {
+      const now = new Date();
+      const istTime = now.toLocaleTimeString("en-IN", {
+        timeZone: "Asia/Kolkata",
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+      setTime(istTime);
+    };
     update();
     const interval = setInterval(update, 1000);
     return () => clearInterval(interval);
@@ -45,7 +57,7 @@ export default function Navbar() {
             <span>{"$"}</span>
           </Link>
           <h2 className="hidden text-sm sm:text-base md:block">
-            {time ? <span>{time}</span> : <span>00:00:00</span>}
+            {isClient ? <span>{time}</span> : <span>00:00:00</span>}
           </h2>
         </div>
         <div className="hidden gap-4 lg:flex lg:gap-6">
