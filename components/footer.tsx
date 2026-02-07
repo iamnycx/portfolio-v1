@@ -1,22 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getVisitorCount } from "@/app/actions/VisitorCounter";
 
 export default function Footer() {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
 
   useEffect(() => {
-    const fetchVisitorCount = async () => {
-      try {
-        const count = await getVisitorCount();
-        setVisitorCount(count);
-      } catch (err) {
-        console.error("Error fetching visitor count:", err);
-      }
-    };
-
-    fetchVisitorCount();
+    fetch("/api/visitors")
+      .then((res) => res.json())
+      .then((data) => setVisitorCount(data.visitors));
   }, []);
 
   return (

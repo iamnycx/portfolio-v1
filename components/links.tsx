@@ -8,7 +8,7 @@ export default function Links() {
       href: "mailto:25nikmehta@gmail.com",
     },
     {
-      title: "X",
+      title: "X.com",
       href: "https://x.com/ok_nycx",
     },
     {
@@ -18,6 +18,10 @@ export default function Links() {
     {
       title: "LinkedIn",
       href: "https://linkedin.com/in/nycx",
+    },
+    {
+      title: "Instagram",
+      href: "https://www.instagram.com/nikhil_meht_a/",
     },
   ];
 
