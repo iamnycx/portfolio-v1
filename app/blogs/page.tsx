@@ -47,7 +47,7 @@ export default function Blogs() {
               target="_blank"
               className="text-orange-200 underline-offset-4 hover:underline"
             >
-              X{" "}
+              X.com{" "}
             </Link>
             for more updates
           </p>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { mono } from "./font";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import React, { Suspense } from "react";
@@ -8,6 +7,7 @@ import ClientComponents from "@/components/client-components";
 import { ThemeProvider } from "@/app/providers/theme-provider";
 import { DirectionProvider } from "@/app/providers/direction-provider";
 import LenisScrollProvider from "./providers/lenis-provider";
+import { GeistPixelSquare } from "geist/font/pixel";
 
 export const metadata: Metadata = {
   title: "nycx@dev",
@@ -78,7 +78,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${mono.className} antialiased`}>
+      <body className={`${GeistPixelSquare.className} antialiased`}>
         <Suspense>
           <ThemeProvider
             attribute="class"

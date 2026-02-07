@@ -102,7 +102,14 @@ export const mdxComponents = {
   code: (props: ComponentProps<"code">) => (
     <code className="text-orange-200" {...props} />
   ),
-  hr: (props: ComponentProps<"hr">) => <hr className="my-4" {...props} />,
+  hr: (props: ComponentProps<"hr">) => (
+    <div
+      className="text-accent my-8 flex-1 overflow-hidden tracking-widest whitespace-nowrap"
+      {...props}
+    >
+      ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    </div>
+  ),
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table className="">
       <thead>
