@@ -27,7 +27,7 @@ export default function Footer() {
           </p>
 
           <div className="flex w-full max-w-full min-w-0 flex-1 items-center overflow-hidden sm:w-auto">
-            <div className="text-accent tracking-widest min-w-0 flex-1 overflow-hidden whitespace-nowrap">
+            <div className="text-accent min-w-0 flex-1 overflow-hidden tracking-widest whitespace-nowrap">
               ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
             </div>
             {visitorCount === null ? (
@@ -37,7 +37,7 @@ export default function Footer() {
                 {visitorCount !== null ? visitorCount : "null"}
               </span>
             )}
-            <div className="text-accent tracking-widest min-w-0 flex-1 overflow-hidden whitespace-nowrap md:hidden">
+            <div className="text-accent min-w-0 flex-1 overflow-hidden tracking-widest whitespace-nowrap md:hidden">
               ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
             </div>
           </div>
