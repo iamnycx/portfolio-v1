@@ -132,7 +132,7 @@ function ProjectCard({ project }: { project: Project }) {
             <Link
               href={project?.repo}
               target="_blank"
-              className="border border-dotted border-transparent p-1 transition-all duration-300 ease-in-out hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
+              className="border border-dotted border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
             >
               <Github size={20} strokeWidth={1} />
             </Link>
@@ -141,7 +141,7 @@ function ProjectCard({ project }: { project: Project }) {
             <Link
               href={project?.site}
               target="_blank"
-              className="border border-dotted border-transparent p-1 transition-all duration-300 ease-in-out hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
+              className="border border-dotted border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
             >
               <Globe size={20} strokeWidth={1} />
             </Link>
