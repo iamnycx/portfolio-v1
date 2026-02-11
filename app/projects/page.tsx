@@ -19,6 +19,15 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "BlackTrack",
+    type: "Full Stack",
+    stack: ["NextJS", "Node", "Web3", "Ether.js", "Metamask"],
+    site: "https://blacktrack-eta.vercel.app/",
+    repo: "https://www.github.com/iamnycx/blacktrack",
+    description:
+      "An easy expense tracking application with Web3 authentication. Built with Next.js frontend and Node.js backend.",
+  },
+  {
     name: "Sandscape",
     type: "Hackathon Project",
     stack: ["NextJS", "FastAPI", "Docker", "Machine Learning"],
