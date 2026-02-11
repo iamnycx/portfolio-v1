@@ -21,7 +21,7 @@ const projects: Project[] = [
   {
     name: "BlackTrack",
     type: "Full Stack",
-    stack: ["NextJS", "Node", "Web3", "Ether.js", "Metamask"],
+    stack: ["NextJS", "Node", "Drizzle", "Web3", "Ether.js", "Metamask"],
     site: "https://blacktrack-eta.vercel.app/",
     repo: "https://www.github.com/iamnycx/blacktrack",
     description:
