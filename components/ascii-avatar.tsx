@@ -3,17 +3,16 @@ import { motion, AnimatePresence } from "motion/react";
 import { avatarData } from "./avatar-data";
 
 const useMotionPreferences = () => {
-  const [isMobileOrReduced, setIsMobileOrReduced] = useState(() => {
+  const [prefersReduced, setPrefersReduced] = useState(() => {
     if (typeof window === "undefined") {
       return false;
     }
 
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    return isMobile || prefersReduced;
+    return prefersReduced;
   });
 
   useEffect(() => {
@@ -21,24 +20,20 @@ const useMotionPreferences = () => {
       return;
     }
 
-    const mobileQuery = window.matchMedia("(max-width: 768px)");
     const reducedQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () =>
-      setIsMobileOrReduced(mobileQuery.matches || reducedQuery.matches);
+    const update = () => setPrefersReduced(reducedQuery.matches);
 
-    mobileQuery.addEventListener("change", update);
     reducedQuery.addEventListener("change", update);
 
     return () => {
-      mobileQuery.removeEventListener("change", update);
       reducedQuery.removeEventListener("change", update);
     };
   }, []);
 
-  return isMobileOrReduced;
+  return prefersReduced;
 };
 
-const name_options = ["Nikhil", "Batman"] as const;
+const name_options = ["Films", "Web2", "Design", "Web3"] as const;
 
 const avatarRows = Object.values(
   avatarData.reduce(
@@ -66,7 +61,7 @@ const avatarRows = Object.values(
 function AsciiAvatar(): JSX.Element {
   const [name, setName] = useState<(typeof name_options)[number]>("Nikhil");
   const [canAnimate, setCanAnimate] = useState(false);
-  const isMobileOrReduced = useMotionPreferences();
+  const prefersReducedMotion = useMotionPreferences();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -90,25 +85,21 @@ function AsciiAvatar(): JSX.Element {
 
   return (
     <div className="relative">
-      <div className="text-muted-foreground absolute top-20 left-0 -translate-x-12 md:-translate-x-20">
-        [i am]{" "}
-        <span className="inline-block w-20 overflow-clip border border-dotted border-orange-200 px-1 text-center">
+      <div className="text-muted-foreground absolute top-20 left-0 -translate-x-24">
+        [i am into]{" "}
+        <span className="inline-block w-20 overflow-clip border border-dotted border-orange-200 px-1 text-center uppercase">
           <AnimatePresence mode="wait">
             <motion.span
               key={name}
               className="inline-block text-orange-200"
               initial={
-                isMobileOrReduced
+                prefersReducedMotion
                   ? { filter: "blur(0px)", opacity: 1, y: 0 }
                   : { filter: "blur(4px)", opacity: 0, y: -12 }
               }
-              animate={
-                isMobileOrReduced
-                  ? { filter: "blur(0px)", opacity: 1, y: 0 }
-                  : { filter: "blur(0px)", opacity: 1, y: 0 }
-              }
+              animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
               exit={
-                isMobileOrReduced
+                prefersReducedMotion
                   ? { filter: "blur(0px)", opacity: 1, y: 0 }
                   : { filter: "blur(4px)", opacity: 0, y: 12 }
               }
@@ -128,10 +119,12 @@ function AsciiAvatar(): JSX.Element {
         className="mask-b-from-80%"
         aria-label="ASCII art avatar"
         initial={
-          isMobileOrReduced ? { filter: "blur(0px)" } : { filter: "blur(6px)" }
+          prefersReducedMotion
+            ? { filter: "blur(0px)" }
+            : { filter: "blur(6px)" }
         }
         animate={
-          isMobileOrReduced || canAnimate
+          prefersReducedMotion || canAnimate
             ? { filter: "blur(0px)" }
             : { filter: "blur(6px)" }
         }
