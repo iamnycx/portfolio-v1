@@ -1,6 +1,6 @@
 "use client";
 
-import { ClipboardCopy, Check } from "lucide-react";
+import { Check, Copy } from "lucide-react";
 import { useState } from "react";
 
 export default function CopyButton({ code }: { code: string }) {
@@ -19,20 +19,18 @@ export default function CopyButton({ code }: { code: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="h-full w-12 cursor-pointer border-dotted border-neutral-400 bg-radial text-neutral-400 transition-colors duration-300 ease-in-out group-hover:border-orange-200 hover:from-orange-200/10 hover:text-orange-200"
+      className="text-muted-foreground h-full w-10 cursor-pointer bg-radial transition-colors duration-300 ease-in-out hover:from-orange-200/10 hover:text-orange-200"
       aria-label="Copy code"
     >
       {copied ? (
         <Check
-          strokeWidth={1}
           size={18}
           className="w-full origin-center text-orange-200 transition-transform duration-300 ease-in-out"
         />
       ) : (
-        <ClipboardCopy
-          strokeWidth={1}
+        <Copy
           size={18}
-          className="w-full origin-center transition-transform duration-300 ease-in-out hover:rotate-12"
+          className="w-full origin-center transition-transform duration-300 ease-in-out active:scale-50"
         />
       )}
     </button>

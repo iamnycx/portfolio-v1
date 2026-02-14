@@ -154,7 +154,7 @@ export default function Spotify() {
   };
 
   return (
-    <div className="group to-muted/25 from-muted hover:to-muted/50 relative mt-8 overflow-hidden rounded-md border border-dotted border-neutral-600 bg-linear-to-bl to-30% p-3 transition-all duration-300 ease-in-out sm:mt-16 sm:p-4">
+    <div className="group to-muted/25 from-muted hover:to-muted/50 relative mt-8 overflow-hidden border border-dotted border-neutral-600 bg-linear-to-bl to-30% p-3 transition-all duration-300 ease-in-out sm:mt-16 sm:p-4">
       <audio ref={audioRef} src={AUDIO_SRC} />
       <div className="flex gap-3 sm:gap-4">
         <div className="flex shrink-0 items-center self-stretch">
@@ -181,7 +181,7 @@ export default function Spotify() {
             <div>
               <Link
                 href="https://music.apple.com/in/song/latch-feat-sam-smith/1440856647"
-                className="line-clamp-1 block text-base font-bold underline-offset-4 sm:line-clamp-2 truncate hover:underline sm:text-lg md:text-xl"
+                className="line-clamp-1 block truncate text-base font-bold underline-offset-4 hover:underline sm:line-clamp-2 sm:text-lg md:text-xl"
               >
                 Latch (feat. Sam Smith)
               </Link>
