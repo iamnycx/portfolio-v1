@@ -25,7 +25,7 @@ const projects: Project[] = [
     site: "https://blacktrack-eta.vercel.app/",
     repo: "https://www.github.com/iamnycx/blacktrack",
     description:
-      "An easy expense tracking application with Web3 authentication. Built with Next.js frontend and Node.js backend.",
+      "Web3-enabled expense tracking application with MetaMask wallet authentication, implementing secure, password-less user access",
   },
   {
     name: "Sandscape",
