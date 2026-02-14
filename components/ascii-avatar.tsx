@@ -1,89 +1,41 @@
 import { JSX, memo, useEffect, useState } from "react";
-import { motion, Variants } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { avatarData } from "./avatar-data";
 
 const useMotionPreferences = () => {
-  const [isMobileOrReduced, setIsMobileOrReduced] = useState(false);
+  const [isMobileOrReduced, setIsMobileOrReduced] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    return isMobile || prefersReduced;
+  });
 
   useEffect(() => {
-    const isMobile =
-      typeof window !== "undefined" &&
-      window.matchMedia("(max-width: 768px)").matches;
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (typeof window === "undefined") {
+      return;
+    }
 
-    setIsMobileOrReduced(isMobile || prefersReduced);
+    const mobileQuery = window.matchMedia("(max-width: 768px)");
+    const reducedQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () =>
+      setIsMobileOrReduced(mobileQuery.matches || reducedQuery.matches);
+
+    mobileQuery.addEventListener("change", update);
+    reducedQuery.addEventListener("change", update);
+
+    return () => {
+      mobileQuery.removeEventListener("change", update);
+      reducedQuery.removeEventListener("change", update);
+    };
   }, []);
 
   return isMobileOrReduced;
-};
-
-const desktopGlitchVariants: Variants = {
-  idle: {
-    x: 0,
-    y: 0,
-    rotate: 0,
-    skewX: 0,
-    scaleX: 1,
-    scaleY: 1,
-    opacity: 1,
-  },
-  glitch: (rowIndex: number) => ({
-    x: [0, -6, 8, -4, 10, 0],
-    y: [0, 1, -2, 1, -1, 0],
-    rotate: [0, -2, 3, -1, 1, 0],
-    skewX: [0, 25, -30, 15, -10, 0],
-    scaleX: [1, 1.15, 0.85, 1.05, 0.95, 1],
-    scaleY: [1, 0.9, 1.1, 0.95, 1.05, 1],
-    opacity: [1, 0.25, 1, 0.6, 1],
-    transition: {
-      duration: 0.18,
-      repeat: Infinity,
-      repeatDelay: 0.6,
-      delay: ((rowIndex * 0.137) % 1.0) * 0.8,
-    },
-  }),
-};
-
-const mobileGlitchVariants: Variants = {
-  idle: {
-    x: 0,
-    y: 0,
-    rotate: 0,
-    skewX: 0,
-    scaleX: 1,
-    scaleY: 1,
-    opacity: 1,
-  },
-  glitch: (rowIndex: number) => ({
-    x: [0, -2, 3, -1, 2, 0],
-    y: [0, 1, -2, 1, -1, 0],
-    rotate: [0, -1, 1.5, -0.5, 0.5, 0],
-    skewX: [0, 10, -12, 6, -4, 0],
-    scaleX: [1, 1.05, 0.95, 1.02, 0.98, 1],
-    scaleY: [1, 0.97, 1.03, 0.99, 1.01, 1],
-    opacity: [1, 0.6, 1, 0.75, 1],
-    transition: {
-      duration: 0.28,
-      repeat: Infinity,
-      repeatDelay: 1.1,
-      ease: "easeInOut",
-      delay: ((rowIndex * 0.151) % 1.0) * 1.1,
-    },
-  }),
-};
-
-const textFlickerVariants: Variants = {
-  flicker: {
-    opacity: [1, 0.5, 1, 0.4, 1, 0.6, 1],
-    transition: {
-      duration: 0.6,
-      repeat: Infinity,
-      repeatDelay: 0.3,
-      ease: "linear",
-    },
-  },
 };
 
 const name_options = ["Nikhil", "Batman"] as const;
@@ -116,10 +68,6 @@ function AsciiAvatar(): JSX.Element {
   const [canAnimate, setCanAnimate] = useState(false);
   const isMobileOrReduced = useMotionPreferences();
 
-  const glitchVariants = isMobileOrReduced
-    ? mobileGlitchVariants
-    : desktopGlitchVariants;
-
   useEffect(() => {
     const interval = setInterval(() => {
       setName((prev) => {
@@ -142,72 +90,69 @@ function AsciiAvatar(): JSX.Element {
 
   return (
     <div className="relative">
-      <motion.div
-        className="text-muted-foreground absolute top-20 left-0 -translate-x-12 md:-translate-x-20"
-        variants={textFlickerVariants}
-        animate={canAnimate ? "flicker" : undefined}
-        style={{ willChange: "transform, opacity" }}
-      >
-        [i am] <span className="text-orange-200">{name}</span>
-      </motion.div>
-      <svg
+      <div className="text-muted-foreground absolute top-20 left-0 -translate-x-12 md:-translate-x-20">
+        [i am]{" "}
+        <span className="inline-block w-20 overflow-clip border border-dotted border-orange-200 px-1 text-center">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={name}
+              className="inline-block text-orange-200"
+              initial={
+                isMobileOrReduced
+                  ? { filter: "blur(0px)", opacity: 1, y: 0 }
+                  : { filter: "blur(4px)", opacity: 0, y: -12 }
+              }
+              animate={
+                isMobileOrReduced
+                  ? { filter: "blur(0px)", opacity: 1, y: 0 }
+                  : { filter: "blur(0px)", opacity: 1, y: 0 }
+              }
+              exit={
+                isMobileOrReduced
+                  ? { filter: "blur(0px)", opacity: 1, y: 0 }
+                  : { filter: "blur(4px)", opacity: 0, y: 12 }
+              }
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              style={{ willChange: "filter, opacity, transform" }}
+            >
+              {name}
+            </motion.span>
+          </AnimatePresence>
+        </span>
+      </div>
+
+      <motion.svg
         xmlns="http://www.w3.org/2000/svg"
         width={250}
         viewBox="0 0 800 1080"
         className="mask-b-from-80%"
         aria-label="ASCII art avatar"
+        initial={
+          isMobileOrReduced ? { filter: "blur(0px)" } : { filter: "blur(6px)" }
+        }
+        animate={
+          isMobileOrReduced || canAnimate
+            ? { filter: "blur(0px)" }
+            : { filter: "blur(6px)" }
+        }
+        transition={{ duration: 0.45, ease: "easeOut" }}
+        style={{ willChange: "transform" }}
       >
-        <defs>
-          {!isMobileOrReduced && (
-            <filter id="glitch-noise">
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.9"
-                numOctaves={2}
-                seed={8}
+        <g>
+          {avatarRows.map((row) =>
+            row.elements.map((element, index) => (
+              <text
+                key={`${element.x}-${element.y}-${index}`}
+                x={element.x}
+                y={element.y}
+                fill={element.fill}
               >
-                <animate
-                  attributeName="baseFrequency"
-                  dur="0.3s"
-                  values="0.6;0.9;0.7"
-                  repeatCount="indefinite"
-                />
-              </feTurbulence>
-              <feDisplacementMap in="SourceGraphic" scale={14}>
-                <animate
-                  attributeName="scale"
-                  dur="0.25s"
-                  values="4;18;6"
-                  repeatCount="indefinite"
-                />
-              </feDisplacementMap>
-            </filter>
+                {element.char}
+              </text>
+            )),
           )}
-        </defs>
-        <g filter={!isMobileOrReduced ? "url(#glitch-noise)" : undefined}>
-          {avatarRows.map((row, rowIndex) => (
-            <motion.g
-              key={row.y}
-              variants={glitchVariants}
-              initial="idle"
-              animate={canAnimate ? "glitch" : "idle"}
-              custom={rowIndex}
-              style={{ willChange: "transform, opacity" }}
-            >
-              {row.elements.map((element, index) => (
-                <text
-                  key={`${element.x}-${element.y}-${index}`}
-                  x={element.x}
-                  y={element.y}
-                  fill={element.fill}
-                >
-                  {element.char}
-                </text>
-              ))}
-            </motion.g>
-          ))}
         </g>
-      </svg>
+      </motion.svg>
     </div>
   );
 }

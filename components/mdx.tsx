@@ -87,7 +87,7 @@ export const mdxComponents = {
     const codeText = extractCodeText(props.children);
 
     return (
-      <div className="group my-6 bg-neutral-900 transition-colors duration-300 ease-in-out hover:from-neutral-900">
+      <div className="group my-6 bg-neutral-950 transition-colors duration-300 ease-in-out hover:from-neutral-900">
         <figcaption className="flex h-8 items-center justify-between border border-b-0 border-dotted border-neutral-400 pl-4 tracking-wide text-neutral-600 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:text-orange-200">
           {props["data-language"]}
           <CopyButton code={codeText} />
