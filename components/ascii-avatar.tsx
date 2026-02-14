@@ -33,7 +33,7 @@ const useMotionPreferences = () => {
   return prefersReduced;
 };
 
-const name_options = ["Films", "Web2", "Design", "Web3"] as const;
+const name_options = ["Web2", "Design", "Web3", "Films"] as const;
 
 const avatarRows = Object.values(
   avatarData.reduce(
@@ -59,7 +59,7 @@ const avatarRows = Object.values(
 ).sort((a, b) => a.y - b.y);
 
 function AsciiAvatar(): JSX.Element {
-  const [name, setName] = useState<(typeof name_options)[number]>("Nikhil");
+  const [name, setName] = useState<(typeof name_options)[number]>("Web2");
   const [canAnimate, setCanAnimate] = useState(false);
   const prefersReducedMotion = useMotionPreferences();
 
