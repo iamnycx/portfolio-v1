@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getBlogBySlug } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import Container from "@/components/container";
+import Container from "@/components/common/container";
 import { mdxComponents } from "@/components/mdx";
 import { Date, Heading, NavItems } from "./client";
 import { mdxRemoteOptions } from "@/lib/mdx";

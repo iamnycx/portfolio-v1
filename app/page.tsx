@@ -1,17 +1,18 @@
 "use client";
 
-import Container from "@/components/container";
-import Contribution from "@/components/contribution";
+import Container from "@/components/common/container";
+import Contribution from "@/components/sections/contribution";
 import { useDirection } from "@/app/providers/direction-provider";
-import Hero from "@/components/hero";
-import Links from "@/components/links";
-import Stack from "@/components/stack";
+import Hero from "@/components/sections/hero";
+import Links from "@/components/sections/links";
+import Stack from "@/components/sections/stack";
 import { pageVariants } from "@/lib/pageVariants";
 
-import Work from "@/components/work";
+import Work from "@/components/sections/work";
 import { AnimatePresence, motion } from "motion/react";
-import Seperator from "@/components/seperator";
-import Hackathons from "@/components/hackathons";
+import Seperator from "@/components/common/seperator";
+import Hackathons from "@/components/sections/hackathons";
+import DigitalArt from "@/components/sections/digital-art";
 
 export default function Home() {
   const direction = useDirection();
@@ -39,6 +40,7 @@ export default function Home() {
           <Stack />
           <Seperator title="social links" />
           <Links />
+          <DigitalArt />
         </motion.div>
       </AnimatePresence>
     </Container>

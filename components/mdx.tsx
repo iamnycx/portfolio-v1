@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { isValidElement } from "react";
-import CopyButton from "./codeblock";
+import CopyButton from "./common/copy-button";
 
 export const mdxComponents = {
   h2: (props: ComponentProps<"h2">) => (

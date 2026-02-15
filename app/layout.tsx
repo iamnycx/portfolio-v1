@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+import Navbar from "@/components/common/navbar";
+import Footer from "@/components/common/footer";
 import React, { Suspense } from "react";
 import ClientComponents from "@/components/client-components";
 import { ThemeProvider } from "@/app/providers/theme-provider";

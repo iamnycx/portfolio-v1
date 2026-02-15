@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import KeyboardShortcuts from './keyboard-shortcuts';
-import CommandPalette from './command-palette';
+import KeyboardShortcuts from './common/keyboard-shortcuts';
+import CommandPalette from './common/command-palette';
 
 export default function ClientComponents() {
 	const [commandPaletteOpen, setCommandPaletteOpen] = React.useState(false);

@@ -18,7 +18,7 @@ export function Date({ date, readTime }: { date: string; readTime?: number }) {
     <motion.p layoutId={`blog-date-${date}`} className="text-muted-foreground">
       {date}
       {readTime && (
-        <span className="pl-2 text-neutral-600">({readTime} min read)</span>
+        <span className="pl-2 text-muted-foreground">({readTime} min read)</span>
       )}
     </motion.p>
   );

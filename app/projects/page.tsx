@@ -1,8 +1,8 @@
 "use client";
 
-import Container from "@/components/container";
+import Container from "@/components/common/container";
 import { useDirection } from "@/app/providers/direction-provider";
-import { TextScramble } from "@/components/text-scramble";
+import { TextScramble } from "@/components/common/text-scramble";
 import { pageVariants } from "@/lib/pageVariants";
 import { Github, Globe, Triangle } from "lucide-react";
 import { motion } from "motion/react";
@@ -97,7 +97,7 @@ export default function Projects() {
         <h1 className="text-xl font-bold tracking-tight">
           <TextScramble>Projects</TextScramble>
         </h1>
-        <p className="text-neutral-400">
+        <p className="text-muted-foreground tracking-wide">
           {"A collection of Personal Projects and Experiments"}
         </p>
         <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -106,7 +106,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-2 text-neutral-600 sm:flex-row sm:items-center sm:justify-between">
+        <div className="text-muted-foreground flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p>{"└─ End of projects list"}</p>
           <p className="ml-auto">
             Visit my{" "}
@@ -126,13 +126,13 @@ export default function Projects() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group from-accent/30 flex w-full flex-col gap-4 border border-dotted border-neutral-400 bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground flex w-full flex-col gap-4 border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">
           <h1 className="line-clamp-1 text-xl font-bold tracking-tight">
             {project?.name}
           </h1>
-          <h2 className="text-neutral-400 transition-colors duration-300 ease-in-out group-hover:text-orange-200">
+          <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-orange-200">
             {project?.type}
           </h2>
         </div>

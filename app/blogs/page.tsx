@@ -1,5 +1,5 @@
-import Container from "@/components/container";
-import { TextScramble } from "@/components/text-scramble";
+import Container from "@/components/common/container";
+import { TextScramble } from "@/components/common/text-scramble";
 import { getAllBlogs } from "@/lib/blog";
 import Link from "next/link";
 import { Date, Heading } from "./client";
@@ -13,13 +13,13 @@ export default function Blogs() {
         <h1 className="text-xl font-bold tracking-tight">
           <TextScramble>Blogs</TextScramble>
         </h1>
-        <p className="text-neutral-400">
+        <p className="text-muted-foreground tracking-wide">
           {"Some Thoughts, Learnings and Hacks"}
         </p>
         <div className="my-8 grid grid-cols-1 gap-4">
           {blogs.map((blog) => (
             <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
-              <div className="group from-accent/30 flex w-full flex-col gap-2 border border-dotted border-neutral-400 bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+              <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground flex w-full flex-col gap-2 border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
                 <Heading title={blog.title} />
                 <Date date={blog.date} readTime={blog.readTime} />
                 <p className="text-muted-foreground line-clamp-2 tracking-wider">
@@ -39,7 +39,7 @@ export default function Blogs() {
             </Link>
           ))}
         </div>
-        <div className="flex justify-center pt-8 text-sm text-neutral-400 sm:text-base">
+        <div className="text-muted-foreground flex justify-center pt-8 text-sm sm:text-base">
           <p>
             Follow on{" "}
             <Link
