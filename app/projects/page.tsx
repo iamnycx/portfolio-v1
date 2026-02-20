@@ -1,11 +1,8 @@
 "use client";
 
 import Container from "@/components/common/container";
-import { useDirection } from "@/app/providers/direction-provider";
 import { TextScramble } from "@/components/common/text-scramble";
-import { pageVariants } from "@/lib/pageVariants";
 import { Github, Globe, Triangle } from "lucide-react";
-import { motion } from "motion/react";
 import Link from "next/link";
 
 interface Project {
@@ -81,19 +78,9 @@ const projects: Project[] = [
 ];
 
 export default function Projects() {
-  const direction = useDirection();
-
   return (
     <Container className="pt-16">
-      <motion.div
-        custom={direction}
-        variants={pageVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ ease: "easeInOut" }}
-        className="space-y-4 py-12"
-      >
+      <div className="space-y-4 py-12">
         <h1 className="text-xl font-bold tracking-tight">
           <TextScramble>Projects</TextScramble>
         </h1>
@@ -119,7 +106,7 @@ export default function Projects() {
             </Link>
           </p>
         </div>
-      </motion.div>
+      </div>
     </Container>
   );
 }

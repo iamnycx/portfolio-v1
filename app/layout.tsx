@@ -5,7 +5,6 @@ import Footer from "@/components/common/footer";
 import React, { Suspense } from "react";
 import ClientComponents from "@/components/client-components";
 import { ThemeProvider } from "@/app/providers/theme-provider";
-import { DirectionProvider } from "@/app/providers/direction-provider";
 import LenisScrollProvider from "./providers/lenis-provider";
 import { GeistPixelSquare } from "geist/font/pixel";
 
@@ -87,9 +86,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Navbar />
-            <LenisScrollProvider>
-              <DirectionProvider> {children} </DirectionProvider>
-            </LenisScrollProvider>
+            <LenisScrollProvider>{children}</LenisScrollProvider>
             <Footer />
             <ClientComponents />
           </ThemeProvider>

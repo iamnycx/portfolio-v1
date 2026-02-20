@@ -50,6 +50,7 @@ const stackData = {
     { title: "Chainlink" },
     { title: "EVM" },
     { title: "Smart Contracts" },
+    { title: "Ethers.js" },
   ],
 };
 
