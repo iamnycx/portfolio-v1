@@ -1,7 +1,10 @@
+"use client";
+
 import { Computer, MapPinIcon, UniversityIcon } from "lucide-react";
 import { TextScramble } from "../common/text-scramble";
 import { MemoizedAsciiAvatar } from "../special/ascii-avatar";
 import MusicPlayer from "../special/music-player";
+import { motion } from "motion/react";
 
 export default function Hero() {
   return (
@@ -10,7 +13,12 @@ export default function Hero() {
         <h1 className="text-xl font-bold tracking-tight">
           <TextScramble>nikhil singh mehta</TextScramble>
         </h1>
-        <div className="flex flex-wrap justify-center gap-4 sm:justify-end">
+        <motion.div
+          initial={{ filter: "blur(4px)", opacity: 0 }}
+          animate={{ filter: "blur(0px)", opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-wrap justify-center gap-4 sm:justify-end"
+        >
           <p className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base">
             <MapPinIcon size={14} />
             <span>{"india"}</span>
@@ -23,21 +31,31 @@ export default function Hero() {
             <Computer size={14} />
             <span>{"arch_linux"}</span>
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <div className="flex flex-col justify-between gap-8 lg:flex-row">
         <div className="w-full max-w-lg space-y-6">
-          <p className="text-justify tracking-tight">
+          <motion.p
+            initial={{ filter: "blur(4px)", opacity: 0 }}
+            animate={{ filter: "blur(0px)", opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-justify tracking-tight"
+          >
             <span>
               {
                 "software developer based in india, final year cs undergrad. i'm into films, design, coding and i go down rabbit holes sometimes. i wanna create something that will live forever on this world of computers."
               }
             </span>
-          </p>
-          <p className="text-muted-foreground hidden tracking-tight md:block">
+          </motion.p>
+          <motion.p
+            initial={{ filter: "blur(4px)", opacity: 0 }}
+            animate={{ filter: "blur(0px)", opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-muted-foreground hidden tracking-tight md:block"
+          >
             press : to open command palette
-          </p>
+          </motion.p>
           <div className="w-fit">
             <MusicPlayer />
           </div>

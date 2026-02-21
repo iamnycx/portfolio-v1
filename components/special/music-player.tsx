@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import AppleMusic from "./apple-music";
 
+import { motion } from "motion/react";
+
 const AUDIO_SRC = "/music/Disclosure - Latch (feat. Sam Smith).m4a.mp4";
 const SEGMENTS = 18;
 const FILLED_CHAR = "▓";
@@ -154,7 +156,12 @@ export default function MusicPlayer() {
   };
 
   return (
-    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative mt-8 overflow-hidden border border-dotted bg-linear-to-bl to-30% p-3 transition-all duration-300 ease-in-out hover:border-orange-200 sm:mt-16 sm:p-4">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.8 }}
+      className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative mt-8 overflow-hidden border border-dotted bg-linear-to-bl to-30% p-3 transition-all duration-300 ease-in-out hover:border-orange-200 sm:mt-16 sm:p-4"
+    >
       <audio ref={audioRef} src={AUDIO_SRC} />
       <div className="flex gap-3 sm:gap-4">
         <div className="flex shrink-0 items-center self-stretch">
@@ -257,6 +264,6 @@ export default function MusicPlayer() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

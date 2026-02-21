@@ -1,5 +1,6 @@
 import { Github, Globe, Triangle } from "lucide-react";
 import Link from "next/link";
+import PlusIcons from "../plus-icons";
 
 interface Project {
   name: string;
@@ -44,7 +45,8 @@ export default function FeaturedProjects() {
 
 function FeaturedProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground flex w-full flex-col gap-4 border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full gap-4 flex-col border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+      <PlusIcons />
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">
           <h1 className="line-clamp-1 text-xl font-bold tracking-tight">

@@ -3,6 +3,7 @@ import { TextScramble } from "@/components/common/text-scramble";
 import { getAllBlogs } from "@/lib/blog";
 import Link from "next/link";
 import { Date, Heading } from "./client";
+import PlusIcons from "@/components/plus-icons";
 
 export default function Blogs() {
   const blogs = getAllBlogs();
@@ -11,7 +12,7 @@ export default function Blogs() {
     <Container className="pt-16">
       <div className="space-y-4 py-12">
         <h1 className="text-xl font-bold tracking-tight">
-          <TextScramble>Blogs</TextScramble>
+          <TextScramble>blogs</TextScramble>
         </h1>
         <p className="text-muted-foreground tracking-wide">
           {"Some Thoughts, Learnings and Hacks"}
@@ -19,7 +20,8 @@ export default function Blogs() {
         <div className="my-8 grid grid-cols-1 gap-4">
           {blogs.map((blog) => (
             <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
-              <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground flex w-full flex-col gap-2 border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+              <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-2 border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+                <PlusIcons />
                 <Heading title={blog.title} />
                 <Date date={blog.date} readTime={blog.readTime} />
                 <p className="text-muted-foreground line-clamp-2 tracking-wider">

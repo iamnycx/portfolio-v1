@@ -1,4 +1,5 @@
 import { Triangle } from "lucide-react";
+import PlusIcons from "../plus-icons";
 
 const workData = [
   {
@@ -52,6 +53,7 @@ export default function Work() {
 function WorkCard({ data }: { data: workDataType }) {
   return (
     <div className="group group-[card] from-muted/30 hover:from-muted/50 relative flex flex-col gap-4 border border-dotted border-neutral-600 bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-orange-200">
+      <PlusIcons />
       <div className="flex flex-col gap-2 sm:flex-row sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-xl font-bold tracking-tight">

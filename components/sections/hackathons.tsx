@@ -1,4 +1,5 @@
 import { Triangle } from "lucide-react";
+import PlusIcons from "../plus-icons";
 
 const workData = [
   {
@@ -79,7 +80,8 @@ export default function Hackathons() {
 
 function HackathonCard({ data }: { data: workDataType }) {
   return (
-    <div className="group group-[card] from-muted/30 hover:from-muted/50 relative flex flex-col gap-4 border border-dotted border-muted-foreground bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground relative flex flex-col gap-4 border border-dotted bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-orange-200">
+      <PlusIcons />
       <div className="flex flex-col gap-1 sm:flex-row sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-xl font-bold tracking-tight">{data.title}</h1>
@@ -106,7 +108,7 @@ function HackathonCard({ data }: { data: workDataType }) {
             {data.techStack.map((tech) => (
               <span
                 key={tech}
-                className="from-accent/30 cursor-default border border-dotted border-muted-foreground bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:text-orange-200"
+                className="from-accent/30 border-muted-foreground cursor-default border border-dotted bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:text-orange-200"
               >
                 {tech}
               </span>

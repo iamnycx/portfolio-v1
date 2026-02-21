@@ -160,7 +160,12 @@ export default function Contribution(): JSX.Element {
   const dayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return (
-    <div className="space-y-4 py-6 sm:space-y-8 sm:py-12">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="space-y-4 py-6 sm:space-y-8 sm:py-12"
+    >
       <div className="overflow-x-auto overflow-y-hidden">
         <div className="flex min-w-max">
           <div className="mt-5.5 mr-2 flex flex-col justify-between">
@@ -208,6 +213,6 @@ export default function Contribution(): JSX.Element {
         ))}
         <span className="text-sm">More</span>
       </div>
-    </div>
+    </motion.div>
   );
 }

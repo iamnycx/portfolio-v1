@@ -2,6 +2,7 @@
 
 import Container from "@/components/common/container";
 import { TextScramble } from "@/components/common/text-scramble";
+import PlusIcons from "@/components/plus-icons";
 import { Github, Globe, Triangle } from "lucide-react";
 import Link from "next/link";
 
@@ -82,7 +83,7 @@ export default function Projects() {
     <Container className="pt-16">
       <div className="space-y-4 py-12">
         <h1 className="text-xl font-bold tracking-tight">
-          <TextScramble>Projects</TextScramble>
+          <TextScramble>projects</TextScramble>
         </h1>
         <p className="text-muted-foreground tracking-wide">
           {"A collection of Personal Projects and Experiments"}
@@ -113,7 +114,8 @@ export default function Projects() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground flex w-full flex-col gap-4 border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+      <PlusIcons />
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">
           <h1 className="line-clamp-1 text-xl font-bold tracking-tight">
