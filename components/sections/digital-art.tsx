@@ -15,6 +15,7 @@ export default function DigitalArt() {
   const bgScale = useTransform(scrollYProgress, [0, 1], [3, 1]);
   const charScale = useTransform(scrollYProgress, [0, 1], [0.6, 1.8]);
   const textScale = useTransform(scrollYProgress, [0, 1], [0.4, 2]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
   return (
     <>
@@ -48,11 +49,11 @@ export default function DigitalArt() {
           />
         </motion.div>
         <motion.div
-          style={{ scale: textScale }}
+          style={{ scale: textScale, opacity }}
           className="absolute inset-x-0 top-0 z-20 md:inset-0"
         >
-          <h2 className="text-shadow-background max-w-xs md:max-w-2xl absolute top-10 left-1/2 z-10 w-full -translate-x-1/2 text-center text-6xl leading-14 font-thin tracking-tighter text-orange-200 uppercase mix-blend-difference text-shadow-2xs md:top-1/2 md:-translate-y-1/2">
-            I <span className="font-black italic"> chose</span> this path
+          <h2 className="text-shadow-background absolute top-10 left-1/2 z-10 w-full max-w-xs -translate-x-1/2 text-center text-6xl leading-14 font-thin tracking-tighter text-orange-200 uppercase mix-blend-difference text-shadow-2xs md:top-1/2 md:max-w-2xl md:-translate-y-1/2">
+            beyond the <span className="font-black italic">horizon</span>
           </h2>
         </motion.div>
       </div>

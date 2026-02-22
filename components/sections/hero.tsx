@@ -44,7 +44,7 @@ export default function Hero() {
           >
             <span>
               {
-                "software developer based in india, final year cs undergrad. i'm into films, design, coding and i go down rabbit holes sometimes. i wanna create something that will live forever on this world of computers."
+                "Software Developer based in India, final year CS undergrad. I'm into films, design, coding and I go down rabbit holes sometimes. I wanna create something that will live forever on this world of computers."
               }
             </span>
           </motion.p>
