@@ -33,11 +33,19 @@ const projects: Project[] = [
 
 export default function FeaturedProjects() {
   return (
-    <div id="work">
+    <div id="featured-projects">
       <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
         {projects.map((project: Project) => (
           <FeaturedProjectCard key={project.name} project={project} />
         ))}
+      </div>
+      <div className="flex pt-4">
+        <Link
+          href="/projects"
+          className="mx-auto text-center text-orange-200 underline-offset-4 hover:underline"
+        >
+          View All Projects
+        </Link>
       </div>
     </div>
   );
@@ -45,7 +53,7 @@ export default function FeaturedProjects() {
 
 function FeaturedProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full gap-4 flex-col border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
       <PlusIcons />
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">

@@ -52,8 +52,8 @@ export default function DigitalArt() {
           style={{ scale: textScale, opacity }}
           className="absolute inset-x-0 top-0 z-20 md:inset-0"
         >
-          <h2 className="text-shadow-background absolute top-10 left-1/2 z-10 w-full max-w-xs -translate-x-1/2 text-center text-6xl leading-14 font-thin tracking-tighter text-orange-200 uppercase mix-blend-difference text-shadow-2xs md:top-1/2 md:max-w-2xl md:-translate-y-1/2">
-            beyond the <span className="font-black italic">horizon</span>
+          <h2 className="text-shadow-background absolute top-10 left-1/2 z-10 w-full max-w-xs -translate-x-1/2 text-center text-7xl leading-16 font-thin tracking-tighter text-orange-200 uppercase mix-blend-difference text-shadow-2xs md:top-1/2 md:max-w-2xl md:-translate-y-1/2">
+            FAR FROM <i className="font-black">FINISHED</i>
           </h2>
         </motion.div>
       </div>

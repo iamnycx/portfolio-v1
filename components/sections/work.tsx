@@ -4,27 +4,16 @@ import PlusIcons from "../plus-icons";
 const workData = [
   {
     orgnization: "Freelance",
-    designation: "Web Developer",
+    designation: "Frontend Developer",
     location: "Uttarakhand, India",
     from: "June 25",
     to: "Sept 25",
     points: [
-      "Worked with teams to develop websites for various clients using modern web technologies",
+      "Worked with teams to develop websites for client using modern web technologies",
       "Leveraged frameworks like React and Next.js to build dynamic web applications",
-      "Gained experience in both frontend and backend development, ensuring seamless integration",
-      "Collaborated with clients to gather requirements and deliver tailored solutions",
+      "Gained experience in frontend development, ensuring responsive design",
     ],
-    technologies: [
-      "React",
-      "Next.js",
-      "Node.js",
-      "MongoDB",
-      "PostgreSQL",
-      "Tailwind",
-      "Motion",
-      "Cloudinary",
-      "Figma",
-    ],
+    technologies: ["React", "Next.js", "Tailwind", "Motion", "Figma"],
   },
 ];
 
@@ -52,22 +41,19 @@ export default function Work() {
 
 function WorkCard({ data }: { data: workDataType }) {
   return (
-    <div className="group group-[card] from-muted/30 hover:from-muted/50 relative flex flex-col gap-4 border border-dotted border-neutral-600 bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground relative flex flex-col gap-4 border border-dotted bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-orange-200">
       <PlusIcons />
       <div className="flex flex-col gap-2 sm:flex-row sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-xl font-bold tracking-tight">
             {data.orgnization}
           </h1>
-          <h2 className="text-neutral-400 transition-colors duration-300 ease-in-out group-hover:text-orange-200">
-            {data.designation}
+          <h2>
+            {data.designation} <span>~ {data.location}</span>
           </h2>
-        </div>
-        <div className="flex flex-col text-neutral-400 sm:items-end sm:text-right">
-          <p className="text-sm">
+          <p className="text-muted-foreground text-sm transition-colors duration-300 ease-in-out group-hover:text-orange-200">
             {data.from} - {data.to}
           </p>
-          <p className="text-sm">{data.location}</p>
         </div>
       </div>
       <ul className="list-inside space-y-1 tracking-wider text-balance">

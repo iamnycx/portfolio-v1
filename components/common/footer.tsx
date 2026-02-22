@@ -8,7 +8,7 @@ export default function Footer() {
   useEffect(() => {
     fetch("/api/visitors")
       .then((res) => res.json())
-      .then((data) => setVisitorCount(data.visitors));
+      .then((data) => setVisitorCount(data.total));
   }, []);
 
   return (

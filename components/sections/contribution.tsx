@@ -31,7 +31,7 @@ export default function Contribution(): JSX.Element {
   const today = new Date();
   const startDate = subDays(today, 364);
   const weeks = 53;
-  const colors = ["#0A0A0C", "#ffedd5", "#fed7aa", "#fb923c", "#ea580c"];
+  const colors = ["#262626", "#ffedd5", "#fed7aa", "#fb923c", "#ea580c"];
   const username = "iamnycx";
 
   useEffect(() => {
@@ -147,7 +147,7 @@ export default function Contribution(): JSX.Element {
             ease: "easeInOut",
           }}
           key={i}
-          className="text-xs text-neutral-400"
+          className="text-xs text-muted-foreground"
         >
           {format(currentMonth, "MMM")}
         </motion.span>,
@@ -180,7 +180,7 @@ export default function Contribution(): JSX.Element {
                   damping: 10,
                 }}
                 key={index}
-                className="h-3 text-xs text-neutral-400"
+                className="h-3 text-xs text-muted-foreground"
               >
                 {day}
               </motion.span>

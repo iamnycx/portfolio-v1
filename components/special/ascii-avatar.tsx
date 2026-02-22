@@ -76,8 +76,8 @@ function AsciiAvatar(): JSX.Element {
 
   return (
     <div className="relative">
-      <div className="text-muted-foreground absolute top-20 left-0 -translate-x-24">
-        [i am into]{" "}
+      <div className="text-muted-foreground absolute top-20 left-0 -translate-x-16">
+        [into]{" "}
         <span className="inline-block w-20 overflow-clip border border-dotted border-orange-200 px-1 text-center uppercase">
           <AnimatePresence mode="wait">
             <motion.span

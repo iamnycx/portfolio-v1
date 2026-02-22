@@ -1,32 +1,24 @@
-import { NextResponse } from "next/server";
-
 export async function GET() {
-  const res = await fetch(
-    `https://us.i.posthog.com/api/projects/${process.env.POSTHOG_PROJECT_ID}/query/`,
+  const response = await fetch(
+    `https://us.posthog.com/api/projects/${process.env.POSTHOG_PROJECT_ID}/query`,
     {
       method: "POST",
-      next: { revalidate: 300 },
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.POSTHOG_PERSONAL_API_KEY}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         query: {
           kind: "HogQLQuery",
-          query: `
-            SELECT COUNT(DISTINCT person_id)
-            FROM events
-            WHERE event = 'pageview'
-        `,
+          query: `SELECT count(DISTINCT person_id) FROM events WHERE event = '$pageview' AND timestamp >= '2020-01-01'`,
         },
-        name: "total_unique_visitors",
       }),
+      next: { revalidate: 3600 },
     },
   );
 
-  const data = await res.json();
+  const data = await response.json();
+  const total = data.results?.[0]?.[0] ?? 0;
 
-  const count = data?.results?.[0]?.[0] ?? 0;
-
-  return NextResponse.json({ visitors: count });
+  return Response.json({ total });
 }

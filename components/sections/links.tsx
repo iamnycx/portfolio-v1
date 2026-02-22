@@ -26,7 +26,7 @@ export default function Links() {
   ];
 
   return (
-    <div className="space-y-8 pb-16">
+    <div id="links" className="space-y-8 pb-16">
       <p className="text-center text-neutral-400">You can find me here</p>
       <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
         {links.map((link) => (
