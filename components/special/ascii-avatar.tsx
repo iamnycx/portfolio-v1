@@ -1,77 +1,111 @@
 import { JSX, memo, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { avatarData } from "./avatar-data";
 
 const useMotionPreferences = () => {
   const [prefersReduced, setPrefersReduced] = useState(() => {
-    if (typeof window === "undefined") {
-      return false;
-    }
-
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    return prefersReduced;
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   });
-
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const reducedQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setPrefersReduced(reducedQuery.matches);
-
-    reducedQuery.addEventListener("change", update);
-
-    return () => {
-      reducedQuery.removeEventListener("change", update);
-    };
+    if (typeof window === "undefined") return;
+    const q = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReduced(q.matches);
+    q.addEventListener("change", update);
+    return () => q.removeEventListener("change", update);
   }, []);
-
   return prefersReduced;
 };
 
 const name_options = ["Web2", "Design", "Web3", "Films"] as const;
 
-const avatarRows = Object.values(
-  avatarData.reduce(
-    (rows, element) => {
-      const key = element.y;
-      if (!rows[key]) {
-        rows[key] = {
-          y: element.y,
-          elements: [],
-        };
+const FALL_DURATION_S = 0.22;
+const TOTAL_SPREAD_S = 1.8;
+
+function deterministicShuffle<T>(arr: T[]): T[] {
+  const out = [...arr];
+  let seed = 0xdeadbeef;
+  const rand = () => {
+    seed ^= seed << 13;
+    seed ^= seed >> 17;
+    seed ^= seed << 5;
+    return (seed >>> 0) / 0xffffffff;
+  };
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+const shuffled = deterministicShuffle(avatarData);
+const delayMap = new Map<string, number>(
+  shuffled.map((el, i) => [
+    `${el.x}-${el.y}`,
+    (i / shuffled.length) * TOTAL_SPREAD_S,
+  ]),
+);
+
+const KEYFRAME_ID = "matrix-fall-kf";
+if (typeof document !== "undefined" && !document.getElementById(KEYFRAME_ID)) {
+  const style = document.createElement("style");
+  style.id = KEYFRAME_ID;
+  style.textContent = `
+    @keyframes matrixFall {
+      0%   { opacity: 0; transform: translateY(-1100px); }
+      60%  { opacity: 1; }
+      100% { opacity: 1; transform: translateY(0px); }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+const AvatarChar = memo(function AvatarChar({
+  element,
+  prefersReducedMotion,
+}: {
+  element: (typeof avatarData)[number];
+  prefersReducedMotion: boolean;
+}) {
+  const key = `${element.x}-${element.y}`;
+  const delay = delayMap.get(key) ?? 0;
+
+  return (
+    <text
+      x={element.x}
+      y={element.y}
+      fill={element.fill}
+      style={
+        prefersReducedMotion
+          ? undefined
+          : {
+              animation: `matrixFall ${FALL_DURATION_S}s cubic-bezier(0.15,0.6,0.35,1) ${delay}s both`,
+            }
       }
-      rows[key].elements.push(element);
-      return rows;
-    },
-    {} as Record<
-      number,
-      {
-        y: number;
-        elements: (typeof avatarData)[number][];
-      }
-    >,
-  ),
-).sort((a, b) => a.y - b.y);
+    >
+      {element.char}
+    </text>
+  );
+});
 
 function AsciiAvatar(): JSX.Element {
   const [name, setName] = useState<(typeof name_options)[number]>("Web2");
   const prefersReducedMotion = useMotionPreferences();
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const t = setTimeout(() => setReady(true), 1000);
+    return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    const t = setInterval(() => {
       setName((prev) => {
-        const currentIndex = name_options.indexOf(prev);
-        const nextIndex = (currentIndex + 1) % name_options.length;
-        return name_options[nextIndex];
+        const i = name_options.indexOf(prev);
+        return name_options[(i + 1) % name_options.length];
       });
     }, 2000);
-
-    return () => clearInterval(interval);
+    return () => clearInterval(t);
   }, []);
 
   return (
@@ -109,21 +143,19 @@ function AsciiAvatar(): JSX.Element {
         viewBox="0 0 800 1080"
         className="mask-b-from-80%"
         aria-label="ASCII art avatar"
+        style={{ overflow: "visible" }}
       >
-        <g>
-          {avatarRows.map((row) =>
-            row.elements.map((element, index) => (
-              <text
-                key={`${element.x}-${element.y}-${index}`}
-                x={element.x}
-                y={element.y}
-                fill={element.fill}
-              >
-                {element.char}
-              </text>
-            )),
-          )}
-        </g>
+        {ready && (
+          <g>
+            {avatarData.map((element) => (
+              <AvatarChar
+                key={`${element.x}-${element.y}`}
+                element={element}
+                prefersReducedMotion={prefersReducedMotion}
+              />
+            ))}
+          </g>
+        )}
       </svg>
     </div>
   );

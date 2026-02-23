@@ -3,7 +3,6 @@ import "./globals.css";
 import Navbar from "@/components/common/navbar";
 import Footer from "@/components/common/footer";
 import React, { Suspense } from "react";
-import ClientComponents from "@/components/client-components";
 import { ThemeProvider } from "@/app/providers/theme-provider";
 import LenisScrollProvider from "./providers/lenis-provider";
 import { GeistPixelSquare } from "geist/font/pixel";
@@ -90,7 +89,6 @@ export default function RootLayout({
               {children}
               <Footer />
             </LenisScrollProvider>
-            <ClientComponents />
           </ThemeProvider>
         </Suspense>
       </body>

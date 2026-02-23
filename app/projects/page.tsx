@@ -5,6 +5,7 @@ import { TextScramble } from "@/components/common/text-scramble";
 import PlusIcons from "@/components/plus-icons";
 import { Github, Globe, Triangle } from "lucide-react";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 interface Project {
   name: string;
@@ -82,12 +83,19 @@ export default function Projects() {
   return (
     <Container className="pt-16">
       <div className="space-y-4 py-12">
-        <h1 className="text-xl font-bold tracking-tight">
-          <TextScramble>projects</TextScramble>
-        </h1>
-        <p className="text-muted-foreground tracking-wide">
-          {"A collection of Personal Projects and Experiments"}
-        </p>
+        <div className="flex items-baseline justify-between">
+          <h1 className="text-xl font-bold tracking-tight">
+            <TextScramble>projects</TextScramble>
+          </h1>
+          <motion.p
+            initial={{ filter: "blur(4px)" }}
+            animate={{ filter: "blur(0px)" }}
+            transition={{ duration: 0.5 }}
+            className="text-muted-foreground tracking-wide"
+          >
+            $ cd proof_of_work/
+          </motion.p>
+        </div>
         <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {projects.map((project: Project) => (
             <ProjectCard key={project.name} project={project} />
@@ -95,9 +103,9 @@ export default function Projects() {
         </div>
 
         <div className="text-muted-foreground flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p>{"└─ End of projects list"}</p>
+          <p>{"└─ end of projects list"}</p>
           <p className="ml-auto">
-            Visit my{" "}
+            visit my{" "}
             <Link
               href="https://github.com/iamnycx"
               target="_blank"

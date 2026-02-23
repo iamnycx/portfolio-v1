@@ -18,8 +18,23 @@ export function Date({ date, readTime }: { date: string; readTime?: number }) {
     <motion.p layoutId={`blog-date-${date}`} className="text-muted-foreground">
       {date}
       {readTime && (
-        <span className="pl-2 text-muted-foreground">({readTime} min read)</span>
+        <span className="text-muted-foreground pl-2">
+          ({readTime} min read)
+        </span>
       )}
+    </motion.p>
+  );
+}
+
+export function DummyCommand() {
+  return (
+    <motion.p
+      initial={{ filter: "blur(4px)" }}
+      animate={{ filter: "blur(0px)" }}
+      transition={{ duration: 0.5 }}
+      className="text-muted-foreground tracking-wide"
+    >
+      $ cd /var/log/thoughts
     </motion.p>
   );
 }

@@ -30,7 +30,7 @@ export default function CopyButton({ code }: { code: string }) {
       ) : (
         <Copy
           size={18}
-          className="w-full origin-center transition-transform duration-300 ease-in-out active:scale-50"
+          className="w-full stroke-1 origin-center transition-transform duration-300 ease-in-out active:scale-50"
         />
       )}
     </button>

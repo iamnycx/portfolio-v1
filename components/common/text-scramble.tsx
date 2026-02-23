@@ -73,7 +73,6 @@ export function TextScramble({
 
   useEffect(() => {
     if (!trigger) return;
-
     scramble();
   }, [trigger]);
 

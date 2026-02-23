@@ -2,7 +2,7 @@ import Container from "@/components/common/container";
 import { TextScramble } from "@/components/common/text-scramble";
 import { getAllBlogs } from "@/lib/blog";
 import Link from "next/link";
-import { Date, Heading } from "./client";
+import { Date, DummyCommand, Heading } from "./client";
 import PlusIcons from "@/components/plus-icons";
 
 export default function Blogs() {
@@ -11,12 +11,12 @@ export default function Blogs() {
   return (
     <Container className="pt-16">
       <div className="space-y-4 py-12">
-        <h1 className="text-xl font-bold tracking-tight">
-          <TextScramble>blogs</TextScramble>
-        </h1>
-        <p className="text-muted-foreground tracking-wide">
-          {"Some Thoughts, Learnings and Hacks"}
-        </p>
+        <div className="flex items-baseline justify-between">
+          <h1 className="text-xl font-bold tracking-tight">
+            <TextScramble>blogs</TextScramble>
+          </h1>
+          <DummyCommand />
+        </div>
         <div className="my-8 grid grid-cols-1 gap-4">
           {blogs.map((blog) => (
             <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
@@ -43,14 +43,14 @@ export default function Blogs() {
         </div>
         <div className="text-muted-foreground flex justify-center pt-8 text-sm sm:text-base">
           <p>
-            Follow on{" "}
+            follow on{" "}
             <Link
               href="https://x.com/ok_nycx"
               target="_blank"
               className="text-orange-200 underline-offset-4 hover:underline"
             >
-              X.com{" "}
-            </Link>
+              x.com
+            </Link>{" "}
             for more updates
           </p>
         </div>

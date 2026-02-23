@@ -19,7 +19,7 @@ Everything in Rust revolves around **ownership**. One value, one owner. When you
 
 Think of it like giving someone your house keys. You don't have two sets. They have the keys now.
 
-```rust
+```rust showLineNumbers
 fn take_ownership(s: String) {
     println!("{}", s);
 }
@@ -45,7 +45,7 @@ The rules:
 - You can have many immutable references, **or** one mutable reference. Never both at once.
 - References must always point to valid data (no dangling pointers).
 
-```rust
+```rust showLineNumbers
 fn print_length(s: &String) {
     println!("length: {}", s.len());
 }

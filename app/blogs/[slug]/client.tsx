@@ -27,7 +27,9 @@ export function Date({
     <motion.p layoutId={`blog-date-${date}`} className="text-muted-foreground">
       {date}{" "}
       {readTime && (
-        <span className="py-2 text-muted-foreground">({readTime} min read)</span>
+        <span className="text-muted-foreground py-2">
+          ({readTime} min read)
+        </span>
       )}
     </motion.p>
   );
@@ -36,14 +38,14 @@ export function Date({
 export function NavItems({ slug }: { slug: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      initial={{ filter: "blur(4px)" }}
+      animate={{ filter: "blur(0px)" }}
+      transition={{ duration: 0.5 }}
       className="flex items-center justify-between"
     >
       <Link
         href={"/blogs"}
-        className="flex items-center gap-2 text-muted-foreground transition-colors duration-300 ease-in-out hover:text-orange-200"
+        className="text-muted-foreground flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-orange-200"
       >
         <MoveLeft />
         <span>cd ..</span>
