@@ -13,6 +13,15 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Support Ticket System",
+    type: "Full Stack Project",
+    stack: ["React", "DRF", "OpenAI", "PostgreSQL", "Docker"],
+    site: "https://tickets-manager-phi.vercel.app/",
+    repo: "https://github.com/iamnycx/lume",
+    description:
+      "A modern support ticket system built with React (TypeScript) and Django REST Framework, featuring LLM-based ticket classification and prioritization.",
+  },
+  {
     name: "BlackTrack",
     type: "Full Stack",
     stack: ["NextJS", "Node", "Drizzle", "Web3", "Ether.js", "Metamask"],
@@ -20,14 +29,6 @@ const projects: Project[] = [
     repo: "https://www.github.com/iamnycx/blacktrack",
     description:
       "Web3-enabled expense tracking application with MetaMask wallet authentication, implementing secure, password-less user access",
-  },
-  {
-    name: "Sandscape",
-    type: "Hackathon Project",
-    stack: ["NextJS", "FastAPI", "Docker", "Machine Learning"],
-    repo: "https://www.github.com/iamnycx/sandscape",
-    description:
-      "Developed the Backend and Frontend for sand grain analysis system, dockerized each service for seamless local setup and deployment",
   },
 ];
 

@@ -18,6 +18,15 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Support Ticket System",
+    type: "Full Stack Project",
+    stack: ["React", "DRF", "OpenAI", "PostgreSQL", "Docker"],
+    site: "https://social-network-eight-eta.vercel.app",
+    repo: "https://github.com/iamnycx/lume",
+    description:
+      "A modern support ticket system built with React (TypeScript) and Django REST Framework, featuring LLM-based ticket classification and prioritization.",
+  },
+  {
     name: "BlackTrack",
     type: "Full Stack",
     stack: ["NextJS", "Node", "Drizzle", "Web3", "Ether.js", "Metamask"],
@@ -35,29 +44,22 @@ const projects: Project[] = [
       "Developed the Backend and Frontend for sand grain analysis system, dockerized each service for seamless local setup and deployment",
   },
   {
-    name: "Fund-Me",
-    type: "Smart-Contract",
-    stack: ["Solidity", "Foundry", "Chainlink", "Ethereum"],
-    repo: "https://github.com/iamnycx/fund-me",
-    description:
-      "A Decentralized crowdfunding smart Contract that enforces a minimum USD-based ETH contribution using Chainlink price feeds",
-  },
-  {
     name: "Lume - Social Network",
     type: "Full Stack Project",
-    stack: ["React", "Django", "Docker", "PostgreSQL"],
+    stack: ["React", "Django", "Djoser", "Docker", "PostgreSQL"],
     site: "https://social-network-eight-eta.vercel.app",
-    repo: "https://github.com/iamnycx/lume",
+    repo: "https://github.com/iamnycx/tickets-manager",
     description:
       "Full-stack social media app with React for frontend and Django for backend. implemented JWT auth, images, interactions (like/dislike)",
   },
   {
-    name: "Raffle",
-    type: "Smart-Contract",
-    stack: ["Solidity", "Foundry", "Chainlink", "Ethereum"],
-    repo: "https://github.com/iamnycx/raffle",
+    name: "Therapist Landing Page",
+    type: "Frontend Project",
+    stack: ["NextJS", "TailwindCSS", "Motion.dev"],
+    site: "https://maya-website-kappa.vercel.app/",
+    repo: "https://github.com/iamnycx/maya-website",
     description:
-      "A Decentralized automated raffle Contract written with Solidity that picks a provably random winner using Chainlink VRF",
+      "A minimalist therapist landing page emphasizing clarity, calm visuals, and smooth animations.",
   },
   {
     name: "Tinta - Text to Pallete",
@@ -69,13 +71,20 @@ const projects: Project[] = [
       "A simple project to generate a color pallete from simple text prompts using large language models. Used Gemini as LLM provider",
   },
   {
-    name: "Zag - Personalized Learning",
-    type: "Ongoing",
-    stack: ["NextJS", "Gemini", "AI-SDK", "PostgreSQL"],
-    site: "https://zag-rosy.vercel.app",
-    repo: "https://github.com/iamnycx/zag",
+    name: "Fund-Me",
+    type: "Smart-Contract",
+    stack: ["Solidity", "Foundry", "Chainlink", "Ethereum"],
+    repo: "https://github.com/iamnycx/fund-me",
     description:
-      "Developing a notion like workspace to help users with their studies with AI assistance. Used Vercel's AI-SDK for LLM integration",
+      "A Decentralized crowdfunding smart Contract that enforces a minimum USD-based ETH contribution using Chainlink price feeds",
+  },
+  {
+    name: "Raffle",
+    type: "Smart-Contract",
+    stack: ["Solidity", "Foundry", "Chainlink", "Ethereum"],
+    repo: "https://github.com/iamnycx/raffle",
+    description:
+      "A Decentralized automated raffle Contract written with Solidity that picks a provably random winner using Chainlink VRF",
   },
 ];
 
@@ -88,8 +97,8 @@ export default function Projects() {
             <TextScramble>projects</TextScramble>
           </h1>
           <motion.p
-            initial={{ filter: "blur(4px)" }}
-            animate={{ filter: "blur(0px)" }}
+            initial={{ filter: "blur(4px)", opacity: 0 }}
+            animate={{ filter: "blur(0px)", opacity: 1 }}
             transition={{ duration: 0.5 }}
             className="text-muted-foreground tracking-wide"
           >

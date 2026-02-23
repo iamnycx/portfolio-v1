@@ -1,10 +1,37 @@
+"use client";
+
 import PlusIcons from "../plus-icons";
+import { motion } from "motion/react";
 
 export default function MusicPlayer() {
   return (
     <div className="border-muted-foreground/50 group relative aspect-700/400 w-full border">
-      <p className="absolute top-0 text-muted-foreground -right-48">{"// under construction"}</p>
+      <p className="text-muted-foreground absolute top-0 -right-44 w-28">
+        {"// component under construction"}
+      </p>
       <PlusIcons />
+      <div className="bg-muted/50 absolute left-16 bottom-2 p-2">
+        <motion.div
+          animate={{ opacity: [0.2, 1] }}
+          transition={{
+            duration: 0.4,
+            repeat: Infinity,
+            repeatDelay: 1,
+            repeatType: "mirror",
+          }}
+          className="h-2 w-1 bg-green-500"
+        />
+        <motion.div
+          animate={{ opacity: [0, 1] }}
+          transition={{
+            duration: 0.4,
+            repeat: Infinity,
+            repeatDelay: 1,
+            repeatType: "mirror",
+          }}
+          className="absolute blur-[2px] top-1/2 left-1/2 h-2 w-1 -translate-x-1/2 -translate-y-1/2 bg-green-500"
+        />
+      </div>
       <svg
         width="100%"
         height="100%"
