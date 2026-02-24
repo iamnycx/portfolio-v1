@@ -23,7 +23,7 @@ const projects: Project[] = [
     type: "Full Stack Project",
     stack: ["React", "DRF", "OpenAI", "PostgreSQL", "Docker"],
     site: "https://social-network-eight-eta.vercel.app",
-    repo: "https://github.com/iamnycx/lume",
+    repo: "https://github.com/iamnycx/tickets-manager",
     description:
       "A modern support ticket system built with React (TypeScript) and Django REST Framework, featuring LLM-based ticket classification and prioritization.",
   },
@@ -49,7 +49,7 @@ const projects: Project[] = [
     type: "Full Stack Project",
     stack: ["React", "Django", "Djoser", "Docker", "PostgreSQL"],
     site: "https://social-network-eight-eta.vercel.app",
-    repo: "https://github.com/iamnycx/tickets-manager",
+    repo: "https://github.com/iamnycx/lume",
     description:
       "Full-stack social media app with React for frontend and Django for backend. implemented JWT auth, images, interactions (like/dislike)",
   },

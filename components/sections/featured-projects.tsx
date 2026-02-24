@@ -18,7 +18,7 @@ const projects: Project[] = [
     type: "Full Stack Project",
     stack: ["React", "DRF", "OpenAI", "PostgreSQL", "Docker"],
     site: "https://tickets-manager-phi.vercel.app/",
-    repo: "https://github.com/iamnycx/lume",
+    repo: "https://github.com/iamnycx/tickets-manager",
     description:
       "A modern support ticket system built with React (TypeScript) and Django REST Framework, featuring LLM-based ticket classification and prioritization.",
   },

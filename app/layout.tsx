@@ -85,9 +85,11 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <LenisScrollProvider>
-              <Navbar />
-              {children}
-              <Footer />
+              <div className="relative">
+                <Navbar />
+                {children}
+                <Footer />
+              </div>
             </LenisScrollProvider>
           </ThemeProvider>
         </Suspense>
