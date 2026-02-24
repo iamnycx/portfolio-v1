@@ -4,6 +4,7 @@ import { getAllBlogs } from "@/lib/blog";
 import Link from "next/link";
 import { Date, DummyCommand, Heading } from "./client";
 import PlusIcons from "@/components/plus-icons";
+import { cn } from "@/lib/utils";
 
 export default function Blogs() {
   const blogs = getAllBlogs();
@@ -21,13 +22,21 @@ export default function Blogs() {
           {blogs.map((blog) => (
             <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
               <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-2 border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+                <div
+                  className={cn(
+                    "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
+                    "bg-size-[10px_10px]",
+                    "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]",
+                  )}
+                />
+                <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]" />
                 <PlusIcons />
                 <Heading title={blog.title} />
                 <Date date={blog.date} readTime={blog.readTime} />
-                <p className="text-muted-foreground line-clamp-2 tracking-wider">
+                <p className="text-muted-foreground z-10 line-clamp-2 tracking-wider">
                   {blog.description}
                 </p>
-                <div className="flex flex-wrap gap-2 pt-2">
+                <div className="z-10 flex flex-wrap gap-2 pt-2">
                   {blog.tags.map((tag: string, idx: number) => (
                     <span
                       key={idx}

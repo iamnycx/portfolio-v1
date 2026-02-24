@@ -1,5 +1,6 @@
 import { Triangle } from "lucide-react";
 import PlusIcons from "../plus-icons";
+import { cn } from "@/lib/utils";
 
 const workData = [
   {
@@ -42,8 +43,16 @@ export default function Work() {
 function WorkCard({ data }: { data: workDataType }) {
   return (
     <div className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground relative flex flex-col gap-4 border border-dotted bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-orange-200">
+      <div
+        className={cn(
+          "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
+          "bg-size-[10px_10px]",
+          "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]",
+        )}
+      />
+      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       <PlusIcons />
-      <div className="flex flex-col gap-2 sm:flex-row sm:justify-between">
+      <div className="z-10 flex flex-col gap-2 sm:flex-row sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-xl font-bold tracking-tight">
             {data.orgnization}
@@ -56,7 +65,7 @@ function WorkCard({ data }: { data: workDataType }) {
           </p>
         </div>
       </div>
-      <ul className="list-inside space-y-1 tracking-wider text-balance">
+      <ul className="list-inside z-10 space-y-1 tracking-wider text-balance">
         {data.points.map((point, index) => (
           <li key={index} className="flex gap-2">
             <Triangle
@@ -67,7 +76,7 @@ function WorkCard({ data }: { data: workDataType }) {
           </li>
         ))}
       </ul>
-      <div className="flex flex-wrap gap-2 pt-2">
+      <div className="z-10 flex flex-wrap gap-2 pt-2">
         {data.technologies.map((tech) => (
           <span
             key={tech}

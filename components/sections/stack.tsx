@@ -60,19 +60,19 @@ export default function Stack() {
       <div className="grid grid-cols-1 gap-8 py-8 sm:grid-cols-2 lg:grid-cols-4">
         {Object.entries(stackData).map(([category, items]) => (
           <div key={category}>
-            <h2 className="from-accent/30 flex w-fit items-center gap-1 border border-dotted border-neutral-400 bg-linear-to-bl to-50% px-2 py-1 tracking-tighter">
+            <h2 className="from-accent/30 border-muted-foreground flex w-fit items-center gap-1 border border-dotted bg-linear-to-bl to-50% px-2 py-1 tracking-tighter">
               <BoxIcon size={16} strokeWidth={1.5} />
               {category}
             </h2>
             <div className="relative ml-6 flex flex-wrap gap-x-3.5 gap-y-2 pt-4">
-              <div className="absolute inset-y-0 left-0 -translate-x-4 border-l border-dotted border-neutral-400" />
+              <div className="border-muted-foreground absolute inset-y-0 left-0 -translate-x-4 border-l border-dashed" />
               {items.map((data) => (
                 <div
                   key={data.title}
                   className="from-accent/30 relative bg-linear-to-bl to-50%"
                 >
-                  <div className="absolute top-1/2 left-0 w-4 -translate-x-4 border-b border-dotted border-neutral-400" />
-                  <div className="cursor-default border border-dotted border-neutral-600 px-2 py-1 transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200">
+                  <div className="border-muted-foreground absolute top-1/2 left-0 w-4 -translate-x-4 border-b border-dashed" />
+                  <div className="border-muted-foreground cursor-default border border-dotted px-2 py-1 transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200">
                     {data.title}
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 import { Github, Globe, Triangle } from "lucide-react";
 import Link from "next/link";
 import PlusIcons from "../plus-icons";
+import { cn } from "@/lib/utils";
 
 interface Project {
   name: string;
@@ -55,8 +56,16 @@ export default function FeaturedProjects() {
 function FeaturedProjectCard({ project }: { project: Project }) {
   return (
     <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+      <div
+        className={cn(
+          "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
+          "bg-size-[10px_10px]",
+          "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]",
+        )}
+      />
+      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       <PlusIcons />
-      <div className="flex items-start justify-between gap-2">
+      <div className="z-10 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">
           <h1 className="line-clamp-1 text-xl font-bold tracking-tight">
             {project?.name}
@@ -86,14 +95,14 @@ function FeaturedProjectCard({ project }: { project: Project }) {
           )}
         </div>
       </div>
-      <div className="flex gap-2">
+      <div className="z-10 flex gap-2">
         <Triangle
           size={14}
           className="fill-muted mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:fill-orange-200"
         />
         <p className="tracking-wider text-balance">{project.description}</p>
       </div>
-      <div className="flex flex-wrap gap-2 pt-2">
+      <div className="z-10 flex flex-wrap gap-2 pt-2">
         {project?.stack.map((tag: string, idx: number) => (
           <span
             key={idx}
