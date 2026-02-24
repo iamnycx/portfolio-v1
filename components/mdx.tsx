@@ -88,12 +88,12 @@ export const mdxComponents = {
 
     return (
       <div className="group bg-muted/50 my-6 transition-colors duration-300 ease-in-out">
-        <figcaption className="border-foreground/25 text-muted-foreground flex h-8 items-center justify-between border border-b-0 border-dotted pl-4 tracking-wide  transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:text-orange-200">
+        <figcaption className="border-foreground/25 text-muted-foreground flex h-8 items-center justify-between border border-b-0 border-dotted pl-4 tracking-wide transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:text-orange-200">
           {props["data-language"]}
           <CopyButton code={codeText} />
         </figcaption>
         <pre
-          className="relative overflow-x-auto border border-dotted border-foreground/25 px-0 py-4 leading-relaxed tracking-wide transition-colors duration-300 ease-in-out group-hover:border-orange-200"
+          className="group-hover:border-t-foreground/25 border-foreground/25 relative overflow-x-auto border border-dotted px-0 py-4 leading-relaxed tracking-wide transition-colors duration-300 ease-in-out group-hover:border-orange-200"
           {...props}
         />
       </div>
