@@ -25,11 +25,12 @@ export default function Blogs() {
                 <div
                   className={cn(
                     "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
-                    "bg-size-[10px_10px]",
+                    "bg-size-[16px_16px]",
                     "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]",
                   )}
                 />
-                <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+                <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_50%,black)]" />{" "}
+                <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-r-from-10%" />
                 <PlusIcons />
                 <Heading title={blog.title} />
                 <Date date={blog.date} readTime={blog.readTime} />

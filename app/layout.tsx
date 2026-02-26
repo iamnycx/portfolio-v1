@@ -11,6 +11,15 @@ export const metadata: Metadata = {
   title: "nycx@dev",
   description:
     "nycx@dev is a software developer from India building fast, scalable web applications using modern frontend, backend, and cloud technologies.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
   metadataBase: new URL("https://nycx.is-a.dev"),
   keywords: [
     "nycx",

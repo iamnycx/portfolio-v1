@@ -85,13 +85,14 @@ function HackathonCard({ data }: { data: workDataType }) {
       <div
         className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
-          "bg-size-[10px_10px]",
+          "bg-size-[16px_16px]",
           "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]",
         )}
       />
-      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_50%,black)]" />{" "}
+      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-r-from-10%" />
       <PlusIcons />
-      <div className="flex z-10 flex-col gap-1 sm:flex-row sm:justify-between">
+      <div className="z-10 flex flex-col gap-1 sm:flex-row sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-xl font-bold tracking-tight">{data.title}</h1>
           <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-orange-200">
@@ -100,7 +101,7 @@ function HackathonCard({ data }: { data: workDataType }) {
         </div>
         <h2 className="text-muted-foreground sm:text-right">{data.location}</h2>
       </div>
-      <ul className="list-inside z-10 space-y-1 tracking-wider text-pretty">
+      <ul className="z-10 list-inside space-y-1 tracking-wider text-pretty">
         {data.points.map((d, index) => (
           <li key={index} className="flex gap-2">
             <Triangle

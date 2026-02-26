@@ -12,7 +12,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <div className="border-accent-foreground mx-auto max-w-6xl border-t border-dotted px-2 md:border-x md:px-6">
+    <div className="border-accent-foreground relative mx-auto max-w-6xl border-t border-dotted px-2 md:border-x md:px-6">
       <div className="flex min-w-0 flex-col items-center justify-between gap-2 overflow-hidden py-4 sm:flex-row sm:gap-0">
         <p className="border-accent-foreground shrink-0 md:mr-2">
           <span>println!</span>

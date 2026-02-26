@@ -17,7 +17,7 @@ const useMotionPreferences = () => {
   return prefersReduced;
 };
 
-const name_options = ["Web2", "Design", "Web3", "Films"] as const;
+const name_options = ["Web2", "Design", "Music", "Web3", "Films"] as const;
 
 const FALL_DURATION_S = 0.22;
 const TOTAL_SPREAD_S = 1.8;
@@ -104,31 +104,25 @@ function AsciiAvatar(): JSX.Element {
         const i = name_options.indexOf(prev);
         return name_options[(i + 1) % name_options.length];
       });
-    }, 2000);
+    }, 3000);
     return () => clearInterval(t);
   }, []);
 
   return (
     <div className="relative">
-      <div className="text-muted-foreground absolute top-20 left-0 -translate-x-16">
-        [into]{" "}
-        <span className="inline-block w-20 overflow-clip border border-dotted border-orange-200 px-1 text-center uppercase">
+      <div className="text-muted-foreground absolute top-22 left-0 -translate-x-12 font-black tracking-tighter">
+        <span className="border-muted-foreground inline-block w-12 overflow-clip border border-r-0 border-dotted px-1 text-center uppercase">
+          into
+        </span>
+        <span className="border-muted-foreground inline-block w-16 overflow-clip border border-dotted px-1 text-center uppercase">
           <AnimatePresence mode="wait">
             <motion.span
               key={name}
               className="inline-block text-orange-200"
-              initial={
-                prefersReducedMotion
-                  ? { filter: "blur(0px)", opacity: 1, y: 0 }
-                  : { filter: "blur(4px)", opacity: 0, y: -12 }
-              }
-              animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-              exit={
-                prefersReducedMotion
-                  ? { filter: "blur(0px)", opacity: 1, y: 0 }
-                  : { filter: "blur(4px)", opacity: 0, y: 12 }
-              }
-              transition={{ duration: 0.35, ease: "easeOut" }}
+              initial={prefersReducedMotion ? { y: 0 } : { y: -50 }}
+              animate={{ y: 0 }}
+              exit={prefersReducedMotion ? { y: 0 } : { y: 50 }}
+              transition={{ duration: 1, ease: "anticipate" }}
               style={{ willChange: "filter, opacity, transform" }}
             >
               {name}

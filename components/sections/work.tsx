@@ -46,11 +46,12 @@ function WorkCard({ data }: { data: workDataType }) {
       <div
         className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
-          "bg-size-[10px_10px]",
+          "bg-size-[16px_16px]",
           "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]",
         )}
       />
-      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_50%,black)]" />{" "}
+      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-r-from-10%" />
       <PlusIcons />
       <div className="z-10 flex flex-col gap-2 sm:flex-row sm:justify-between">
         <div className="space-y-1">
@@ -65,7 +66,7 @@ function WorkCard({ data }: { data: workDataType }) {
           </p>
         </div>
       </div>
-      <ul className="list-inside z-10 space-y-1 tracking-wider text-balance">
+      <ul className="z-10 list-inside space-y-1 tracking-wider text-balance">
         {data.points.map((point, index) => (
           <li key={index} className="flex gap-2">
             <Triangle
