@@ -93,7 +93,7 @@ export default function Navbar() {
         </Link>
         <button
           onClick={() => setIsMobileMenuOpen((open) => !open)}
-          className="border-accent-foreground block border border-dotted px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 sm:text-base lg:hidden"
+          className="border-muted-foreground block border border-dotted px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 sm:text-base lg:hidden"
         >
           {isMobileMenuOpen ? "./close.sh" : "./menu.sh"}
         </button>
