@@ -21,7 +21,7 @@ export default function DigitalArt() {
 
   return (
     <>
-      <div className="border-muted-foreground relative mx-auto h-6 max-w-6xl overflow-hidden border-t border-dotted md:border-x">
+      <div className="border-muted-foreground relative mx-auto h-6 max-w-6xl overflow-hidden border-x border-t border-dotted">
         <div className="relative flex h-6 w-full before:absolute before:-left-[100vw] before:-z-1 before:h-6 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--muted-foreground)_0,var(--muted-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--muted-foreground:var(--color-muted-foreground)]/40" />
       </div>
       <div className="flex flex-col-reverse md:flex-row">
@@ -57,7 +57,7 @@ export default function DigitalArt() {
             style={{ opacity }}
             className="absolute inset-x-0 top-0 z-20 md:inset-0"
           >
-            <h2 className="text-muted-foreground absolute top-10 z-10 w-full text-center md:text-left text-7xl tracking-tighter uppercase md:left-10">
+            <h2 className="text-muted-foreground absolute top-10 z-10 w-full text-center text-7xl tracking-tighter uppercase md:left-10 md:text-left">
               EN ROUTE
             </h2>
           </motion.div>
@@ -93,7 +93,7 @@ export default function DigitalArt() {
           </Link>
         </div>
       </div>
-      <div className="border-muted-foreground mx-auto h-6 max-w-6xl overflow-hidden border-dotted md:border-x">
+      <div className="border-muted-foreground mx-auto h-6 max-w-6xl overflow-hidden border-x border-dotted">
         <div className="relative flex h-6 w-full before:absolute before:-left-[100vw] before:-z-1 before:h-6 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--muted-foreground)_0,var(--muted-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--muted-foreground:var(--color-muted-foreground)]/40" />
       </div>
     </>
