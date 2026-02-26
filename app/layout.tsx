@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     siteName: "nycx@dev",
     images: [
       {
-        url: "https://nycx.is-a.dev/opengraph-image.png",
+        url: "https://nycx.is-a.dev/og.png",
         width: 1200,
         height: 630,
         alt: "nycx@dev",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     title: "nycx@dev",
     description:
       "nycx@dev is a software developer from India building fast, scalable web applications using modern frontend, backend, and cloud technologies.",
-    images: ["https://nycx.is-a.dev/opengraph-image.png"],
+    images: ["https://nycx.is-a.dev/og.png"],
   },
 };
 
