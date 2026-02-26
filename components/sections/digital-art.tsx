@@ -35,7 +35,7 @@ export default function DigitalArt() {
           >
             <Image
               src="/img/back.png"
-              alt="background"
+              alt=""
               width={1024}
               height={768}
               className="w-full mix-blend-screen contrast-120"
@@ -43,11 +43,11 @@ export default function DigitalArt() {
           </motion.div>
           <motion.div
             style={{ scale: charScale }}
-            className="absolute z-50 w-96 right-0 -bottom-26"
+            className="absolute right-0 -bottom-26 z-50 w-96"
           >
             <Image
               src="/img/astronaut.png"
-              alt="character"
+              alt=""
               width={1024}
               height={768}
               className="w-full contrast-125"
