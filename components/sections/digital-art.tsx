@@ -34,7 +34,7 @@ export default function DigitalArt() {
             className="absolute bottom-0 z-0 w-full"
           >
             <Image
-              src="/img/back.png"
+              src="/img/background.png"
               alt=""
               width={1024}
               height={768}
@@ -57,7 +57,7 @@ export default function DigitalArt() {
             style={{ opacity }}
             className="absolute inset-x-0 top-0 z-20 md:inset-0"
           >
-            <h2 className="text-muted-foreground absolute top-10 z-10 w-full text-center text-7xl tracking-tighter uppercase md:left-10">
+            <h2 className="text-muted-foreground absolute top-10 z-10 w-full text-center md:text-left text-7xl tracking-tighter uppercase md:left-10">
               EN ROUTE
             </h2>
           </motion.div>

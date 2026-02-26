@@ -7,16 +7,20 @@ import { ChevronRight } from "lucide-react";
 
 const links = [
   {
-    text: "home",
+    text: "/home",
     href: "/",
   },
   {
-    text: "projects",
+    text: "/projects",
     href: "/projects",
   },
   {
-    text: "blogs",
+    text: "/blogs",
     href: "/blogs",
+  },
+  {
+    text: "/cave",
+    href: "/cave",
   },
 ];
 
@@ -83,7 +87,7 @@ export default function Navbar() {
         </div>
         <Link
           href={"mailto:25nikmehta@gmail.com"}
-          className="border-accent-foreground hidden border border-dotted px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 sm:text-base lg:block"
+          className="border-background hidden border border-dotted px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 sm:text-base lg:block"
         >
           {"./contact.sh"}
         </Link>
