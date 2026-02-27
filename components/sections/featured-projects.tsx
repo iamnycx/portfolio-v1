@@ -46,7 +46,7 @@ export default function FeaturedProjects() {
           href="/projects"
           className="mx-auto text-center text-orange-200 underline-offset-4 hover:underline"
         >
-          View All Projects
+          /projects
         </Link>
       </div>
     </div>

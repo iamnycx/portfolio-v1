@@ -39,7 +39,7 @@ export default function Hero() {
           <div className="flex h-58 flex-col items-center justify-center">
             <p className="text-muted-foreground">cooking something for here</p>
             <Link href="/cave" className="text-orange-200 hover:underline">
-              {"./cave"}
+              {"/cave"}
             </Link>
           </div>
         </div>

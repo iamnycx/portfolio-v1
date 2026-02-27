@@ -89,7 +89,7 @@ export default function Navbar() {
           href={"mailto:25nikmehta@gmail.com"}
           className="border-background hidden border border-dotted px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 sm:text-base lg:block"
         >
-          {"./contact.sh"}
+          {"/contact.sh"}
         </Link>
         <button
           onClick={() => setIsMobileMenuOpen((open) => !open)}
