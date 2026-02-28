@@ -1,7 +1,6 @@
 import { Computer, MapPinIcon, UniversityIcon } from "lucide-react";
 import { TextScramble } from "../common/text-scramble";
 import { MemoizedAsciiAvatar } from "../special/ascii-avatar";
-import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -36,12 +35,6 @@ export default function Hero() {
             and all the <b className="text-foreground">creative stuff</b>{" "}
             humankind has created. curiosity takes me to places
           </p>
-          <div className="flex h-58 flex-col items-center justify-center">
-            <p className="text-muted-foreground">cooking something for here</p>
-            <Link href="/cave" className="text-orange-200 hover:underline">
-              {"/cave"}
-            </Link>
-          </div>
         </div>
         <div className="ml-auto">
           <MemoizedAsciiAvatar />

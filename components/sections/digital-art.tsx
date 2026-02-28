@@ -20,7 +20,21 @@ export default function DigitalArt() {
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <>
+    <div className="relative">
+      <div>
+        <div className="absolute -top-30 -left-9">
+          <div className="border-accent-foreground bg-background h-9 w-9 origin-bottom-right -rotate-45 border-r border-dotted" />
+          <div className="border-accent-foreground bg-background h-12 w-9 border-r border-dotted" />
+          <div className="border-accent-foreground bg-background h-9 w-9 origin-top-right rotate-45 border-r border-dotted" />
+          <div className="border-muted-foreground h-9 w-9 origin-top-right rotate-45 border-r border-dotted" />
+        </div>
+        <div className="absolute -top-30 -right-9">
+          <div className="border-accent-foreground bg-background h-9 w-9 origin-bottom-left rotate-45 border-l border-dotted" />
+          <div className="border-accent-foreground bg-background h-12 w-9 border-l border-dotted" />
+          <div className="border-accent-foreground bg-background h-9 w-9 origin-top-left -rotate-45 border-l border-dotted" />
+          <div className="border-muted-foreground h-9 w-9 origin-top-left -rotate-45 border-l border-dotted" />
+        </div>
+      </div>
       <div className="border-muted-foreground relative mx-auto h-6 max-w-6xl overflow-hidden border-x border-t border-dotted">
         <div className="relative flex h-6 w-full before:absolute before:-left-[100vw] before:-z-1 before:h-6 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--muted-foreground)_0,var(--muted-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--muted-foreground:var(--color-muted-foreground)]/40" />
       </div>
@@ -96,6 +110,6 @@ export default function DigitalArt() {
       <div className="border-muted-foreground mx-auto h-6 max-w-6xl overflow-hidden border-x border-dotted">
         <div className="relative flex h-6 w-full before:absolute before:-left-[100vw] before:-z-1 before:h-6 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--muted-foreground)_0,var(--muted-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--muted-foreground:var(--color-muted-foreground)]/40" />
       </div>
-    </>
+    </div>
   );
 }

@@ -93,13 +93,13 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <LenisScrollProvider>
-              <div className="relative">
-                <Navbar />
-                {children}
-                <Footer />
-              </div>
-            </LenisScrollProvider>
+            {/* <LenisScrollProvider> */}
+            <div className="relative">
+              <Navbar />
+              {children}
+              <Footer />
+            </div>
+            {/* </LenisScrollProvider> */}
           </ThemeProvider>
         </Suspense>
       </body>
