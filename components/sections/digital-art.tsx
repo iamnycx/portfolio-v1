@@ -41,7 +41,7 @@ export default function DigitalArt() {
       <div className="flex flex-col-reverse md:flex-row">
         <div
           ref={containerRef}
-          className="border-muted-foreground relative h-[50vh] w-full overflow-clip border border-dotted pb-16"
+          className="border-muted-foreground relative h-[50vh] lg:h-300px w-full overflow-clip border border-dotted pb-16"
         >
           <motion.div
             style={{ scale: bgScale }}
