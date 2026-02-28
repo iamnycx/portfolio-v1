@@ -11,7 +11,6 @@ import {
   isSameDay,
 } from "date-fns";
 import axios from "axios";
-import { motion } from "motion/react";
 
 type ContributionItem = {
   date: string;
@@ -31,7 +30,7 @@ export default function Contribution(): JSX.Element {
   const today = new Date();
   const startDate = subDays(today, 364);
   const weeks = 53;
-  const colors = ["#262626", "#ffedd5", "#fed7aa", "#fb923c", "#ea580c"];
+  const colors = ["#1a1a1a", "#ffedd5", "#fed7aa", "#fb923c", "#ea580c"];
   const username = "iamnycx";
 
   useEffect(() => {
@@ -103,18 +102,7 @@ export default function Contribution(): JSX.Element {
               : colors[0];
 
             return (
-              <motion.div
-                initial={{
-                  backgroundColor: "#262626",
-                  opacity: 0.2,
-                }}
-                animate={{
-                  backgroundColor: color,
-                  opacity: 1,
-                }}
-                transition={{
-                  delay: 0.1 * index + 1,
-                }}
+              <div
                 key={index}
                 className="m-[0.15px] h-4 w-4 rounded-full"
                 style={{ backgroundColor: color }}
@@ -138,19 +126,9 @@ export default function Contribution(): JSX.Element {
 
     for (let i = 0; i < 12; i++) {
       months.push(
-        <motion.span
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{
-            delay: 0.05 * i,
-            duration: 0.3,
-            ease: "easeInOut",
-          }}
-          key={i}
-          className="text-xs text-muted-foreground"
-        >
+        <span key={i} className="text-muted-foreground text-xs">
           {format(currentMonth, "MMM")}
-        </motion.span>,
+        </span>,
       );
       currentMonth = addDays(currentMonth, 30);
     }
@@ -160,30 +138,14 @@ export default function Contribution(): JSX.Element {
   const dayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="space-y-4 py-6 sm:space-y-8 sm:py-12"
-    >
+    <div className="space-y-4 py-6 sm:space-y-8 sm:py-12">
       <div className="overflow-x-auto overflow-y-hidden">
         <div className="flex min-w-max">
           <div className="mt-5.5 mr-2 flex flex-col justify-between">
             {dayLabels.map((day, index) => (
-              <motion.span
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  delay: 0.1 * index,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 10,
-                }}
-                key={index}
-                className="h-3 text-xs text-muted-foreground"
-              >
+              <span key={index} className="text-muted-foreground h-3 text-xs">
                 {day}
-              </motion.span>
+              </span>
             ))}
           </div>
           <div className="flex w-full flex-col items-stretch">
@@ -198,14 +160,7 @@ export default function Contribution(): JSX.Element {
       <div className="mx-auto flex w-fit items-center gap-2 pt-4">
         <span className="text-sm">Less</span>
         {colors.map((color, index) => (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              delay: 0.1 * index,
-              duration: 0.3,
-              ease: "easeInOut",
-            }}
+          <div
             key={index}
             className="h-3 w-3 rounded-full"
             style={{ backgroundColor: color }}
@@ -213,6 +168,6 @@ export default function Contribution(): JSX.Element {
         ))}
         <span className="text-sm">More</span>
       </div>
-    </motion.div>
+    </div>
   );
 }
