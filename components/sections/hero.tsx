@@ -1,10 +1,9 @@
 import { Computer, MapPinIcon, UniversityIcon } from "lucide-react";
 import { TextScramble } from "../common/text-scramble";
-import { MemoizedAsciiAvatar } from "../special/ascii-avatar";
 
 export default function Hero() {
   return (
-    <div className="space-y-12 pt-12 pb-8">
+    <div className="relative min-h-[50vh] space-y-12 pt-12 pb-8">
       <div className="flex flex-col items-center justify-between gap-2 sm:flex-row sm:items-end">
         <h1 className="text-xl font-bold tracking-tight">
           <TextScramble>nikhil singh mehta</TextScramble>
@@ -36,10 +35,12 @@ export default function Hero() {
             humankind has created. curiosity takes me to places
           </p>
         </div>
-        <div className="ml-auto">
-          <MemoizedAsciiAvatar />
-        </div>
+        <div className="ml-auto"></div>
       </div>
+      {/* <div className="absolute inset-x-0">
+        <div className="border-accent-foreground h-0.5 w-6 origin-top-left rotate-135 border-t border-dotted" />
+        <div className="border-accent-foreground h-0.5 w-full border-t border-dotted" />
+      </div> */}
     </div>
   );
 }

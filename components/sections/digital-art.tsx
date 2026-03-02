@@ -41,7 +41,7 @@ export default function DigitalArt() {
       <div className="flex flex-col-reverse md:flex-row">
         <div
           ref={containerRef}
-          className="border-muted-foreground relative h-[50vh] lg:h-300px w-full overflow-clip border border-dotted pb-16"
+          className="border-muted-foreground lg:h-300px relative h-[50vh] w-full overflow-clip border border-dotted pb-16"
         >
           <motion.div
             style={{ scale: bgScale }}
@@ -86,10 +86,10 @@ export default function DigitalArt() {
               ["Location", "Delhi, India"],
               ["OS", "Arch Linux (Hyprland)"],
               ["Editor", "Neovim · VS Code"],
+              ["Theme", "Vesper"],
               ["Focus", "Systems · DX · UX"],
               ["Learning", "Rust · Solana"],
               ["Next", "Applied AI · TUI"],
-              ["Status", "Available"],
             ].map(([label, value]) => (
               <p key={label} className="grid grid-cols-[120px_1fr]">
                 <span>{label}:</span>
