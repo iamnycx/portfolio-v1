@@ -18,16 +18,14 @@ export default function Links() {
     {
       title: "LinkedIn",
       href: "https://linkedin.com/in/nycx",
-    },
-    {
-      title: "Instagram",
-      href: "https://www.instagram.com/nikhil_meht_a/",
-    },
+    }
   ];
 
   return (
     <div id="links" className="space-y-8 pb-16">
-      <p className="text-muted-foreground uppercase tracking-wide text-center">You can find me here</p>
+      <p className="text-muted-foreground text-center tracking-wide uppercase">
+        You can find me here
+      </p>
       <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
         {links.map((link) => (
           <Link
