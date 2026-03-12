@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronRight } from "lucide-react";
 
+const CLOCK_PLACEHOLDER = "00:00:00";
+
 const links = [
   {
     text: "/home",
@@ -25,7 +27,7 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [time, setTime] = useState<string | null>(null);
+  const [time, setTime] = useState(CLOCK_PLACEHOLDER);
   const [activePage, setActivePage] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -48,7 +50,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="from-background border-accent-foreground fixed inset-x-0 top-0 z-50 mx-auto flex max-w-6xl items-center justify-between border-b border-dotted bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-xs md:border-x md:px-6">
+      <div className="from-background border-muted-foreground fixed inset-x-0 top-0 z-50 mx-auto flex max-w-6xl items-center justify-between border-b border-dashed bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-xs md:border-x md:px-6">
         <div className="flex items-center gap-4 sm:gap-6">
           <Link
             href="/"
@@ -59,7 +61,12 @@ export default function Navbar() {
             <span>{"$"}</span>
           </Link>
           <h2 className="hidden text-sm sm:text-base md:block">
-            {time ? <span>{time}</span> : <span>00:00:00</span>}
+            <span
+              suppressHydrationWarning
+              className="inline-block min-w-[4.75rem] tabular-nums"
+            >
+              {time}
+            </span>
           </h2>
         </div>
         <div className="hidden gap-4 lg:flex lg:gap-6">
@@ -76,7 +83,7 @@ export default function Navbar() {
                   transition={{
                     ease: "easeInOut",
                   }}
-                  className="absolute inset-0 border border-dotted border-orange-200"
+                  className="absolute inset-0 border border-dashed border-orange-200/50"
                 />
               )}
               <span className="transition-colors duration-300 ease-in-out group-hover:text-orange-200">
@@ -87,13 +94,13 @@ export default function Navbar() {
         </div>
         <Link
           href={"mailto:25nikmehta@gmail.com"}
-          className="border-background hidden border border-dotted px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 sm:text-base lg:block"
+          className="border-background hidden border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200/50 hover:text-orange-200 sm:text-base lg:block"
         >
           {"/contact.sh"}
         </Link>
         <button
           onClick={() => setIsMobileMenuOpen((open) => !open)}
-          className="border-muted-foreground block border border-dotted px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 sm:text-base lg:hidden"
+          className="border-muted-foreground block border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 sm:text-base lg:hidden"
         >
           {isMobileMenuOpen ? "./close.sh" : "./menu.sh"}
         </button>
@@ -145,8 +152,8 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
         className="mx-auto max-w-6xl px-4 md:px-6"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="border-muted-foreground bg-background/50 overflow-hidden border-x border-b border-dotted backdrop-blur-sm">
-          <nav className="divide-muted-foreground divide-y divide-dotted">
+        <div className="border-muted-foreground bg-background/50 overflow-hidden border-x border-b border-dashed backdrop-blur-sm">
+          <nav className="divide-muted-foreground divide-y divide-dashed">
             {menuItems.map((item, idx) => {
               const isMailto = item.href?.startsWith("mailto:");
               const content = (

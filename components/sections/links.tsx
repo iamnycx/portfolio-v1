@@ -18,7 +18,7 @@ export default function Links() {
     {
       title: "LinkedIn",
       href: "https://linkedin.com/in/nycx",
-    }
+    },
   ];
 
   return (

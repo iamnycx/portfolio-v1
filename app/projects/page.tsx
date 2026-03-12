@@ -132,11 +132,11 @@ export default function Projects() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dotted bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
       <div
         className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
-          "bg-size-[16px_16px]",
+          "bg-size-[8px_8px]",
           "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]",
         )}
       />
@@ -157,7 +157,7 @@ function ProjectCard({ project }: { project: Project }) {
             <Link
               href={project?.repo}
               target="_blank"
-              className="border border-dotted border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
+              className="border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
             >
               <Github size={20} strokeWidth={1} />
             </Link>
@@ -166,7 +166,7 @@ function ProjectCard({ project }: { project: Project }) {
             <Link
               href={project?.site}
               target="_blank"
-              className="border border-dotted border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
+              className="border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
             >
               <Globe size={20} strokeWidth={1} />
             </Link>
@@ -184,7 +184,7 @@ function ProjectCard({ project }: { project: Project }) {
         {project?.stack.map((tag: string, idx: number) => (
           <span
             key={idx}
-            className="from-accent/30 inline-block border border-dotted bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200 group-hover:text-orange-200"
+            className="from-accent/30 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200/50 group-hover:text-orange-200"
           >
             {tag}
           </span>

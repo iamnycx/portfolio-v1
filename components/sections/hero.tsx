@@ -32,7 +32,7 @@ export default function Hero() {
             <b className="text-foreground">computer science</b> undergrad. i am
             into <b className="text-foreground">films, design, coding, music</b>{" "}
             and all the <b className="text-foreground">creative stuff</b>{" "}
-            humankind has created. curiosity takes me to places
+            humankind has created.
           </p>
         </div>
         <div className="ml-auto"></div>

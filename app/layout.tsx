@@ -5,7 +5,8 @@ import Footer from "@/components/common/footer";
 import React, { Suspense } from "react";
 import { ThemeProvider } from "@/app/providers/theme-provider";
 import LenisScrollProvider from "./providers/lenis-provider";
-import { GeistPixelSquare } from "geist/font/pixel";
+import { SyneMono } from "./font";
+import { ProgressiveBlur } from "@/components/progressive-blur";
 
 export const metadata: Metadata = {
   title: "nycx@dev",
@@ -85,7 +86,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${GeistPixelSquare.className} antialiased`}>
+      <body className={`${SyneMono.className} antialiased`}>
         <Suspense>
           <ThemeProvider
             attribute="class"
@@ -97,6 +98,7 @@ export default function RootLayout({
               <div className="relative">
                 <Navbar />
                 {children}
+                <ProgressiveBlur className="fixed" height="10%" position="bottom" />
                 <Footer />
               </div>
             </LenisScrollProvider>

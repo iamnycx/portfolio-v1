@@ -56,7 +56,7 @@ export const mdxComponents = {
   },
   blockquote: (props: ComponentProps<"blockquote">) => (
     <blockquote
-      className="my-8 ml-2 border-l-2 border-dotted border-orange-200 pl-4 text-orange-200"
+      className="my-8 ml-2 border-l-2 border-dashed border-orange-200 pl-4 text-orange-200"
       {...props}
     />
   ),
@@ -88,12 +88,12 @@ export const mdxComponents = {
 
     return (
       <div className="group bg-muted/50 my-6 transition-colors duration-300 ease-in-out">
-        <figcaption className="border-foreground/25 text-muted-foreground flex h-8 items-center justify-between border border-b-0 border-dotted pl-4 tracking-wide transition-colors duration-300 ease-in-out group-hover:border-foreground/50 group-hover:text-orange-200">
+        <figcaption className="border-foreground/25 text-muted-foreground group-hover:border-foreground/50 flex h-8 items-center justify-between border border-b-0 border-dashed pl-4 tracking-wide transition-colors duration-300 ease-in-out group-hover:text-orange-200">
           {props["data-language"]}
           <CopyButton code={codeText} />
         </figcaption>
         <pre
-          className="group-hover:border-t-foreground/25 border-foreground/25 relative overflow-x-auto border border-dotted px-0 py-4 leading-relaxed tracking-wide transition-colors duration-300 ease-in-out group-hover:border-foreground/50"
+          className="group-hover:border-t-foreground/25 border-foreground/25 group-hover:border-foreground/50 relative overflow-x-auto border border-dashed px-0 py-4 leading-relaxed tracking-wide transition-colors duration-300 ease-in-out"
           {...props}
         />
       </div>
