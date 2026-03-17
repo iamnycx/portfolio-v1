@@ -86,7 +86,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${SyneMono.className} antialiased`}>
+      <body className={`${SyneMono.className} uppercase antialiased`}>
         <Suspense>
           <ThemeProvider
             attribute="class"
@@ -98,7 +98,11 @@ export default function RootLayout({
               <div className="relative">
                 <Navbar />
                 {children}
-                <ProgressiveBlur className="fixed" height="10%" position="bottom" />
+                <ProgressiveBlur
+                  className="fixed"
+                  height="8%"
+                  position="bottom"
+                />
                 <Footer />
               </div>
             </LenisScrollProvider>

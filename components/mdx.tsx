@@ -93,7 +93,7 @@ export const mdxComponents = {
           <CopyButton code={codeText} />
         </figcaption>
         <pre
-          className="group-hover:border-t-foreground/25 border-foreground/25 group-hover:border-foreground/50 relative overflow-x-auto border border-dashed px-0 py-4 leading-relaxed tracking-wide transition-colors duration-300 ease-in-out"
+          className="group-hover:border-t-foreground/25 border-foreground/25 group-hover:border-foreground/50 relative overflow-x-auto border border-dashed px-0 py-4 leading-relaxed tracking-wide normal-case transition-colors duration-300 ease-in-out"
           {...props}
         />
       </div>
