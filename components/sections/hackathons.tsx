@@ -14,7 +14,6 @@ const workData = [
     techStack: [
       "Python",
       "OpenCV",
-      "Ultralytics",
       "FastAPI",
       "React",
       "Raspberry-Pi",
@@ -30,10 +29,8 @@ const workData = [
     ],
     organizer: "COER University, Roorkee",
     techStack: [
-      "PWA",
-      "Satellite Imagery",
       "OpenStreetMap (OSM)",
-      "GeoSpatial Analysis (GIS)",
+      "GeoSpatial Analysis",
       "HDX / UN Datasets",
     ],
   },
@@ -51,8 +48,8 @@ const workData = [
     title: "Build for GEHU",
     location: "Bhimtal",
     points: [
-      "Simple traffic simulation to visualize congestion at Kachi Dham",
-      "Basic routing logic to reduce peak-hour traffic jams",
+      "Simple traffic simulation to visualize congestion at Kanchi Dham",
+      "Basic routing logic to reduce peak-hour traffic jams near the busy temple",
     ],
     organizer: "Graphic Era Hill University, Bhimtal",
     techStack: ["React", "Routing Algorithms", "OpenStreetMap (OSM)"],

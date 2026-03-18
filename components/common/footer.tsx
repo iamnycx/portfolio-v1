@@ -12,7 +12,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <div className="border-muted-foreground relative z-50 mx-auto max-w-6xl border-t border-dashed px-2 md:border-x md:px-6">
+    <div className="border-muted-foreground bg-background/1 backdrop-blur-3xl relative z-50 mx-auto max-w-6xl border-t border-dashed px-2 md:border-x md:px-6">
       <div className="flex min-w-0 flex-col items-center justify-between gap-2 overflow-hidden py-4 sm:flex-row sm:gap-0">
         <p className="border-accent-foreground shrink-0 font-mono md:mr-2">
           <span>api</span>
