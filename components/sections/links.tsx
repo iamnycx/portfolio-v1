@@ -29,7 +29,7 @@ export default function Links() {
             key={link.title}
             href={link.href}
             target="_blank"
-            className="group flex items-center gap-1 border border-dotted px-2 py-1 text-center transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200"
+            className="group flex items-center gap-1 border border-dotted px-2 py-1 text-center transition-colors duration-300 ease-in-out hover:border-lime-400 hover:text-lime-400"
           >
             {link.title}
             <SquareArrowOutUpRightIcon

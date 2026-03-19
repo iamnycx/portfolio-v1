@@ -11,7 +11,10 @@ export const mdxComponents = {
     <h2 className="my-4 text-xl font-bold" {...props} />
   ),
   p: (props: ComponentProps<"p">) => (
-    <p className="my-4 text-lg leading-relaxed text-neutral-400" {...props} />
+    <p
+      className="text-muted-foreground my-4 text-lg leading-relaxed"
+      {...props}
+    />
   ),
   ol: (props: ComponentProps<"ol">) => (
     <ol className="my-4 list-decimal space-y-2 pl-8" {...props} />
@@ -22,7 +25,7 @@ export const mdxComponents = {
   li: (props: ComponentProps<"li">) => <li className="pl-1" {...props} />,
   a: ({ href, children, ...props }: ComponentProps<"a">) => {
     const className = [
-      "text-orange-200 underline-offset-4 hover:underline",
+      "text-lime-400 underline-offset-4 hover:underline",
       props.className,
     ]
       .filter(Boolean)
@@ -56,7 +59,7 @@ export const mdxComponents = {
   },
   blockquote: (props: ComponentProps<"blockquote">) => (
     <blockquote
-      className="my-8 ml-2 border-l-2 border-dashed border-orange-200 pl-4 text-orange-200"
+      className="my-8 ml-2 border-l-2 border-dashed border-lime-400 pl-4 text-lime-400"
       {...props}
     />
   ),
@@ -87,20 +90,20 @@ export const mdxComponents = {
     const codeText = extractCodeText(props.children);
 
     return (
-      <div className="group bg-muted/50 my-6 transition-colors duration-300 ease-in-out">
-        <figcaption className="border-foreground/25 text-muted-foreground group-hover:border-foreground/50 flex h-8 items-center justify-between border border-b-0 border-dashed pl-4 tracking-wide transition-colors duration-300 ease-in-out group-hover:text-orange-200">
+      <div className="group border-foreground/25 hover:border-foreground/50 my-6 border border-dashed p-2 transition-colors duration-300 ease-in-out">
+        <figcaption className="bg-muted/50 text-muted-foreground flex h-8 items-center justify-between pl-4 tracking-wide transition-colors duration-300 ease-in-out group-hover:text-lime-400">
           {props["data-language"]}
           <CopyButton code={codeText} />
         </figcaption>
         <pre
-          className="group-hover:border-t-foreground/25 border-foreground/25 group-hover:border-foreground/50 relative overflow-x-auto border border-dashed px-0 py-4 leading-relaxed tracking-wide normal-case transition-colors duration-300 ease-in-out"
+          className="bg-muted/50 border-foreground/25 relative overflow-x-auto border-t border-dashed px-0 py-4 leading-relaxed tracking-wide normal-case"
           {...props}
         />
       </div>
     );
   },
   code: (props: ComponentProps<"code">) => (
-    <code className="text-orange-200" {...props} />
+    <code className="text-lime-400" {...props} />
   ),
   hr: (props: ComponentProps<"hr">) => (
     <div

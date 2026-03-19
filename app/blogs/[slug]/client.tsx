@@ -45,7 +45,7 @@ export function NavItems({ slug }: { slug: string }) {
     >
       <Link
         href={"/blogs"}
-        className="text-muted-foreground flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-orange-200"
+        className="text-muted-foreground flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-lime-400"
       >
         <MoveLeft />
         <span>cd ..</span>

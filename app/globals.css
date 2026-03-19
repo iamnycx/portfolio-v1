@@ -203,11 +203,11 @@
 }
 
 ::selection {
-  @apply bg-orange-200 text-black;
+  @apply bg-lime-400 text-black;
 }
 
 ::-moz-selection {
-  @apply bg-orange-200 text-black;
+  @apply bg-lime-400 text-black;
 }
 
 pre [data-line] {

@@ -44,7 +44,7 @@ export default function FeaturedProjects() {
       <div className="flex pt-4">
         <Link
           href="/projects"
-          className="mx-auto text-center text-orange-200 underline-offset-4 hover:underline"
+          className="mx-auto text-center text-lime-400 underline-offset-4 hover:underline"
         >
           /projects
         </Link>
@@ -55,7 +55,7 @@ export default function FeaturedProjects() {
 
 function FeaturedProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-text-lime-400">
       <div
         className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
@@ -71,7 +71,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
           <h1 className="line-clamp-1 text-xl font-bold tracking-tight">
             {project?.name}
           </h1>
-          <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-orange-200">
+          <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-lime-400">
             {project?.type}
           </h2>
         </div>
@@ -80,7 +80,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
             <Link
               href={project?.repo}
               target="_blank"
-              className="border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
+              className="border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-lime-400 hover:bg-text-lime-400/5 hover:text-lime-400"
             >
               <Github size={20} strokeWidth={1} />
             </Link>
@@ -89,7 +89,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
             <Link
               href={project?.site}
               target="_blank"
-              className="border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-orange-200 hover:bg-orange-200/5 hover:text-orange-200"
+              className="border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-lime-400 hover:bg-text-lime-400/5 hover:text-lime-400"
             >
               <Globe size={20} strokeWidth={1} />
             </Link>
@@ -99,7 +99,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
       <div className="z-10 flex gap-2">
         <Triangle
           size={14}
-          className="fill-muted mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:fill-orange-200"
+          className="fill-muted mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:fill-text-lime-400"
         />
         <p className="tracking-wider text-balance">{project.description}</p>
       </div>
@@ -107,7 +107,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
         {project?.stack.map((tag: string, idx: number) => (
           <span
             key={idx}
-            className="from-accent/30 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200/50 group-hover:text-orange-200"
+            className="from-accent/30 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-text-lime-400/50 group-hover:text-lime-400"
           >
             {tag}
           </span>

@@ -14,7 +14,7 @@ export function InteractiveHoverButton({
   const content = (
     <>
       <div className="flex items-center justify-center gap-2">
-        <div className="h-1 w-1 rounded-full bg-orange-200 transition-all duration-300 group-hover:scale-[100.8]"></div>
+        <div className="h-1 w-1 rounded-full bg-lime-400 transition-all duration-300 group-hover:scale-[100.8]"></div>
         <span className="inline-block transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
           {children}
         </span>
@@ -27,7 +27,7 @@ export function InteractiveHoverButton({
   );
 
   const baseClassName = cn(
-  "group bg-background border-muted relative rounded-full inline-flex w-auto cursor-pointer overflow-hidden border border-dashed p-2 px-6 text-center text-xs font-semibold uppercase",
+    "group bg-background border-muted relative rounded-full inline-flex w-auto cursor-pointer overflow-hidden border border-dashed p-2 px-6 text-center text-xs font-semibold uppercase",
     className,
   );
 

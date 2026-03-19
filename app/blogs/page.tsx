@@ -21,7 +21,7 @@ export default function Blogs() {
         <div className="my-8 grid grid-cols-1 gap-4">
           {blogs.map((blog) => (
             <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
-              <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-2 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-orange-200">
+              <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-2 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-lime-400">
                 <div
                   className={cn(
                     "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
@@ -41,7 +41,7 @@ export default function Blogs() {
                   {blog.tags.map((tag: string, idx: number) => (
                     <span
                       key={idx}
-                      className="from-accent/30 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200/50 group-hover:text-orange-200"
+                      className="from-accent/30 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-lime-400/50 group-hover:text-lime-400"
                     >
                       {tag}
                     </span>
@@ -57,7 +57,7 @@ export default function Blogs() {
             <Link
               href="https://x.com/ok_nycx"
               target="_blank"
-              className="text-orange-200 underline-offset-4 hover:underline"
+              className="text-lime-400 underline-offset-4 hover:underline"
             >
               x.com
             </Link>{" "}

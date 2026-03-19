@@ -78,7 +78,7 @@ export default function Hackathons() {
 
 function HackathonCard({ data }: { data: workDataType }) {
   return (
-    <div className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground relative flex flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-orange-200">
+    <div className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground relative flex flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-lime-400">
       <div
         className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
@@ -92,7 +92,7 @@ function HackathonCard({ data }: { data: workDataType }) {
       <div className="z-10 flex flex-col gap-1 sm:flex-row sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-xl font-bold tracking-tight">{data.title}</h1>
-          <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-orange-200">
+          <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-lime-400">
             {data.organizer}
           </h2>
         </div>
@@ -103,7 +103,7 @@ function HackathonCard({ data }: { data: workDataType }) {
           <li key={index} className="flex gap-2">
             <Triangle
               size={14}
-              className="fill-muted mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:fill-orange-200"
+              className="fill-muted mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:fill-lime-400"
             />
             <span>{d}</span>
           </li>
@@ -115,7 +115,7 @@ function HackathonCard({ data }: { data: workDataType }) {
             {data.techStack.map((tech) => (
               <span
                 key={tech}
-                className="from-accent/30 border-muted-foreground cursor-default border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-orange-200/50 group-hover:text-orange-200"
+                className="from-accent/30 border-muted-foreground cursor-default border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-lime-400/50 group-hover:text-lime-400"
               >
                 {tech}
               </span>

@@ -45,10 +45,9 @@ export default function Hero() {
             <b className="text-foreground"> software developer</b> based in{" "}
             <b className="text-foreground">india</b>, final year{" "}
             <b className="text-foreground">computer science</b> undergrad. i am
-            into <b className="text-foreground">films, design, coding</b>{" "}
-            and all the <b className="text-foreground">creative stuff</b>{" "}
-            on earth. right now focused on{" "}
-            <b className="text-foreground">web2</b> and{" "}
+            into <b className="text-foreground">films, design, coding</b> and
+            all the <b className="text-foreground">creative stuff</b> on earth.
+            right now focused on <b className="text-foreground">web2</b> and{" "}
             <b className="text-foreground">web3</b> development.
           </p>
         </div>

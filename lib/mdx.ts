@@ -9,7 +9,7 @@ export const mdxRemoteOptions = {
       [
         rehypePrettyCode,
         {
-          theme: "vesper",
+          theme: "monokai",
           keepBackground: false,
         },
       ],

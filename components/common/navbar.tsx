@@ -57,7 +57,7 @@ export default function Navbar() {
             className="flex cursor-pointer items-center gap-2 text-sm sm:text-base"
           >
             <span>{"nycx@dev"}</span>
-            <span className="text-orange-200">{"~"}</span>
+            <span className="text-lime-400">{"~"}</span>
             <span>{"$"}</span>
           </Link>
           <h2 className="hidden text-sm sm:text-base md:block">
@@ -83,10 +83,10 @@ export default function Navbar() {
                   transition={{
                     ease: "easeInOut",
                   }}
-                  className="absolute inset-0 border border-dashed border-orange-200/50"
+                  className="absolute inset-0 border border-dotted border-lime-400"
                 />
               )}
-              <span className="transition-colors duration-300 ease-in-out group-hover:text-orange-200">
+              <span className="transition-colors duration-300 ease-in-out group-hover:text-lime-400">
                 {link.text}
               </span>
             </Link>
@@ -94,13 +94,13 @@ export default function Navbar() {
         </div>
         <Link
           href={"mailto:25nikmehta@gmail.com"}
-          className="border-background hidden border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200/50 hover:text-orange-200 sm:text-base lg:block"
+          className="border-background hidden border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-lime-400/50 hover:text-lime-400 sm:text-base lg:block"
         >
           {"/contact.sh"}
         </Link>
         <button
           onClick={() => setIsMobileMenuOpen((open) => !open)}
-          className="border-muted-foreground block border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200 sm:text-base lg:hidden"
+          className="border-muted-foreground block border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-lime-400 hover:text-lime-400 sm:text-base lg:hidden"
         >
           {isMobileMenuOpen ? "./close.sh" : "./menu.sh"}
         </button>
@@ -161,14 +161,14 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.08, duration: 0.3 }}
-                  className="group flex items-center justify-between px-6 py-4 transition-colors duration-200 hover:bg-orange-200/5"
+                  className="group flex items-center justify-between px-6 py-4 transition-colors duration-200 hover:bg-lime-400/5"
                 >
-                  <span className="text-base font-medium transition-colors duration-200 group-hover:text-orange-200">
+                  <span className="text-base font-medium transition-colors duration-200 group-hover:text-lime-400">
                     {item.text}
                   </span>
                   <ChevronRight
                     size={18}
-                    className="text-muted-foreground transition-all duration-200 group-hover:translate-x-1 group-hover:text-orange-200"
+                    className="text-muted-foreground transition-all duration-200 group-hover:translate-x-1 group-hover:text-lime-400"
                   />
                 </motion.div>
               );

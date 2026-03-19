@@ -30,7 +30,7 @@ export default function Contribution(): JSX.Element {
   const today = new Date();
   const startDate = subDays(today, 364);
   const weeks = 53;
-  const colors = ["#1a1a1a", "#ffedd5", "#fed7aa", "#fb923c", "#ea580c"];
+  const colors = ["#1a1a1a", "#ecfccb", "#d9f99d", "#a3e635", "#65a30d"];
   const username = "iamnycx";
 
   useEffect(() => {
@@ -126,7 +126,10 @@ export default function Contribution(): JSX.Element {
 
     for (let i = 0; i < 12; i++) {
       months.push(
-        <span key={i} className="text-muted-foreground text-xs">
+        <span
+          key={i}
+          className="text-xs text-lime-700/80 dark:text-lime-300/80"
+        >
           {format(currentMonth, "MMM")}
         </span>,
       );
@@ -143,7 +146,10 @@ export default function Contribution(): JSX.Element {
         <div className="flex min-w-max">
           <div className="mt-5.5 mr-2 flex flex-col justify-between">
             {dayLabels.map((day, index) => (
-              <span key={index} className="text-muted-foreground h-3 text-xs">
+              <span
+                key={index}
+                className="h-3 text-xs text-lime-700/80 dark:text-lime-300/80"
+              >
                 {day}
               </span>
             ))}
@@ -158,7 +164,7 @@ export default function Contribution(): JSX.Element {
       </div>
 
       <div className="mx-auto flex w-fit items-center gap-2 pt-4">
-        <span className="text-sm">Less</span>
+        <span className="text-sm text-lime-700 dark:text-lime-300">Less</span>
         {colors.map((color, index) => (
           <div
             key={index}
@@ -166,7 +172,7 @@ export default function Contribution(): JSX.Element {
             style={{ backgroundColor: color }}
           />
         ))}
-        <span className="text-sm">More</span>
+        <span className="text-sm text-lime-700 dark:text-lime-300">More</span>
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ export default function Cave() {
               "I’m into music too. I’ll be sharing some of my own tracks here soon, using this little player."
             }
           </p>
-          <Link href="/" className="text-orange-200 hover:underline">
+          <Link href="/" className="text-lime-400 hover:underline">
             ./home
           </Link>
         </div>

@@ -73,7 +73,7 @@ export default function Stack() {
                   className="from-accent/30 relative bg-linear-to-bl to-50%"
                 >
                   <div className="border-muted-foreground absolute top-1/2 left-0 w-4 -translate-x-4 border-b border-dashed" />
-                  <div className="border-muted-foreground cursor-default border border-dotted px-2 py-1 transition-colors duration-300 ease-in-out hover:border-orange-200 hover:text-orange-200">
+                  <div className="border-muted-foreground cursor-default border border-dotted px-2 py-1 transition-colors duration-300 ease-in-out hover:border-lime-400 hover:text-lime-400">
                     {data.title}
                   </div>
                 </div>

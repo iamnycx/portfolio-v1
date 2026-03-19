@@ -12,13 +12,13 @@ export default function Footer() {
   }, []);
 
   return (
-    <div className="border-muted-foreground bg-background/1 backdrop-blur-3xl relative z-50 mx-auto max-w-6xl border-t border-dashed px-2 md:border-x md:px-6">
+    <div className="border-muted-foreground bg-background/1 relative z-50 mx-auto max-w-6xl border-t border-dashed px-2 backdrop-blur-3xl md:border-x md:px-6">
       <div className="flex min-w-0 flex-col items-center justify-between gap-2 overflow-hidden py-4 sm:flex-row sm:gap-0">
         <p className="border-accent-foreground shrink-0 font-mono md:mr-2">
           <span>api</span>
           <span className="text-muted-foreground">.fetch_data</span>
           <span>{"("}</span>
-          <span className="text-orange-200">{"total_visitors"}</span>
+          <span className="text-lime-400">{"total_visitors"}</span>
           <span>{");"}</span>
         </p>
         <div className="flex w-full max-w-full min-w-0 flex-1 items-center overflow-hidden sm:w-auto">
