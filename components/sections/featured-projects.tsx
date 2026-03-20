@@ -55,7 +55,7 @@ export default function FeaturedProjects() {
 
 function FeaturedProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-text-lime-400">
+    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-lime-400">
       <div
         className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
@@ -80,7 +80,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
             <Link
               href={project?.repo}
               target="_blank"
-              className="border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-lime-400 hover:bg-text-lime-400/5 hover:text-lime-400"
+              className="hover:bg-text-lime-400/5 border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-lime-400 hover:text-lime-400"
             >
               <Github size={20} strokeWidth={1} />
             </Link>
@@ -89,7 +89,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
             <Link
               href={project?.site}
               target="_blank"
-              className="border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-lime-400 hover:bg-text-lime-400/5 hover:text-lime-400"
+              className="hover:bg-text-lime-400/5 border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-lime-400 hover:text-lime-400"
             >
               <Globe size={20} strokeWidth={1} />
             </Link>
@@ -99,7 +99,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
       <div className="z-10 flex gap-2">
         <Triangle
           size={14}
-          className="fill-muted mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:fill-text-lime-400"
+          className="fill-muted group-hover:fill-text-lime-400 mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90"
         />
         <p className="tracking-wider text-balance">{project.description}</p>
       </div>
@@ -107,7 +107,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
         {project?.stack.map((tag: string, idx: number) => (
           <span
             key={idx}
-            className="from-accent/30 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-text-lime-400/50 group-hover:text-lime-400"
+            className="from-accent/30 group-hover:border-text-lime-400/50 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:text-lime-400"
           >
             {tag}
           </span>
