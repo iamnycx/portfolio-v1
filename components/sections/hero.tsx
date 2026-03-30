@@ -1,47 +1,94 @@
+"use client";
+
 import { Computer, MapPinIcon, UniversityIcon, Zap } from "lucide-react";
-import { TextScramble } from "../common/text-scramble";
 import { InteractiveHoverButton } from "../special/interactive-button";
+import { motion as m } from "motion/react";
+
+const revealOnView = (delay = 0) => ({
+  initial: {
+    filter: "blur(3px)",
+    opacity: 0.8,
+  },
+  whileInView: {
+    filter: "blur(0px)",
+    opacity: 1,
+  },
+  transition: {
+    ease: "easeInOut" as const,
+    delay,
+  },
+  viewport: { once: true, margin: "0px" },
+});
 
 export default function Hero() {
   return (
     <div className="relative space-y-12 pt-12">
-      <div className="flex flex-col items-center justify-between gap-2 sm:flex-row sm:items-end">
-        <div className="flex items-center gap-4">
-          <h1 className="text-xl font-bold tracking-tight">
-            <TextScramble>nikhil singh mehta</TextScramble>
-          </h1>
-          <InteractiveHoverButton
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=25nikmehta%40gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:block"
+      <m.div
+        {...revealOnView(0.05)}
+        className="flex flex-col items-center justify-between gap-2 sm:flex-row sm:items-end"
+      >
+        <m.div {...revealOnView(0.1)} className="flex items-center gap-4">
+          <m.h1
+            {...revealOnView(0.15)}
+            className="text-xl font-bold tracking-tight"
           >
-            Open to work
-          </InteractiveHoverButton>
-        </div>
-        <div className="flex flex-wrap justify-center gap-4 sm:justify-end">
-          <p className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base">
+            nikhil singh mehta
+          </m.h1>
+          <m.div {...revealOnView(0.2)}>
+            <InteractiveHoverButton
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=25nikmehta%40gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:block"
+            >
+              Open to work
+            </InteractiveHoverButton>
+          </m.div>
+        </m.div>
+        <m.div
+          {...revealOnView(0.25)}
+          className="flex flex-wrap justify-center gap-4 sm:justify-end"
+        >
+          <m.p
+            {...revealOnView(0.3)}
+            className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
+          >
             <MapPinIcon size={14} />
             <span>{"India"}</span>
-          </p>
-          <p className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base">
+          </m.p>
+          <m.p
+            {...revealOnView(0.35)}
+            className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
+          >
             <UniversityIcon size={14} />
             <span>{"CS"}</span>
-          </p>
-          <p className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base">
+          </m.p>
+          <m.p
+            {...revealOnView(0.4)}
+            className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
+          >
             <Computer size={14} />
             <span>{"Arch"}</span>
-          </p>
-          <p className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base">
+          </m.p>
+          <m.p
+            {...revealOnView(0.45)}
+            className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
+          >
             <Zap size={14} />
             <span>{"SuperteamIn"}</span>
-          </p>
-        </div>
-      </div>
+          </m.p>
+        </m.div>
+      </m.div>
 
-      <div className="flex flex-col justify-between gap-8 lg:flex-row">
-        <div className="w-full max-w-lg space-y-12">
-          <p className="text-foreground/75 text-justify tracking-wide">
+      <m.div
+        {...revealOnView(0.5)}
+        className="flex flex-col justify-between gap-8 lg:flex-row"
+      >
+        <m.div {...revealOnView(0.55)} className="w-full max-w-lg space-y-12">
+          <m.p
+            {...revealOnView(0.6)}
+            className="text-foreground/75 text-justify tracking-wide"
+          >
             <b className="text-foreground"> software developer</b> based in{" "}
             <b className="text-foreground">india</b>, final year{" "}
             <b className="text-foreground">computer science</b> undergrad. i am
@@ -49,14 +96,30 @@ export default function Hero() {
             all the <b className="text-foreground">creative stuff</b> on earth.
             right now focused on <b className="text-foreground">web2</b> and{" "}
             <b className="text-foreground">web3</b> development.
-          </p>
-        </div>
-        <div className="ml-auto"></div>
+          </m.p>
+        </m.div>
+        <m.div
+          {...revealOnView(0.65)}
+          className="ml-auto h-[6rem] overflow-y-hidden"
+        >
+          <video
+            autoPlay
+            loop
+            muted
+            className="w-full max-w-[12rem] -translate-y-12"
+          >
+            <source
+              src="/batman.webm"
+              type="video/webm"
+              className="mix-blend-screen"
+            />
+          </video>
+        </m.div>
+      </m.div>
+      <div className="absolute inset-x-0">
+        <div className="border-muted-foreground h-0.01 w-8 origin-top-left rotate-135 border-t border-dashed" />
+        <div className="border-muted-foreground h-0.5 w-full border-t border-dashed mask-r-from-5%" />
       </div>
-      {/* <div className="absolute inset-x-0">
-        <div className="border-accent-foreground h-0.5 w-6 origin-top-left rotate-135 border-t border-dotted" />
-        <div className="border-accent-foreground h-0.5 w-full border-t border-dotted" />
-      </div> */}
     </div>
   );
 }

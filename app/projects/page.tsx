@@ -1,7 +1,6 @@
 "use client";
 
 import Container from "@/components/common/container";
-import { TextScramble } from "@/components/common/text-scramble";
 import PlusIcons from "@/components/plus-icons";
 import { Github, Globe, Triangle } from "lucide-react";
 import Link from "next/link";
@@ -94,9 +93,7 @@ export default function Projects() {
     <Container className="pt-16">
       <div className="space-y-4 py-12">
         <div className="flex items-baseline justify-between">
-          <h1 className="text-xl font-bold tracking-tight">
-            <TextScramble>projects</TextScramble>
-          </h1>
+          <h1 className="text-xl font-bold tracking-tight">projects</h1>
           <motion.p
             initial={{ filter: "blur(4px)", opacity: 0 }}
             animate={{ filter: "blur(0px)", opacity: 1 }}

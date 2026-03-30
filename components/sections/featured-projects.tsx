@@ -1,7 +1,10 @@
+"use client";
+
 import { Github, Globe, Triangle } from "lucide-react";
 import Link from "next/link";
 import PlusIcons from "../plus-icons";
 import { cn } from "@/lib/utils";
+import { motion as m } from "motion/react";
 
 interface Project {
   name: string;
@@ -33,12 +36,35 @@ const projects: Project[] = [
   },
 ];
 
+const revealOnView = (delay = 0) => ({
+  initial: {
+    y: 10,
+    filter: "blur(3px)",
+    opacity: 0,
+  },
+  whileInView: {
+    y: 0,
+    filter: "blur(0px)",
+    opacity: 1,
+  },
+  transition: {
+    duration: 0.4,
+    ease: "easeInOut" as const,
+    delay,
+  },
+  viewport: { once: true, margin: "0px 0px -25% 0px" },
+});
+
 export default function FeaturedProjects() {
   return (
     <div id="featured-projects">
       <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-        {projects.map((project: Project) => (
-          <FeaturedProjectCard key={project.name} project={project} />
+        {projects.map((project: Project, idx: number) => (
+          <FeaturedProjectCard
+            key={project.name}
+            project={project}
+            index={idx}
+          />
         ))}
       </div>
       <div className="flex pt-4">
@@ -53,9 +79,18 @@ export default function FeaturedProjects() {
   );
 }
 
-function FeaturedProjectCard({ project }: { project: Project }) {
+function FeaturedProjectCard({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
   return (
-    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-lime-400">
+    <m.div
+      {...revealOnView(index * 0.2)}
+      className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-lime-400"
+    >
       <div
         className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
@@ -113,6 +148,6 @@ function FeaturedProjectCard({ project }: { project: Project }) {
           </span>
         ))}
       </div>
-    </div>
+    </m.div>
   );
 }

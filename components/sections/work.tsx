@@ -1,6 +1,9 @@
+"use client";
+
 import { Triangle } from "lucide-react";
 import PlusIcons from "../plus-icons";
 import { cn } from "@/lib/utils";
+import { motion as m } from "motion/react";
 
 const workData = [
   {
@@ -28,21 +31,43 @@ type workDataType = {
   technologies: string[];
 };
 
+const revealOnView = (delay = 0) => ({
+  initial: {
+    y: 10,
+    filter: "blur(3px)",
+    opacity: 0,
+  },
+  whileInView: {
+    y: 0,
+    filter: "blur(0px)",
+    opacity: 1,
+  },
+  transition: {
+    duration: 0.4,
+    ease: "easeInOut" as const,
+    delay,
+  },
+  viewport: { once: true, margin: "0px 0px -25% 0px" },
+});
+
 export default function Work() {
   return (
     <div id="work">
       <div className="space-y-6 py-8">
-        {workData.map((data) => (
-          <WorkCard key={data.orgnization} data={data} />
+        {workData.map((data, idx: number) => (
+          <WorkCard key={data.orgnization} data={data} index={idx} />
         ))}
       </div>
     </div>
   );
 }
 
-function WorkCard({ data }: { data: workDataType }) {
+function WorkCard({ data, index }: { data: workDataType; index: number }) {
   return (
-    <div className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground relative flex flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-lime-400">
+    <m.div
+      {...revealOnView(index * 0.2)}
+      className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground relative flex flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-lime-400"
+    >
       <div
         className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
@@ -87,6 +112,6 @@ function WorkCard({ data }: { data: workDataType }) {
           </span>
         ))}
       </div>
-    </div>
+    </m.div>
   );
 }

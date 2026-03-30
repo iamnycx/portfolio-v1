@@ -13,6 +13,7 @@
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.1.1",
     "@radix-ui/react-slot": "^1.2.4",
+    "@remotion/cli": "4.0.438",
     "@types/mdx": "^2.0.13",
     "axios": "^1.13.2",
     "class-variance-authority": "^0.7.1",
@@ -31,6 +32,7 @@
     "react-dom": "19.2.3",
     "rehype-pretty-code": "^0.14.1",
     "remark-gfm": "^4.0.1",
+    "remotion": "4.0.438",
     "shiki": "^3.20.0",
     "sugar-high": "^0.9.5",
     "tailwind-merge": "^3.4.0"

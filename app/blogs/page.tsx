@@ -1,5 +1,4 @@
 import Container from "@/components/common/container";
-import { TextScramble } from "@/components/common/text-scramble";
 import { getAllBlogs } from "@/lib/blog";
 import Link from "next/link";
 import { Date, DummyCommand, Heading } from "./client";
@@ -13,9 +12,7 @@ export default function Blogs() {
     <Container className="pt-16">
       <div className="space-y-4 py-12">
         <div className="flex items-baseline justify-between">
-          <h1 className="text-xl font-bold tracking-tight">
-            <TextScramble>blogs</TextScramble>
-          </h1>
+          <h1 className="text-xl font-bold tracking-tight">blogs</h1>
           <DummyCommand />
         </div>
         <div className="my-8 grid grid-cols-1 gap-4">

@@ -7,7 +7,6 @@ import { ThemeProvider } from "@/app/providers/theme-provider";
 import LenisScrollProvider from "./providers/lenis-provider";
 import { SyneMono } from "./font";
 import { ProgressiveBlur } from "@/components/progressive-blur";
-import Noise from "@/components/special/noise";
 
 export const metadata: Metadata = {
   title: "nycx@dev",
@@ -96,7 +95,6 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <LenisScrollProvider>
-              <Noise />
               <div className="relative">
                 <Navbar />
                 {children}
