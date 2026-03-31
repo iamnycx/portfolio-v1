@@ -22,7 +22,7 @@ const revealOnView = (delay = 0) => ({
 
 export default function Hero() {
   return (
-    <div className="relative space-y-12 pt-12">
+    <div className="relative space-y-8 pt-12">
       <m.div
         {...revealOnView(0.05)}
         className="flex flex-col items-center justify-between gap-2 sm:flex-row sm:items-end"
@@ -117,7 +117,7 @@ export default function Hero() {
         </m.div>
       </m.div>
       <div className="absolute inset-x-0">
-        <div className="border-muted-foreground h-0.01 w-8 origin-top-left rotate-135 border-t border-dashed" />
+        <div className="border-muted-foreground h-0.01 w-8 origin-top-left -rotate-135 border-t border-dashed" />
         <div className="border-muted-foreground h-0.5 w-full border-t border-dashed mask-r-from-5%" />
       </div>
     </div>
