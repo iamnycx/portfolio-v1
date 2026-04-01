@@ -1,0 +1,709 @@
+---
+title: "Solana Fellowship Week 2: Things Got Real with Rust"
+description: "My week-2 Rust recap from the Solana India Fellowship, covering smart pointers like Box/Rc/RefCell, dynamic dispatch with trait objects, drop and deref behavior, match guards, macros, unsafe basics, and practical multithreading patterns with channels, Mutex, and Arc."
+date: "2026-04-02"
+tags:
+  [
+    "Rust",
+    "Solana",
+    "Solana India Fellowship",
+    "Superteam India",
+    "Smart Pointers",
+    "Concurrency",
+    "Macros",
+    "Arc",
+    "Mutex",
+  ]
+---
+
+Week 2 is where things started getting tough. The concurrency (multi-threading) part honestly blasted my brain at first, and I felt like I was understanding nothing. But once I slowed down and started breaking each topic into smaller pieces, things got way clearer one by one. This post is that journey: smart pointers, trait objects, macros, and multithreading patterns that looked scary first and then started making sense.
+
+## Smart Pointers
+
+Smart pointers are pointers, but with extra capabilities and guarantees.
+
+## Box T
+
+`Box<T>` stores data on heap instead of stack.
+
+```rust showLineNumbers
+fn main() {
+    let x: Box<i32> = Box::new(30); // heap data
+    let y: i32 = 30; // stack data
+
+    println!("{} {}", *x, y);
+}
+```
+
+Memory layout idea:
+
+- Stack: fixed-size pointer value
+- Heap: actual data (can be larger / dynamic)
+
+### Common Use Cases
+
+Recursive types:
+
+```rust showLineNumbers
+enum List {
+    Cons(i32, Box<List>),
+    Nil,
+}
+```
+
+Large data (avoid huge stack allocations):
+
+```rust showLineNumbers
+fn main() {
+    let big_array = Box::new([0_i32; 1_000_000]);
+    println!("{}", big_array[0]);
+}
+```
+
+Trait objects (dynamic dispatch):
+
+```rust showLineNumbers
+trait Shape {
+    fn area(&self) -> f64;
+}
+
+struct Circle {
+    r: f64,
+}
+
+impl Shape for Circle {
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * self.r * self.r
+    }
+}
+
+fn main() {
+    let shape: Box<dyn Shape> = Box::new(Circle { r: 2.0 });
+    println!("{}", shape.area());
+}
+```
+
+Recursive list traversal:
+
+```rust showLineNumbers
+enum List {
+    Cons(i32, Box<List>),
+    Nil,
+}
+
+fn list_sum(list: &List) -> i32 {
+    let mut sum = 0;
+    let mut cur = list;
+
+    loop {
+        match cur {
+            List::Cons(v, next) => {
+                sum += *v;
+                cur = next;
+            }
+            List::Nil => break,
+        }
+    }
+
+    sum
+}
+```
+
+## Deref Trait
+
+`Deref` lets custom types behave like references when using `*`.
+
+```rust showLineNumbers
+use std::ops::Deref;
+
+struct MyBox<T>(T);
+
+impl<T> Deref for MyBox<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+fn main() {
+    let x = MyBox(10);
+    println!("{}", *x);
+}
+```
+
+## Deref Coercion
+
+Rust can auto-convert reference types when possible:
+
+- `&T -> &U` if `T: Deref<Target = U>`
+- `&mut T -> &mut U` if `T: DerefMut<Target = U>`
+- `&mut T -> &T`
+
+```rust showLineNumbers
+fn hello(s: &str) {
+    println!("hello, {}", s);
+}
+
+fn main() {
+    let name: Box<String> = Box::new(String::from("nycx"));
+    hello(&name); // &Box<String> -> &String -> &str
+}
+```
+
+## Drop Trait
+
+`Drop` customizes cleanup when value goes out of scope.
+
+```rust showLineNumbers
+struct MySmartPointer {
+    data: String,
+}
+
+impl Drop for MySmartPointer {
+    fn drop(&mut self) {
+        println!("dropping: {}", self.data);
+    }
+}
+
+fn main() {
+    let m = MySmartPointer {
+        data: String::from("jon"),
+    };
+
+    drop(m); // explicit early drop
+}
+```
+
+## Rc T Reference Counting
+
+`Rc<T>` enables multiple owners of heap data in single-threaded code.
+
+```rust showLineNumbers
+use std::rc::Rc;
+
+fn main() {
+    let shared = Rc::new(String::from("hello"));
+    let clone1 = Rc::clone(&shared);
+    let clone2 = Rc::clone(&shared);
+
+    println!("{} {} {}", shared, clone1, clone2);
+}
+```
+
+`Rc::clone` does not deep copy inner data; it increments ref count.
+
+## RefCell T and Interior Mutability
+
+`RefCell<T>` does borrow-checking at runtime, not compile time.
+
+```rust showLineNumbers
+use std::cell::RefCell;
+
+fn main() {
+    let x = RefCell::new(32);
+    *x.borrow_mut() = 12;
+
+    println!("{}", x.borrow());
+}
+```
+
+Counter example:
+
+```rust showLineNumbers
+use std::cell::RefCell;
+
+struct Counter {
+    value: RefCell<i32>,
+}
+
+impl Counter {
+    fn new() -> Self {
+        Self {
+            value: RefCell::new(0),
+        }
+    }
+
+    fn increment(&self) {
+        *self.value.borrow_mut() += 1;
+    }
+
+    fn get(&self) -> i32 {
+        *self.value.borrow()
+    }
+}
+
+fn count_to(n: i32) -> i32 {
+    let c = Counter::new();
+    for _ in 0..n {
+        c.increment();
+    }
+    c.get()
+}
+```
+
+## Dynamic Dispatch with Box Dyn Trait
+
+Good when collection holds different concrete types that share behavior.
+
+```rust showLineNumbers
+use std::f64::consts::PI;
+
+trait Shape {
+    fn area(&self) -> f64;
+}
+
+struct Circle {
+    radius: f64,
+}
+
+struct Rect {
+    w: f64,
+    h: f64,
+}
+
+impl Shape for Circle {
+    fn area(&self) -> f64 {
+        PI * self.radius * self.radius
+    }
+}
+
+impl Shape for Rect {
+    fn area(&self) -> f64 {
+        self.h * self.w
+    }
+}
+
+fn total_area(shapes: &[Box<dyn Shape>]) -> f64 {
+    shapes.iter().map(|s| s.area()).sum()
+}
+```
+
+## Dynamic Pipeline with Trait Objects
+
+```rust showLineNumbers
+trait Formatter {
+    fn format(&self, input: &str) -> String;
+}
+
+struct Upper;
+struct Snake;
+struct Trim;
+
+impl Formatter for Upper {
+    fn format(&self, input: &str) -> String {
+        input.to_uppercase()
+    }
+}
+
+impl Formatter for Snake {
+    fn format(&self, input: &str) -> String {
+        input.replace(' ', "_")
+    }
+}
+
+impl Formatter for Trim {
+    fn format(&self, input: &str) -> String {
+        input.trim().to_string()
+    }
+}
+
+fn apply_all(input: &str, fmts: &[Box<dyn Formatter>]) -> String {
+    fmts.iter().fold(input.to_string(), |s, f| f.format(&s))
+}
+```
+
+## Newtype Pattern and Orphan Rule
+
+You cannot implement a foreign trait on a foreign type directly, but you can wrap the type.
+
+```rust showLineNumbers
+use std::fmt::{self, Display};
+
+struct CommaSeparated(Vec<i32>);
+
+impl Display for CommaSeparated {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let s = self
+            .0
+            .iter()
+            .map(|x| x.to_string())
+            .collect::<Vec<String>>()
+            .join(", ");
+        write!(f, "{}", s)
+    }
+}
+
+fn format_list(nums: Vec<i32>) -> String {
+    let cs = CommaSeparated(nums);
+    format!("{}", cs)
+}
+```
+
+## Associated Types vs Generics
+
+```rust showLineNumbers
+trait Summary {
+    type Output;
+    fn summarize(&self) -> Self::Output;
+}
+
+struct Numbers {
+    data: Vec<i32>,
+}
+
+struct Words {
+    data: Vec<String>,
+}
+
+impl Summary for Numbers {
+    type Output = i32;
+
+    fn summarize(&self) -> Self::Output {
+        self.data.iter().sum()
+    }
+}
+
+impl Summary for Words {
+    type Output = String;
+
+    fn summarize(&self) -> Self::Output {
+        self.data.join(" ")
+    }
+}
+```
+
+## Custom Operators with Std Ops
+
+```rust showLineNumbers
+use std::fmt::{self, Display};
+use std::ops::Add;
+
+struct Vec2 {
+    x: f64,
+    y: f64,
+}
+
+impl Add for Vec2 {
+    type Output = Vec2;
+
+    fn add(self, rhs: Self) -> Self::Output {
+        Vec2 {
+            x: self.x + rhs.x,
+            y: self.y + rhs.y,
+        }
+    }
+}
+
+impl Display for Vec2 {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "({:.1}, {:.1})", self.x, self.y)
+    }
+}
+
+fn add_vecs(a: Vec2, b: Vec2) -> String {
+    format!("{}", a + b)
+}
+```
+
+## First Class Functions
+
+Functions have concrete type `fn(Args) -> Return`.
+
+```rust showLineNumbers
+fn double(x: i32) -> i32 {
+    x * 2
+}
+
+fn increment(x: i32) -> i32 {
+    x + 1
+}
+
+fn apply_twice(f: fn(i32) -> i32, x: i32) -> i32 {
+    f(f(x))
+}
+
+fn main() {
+    println!("{}", apply_twice(double, 2));
+    println!("{}", apply_twice(increment, 2));
+}
+```
+
+## Returning Unnamed Types
+
+Closures are unnamed types; box trait objects when returning from functions.
+
+```rust showLineNumbers
+fn make_multiplier(n: i32) -> Box<dyn Fn(i32) -> i32> {
+    Box::new(move |x| x * n)
+}
+
+fn compose(
+    f: Box<dyn Fn(i32) -> i32>,
+    g: Box<dyn Fn(i32) -> i32>,
+) -> Box<dyn Fn(i32) -> i32> {
+    Box::new(move |x| f(g(x)))
+}
+```
+
+## Match Guards and At Bindings
+
+Use guards for extra runtime conditions and `@` to bind matched values.
+
+```rust showLineNumbers
+fn classify(n: i32) -> String {
+    match n {
+        0 => "zero".to_string(),
+        x @ 1..=10 => format!("small: {}", x),
+        x @ -10..=-1 => format!("neg small: {}", x),
+        x if x > 10 => format!("big: {}", x),
+        x => format!("very small: {}", x),
+    }
+}
+```
+
+## Command Parser with Slice Patterns
+
+```rust showLineNumbers
+fn parse_command(input: &str) -> String {
+    let tokens: Vec<&str> = input.split_whitespace().collect();
+
+    match tokens.as_slice() {
+        ["quit"] => "Goodbye".to_string(),
+        ["echo", rest @ ..] => rest.join(" "),
+        ["add", x, y] => match (x.parse::<i32>(), y.parse::<i32>()) {
+            (Ok(a), Ok(b)) => (a + b).to_string(),
+            _ => "invalid numbers".to_string(),
+        },
+        ["repeat", n, msg] => match n.parse::<usize>() {
+            Ok(count) => vec![*msg; count].join(" "),
+            Err(_) => "invalid repeat count".to_string(),
+        },
+        _ => "Unknown".to_string(),
+    }
+}
+```
+
+## Unsafe Rust and Raw Pointers
+
+Raw pointers bypass borrow rules, so dereferencing must happen inside `unsafe`.
+
+```rust showLineNumbers
+fn swap_values(a: &mut i32, b: &mut i32) {
+    let ap: *mut i32 = a;
+    let bp: *mut i32 = b;
+
+    unsafe {
+        std::ptr::swap(ap, bp);
+    }
+}
+```
+
+## Safe API Over Unsafe Code
+
+Wrap unsafe internals in safe public methods.
+
+```rust showLineNumbers
+struct SafeArray {
+    data: Vec<i32>,
+}
+
+impl SafeArray {
+    fn new(data: Vec<i32>) -> Self {
+        Self { data }
+    }
+
+    fn get(&self, i: usize) -> Option<i32> {
+        self.data.get(i).copied()
+    }
+
+    unsafe fn get_unchecked(&self, i: usize) -> i32 {
+        *self.data.as_ptr().add(i)
+    }
+
+    fn sum_all(&self) -> i32 {
+        let mut sum = 0;
+        for i in 0..self.data.len() {
+            // SAFETY: i is always in bounds because loop range is 0..len.
+            sum += unsafe { self.get_unchecked(i) };
+        }
+        sum
+    }
+}
+```
+
+## Declarative Macros
+
+`macro_rules!` matches patterns and expands into code.
+
+```rust showLineNumbers
+macro_rules! square {
+    ($a:expr) => {
+        $a * $a
+    };
+}
+
+fn compute(n: i32) -> i32 {
+    square!(n)
+}
+```
+
+Multiple arms:
+
+```rust showLineNumbers
+macro_rules! convert {
+    (celsius_to_f, $a:expr) => {
+        ($a * 9 / 5) + 32
+    };
+    (f_to_celsius, $a:expr) => {
+        ($a - 32) * 5 / 9
+    };
+}
+
+fn temp_test(c: i32) -> i32 {
+    convert!(celsius_to_f, c)
+}
+```
+
+Macro repetition:
+
+```rust showLineNumbers
+macro_rules! sum {
+    () => {
+        0
+    };
+    ($($a:expr),+ $(,)?) => {{
+        let mut total = 0;
+        $(total += $a;)*
+        total
+    }};
+}
+
+fn total(a: i32, b: i32, c: i32) -> i32 {
+    sum!(a, b, c)
+}
+```
+
+## Creating and Joining Threads
+
+```rust showLineNumbers
+use std::thread;
+
+fn parallel_sum(nums: Vec<i32>) -> i32 {
+    let mid = nums.len() / 2;
+    let v1 = nums[..mid].to_vec();
+    let v2 = nums[mid..].to_vec();
+
+    let t1 = thread::spawn(move || v1.iter().sum::<i32>());
+    let t2 = thread::spawn(move || v2.iter().sum::<i32>());
+
+    let s1 = t1.join().unwrap();
+    let s2 = t2.join().unwrap();
+
+    s1 + s2
+}
+```
+
+## Channels Between Threads
+
+```rust showLineNumbers
+use std::sync::mpsc;
+use std::thread;
+
+fn process_values(values: Vec<i32>) -> Vec<i32> {
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        for v in values {
+            tx.send(v * 2).unwrap();
+        }
+    });
+
+    rx.iter().collect()
+}
+```
+
+## Mutex T
+
+`Mutex<T>` ensures one thread accesses data at a time.
+
+```rust showLineNumbers
+use std::sync::Mutex;
+
+fn main() {
+    let x = Mutex::new(5);
+
+    {
+        let mut guard = x.lock().unwrap();
+        *guard = 10;
+    }
+
+    println!("{:?}", x);
+}
+```
+
+## Arc and Mutex Together
+
+`Arc<T>` gives shared ownership across threads, `Mutex<T>` gives safe mutation.
+
+```rust showLineNumbers
+use std::sync::{Arc, Mutex};
+use std::thread;
+
+fn main() {
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = Vec::new();
+
+    for _ in 0..10 {
+        let counter = Arc::clone(&counter);
+        handles.push(thread::spawn(move || {
+            let mut guard = counter.lock().unwrap();
+            *guard += 1;
+        }));
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!("{}", *counter.lock().unwrap());
+}
+```
+
+## Thread Pipeline Example
+
+```rust showLineNumbers
+use std::sync::mpsc;
+use std::thread;
+
+fn pipeline(input: Vec<i32>) -> Vec<String> {
+    let (tx1, rx1) = mpsc::channel();
+    thread::spawn(move || {
+        for n in input {
+            if n % 2 == 0 {
+                tx1.send(n).unwrap();
+            }
+        }
+    });
+
+    let (tx2, rx2) = mpsc::channel();
+    thread::spawn(move || {
+        for n in rx1 {
+            tx2.send(n * n).unwrap();
+        }
+    });
+
+    let (tx3, rx3) = mpsc::channel();
+    thread::spawn(move || {
+        for n in rx2 {
+            tx3.send(n.to_string()).unwrap();
+        }
+    });
+
+    rx3.iter().collect()
+}
+```
+
+## Wrap-Up
+
+That’s week 2 in one place. Smart pointers and concurrency looked intimidating at first glance, but once I started seeing the same patterns repeat (`Box`, `Rc`, `RefCell`, `Arc`, `Mutex`, trait objects), things became much clearer. Next step is just writing more small programs and using these patterns in actual projects.

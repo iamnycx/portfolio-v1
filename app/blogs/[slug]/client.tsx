@@ -8,7 +8,7 @@ export function Heading({ title }: { title: string }) {
   return (
     <motion.h1
       layoutId={`blog-title-${title}`}
-      className="text-4xl font-bold tracking-tight"
+      className="text-4xl font-offbit tracking-wide"
     >
       {title}
     </motion.h1>

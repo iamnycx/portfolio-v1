@@ -114,7 +114,7 @@ export default function Projects() {
         <div className="flex items-baseline justify-between">
           <m.h1
             {...revealOnView(0)}
-            className="text-xl font-bold tracking-tight"
+            className="text-xl font-offbit tracking-wider"
           >
             projects
           </m.h1>
@@ -167,7 +167,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <PlusIcons />
       <div className="z-10 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">
-          <h1 className="line-clamp-1 text-xl font-bold tracking-tight">
+          <h1 className="line-clamp-1 text-xl font-offbit tracking-wide">
             {project?.name}
           </h1>
           <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-lime-400">

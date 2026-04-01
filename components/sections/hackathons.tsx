@@ -83,7 +83,7 @@ const revealOnView = (delay = 0) => ({
     ease: "easeInOut" as const,
     delay,
   },
-  viewport: { once: true, margin: "0px 0px -25% 0px" },
+  viewport: { once: true, margin: "0px 0px -15% 0px" },
 });
 
 export default function Hackathons() {
@@ -116,7 +116,7 @@ function HackathonCard({ data, index }: { data: workDataType; index: number }) {
       <PlusIcons />
       <div className="z-10 flex flex-col gap-1 sm:flex-row sm:justify-between">
         <div className="space-y-1">
-          <h1 className="text-xl font-bold tracking-tight">{data.title}</h1>
+          <h1 className="text-xl font-offbit tracking-wide">{data.title}</h1>
           <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-lime-400">
             {data.organizer}
           </h2>

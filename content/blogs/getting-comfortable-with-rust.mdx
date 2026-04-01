@@ -1,0 +1,859 @@
+---
+title: "Solana Fellowship Week 1: Getting Comfortable with Rust"
+description: "A personal Rust recap from week 1 of the Solana India Fellowship, where I went through core Rust concepts step by step with practical examples, from printing and variables to ownership, borrowing, enums, traits, iterators, error handling, lifetimes, and Cargo workflows that made the language feel way more approachable than expected."
+date: "2026-04-02"
+tags:
+  [
+    "Rust",
+    "Solana",
+    "Solana India Fellowship",
+    "Superteam India",
+    "Ownership",
+    "Borrowing",
+    "Web3",
+  ]
+---
+
+The last two weeks were pretty great because I was part of the Solana India Fellowship by [Superteam India](https://x.com/SuperteamIN). Week 1 was all about basic Rust, and honestly, it was not that difficult once I got into it. We also got to learn from [Harkirat](https://x.com/kirat_tw) himself, which made the whole thing even better.
+
+Rust still has its rough edges for me, but this post is just me putting together the things that stood out during the week in a simple way, with small examples that made more sense as I went along.
+
+## Printing
+
+Use `println!` for printing stuff.
+
+```rust showLineNumbers
+fn main() {
+	println!("hey rust");
+}
+```
+
+## Variables
+
+Type annotations are optional in many places, but here is explicit style:
+
+```rust showLineNumbers
+fn main() {
+	let x: i32 = 10;
+	println!("x is: {}", x);
+}
+```
+
+## Mutable Variables
+
+By default variables are immutable. Use `mut` if value should change.
+
+```rust showLineNumbers
+fn main() {
+	let mut x = 10;
+	println!("{x}");
+	x = 12;
+	println!("{x}");
+}
+```
+
+## Variable Shadowing
+
+You can redeclare the same variable name. This is called shadowing.
+
+```rust showLineNumbers
+fn main() {
+	let name = String::from("John");
+	println!("user1: {}", name);
+
+	let name = String::from("Smith");
+	println!("user2: {}", name);
+}
+```
+
+It is useful when you want a transformed value but same name.
+
+## Data Types
+
+Primitive types:
+
+- Integers: `i8` to `i128`, and unsigned `u8` to `u128`
+- Floats: `f32`, `f64` (default)
+- Booleans: `true` / `false`
+- Character: `char`
+
+### Tuples
+
+Group multiple values of different types.
+
+```rust showLineNumbers
+fn get_bio(name: &str, age: i32) -> (&str, i32) {
+	(name, age)
+}
+
+fn main() {
+	let data = ("Nikhil", 21);
+	println!("{}", data.0);
+
+	let bio = get_bio("Aman", 22);
+	println!("{} {}", bio.0, bio.1);
+}
+```
+
+### Arrays
+
+- Fixed length
+- Same data type only
+
+```rust showLineNumbers
+fn main() {
+	let nums: [i32; 5] = [1, 2, 3, 4, 5];
+	println!("first item: {}", nums[0]);
+}
+```
+
+### Slices
+
+Slice = borrowed view into existing data. No ownership transfer.
+
+```rust showLineNumbers
+fn main() {
+	let nums: [i32; 5] = [1, 2, 3, 4, 5];
+	let nums_slice = &nums[0..nums.len()];
+	println!("len: {}", nums_slice.len());
+
+	let name = String::from("John Wick");
+	let first_name = &name[0..4];
+	println!("{}", first_name);
+}
+```
+
+## Functions
+
+- Parameter types are required
+- Last expression without `;` is returned automatically
+
+```rust showLineNumbers
+fn sum(a: i32, b: i32) -> i32 {
+	a + b
+	title: "Rust Basics"
+	description: "A personal Rust recap from week 1 of the Solana India Fellowship, covering variables, ownership, structs, enums, traits, iterators, and more."
+fn main() {
+	tags: ["Rust", "Solana", "Programming", "Systems"]
+}
+```
+
+    Yo. I’m still learning Rust too, so this write-up is mostly me collecting the stuff I keep running into and trying to make sense of it without turning it into some overcomplicated tutorial.
+
+    Rust keeps feeling a little weird at first, and the compiler definitely roasts me sometimes, but that’s part of the process. These are just my beginner notes in rough, friendly language, with small examples for the stuff I’ve been practicing.
+
+## Conditionals As Expressions
+
+`if` can return a value:
+As a beginner, I keep these commands handy:
+
+```rust showLineNumbers
+fn main() {
+	let score = 91;
+	That’s it for this one. The week gave me a solid starting point with Rust, and the main things that stuck were borrowing or cloning when a value gets moved, using `Result<T, E>` when something can fail, leaning on iterators once loops start getting messy, and running `cargo check` when I want a quick sanity check. I’ll keep building small stuff from here and see how the rest of Rust opens up.
+	println!("{}", label);
+}
+```
+
+All branches must return the same type.
+
+## Loops
+
+Types:
+
+- `loop`: infinite until `break`
+- `while`: runs while condition is true
+- `for`: iterate ranges and collections
+
+```rust showLineNumbers
+fn main() {
+	let mut c = 0;
+	loop {
+		if c == 5 {
+			break;
+		}
+		println!("{}", c);
+		c += 1;
+	}
+
+	let mut x = 0;
+	while x <= 5 {
+		println!("{}", x);
+		x += 1;
+	}
+
+	for i in 0..=5 {
+		println!("{}", i);
+	}
+}
+```
+
+## Ownership
+
+Core Rust rule set:
+
+- Every value has one owner
+- Owner goes out of scope -> value dropped
+- Assigning heap data usually moves ownership
+
+```rust showLineNumbers
+fn main() {
+	let s1 = String::from("Nikhil");
+	let s2 = s1;
+
+	println!("{}", s2);
+	// println!("{}", s1); // error: value borrowed after move
+}
+```
+
+## Borrowing
+
+Borrow with `&` so ownership stays with original variable.
+
+```rust showLineNumbers
+fn main() {
+	let s1 = String::from("Nikhil");
+	let s2 = &s1;
+
+	println!("{}", s2);
+	println!("{}", s1); // still valid
+}
+```
+
+## Mutable Borrowing
+
+- You can have many immutable borrows
+- Or one mutable borrow
+- Not both at same time
+
+```rust showLineNumbers
+fn main() {
+	let mut x = String::from("Nikhil");
+	let y = &mut x;
+	y.push_str(" Singh");
+	println!("{}", y);
+
+	let fruit = String::from("apple");
+	let f1 = &fruit;
+	let f2 = &fruit;
+	println!("{} {}", f1, f2);
+
+	let mut fruit2 = String::from("apple");
+	let f3 = &mut fruit2;
+	f3.push_str(" pie");
+	println!("{}", f3);
+}
+```
+
+## Structs
+
+Define your own data type by grouping fields.
+
+```rust showLineNumbers
+struct User {
+	name: String,
+	age: i32,
+}
+
+fn main() {
+	let user = User {
+		name: String::from("John"),
+		age: 21,
+	};
+
+	println!("{}", user.name);
+}
+```
+
+## Impl (Methods On Struct)
+
+```rust showLineNumbers
+struct User {
+	name: String,
+	age: i32,
+}
+
+impl User {
+	fn get_bio(&self) -> String {
+		format!("{} is {} years old", self.name, self.age)
+	}
+}
+
+fn main() {
+	let user = User {
+		name: String::from("John"),
+		age: 21,
+	};
+
+	println!("{}", user.get_bio());
+}
+```
+
+## Associated Functions
+
+Inside `impl` but no `self` parameter. Usually used as constructors.
+
+```rust showLineNumbers
+struct User {
+	name: String,
+	age: i32,
+}
+
+impl User {
+	fn new(name: String, age: i32) -> Self {
+		Self { name, age }
+	}
+}
+
+fn main() {
+	let user = User::new(String::from("Nikhil"), 21);
+	println!("{}", user.name);
+}
+```
+
+## Match
+
+Use `match` when you need branch-by-pattern logic.
+
+```rust showLineNumbers
+fn main() {
+	let day = "Sunday";
+	match day {
+		"Sunday" | "Saturday" => println!("weekend"),
+		_ => println!("weekday"),
+	}
+
+	let value = 42;
+	let res = match value {
+		0..=99 => "2 digits",
+		100..=999 => "3 digits",
+		_ => "idk",
+	};
+
+	println!("{}", res);
+}
+```
+
+## Enums
+
+Great for modeling one value that can be one of many variants.
+
+```rust showLineNumbers
+enum Shape {
+	Rectangle(i32, i32),
+	Square(i32),
+}
+
+fn main() {
+	let my_shape = Shape::Rectangle(3, 5);
+	match my_shape {
+		Shape::Rectangle(w, h) => println!("rect: {}x{}", w, h),
+		Shape::Square(s) => println!("square: {}", s),
+	}
+}
+```
+
+## Option Enum
+
+Rust has no `null`. Use `Option<T>`:
+
+- `Some(value)`
+- `None`
+
+```rust showLineNumbers
+fn fetch_score() -> Option<i32> {
+	Some(98)
+}
+
+fn main() {
+	let res = fetch_score();
+	match res {
+		Some(s) => println!("score is: {}", s),
+		None => println!("cannot fetch score"),
+	}
+}
+```
+
+## Result Enum
+
+Used for error handling.
+
+- `Ok(data)`
+- `Err(error)`
+
+```rust showLineNumbers
+fn main() {
+	let parsed: Result<i32, _> = "32".parse();
+	match parsed {
+		Ok(data) => println!("data: {}", data),
+		Err(_) => println!("not a valid number"),
+	}
+}
+```
+
+## Error Propagation With Question Mark
+
+If expression before `?` is `Err`, function returns early.
+
+```rust showLineNumbers
+fn parse_number(num: &str) -> Result<i32, String> {
+	let parsed: i32 = num
+		.parse()
+		.map_err(|_| "parsing failed".to_string())?;
+	Ok(parsed)
+}
+```
+
+## Collections
+
+Main ones you will use every day:
+
+- `Vec<T>`
+- `String`
+- `HashMap<K, V>`
+
+### Vec
+
+Dynamic array on heap. Can grow/shrink.
+
+```rust showLineNumbers
+fn main() {
+	let mut nums = vec![12, 23];
+	nums.push(44);
+	println!("{}", nums.len());
+}
+```
+
+### String vs Str
+
+- `String`: owned, growable, heap-allocated
+- `&str`: borrowed string slice
+
+```rust showLineNumbers
+fn main() {
+	let s1 = String::from("John");
+	let s2 = "John".to_string();
+
+	println!("{} {}", s1.len(), s2.to_uppercase());
+
+	for word in "a,b,c".split_terminator(',') {
+		println!("{}", word);
+	}
+
+	let s3: &str = &s1;
+	let s4: &str = "john";
+	println!("{} {}", s3, s4);
+}
+```
+
+### HashMap and HashSet
+
+- `HashMap`: key-value storage
+- `HashSet`: unique values only
+
+```rust showLineNumbers
+use std::collections::{HashMap, HashSet};
+
+fn main() {
+	let mut hm: HashMap<String, i32> = HashMap::new();
+
+	hm.insert("a".to_string(), 1);
+	hm.entry("a".to_string()).and_modify(|x| *x += 1).or_insert(0);
+	hm.entry("b".to_string()).or_insert(10);
+
+	let count = hm.entry("c".to_string()).or_insert(0);
+	*count += 1;
+
+	let val = hm.get("a");
+	let exists = hm.contains_key("a");
+	println!("{:?} {}", val, exists);
+
+	let removed = hm.remove("b");
+	println!("{:?}", removed);
+
+	hm.retain(|_, v| *v > 0);
+	for (k, v) in &hm {
+		println!("{}: {}", k, v);
+	}
+
+	let mut hs: HashSet<i32> = HashSet::new();
+	hs.insert(1);
+	hs.insert(1);
+	hs.insert(2);
+	println!("set size: {}", hs.len());
+}
+```
+
+## Traits
+
+Traits define shared behavior.
+
+```rust showLineNumbers
+trait Summary {
+	fn summarize(&self) -> String;
+}
+
+trait Greet {
+	fn greet_user(&self, name: &str) -> String {
+		format!("hello {}", name)
+	}
+}
+
+struct User {
+	name: String,
+	age: i32,
+}
+
+impl Summary for User {
+	fn summarize(&self) -> String {
+		format!("{} is {} years old", self.name, self.age)
+	}
+}
+
+impl Greet for User {}
+```
+
+## Generics + Trait Bounds
+
+```rust showLineNumbers
+fn largest<T: PartialOrd>(list: &[T]) -> &T {
+	let mut largest = &list[0];
+	for item in list {
+		if item > largest {
+			largest = item;
+		}
+	}
+	largest
+}
+```
+
+`T: PartialOrd` means T must support comparison.
+
+## Derive
+
+Auto-implement common traits with `derive`.
+
+```rust showLineNumbers
+#[derive(Debug, Clone, PartialEq)]
+struct Point {
+	x: i32,
+	y: i32,
+}
+```
+
+## Generic Parameter vs Associated Types
+
+### Generic Trait Parameter
+
+```rust showLineNumbers
+trait Container<T> {
+	fn get(&self) -> T;
+}
+
+struct IntContainer;
+
+impl Container<i32> for IntContainer {
+	fn get(&self) -> i32 {
+		42
+	}
+}
+```
+
+You can implement same trait for different `T` on same type.
+
+### Associated Type
+
+```rust showLineNumbers
+trait Container {
+	type Item;
+	fn get(&self) -> Self::Item;
+}
+
+struct IntContainer;
+
+impl Container for IntContainer {
+	type Item = i32;
+	fn get(&self) -> i32 {
+		42
+	}
+}
+```
+
+Here `Item` is locked as part of implementation.
+
+## Lifetimes
+
+When returning references, compiler needs to know relation between input and output lifetimes.
+
+```rust showLineNumbers
+fn longest<'a>(a: &'a str, b: &'a str) -> &'a str {
+	if a.len() > b.len() {
+		a
+	} else {
+		b
+	}
+}
+
+fn main() {
+	let x = String::from("looooooooong");
+	let y = String::from("short");
+	println!("{}", longest(&x, &y));
+}
+```
+
+## Implicit Lifetimes
+
+Common cases do not need explicit lifetime annotations:
+
+```rust showLineNumbers
+fn first_char(s: &str) -> &str {
+	&s[0..1]
+}
+```
+
+## Static Lifetime
+
+Lives for full program duration. String literals are `'static`.
+
+```rust showLineNumbers
+fn classify(n: i32) -> &'static str {
+	if n > 0 {
+		"positive"
+	} else if n < 0 {
+		"negative"
+	} else {
+		"zero"
+	}
+}
+```
+
+## Closures
+
+Anonymous functions: `|params| body`
+
+```rust showLineNumbers
+fn double_all(nums: &[i32]) -> Vec<i32> {
+	nums.iter().map(|x| x * 2).collect()
+}
+```
+
+## Iterators
+
+Iterator trait core method:
+
+```rust showLineNumbers
+fn next(&mut self) -> Option<Self::Item>;
+```
+
+Example:
+
+```rust showLineNumbers
+fn main() {
+	let v = vec![1, 2, 3];
+	let mut iter = v.iter();
+
+	println!("{:?}", iter.next());
+	println!("{:?}", iter.next());
+	println!("{:?}", iter.next());
+	println!("{:?}", iter.next());
+}
+```
+
+Iterator types:
+
+- `iter()` -> immutable refs
+- `iter_mut()` -> mutable refs
+- `into_iter()` -> takes ownership
+
+```rust showLineNumbers
+fn main() {
+	let mut v = vec![1, 2, 3];
+
+	for x in v.iter() {
+		println!("{}", x);
+	}
+
+	for x in v.iter_mut() {
+		*x += 1;
+	}
+
+	for x in v.clone().into_iter() {
+		println!("{}", x);
+	}
+}
+```
+
+## Adapter Methods
+
+```rust showLineNumbers
+fn main() {
+	let v = vec![1, 2, 3, 4];
+
+	let squared: Vec<_> = v.iter().map(|x| x * x).collect();
+	println!("{:?}", squared);
+
+	let even: Vec<_> = v.iter().filter(|x| **x % 2 == 0).collect();
+	println!("{:?}", even);
+
+	let sum = v.iter().fold(0, |acc, x| acc + x);
+	println!("{}", sum);
+}
+```
+
+Iterators are lazy. They do nothing until consumed by `collect`, `sum`, `for`, `find`, etc.
+
+## Copied vs Cloned
+
+```rust showLineNumbers
+fn main() {
+	let nums = vec![1, 2, 3];
+	let words = vec![String::from("hi"), String::from("bye")];
+
+	let nums_copied: Vec<i32> = nums.iter().copied().collect();
+	let words_cloned: Vec<String> = words.iter().cloned().collect();
+
+	println!("{:?}", nums_copied);
+	println!("{:?}", words_cloned);
+	println!("{:?}", nums);
+	println!("{:?}", words);
+}
+```
+
+## Custom Iterator
+
+```rust showLineNumbers
+struct Countdown {
+	n: i32,
+}
+
+impl Countdown {
+	fn new(n: i32) -> Self {
+		Countdown { n }
+	}
+}
+
+impl Iterator for Countdown {
+	type Item = i32;
+
+	fn next(&mut self) -> Option<Self::Item> {
+		if self.n < 1 {
+			return None;
+		}
+		let current = self.n;
+		self.n -= 1;
+		Some(current)
+	}
+}
+
+fn main() {
+	for x in Countdown::new(5) {
+		println!("{}", x);
+	}
+}
+```
+
+## If Let and While Let
+
+Useful when you only care about one matching pattern.
+
+```rust showLineNumbers
+fn main() {
+	let score = Some(98);
+
+	if let Some(s) = score {
+		println!("score: {}", s);
+	} else {
+		println!("no score");
+	}
+
+	let mut stack = vec![1, 2, 3];
+	while let Some(top) = stack.pop() {
+		println!("popped: {}", top);
+	}
+}
+```
+
+## Panic vs Result
+
+- Use `panic!` for unrecoverable bugs (or impossible states)
+- Use `Result` for expected failures (file missing, parse fail, network fail)
+
+```rust showLineNumbers
+fn divide(a: i32, b: i32) -> Result<i32, String> {
+	if b == 0 {
+		return Err("cannot divide by zero".to_string());
+	}
+	Ok(a / b)
+}
+
+fn main() {
+	match divide(10, 2) {
+		Ok(v) => println!("{}", v),
+		Err(e) => println!("error: {}", e),
+	}
+}
+```
+
+## Modules and Use
+
+Break code into files/modules so project does not become one giant `main.rs`.
+
+```rust showLineNumbers
+mod math {
+	pub fn add(a: i32, b: i32) -> i32 {
+		a + b
+	}
+}
+
+use math::add;
+
+fn main() {
+	println!("{}", add(2, 3));
+}
+```
+
+`pub` is needed if you want to access item outside that module.
+
+## Cargo Basics
+
+For quick reference, I keep these commands handy:
+
+Create a new Rust project:
+
+```bash
+cargo new app_name
+```
+
+Build and run the project:
+
+```bash
+cargo run
+```
+
+Fast compile check without creating binary:
+
+```bash
+cargo check
+```
+
+Run tests:
+
+```bash
+cargo test
+```
+
+Format code automatically:
+
+```bash
+cargo fmt
+```
+
+Lint code and get useful suggestions:
+
+```bash
+cargo clippy
+```
+
+## Wrap-Up
+
+That’s it for this one. Rust felt pretty good once the basics started landing, and the whole week left me feeling more comfortable with it than I expected. I’m excited to keep going, keep building, and see where it goes from here. Bye for now.

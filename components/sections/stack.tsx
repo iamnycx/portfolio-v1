@@ -60,9 +60,9 @@ export default function Stack() {
       <div className="grid grid-cols-1 gap-8 py-8 sm:grid-cols-2">
         {Object.entries(stackData).map(([category, items]) => (
           <div key={category}>
-            <h2 className="from-accent/30 border-muted-foreground relative ml-10 flex w-fit items-center gap-1 border border-dotted bg-linear-to-bl to-50% px-2 py-1 tracking-tighter">
-              <BoxIcon size={16} strokeWidth={1.5} />
-              {category}
+            <h2 className="from-accent/30 border-muted-foreground font-offbit relative ml-10 flex w-fit items-center gap-1 border border-dotted bg-linear-to-bl to-50% px-2 py-1 tracking-wide">
+              <BoxIcon className="size-5 stroke-1" />
+              <span className="translate-y-0.5">{category}</span>
               <div className="border-muted-foreground absolute top-0 -left-0.5 h-0.5 w-10.5 origin-left rotate-135 border-t border-dashed" />
             </h2>
             <div className="relative ml-6 flex flex-wrap gap-x-3.5 gap-y-2 pt-4">

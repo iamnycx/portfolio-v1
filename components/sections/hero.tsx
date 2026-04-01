@@ -32,7 +32,7 @@ export default function Hero() {
         <m.div {...revealOnView(0.1)} className="flex items-center gap-4">
           <m.h1
             {...revealOnView(0.15)}
-            className="text-xl font-bold tracking-tight"
+            className="font-offbit text-xl tracking-wider"
           >
             nikhil singh mehta
           </m.h1>
@@ -60,14 +60,14 @@ export default function Hero() {
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
             <UniversityIcon size={14} />
-            <span>{"CS Grad"}</span>
+            <span>{"CS"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.4)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
             <Computer size={14} />
-            <span>{"Arch Linux"}</span>
+            <span>{"Arch"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.45)}

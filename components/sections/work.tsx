@@ -47,7 +47,7 @@ const revealOnView = (delay = 0) => ({
     ease: "easeInOut" as const,
     delay,
   },
-  viewport: { once: true, margin: "0px 0px -25% 0px" },
+  viewport: { once: true, margin: "0px 0px -15% 0px" },
 });
 
 export default function Work() {
@@ -80,7 +80,7 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
       <PlusIcons />
       <div className="z-10 flex flex-col gap-2 sm:flex-row sm:justify-between">
         <div className="space-y-1">
-          <h1 className="text-xl font-bold tracking-tight">
+          <h1 className="text-xl font-offbit tracking-wide">
             {data.orgnization}
           </h1>
           <h2>

@@ -36,11 +36,11 @@ export default async function BlogPostPage({
             options={mdxRemoteOptions}
           />
         </div>
-        <div className="flex flex-wrap justify-center gap-2 pt-2">
+        <div className="border-muted-foreground flex flex-wrap justify-center gap-4 border-t border-dashed pt-8">
           {data.tags.map((tag: string, idx: number) => (
             <span
               key={idx}
-              className="inline-block border border-dotted border-lime-400 bg-lime-400/5 px-2 py-1 text-lime-400"
+              className="inline-block border border-dotted border-neutral-600 bg-lime-400/5 px-2 py-1 text-neutral-400"
             >
               {tag}
             </span>

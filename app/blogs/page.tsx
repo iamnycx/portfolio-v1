@@ -13,7 +13,7 @@ export default function Blogs() {
     <Container className="pt-16">
       <div className="space-y-4 py-12">
         <div className="flex items-baseline justify-between">
-          <h1 className="text-xl font-bold tracking-tight">blogs</h1>
+          <h1 className="text-xl font-offbit tracking-wide">blogs</h1>
           <DummyCommand />
         </div>
         <div className="my-8 grid grid-cols-1 gap-4">

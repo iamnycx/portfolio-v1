@@ -51,7 +51,7 @@ const revealOnView = (delay = 0) => ({
     ease: "easeInOut" as const,
     delay,
   },
-  viewport: { once: true, margin: "0px 0px -25% 0px" },
+  viewport: { once: true, margin: "0px 0px -15% 0px" },
 });
 
 export default function FeaturedProjects() {
@@ -102,7 +102,7 @@ function FeaturedProjectCard({
       <PlusIcons />
       <div className="z-10 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">
-          <h1 className="line-clamp-1 text-xl font-bold tracking-tight">
+          <h1 className="font-offbit line-clamp-1 text-xl tracking-wide">
             {project?.name}
           </h1>
           <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-lime-400">

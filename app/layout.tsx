@@ -5,8 +5,8 @@ import Footer from "@/components/common/footer";
 import React, { Suspense } from "react";
 import { ThemeProvider } from "@/app/providers/theme-provider";
 import LenisScrollProvider from "./providers/lenis-provider";
-import { SyneMono } from "./font";
 import { ProgressiveBlur } from "@/components/progressive-blur";
+import { offBit, rx100 } from "./font";
 
 export const metadata: Metadata = {
   title: "nycx@dev",
@@ -86,7 +86,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${SyneMono.className} antialiased`}>
+      <body className={`${offBit.variable} ${rx100.className} antialiased`}>
         <Suspense>
           <ThemeProvider
             attribute="class"

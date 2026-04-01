@@ -5,10 +5,10 @@ import CopyButton from "./common/copy-button";
 
 export const mdxComponents = {
   h2: (props: ComponentProps<"h2">) => (
-    <h2 className="my-6 text-2xl font-bold" {...props} />
+    <h2 className="font-offbit my-6 text-2xl tracking-wide" {...props} />
   ),
   h3: (props: ComponentProps<"h3">) => (
-    <h2 className="my-4 text-xl font-bold" {...props} />
+    <h2 className="font-offbit my-4 text-xl tracking-wide" {...props} />
   ),
   p: (props: ComponentProps<"p">) => (
     <p

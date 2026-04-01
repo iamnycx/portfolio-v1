@@ -71,14 +71,14 @@ export default function DigitalArt() {
             style={{ opacity }}
             className="absolute inset-x-0 top-0 z-20 md:inset-0"
           >
-            <h2 className="text-muted-foreground absolute top-8 z-0 w-full text-center text-7xl tracking-tighter uppercase md:left-10 md:text-left">
+            <h2 className="text-muted-foreground font-offbit absolute top-8 -z-10 w-full text-center text-7xl uppercase md:left-10 md:text-left">
               EN ROUTE
             </h2>
           </motion.div>
         </div>
         <div className="border-muted-foreground flex flex-col space-y-8 border border-dashed md:w-120 md:border-l-0">
           <div className="flex items-baseline-last justify-between p-4">
-            <h1 className="text-3xl font-black">TL;DR</h1>
+            <h1 className="text-3xl font-offbit">TL;DR</h1>
             <Logo />
           </div>
           <div className="text-muted-foreground flex flex-col gap-1 p-4 pt-0 tracking-wide uppercase">
@@ -102,7 +102,7 @@ export default function DigitalArt() {
             className="border-muted-foreground hover:bg-muted/50 group mt-auto flex w-full cursor-pointer items-center justify-center gap-2 border-t border-dashed py-4 transition-colors duration-300 ease-in-out"
           >
             <Antenna className="stroke-muted-foreground group-hover:stroke-accent-foreground size-5 transition-colors duration-300 ease-in-out" />
-            <span className="text-xl font-black tracking-wider">PING ME</span>
+            <span className="text-xl font-offbit tracking-wider translate-y-0.5">PING ME</span>
           </Link>
         </div>
       </div>
