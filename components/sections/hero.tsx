@@ -53,7 +53,7 @@ export default function Hero() {
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
             <MapPinIcon size={14} />
-            <span>{"India"}</span>
+            <span>{"In"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.35)}
@@ -74,7 +74,7 @@ export default function Hero() {
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
             <Zap size={14} />
-            <span>{"Fellow @SuperteamIn"}</span>
+            <span>{"SuperteamIn"}</span>
           </m.p>
         </div>
       </m.div>
