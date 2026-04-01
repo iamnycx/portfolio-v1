@@ -47,10 +47,7 @@ export default function Hero() {
             </InteractiveHoverButton>
           </m.div>
         </m.div>
-        <m.div
-          {...revealOnView(0.25)}
-          className="flex flex-wrap justify-center gap-4 sm:justify-end"
-        >
+        <div className="mt-6 flex flex-wrap justify-center gap-4 sm:justify-end md:mt-0">
           <m.p
             {...revealOnView(0.3)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
@@ -63,23 +60,23 @@ export default function Hero() {
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
             <UniversityIcon size={14} />
-            <span>{"CS"}</span>
+            <span>{"CS Grad"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.4)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
             <Computer size={14} />
-            <span>{"Arch"}</span>
+            <span>{"Arch Linux"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.45)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
             <Zap size={14} />
-            <span>{"SuperteamIn"}</span>
+            <span>{"Fellow @SuperteamIn"}</span>
           </m.p>
-        </m.div>
+        </div>
       </m.div>
 
       <div className="flex flex-col justify-between gap-8 lg:flex-row">
@@ -97,7 +94,7 @@ export default function Hero() {
             <b className="text-foreground">web3</b> development.
           </m.p>
         </m.div>
-        <div className="ml-auto h-[6rem] overflow-y-hidden">
+        <div className="mx-auto h-[6rem] overflow-y-hidden md:mr-0">
           <video
             autoPlay
             loop

@@ -57,7 +57,7 @@ export default function DigitalArt() {
           </motion.div>
           <motion.div
             style={{ scale: charScale }}
-            className="absolute right-0 -bottom-26 z-10 w-96"
+            className="absolute right-0 -bottom-26 z-20 w-96"
           >
             <Image
               src="/img/astronaut.png"
