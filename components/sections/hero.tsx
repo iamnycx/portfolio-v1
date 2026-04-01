@@ -7,11 +7,13 @@ import { motion as m } from "motion/react";
 const revealOnView = (delay = 0) => ({
   initial: {
     filter: "blur(3px)",
-    opacity: 0.8,
+    opacity: 0,
+    y: 5,
   },
   whileInView: {
     filter: "blur(0px)",
     opacity: 1,
+    y: 0,
   },
   transition: {
     ease: "easeInOut" as const,
@@ -80,10 +82,7 @@ export default function Hero() {
         </m.div>
       </m.div>
 
-      <m.div
-        {...revealOnView(0.5)}
-        className="flex flex-col justify-between gap-8 lg:flex-row"
-      >
+      <div className="flex flex-col justify-between gap-8 lg:flex-row">
         <m.div {...revealOnView(0.55)} className="w-full max-w-lg space-y-12">
           <m.p
             {...revealOnView(0.6)}
@@ -98,10 +97,7 @@ export default function Hero() {
             <b className="text-foreground">web3</b> development.
           </m.p>
         </m.div>
-        <m.div
-          {...revealOnView(0.65)}
-          className="ml-auto h-[6rem] overflow-y-hidden"
-        >
+        <div className="ml-auto h-[6rem] overflow-y-hidden">
           <video
             autoPlay
             loop
@@ -114,8 +110,8 @@ export default function Hero() {
               className="mix-blend-screen"
             />
           </video>
-        </m.div>
-      </m.div>
+        </div>
+      </div>
       <div className="absolute inset-x-0">
         <div className="border-muted-foreground h-0.01 w-8 origin-top-left -rotate-135 border-t border-dashed" />
         <div className="border-muted-foreground h-0.5 w-full border-t border-dashed mask-r-from-5%" />

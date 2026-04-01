@@ -6,6 +6,7 @@ import { Github, Globe, Triangle } from "lucide-react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { motion as m } from "motion/react";
 
 interface Project {
   name: string;
@@ -15,6 +16,24 @@ interface Project {
   repo?: string;
   description: string;
 }
+
+const revealOnView = (delay = 0) => ({
+  initial: {
+    filter: "blur(3px)",
+    opacity: 0,
+    y: 5,
+  },
+  whileInView: {
+    filter: "blur(0px)",
+    opacity: 1,
+    y: 0,
+  },
+  transition: {
+    ease: "easeInOut" as const,
+    delay,
+  },
+  viewport: { once: true, margin: "0px" },
+});
 
 const projects: Project[] = [
   {
@@ -93,19 +112,22 @@ export default function Projects() {
     <Container className="pt-16">
       <div className="space-y-4 py-12">
         <div className="flex items-baseline justify-between">
-          <h1 className="text-xl font-bold tracking-tight">projects</h1>
+          <m.h1
+            {...revealOnView(0)}
+            className="text-xl font-bold tracking-tight"
+          >
+            projects
+          </m.h1>
           <motion.p
-            initial={{ filter: "blur(4px)", opacity: 0 }}
-            animate={{ filter: "blur(0px)", opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            {...revealOnView(0.2)}
             className="text-muted-foreground tracking-wide"
           >
             $ cd proof_of_work/
           </motion.p>
         </div>
         <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {projects.map((project: Project) => (
-            <ProjectCard key={project.name} project={project} />
+          {projects.map((project: Project, idx) => (
+            <ProjectCard key={project.name} project={project} index={idx} />
           ))}
         </div>
 
@@ -127,9 +149,12 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-lime-400">
+    <m.div
+      {...revealOnView(index * 0.2)}
+      className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-lime-400"
+    >
       <div
         className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
@@ -187,6 +212,6 @@ function ProjectCard({ project }: { project: Project }) {
           </span>
         ))}
       </div>
-    </div>
+    </m.div>
   );
 }

@@ -38,17 +38,16 @@ const projects: Project[] = [
 
 const revealOnView = (delay = 0) => ({
   initial: {
-    y: 10,
     filter: "blur(3px)",
     opacity: 0,
+    y: 5,
   },
   whileInView: {
-    y: 0,
     filter: "blur(0px)",
     opacity: 1,
+    y: 0,
   },
   transition: {
-    duration: 0.4,
     ease: "easeInOut" as const,
     delay,
   },
