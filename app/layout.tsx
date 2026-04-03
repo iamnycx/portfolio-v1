@@ -86,7 +86,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${offBit.variable} ${rx100.className} antialiased`}>
+      <body className={`${offBit.variable} ${rx100.variable} font-sans antialiased`}>
         <Suspense>
           <ThemeProvider
             attribute="class"

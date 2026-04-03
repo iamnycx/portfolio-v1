@@ -1,4 +1,7 @@
+"use client";
+
 import { BoxIcon } from "lucide-react";
+import { motion } from "motion/react";
 
 const stackData = {
   Web2: [
@@ -26,7 +29,6 @@ const stackData = {
     { title: "Monorepos" },
     { title: "Cloudflare" },
     { title: "AWS" },
-    { title: "Google Cloud" },
     { title: "Vercel" },
     { title: "Netlify" },
   ],
@@ -54,32 +56,52 @@ const stackData = {
   ],
 };
 
+const revealOnView = (delay = 0) => ({
+  initial: {
+    opacity: 0,
+    y: 2,
+  },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+  },
+  transition: {
+    ease: "easeOut" as const,
+    duration: 0.35,
+    delay,
+  },
+  viewport: { once: true, margin: "0px" },
+});
+
 export default function Stack() {
   return (
     <div id="experience">
       <div className="grid grid-cols-1 gap-8 py-8 sm:grid-cols-2">
-        {Object.entries(stackData).map(([category, items]) => (
-          <div key={category}>
-            <h2 className="from-accent/30 border-muted-foreground font-offbit relative ml-10 flex w-fit items-center gap-1 border border-dotted bg-linear-to-bl to-50% px-2 py-1 tracking-wide">
+        {Object.entries(stackData).map(([category, items], categoryIndex) => (
+          <motion.div key={category} {...revealOnView(categoryIndex * 0.12)}>
+            <h2 className="from-accent/30 font-offbit border-muted-foreground relative ml-10 flex w-fit items-center gap-1 border border-dotted bg-linear-to-bl to-50% px-2 py-1 font-bold tracking-wide">
               <BoxIcon className="size-5 stroke-1" />
               <span className="translate-y-0.5">{category}</span>
               <div className="border-muted-foreground absolute top-0 -left-0.5 h-0.5 w-10.5 origin-left rotate-135 border-t border-dashed" />
             </h2>
             <div className="relative ml-6 flex flex-wrap gap-x-3.5 gap-y-2 pt-4">
               <div className="border-muted-foreground absolute inset-y-0 left-0 -translate-x-4 border-l border-dashed" />
-              {items.map((data) => (
-                <div
+              {items.map((data, itemIndex) => (
+                <motion.div
                   key={data.title}
-                  className="from-accent/30 relative bg-linear-to-bl to-50%"
+                  {...revealOnView(
+                    Math.min(categoryIndex * 0.08 + itemIndex * 0.015, 0.3),
+                  )}
+                  className="from-accent/30 relative bg-linear-to-bl to-50% tracking-wide"
                 >
                   <div className="border-muted-foreground absolute top-1/2 left-0 w-4 -translate-x-4 border-b border-dashed" />
-                  <div className="border-muted-foreground cursor-default border border-dotted px-2 py-1 transition-colors duration-300 ease-in-out hover:border-lime-400 hover:text-lime-400">
+                  <div className="border-muted-foreground cursor-default border border-dotted px-2 py-1  transition-colors duration-300 ease-in-out hover:border-lime-400 hover:text-lime-400">
                     {data.title}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

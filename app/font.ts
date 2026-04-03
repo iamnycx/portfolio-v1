@@ -7,6 +7,7 @@ export const rx100 = localFont({
       style: "normal",
     },
   ],
+  variable: "--font-rx100",
 });
 
 export const offBit = localFont({

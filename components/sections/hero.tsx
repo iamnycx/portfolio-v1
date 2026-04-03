@@ -47,34 +47,34 @@ export default function Hero() {
             </InteractiveHoverButton>
           </m.div>
         </m.div>
-        <div className="mt-6 flex flex-wrap justify-center gap-4 sm:justify-end md:mt-0">
+        <div className="mt-6 flex font-offbit tracking-wide flex-wrap justify-center gap-4 sm:justify-end md:mt-0">
           <m.p
             {...revealOnView(0.3)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <MapPinIcon size={14} />
+            <MapPinIcon className="size-4 -translate-y-0.5" />
             <span>{"In"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.35)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <UniversityIcon size={14} />
+            <UniversityIcon className="size-4 -translate-y-0.5" />
             <span>{"CS"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.4)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <Computer size={14} />
+            <Computer className="size-4 -translate-y-0.5" />
             <span>{"Arch"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.45)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <Zap size={14} />
-            <span>{"SuperteamIn"}</span>
+            <Zap className="size-4 -translate-y-0.5" />
+            <span>{"Solana"}</span>
           </m.p>
         </div>
       </m.div>

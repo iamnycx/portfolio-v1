@@ -50,7 +50,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="from-background border-muted-foreground fixed md:inset-x-0 top-0 z-50 mx-auto flex md:max-w-6xl w-screen items-center justify-between border-b border-dashed bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-xs md:border-x md:px-6">
+      <div className="from-background border-muted-foreground fixed top-0 z-50 mx-auto flex w-screen items-center justify-between border-b border-dashed bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-xs md:inset-x-0 md:max-w-6xl md:border-x md:px-6">
         <div className="flex items-center gap-4 sm:gap-6">
           <Link
             href="/"

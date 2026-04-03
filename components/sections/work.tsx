@@ -80,7 +80,7 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
       <PlusIcons />
       <div className="z-10 flex flex-col gap-2 sm:flex-row sm:justify-between">
         <div className="space-y-1">
-          <h1 className="text-xl font-offbit tracking-wide">
+          <h1 className="text-xl font-offbit tracking-wider">
             {data.orgnization}
           </h1>
           <h2>

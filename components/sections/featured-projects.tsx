@@ -102,7 +102,7 @@ function FeaturedProjectCard({
       <PlusIcons />
       <div className="z-10 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">
-          <h1 className="font-offbit line-clamp-1 text-xl tracking-wide">
+          <h1 className="line-clamp-1 text-xl font-offbit tracking-wider">
             {project?.name}
           </h1>
           <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-lime-400">

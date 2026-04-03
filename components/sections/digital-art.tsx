@@ -15,8 +15,8 @@ export default function DigitalArt() {
     offset: ["start end", "end start"],
   });
 
-  const bgScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
-  const charScale = useTransform(scrollYProgress, [0, 1], [1, 2]);
+  const bgY = useTransform(scrollYProgress, [0, 1], [-60, 60]);
+  const charY = useTransform(scrollYProgress, [0, 1], [120, -40]);
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
@@ -44,8 +44,8 @@ export default function DigitalArt() {
           className="border-muted-foreground lg:h-300px relative h-[50vh] w-full overflow-clip border border-dashed pb-16"
         >
           <motion.div
-            style={{ scale: bgScale }}
-            className="absolute bottom-0 z-0 w-full"
+            style={{ y: bgY }}
+            className="absolute bottom-0 z-0 w-full scale-120"
           >
             <Image
               src="/img/background.png"
@@ -56,8 +56,8 @@ export default function DigitalArt() {
             />
           </motion.div>
           <motion.div
-            style={{ scale: charScale }}
-            className="absolute right-0 -bottom-26 z-20 w-96"
+            style={{ y: charY }}
+            className="absolute right-0 -bottom-6 z-20 w-96 scale-140"
           >
             <Image
               src="/img/astronaut.png"
@@ -78,10 +78,10 @@ export default function DigitalArt() {
         </div>
         <div className="border-muted-foreground flex flex-col space-y-8 border border-dashed md:w-120 md:border-l-0">
           <div className="flex items-baseline-last justify-between p-4">
-            <h1 className="text-3xl font-offbit">TL;DR</h1>
+            <h1 className="font-offbit text-3xl">TL;DR</h1>
             <Logo />
           </div>
-          <div className="text-muted-foreground flex flex-col gap-1 p-4 pt-0 tracking-wide uppercase">
+          <div className="text-muted-foreground font-offbit flex flex-col gap-2 p-4 pt-0 tracking-wide uppercase">
             {[
               ["Location", "Delhi, India"],
               ["OS", "Arch Linux (Hyprland)"],
@@ -102,7 +102,9 @@ export default function DigitalArt() {
             className="border-muted-foreground hover:bg-muted/50 group mt-auto flex w-full cursor-pointer items-center justify-center gap-2 border-t border-dashed py-4 transition-colors duration-300 ease-in-out"
           >
             <Antenna className="stroke-muted-foreground group-hover:stroke-accent-foreground size-5 transition-colors duration-300 ease-in-out" />
-            <span className="text-xl font-offbit tracking-wider translate-y-0.5">PING ME</span>
+            <span className="font-offbit translate-y-0.5 text-xl tracking-wider">
+              PING ME
+            </span>
           </Link>
         </div>
       </div>

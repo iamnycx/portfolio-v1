@@ -10,7 +10,7 @@ export default function Cave() {
     <Container className="pt-16">
       <div className="space-y-4 py-12">
         <div className="flex items-baseline justify-between">
-          <h1 className="text-xl font-offbit tracking-wider">cave</h1>
+          <h1 className="text-xl font-bold tracking-wider">cave</h1>
           <motion.p
             initial={{ filter: "blur(4px)", opacity: 0 }}
             animate={{ filter: "blur(0px)", opacity: 1 }}

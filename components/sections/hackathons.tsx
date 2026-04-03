@@ -116,7 +116,7 @@ function HackathonCard({ data, index }: { data: workDataType; index: number }) {
       <PlusIcons />
       <div className="z-10 flex flex-col gap-1 sm:flex-row sm:justify-between">
         <div className="space-y-1">
-          <h1 className="text-xl font-offbit tracking-wide">{data.title}</h1>
+          <h1 className="text-xl font-offbit tracking-wider">{data.title}</h1>
           <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-lime-400">
             {data.organizer}
           </h2>
