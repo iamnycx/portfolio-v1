@@ -47,7 +47,7 @@ export default function Hero() {
             </InteractiveHoverButton>
           </m.div>
         </m.div>
-        <div className="mt-6 flex font-offbit tracking-wide flex-wrap justify-center gap-4 sm:justify-end md:mt-0">
+        <div className="font-offbit mt-6 flex flex-wrap justify-center gap-4 tracking-wide sm:justify-end md:mt-0">
           <m.p
             {...revealOnView(0.3)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
@@ -83,7 +83,7 @@ export default function Hero() {
         <m.div {...revealOnView(0.55)} className="w-full max-w-lg space-y-12">
           <m.p
             {...revealOnView(0.6)}
-            className="text-foreground/75 text-justify tracking-wide"
+            className="text-foreground/75 text-justify tracking"
           >
             <b className="text-foreground"> software developer</b> based in{" "}
             <b className="text-foreground">india</b>, final year{" "}

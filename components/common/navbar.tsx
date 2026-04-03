@@ -20,10 +20,6 @@ const links = [
     text: "/blogs",
     href: "/blogs",
   },
-  {
-    text: "/cave",
-    href: "/cave",
-  },
 ];
 
 export default function Navbar() {

@@ -6,7 +6,8 @@ import React, { Suspense } from "react";
 import { ThemeProvider } from "@/app/providers/theme-provider";
 import LenisScrollProvider from "./providers/lenis-provider";
 import { ProgressiveBlur } from "@/components/progressive-blur";
-import { offBit, rx100 } from "./font";
+import { offBit } from "./font";
+import { GeistPixelSquare } from "geist/font/pixel";
 
 export const metadata: Metadata = {
   title: "nycx@dev",
@@ -86,7 +87,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${offBit.variable} ${rx100.variable} font-sans antialiased`}>
+      <body
+        className={`${offBit.variable} ${GeistPixelSquare.className} antialiased`}
+      >
         <Suspense>
           <ThemeProvider
             attribute="class"
