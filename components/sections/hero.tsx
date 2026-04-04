@@ -94,20 +94,21 @@ export default function Hero() {
             <b className="text-foreground">web3</b> development.
           </m.p>
         </m.div>
-        <div className="mx-auto h-[6rem] overflow-y-hidden md:mr-0">
+        <m.div
+          {...revealOnView(0.8)}
+          className="mx-auto h-[6rem] overflow-y-hidden md:mr-0"
+        >
           <video
             autoPlay
             loop
             muted
-            className="w-full max-w-[12rem] -translate-y-12"
+            preload="auto"
+            playsInline
+            className="w-full max-w-[12rem] -translate-y-12 bg-transparent mix-blend-screen"
           >
-            <source
-              src="/batman.webm"
-              type="video/webm"
-              className="mix-blend-screen"
-            />
+            <source src="/batman.webm" type="video/webm" />
           </video>
-        </div>
+        </m.div>
       </div>
       <div className="absolute inset-x-0">
         <div className="border-muted-foreground h-0.01 w-8 origin-top-left -rotate-135 border-t border-dashed" />
