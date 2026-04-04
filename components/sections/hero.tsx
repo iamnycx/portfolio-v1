@@ -83,7 +83,7 @@ export default function Hero() {
         <m.div {...revealOnView(0.55)} className="w-full max-w-lg space-y-12">
           <m.p
             {...revealOnView(0.6)}
-            className="text-foreground/75 text-justify tracking"
+            className="text-foreground/75 tracking text-justify"
           >
             <b className="text-foreground"> software developer</b> based in{" "}
             <b className="text-foreground">india</b>, final year{" "}
@@ -111,7 +111,7 @@ export default function Hero() {
       </div>
       <div className="absolute inset-x-0">
         <div className="border-muted-foreground h-0.01 w-8 origin-top-left -rotate-135 border-t border-dashed" />
-        <div className="border-muted-foreground h-0.5 w-full border-t border-dashed mask-r-from-5%" />
+        <div className="border-muted-foreground h-0.5 w-full border-t border-dashed mask-r-to-50%" />
       </div>
     </div>
   );

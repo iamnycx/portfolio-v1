@@ -4,7 +4,6 @@ import Container from "@/components/common/container";
 import PlusIcons from "@/components/plus-icons";
 import { Github, Globe, Triangle } from "lucide-react";
 import Link from "next/link";
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { motion as m } from "motion/react";
 
@@ -118,12 +117,12 @@ export default function Projects() {
           >
             projects
           </m.h1>
-          <motion.p
+          <m.p
             {...revealOnView(0.2)}
             className="text-muted-foreground tracking-wide"
           >
             $ cd proof_of_work/
-          </motion.p>
+          </m.p>
         </div>
         <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {projects.map((project: Project, idx) => (

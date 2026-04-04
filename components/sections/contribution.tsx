@@ -160,7 +160,7 @@ export default function Contribution(): JSX.Element {
   return (
     <div className="space-y-4 py-6 sm:space-y-8 sm:py-12">
       <motion.div
-        {...revealOnView(0)}
+        {...revealOnView(1)}
         className="overflow-x-auto overflow-y-hidden"
       >
         <div className="flex min-w-max">
@@ -191,7 +191,7 @@ export default function Contribution(): JSX.Element {
       </motion.div>
 
       <motion.div
-        {...revealOnView(0.15)}
+        {...revealOnView(1.15)}
         className="mx-auto flex w-fit items-center gap-2 pt-4"
       >
         <span className="text-sm text-lime-700 dark:text-lime-300">Less</span>
