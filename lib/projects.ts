@@ -38,10 +38,21 @@ export const projects: Project[] = [
       "A polished Next.js calendar with dual modes for flexible viewing. Features smooth transitions, theme-aware visuals, and sticky notes for days, months, and ranges.",
   },
   {
+    name: "Bug Tracker",
+    type: "Full Stack Project",
+    category: "fullstack",
+    featured: false,
+    stack: ["React", "Flask", "TypeScript", "PostgreSQL", "Docker"],
+    site: "https://bug-tracker-tau-liart.vercel.app",
+    repo: "https://github.com/iamnycx/bug-tracker",
+    description:
+      "Production-minded bug tracker with a strict lifecycle state machine, role-based access control, and a Kanban-first UI.",
+  },
+  {
     name: "Support Ticket System",
     type: "Full Stack Project",
     category: "fullstack",
-    featured: true,
+    featured: false,
     stack: ["React", "DRF", "OpenAI", "PostgreSQL", "Docker"],
     site: "https://tickets-manager-phi.vercel.app/",
     repo: "https://github.com/iamnycx/tickets-manager",
@@ -52,7 +63,7 @@ export const projects: Project[] = [
     name: "BlackTrack",
     type: "Full Stack",
     category: "fullstack",
-    featured: true,
+    featured: false,
     stack: ["NextJS", "Node", "Drizzle", "Web3", "Ether.js", "Metamask"],
     site: "https://blacktrack-eta.vercel.app/",
     repo: "https://www.github.com/iamnycx/blacktrack",
@@ -111,15 +122,5 @@ export const projects: Project[] = [
     repo: "https://github.com/iamnycx/fund-me",
     description:
       "A Decentralized crowdfunding smart Contract that enforces a minimum USD-based ETH contribution using Chainlink price feeds",
-  },
-  {
-    name: "Raffle",
-    type: "Smart-Contract",
-    category: "blockchain",
-    featured: false,
-    stack: ["Solidity", "Foundry", "Chainlink", "Ethereum"],
-    repo: "https://github.com/iamnycx/raffle",
-    description:
-      "A Decentralized automated raffle Contract written with Solidity that picks a provably random winner using Chainlink VRF",
   },
 ];
