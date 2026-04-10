@@ -1,6 +1,6 @@
 "use client";
 
-import { MoveLeft } from "lucide-react";
+import { ArrowLeftIcon } from "@phosphor-icons/react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -82,9 +82,9 @@ export function NavItems({ slug }: { slug: string }) {
     >
       <Link
         href={"/blogs"}
-        className="text-muted-foreground flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-lime-400"
+        className="text-muted-foreground hover:text-highlight flex items-center gap-2 transition-colors duration-300 ease-in-out"
       >
-        <MoveLeft />
+        <ArrowLeftIcon weight="bold" />
         <span>cd ..</span>
       </Link>
       <p className="text-muted-foreground hidden md:block">$ cat {slug}.mdx</p>

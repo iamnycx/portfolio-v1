@@ -1,8 +1,8 @@
 "use client";
 
-import { Triangle } from "lucide-react";
 import PlusIcons from "../plus-icons";
 import { cn } from "@/lib/utils";
+import { TriangleIcon } from "@phosphor-icons/react";
 import { motion as m } from "motion/react";
 
 const workData = [
@@ -102,7 +102,7 @@ function HackathonCard({ data, index }: { data: workDataType; index: number }) {
   return (
     <m.div
       {...revealOnView(index * 0.2)}
-      className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground relative flex flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-lime-400"
+      className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground hover:border-highlight relative flex flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out"
     >
       <div
         className={cn(
@@ -116,8 +116,8 @@ function HackathonCard({ data, index }: { data: workDataType; index: number }) {
       <PlusIcons />
       <div className="z-10 flex flex-col gap-1 sm:flex-row sm:justify-between">
         <div className="space-y-1">
-          <h1 className="text-xl font-offbit tracking-wider">{data.title}</h1>
-          <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-lime-400">
+          <h1 className="font-offbit text-xl tracking-wider">{data.title}</h1>
+          <h2 className="text-muted-foreground group-hover:text-highlight transition-colors duration-300 ease-in-out">
             {data.organizer}
           </h2>
         </div>
@@ -126,9 +126,10 @@ function HackathonCard({ data, index }: { data: workDataType; index: number }) {
       <ul className="z-10 list-inside space-y-1 tracking-wider text-pretty">
         {data.points.map((d, index) => (
           <li key={index} className="flex gap-2">
-            <Triangle
+            <TriangleIcon
               size={14}
-              className="fill-muted mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:fill-lime-400"
+              weight="duotone"
+              className="fill-muted group-hover:fill-highlight mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90"
             />
             <span>{d}</span>
           </li>
@@ -140,7 +141,7 @@ function HackathonCard({ data, index }: { data: workDataType; index: number }) {
             {data.techStack.map((tech) => (
               <span
                 key={tech}
-                className="from-accent/30 border-muted-foreground cursor-default border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-lime-400/50 group-hover:text-lime-400"
+                className="from-accent/30 border-muted-foreground group-hover:border-highlight/50 group-hover:text-highlight cursor-default border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out"
               >
                 {tech}
               </span>

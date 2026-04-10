@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Copy } from "lucide-react";
+import { CheckIcon, CopySimpleIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 export default function CopyButton({ code }: { code: string }) {
@@ -19,16 +19,18 @@ export default function CopyButton({ code }: { code: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="text-muted-foreground h-full w-10 cursor-pointer bg-radial transition-colors duration-300 ease-in-out hover:from-lime-400/10 hover:text-lime-400"
+      className="text-muted-foreground hover:from-highlight/10 hover:text-highlight h-full w-10 cursor-pointer bg-radial transition-colors duration-300 ease-in-out"
       aria-label="Copy code"
     >
       {copied ? (
-        <Check
+        <CheckIcon
+          weight="bold"
           size={18}
-          className="w-full origin-center text-lime-400 transition-transform duration-300 ease-in-out"
+          className="text-highlight w-full origin-center transition-transform duration-300 ease-in-out"
         />
       ) : (
-        <Copy
+        <CopySimpleIcon
+          weight="bold"
           size={18}
           className="w-full origin-center transition-transform duration-300 ease-in-out active:scale-50"
         />

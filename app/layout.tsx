@@ -8,6 +8,7 @@ import LenisScrollProvider from "./providers/lenis-provider";
 import { ProgressiveBlur } from "@/components/progressive-blur";
 import { offBit } from "./font";
 import { GeistPixelSquare } from "geist/font/pixel";
+import { StripedPattern } from "@/components/special/stripe";
 
 export const metadata: Metadata = {
   title: "nycx@dev",
@@ -100,6 +101,7 @@ export default function RootLayout({
             <LenisScrollProvider>
               <div className="relative">
                 <Navbar />
+                <StripedPattern />
                 {children}
                 <Footer />
                 <ProgressiveBlur

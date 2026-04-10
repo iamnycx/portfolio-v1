@@ -26,7 +26,7 @@ function Marker({
         position === "bottom-right" && "-right-3 -bottom-3",
       )}
     >
-      <div className="absolute aspect-square h-3 w-3 border-2 border-dotted border-lime-400 opacity-0 transition-opacity duration-150 ease-out group-hover:animate-[marker-flicker_500ms_ease-in-out_1] group-hover:opacity-100 motion-reduce:group-hover:animate-none" />
+      <div className="border-highlight absolute aspect-square h-3 w-3 border-2 border-dotted opacity-0 transition-opacity duration-150 ease-out group-hover:animate-[marker-flicker_500ms_ease-in-out_1] group-hover:opacity-100 motion-reduce:group-hover:animate-none" />
     </div>
   );
 }

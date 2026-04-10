@@ -43,7 +43,7 @@ export default async function BlogPostPage({
           {data.tags.map((tag: string, idx: number) => (
             <span
               key={idx}
-              className="inline-block border border-dotted border-neutral-600 bg-lime-400/5 px-2 py-1 text-neutral-400"
+              className="bg-highlight/5 inline-block border border-dotted border-neutral-600 px-2 py-1 text-neutral-400"
             >
               {tag}
             </span>

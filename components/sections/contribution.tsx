@@ -43,7 +43,7 @@ const revealOnView = (delay = 0) => ({
     ease: "easeInOut" as const,
     delay,
   },
-  viewport: { once: true, margin: "0px" },
+  viewport: { once: true, margin: "0px 0px -15% 0px" },
 });
 
 export default function Contribution(): JSX.Element {
@@ -146,10 +146,12 @@ export default function Contribution(): JSX.Element {
             return (
               <div
                 key={dayKey}
-                className="m-[0.15px] h-4 w-4 rounded-full"
                 style={{ backgroundColor: getColor(contributionCount) }}
                 title={`${format(day, "PPP")}: ${contributionCount} contributions`}
-              />
+                className="ring-accent text-accent m-[0.15px] grid h-4 w-4 place-items-center rounded-xs text-[0.4rem] font-black ring"
+              >
+                <p>{contributionCount}</p>
+              </div>
             );
           })}
         </div>
@@ -158,9 +160,14 @@ export default function Contribution(): JSX.Element {
   }, [contributionByDate, weeksToRender]);
 
   return (
-    <div className="space-y-4 py-6 sm:space-y-8 sm:py-12">
+    <div className="space-y-8 py-6 sm:py-12">
+      <motion.p {...revealOnView(0)} className="text-center">
+        made {contributions.reduce((sum, item) => sum + item.count, 0)}{" "}
+        contributions in the last year
+      </motion.p>
+
       <motion.div
-        {...revealOnView(1)}
+        {...revealOnView(0.4)}
         className="overflow-x-auto overflow-y-hidden"
       >
         <div className="flex min-w-max">
@@ -191,14 +198,14 @@ export default function Contribution(): JSX.Element {
       </motion.div>
 
       <motion.div
-        {...revealOnView(1.15)}
+        {...revealOnView(0.2)}
         className="mx-auto flex w-fit items-center gap-2 pt-4"
       >
         <span className="text-sm text-lime-700 dark:text-lime-300">Less</span>
         {COLORS.map((color, index) => (
           <div
             key={index}
-            className="h-3 w-3 rounded-full"
+            className="ring-accent grid h-4 w-4 place-items-center rounded-xs ring"
             style={{ backgroundColor: color }}
           />
         ))}

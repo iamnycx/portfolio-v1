@@ -1,6 +1,11 @@
 "use client";
 
-import { Computer, MapPinIcon, UniversityIcon, Zap } from "lucide-react";
+import {
+  LinuxLogoIcon,
+  MapPinAreaIcon,
+  StudentIcon,
+  TargetIcon,
+} from "@phosphor-icons/react";
 import { InteractiveHoverButton } from "../special/interactive-button";
 import { motion as m } from "motion/react";
 
@@ -52,28 +57,28 @@ export default function Hero() {
             {...revealOnView(0.3)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <MapPinIcon className="size-4 -translate-y-0.5" />
-            <span>{"In"}</span>
+            <MapPinAreaIcon weight="bold" className="size-4 -translate-y-0.5" />
+            <span>{"India"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.35)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <UniversityIcon className="size-4 -translate-y-0.5" />
+            <StudentIcon weight="bold" className="size-4 -translate-y-0.5" />
             <span>{"CS"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.4)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <Computer className="size-4 -translate-y-0.5" />
+            <LinuxLogoIcon weight="bold" className="size-4 -translate-y-0.5" />
             <span>{"Arch"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.45)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <Zap className="size-4 -translate-y-0.5" />
+            <TargetIcon weight="bold" className="size-4 -translate-y-0.5" />
             <span>{"Solana"}</span>
           </m.p>
         </div>
@@ -96,7 +101,7 @@ export default function Hero() {
         </m.div>
         <m.div
           {...revealOnView(0.8)}
-          className="mx-auto h-[6rem] overflow-y-hidden md:mr-0"
+          className="mx-auto h-[10rem] overflow-y-hidden md:mr-0"
         >
           <video
             autoPlay
@@ -104,9 +109,13 @@ export default function Hero() {
             muted
             preload="auto"
             playsInline
-            className="w-full max-w-[12rem] -translate-y-12 bg-transparent mix-blend-screen"
+            className="w-full max-w-[12rem]"
           >
-            <source src="/batman.webm" type="video/webm" />
+            <source
+              src="/jet.webm"
+              type="video/webm"
+              className="mix-blend-screen"
+            />
           </video>
         </m.div>
       </div>

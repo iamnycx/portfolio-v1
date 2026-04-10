@@ -5,10 +5,10 @@ import CopyButton from "./common/copy-button";
 
 export const mdxComponents = {
   h2: (props: ComponentProps<"h2">) => (
-    <h2 className="my-6 text-2xl font-offbit tracking-wide" {...props} />
+    <h2 className="font-offbit my-6 text-2xl tracking-wide" {...props} />
   ),
   h3: (props: ComponentProps<"h3">) => (
-    <h2 className="my-4 mt-8 text-xl font-offbit tracking-wide" {...props} />
+    <h2 className="font-offbit my-4 mt-8 text-xl tracking-wide" {...props} />
   ),
   p: (props: ComponentProps<"p">) => (
     <p
@@ -25,7 +25,7 @@ export const mdxComponents = {
   li: (props: ComponentProps<"li">) => <li className="pl-1" {...props} />,
   a: ({ href, children, ...props }: ComponentProps<"a">) => {
     const className = [
-      "text-lime-400 underline-offset-4 hover:underline",
+      "text-highlight underline-offset-4 hover:underline",
       props.className,
     ]
       .filter(Boolean)
@@ -59,7 +59,7 @@ export const mdxComponents = {
   },
   blockquote: (props: ComponentProps<"blockquote">) => (
     <blockquote
-      className="my-8 ml-2 border-l-2 border-dashed border-lime-400 pl-4 text-lime-400"
+      className="border-highlight text-highlight my-8 ml-2 border-l-2 border-dashed pl-4"
       {...props}
     />
   ),
@@ -91,7 +91,7 @@ export const mdxComponents = {
 
     return (
       <div className="group border-foreground/25 hover:border-foreground/50 my-6 border border-dashed p-2 transition-colors duration-300 ease-in-out">
-        <figcaption className="bg-muted/50 text-muted-foreground flex h-8 items-center justify-between pl-4 tracking-wide transition-colors duration-300 ease-in-out group-hover:text-lime-400">
+        <figcaption className="bg-muted/50 text-muted-foreground group-hover:text-highlight flex h-8 items-center justify-between pl-4 tracking-wide transition-colors duration-300 ease-in-out">
           {props["data-language"]}
           <CopyButton code={codeText} />
         </figcaption>
@@ -103,7 +103,7 @@ export const mdxComponents = {
     );
   },
   code: (props: ComponentProps<"code">) => (
-    <code className="text-lime-400" {...props} />
+    <code className="text-highlight" {...props} />
   ),
   hr: (props: ComponentProps<"hr">) => (
     <div

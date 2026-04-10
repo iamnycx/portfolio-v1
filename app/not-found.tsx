@@ -11,7 +11,7 @@ export default function NotFound() {
         </p>
       </div>
       <Link href={"/"}>
-        <button className="border-background border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:border-lime-400/50 hover:text-lime-400 sm:text-base">
+        <button className="border-background hover:border-highlight/50 hover:text-highlight border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out sm:text-base">
           {"./return_home.sh"}
         </button>
       </Link>

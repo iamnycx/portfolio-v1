@@ -4,8 +4,8 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import Logo from "../logo";
-import { Antenna } from "lucide-react";
 import Link from "next/link";
+import { MailboxIcon } from "@phosphor-icons/react";
 
 export default function DigitalArt() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -101,8 +101,8 @@ export default function DigitalArt() {
             target="_blank"
             className="border-muted-foreground hover:bg-muted/50 group mt-auto flex w-full cursor-pointer items-center justify-center gap-2 border-t border-dashed py-4 transition-colors duration-300 ease-in-out"
           >
-            <Antenna className="stroke-muted-foreground group-hover:stroke-accent-foreground size-5 transition-colors duration-300 ease-in-out" />
-            <span className="font-offbit translate-y-0.5 text-xl tracking-wider">
+            <MailboxIcon className="fill-muted-foreground group-hover:fill-foreground size-5 stroke-none transition-colors duration-300 ease-in-out" />
+            <span className="font-offbit text-md translate-y-0.5 tracking-widest">
               PING ME
             </span>
           </Link>

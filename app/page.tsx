@@ -17,16 +17,16 @@ export default function Home() {
     <Container>
       <div className="pt-16">
         <Hero />
-        <Seperator title="contribution" />
-        <Contribution />
         <Seperator title="featured projects" />
         <FeaturedProjects />
-        <Seperator title="hackathons" />
-        <Hackathons />
         <Seperator title="work history" />
         <Work />
+        <Seperator title="hackathons" />
+        <Hackathons />
         <Seperator title="tech stack" />
         <Stack />
+        <Seperator title="contribution" />
+        <Contribution />
         <Seperator title="social links" />
         <Links />
         <DigitalArt />

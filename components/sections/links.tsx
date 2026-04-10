@@ -1,5 +1,5 @@
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import Link from "next/link";
-import { SquareArrowOutUpRightIcon } from "lucide-react";
 
 export default function Links() {
   const links = [
@@ -29,11 +29,12 @@ export default function Links() {
             key={link.title}
             href={link.href}
             target="_blank"
-            className="group flex items-center gap-1 border border-dotted px-2 py-1 text-center uppercase transition-colors duration-300 ease-in-out hover:border-lime-400 hover:text-lime-400"
+            className="group hover:border-highlight hover:text-highlight flex items-center gap-1 border border-dotted px-2 py-1 text-center uppercase transition-colors duration-300 ease-in-out"
           >
             {link.title}
-            <SquareArrowOutUpRightIcon
-              size={14}
+            <ArrowUpRightIcon
+              weight="bold"
+              size={18}
               className="opacity-25 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
             />
           </Link>

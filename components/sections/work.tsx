@@ -1,8 +1,8 @@
 "use client";
 
-import { Triangle } from "lucide-react";
 import PlusIcons from "../plus-icons";
 import { cn } from "@/lib/utils";
+import { TriangleIcon } from "@phosphor-icons/react";
 import { motion as m } from "motion/react";
 
 const workData = [
@@ -66,7 +66,7 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
   return (
     <m.div
       {...revealOnView(index * 0.2)}
-      className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground relative flex flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out hover:border-lime-400"
+      className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground hover:border-highlight relative flex flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out"
     >
       <div
         className={cn(
@@ -80,13 +80,13 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
       <PlusIcons />
       <div className="z-10 flex flex-col gap-2 sm:flex-row sm:justify-between">
         <div className="space-y-1">
-          <h1 className="text-xl font-offbit tracking-wider">
+          <h1 className="font-offbit text-xl tracking-wider">
             {data.orgnization}
           </h1>
           <h2>
             {data.designation} <span>~ {data.location}</span>
           </h2>
-          <p className="text-muted-foreground text-sm transition-colors duration-300 ease-in-out group-hover:text-lime-400">
+          <p className="text-muted-foreground group-hover:text-highlight text-sm transition-colors duration-300 ease-in-out">
             {data.from} - {data.to}
           </p>
         </div>
@@ -94,9 +94,10 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
       <ul className="z-10 list-inside space-y-1 tracking-wider text-balance">
         {data.points.map((point, index) => (
           <li key={index} className="flex gap-2">
-            <Triangle
+            <TriangleIcon
               size={14}
-              className="fill-muted mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90 group-hover:fill-lime-400"
+              weight="duotone"
+              className="fill-muted group-hover:fill-highlight mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90"
             />
             <span>{point}</span>
           </li>
@@ -106,7 +107,7 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
         {data.technologies.map((tech) => (
           <span
             key={tech}
-            className="from-accent/30 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:border-lime-400/50 group-hover:text-lime-400"
+            className="from-accent/30 group-hover:border-highlight/50 group-hover:text-highlight inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out"
           >
             {tech}
           </span>

@@ -1,10 +1,10 @@
 "use client";
 
-import { Github, Globe, Triangle } from "lucide-react";
 import Link from "next/link";
 import PlusIcons from "../plus-icons";
 import { cn } from "@/lib/utils";
 import { motion as m } from "motion/react";
+import { GithubLogoIcon, GlobeIcon, TriangleIcon } from "@phosphor-icons/react";
 
 interface Project {
   name: string;
@@ -69,7 +69,7 @@ export default function FeaturedProjects() {
       <div className="flex pt-4">
         <Link
           href="/projects"
-          className="mx-auto text-center text-lime-400 underline-offset-4 hover:underline"
+          className="text-highlight mx-auto text-center underline-offset-4 hover:underline"
         >
           /projects
         </Link>
@@ -87,8 +87,8 @@ function FeaturedProjectCard({
 }) {
   return (
     <m.div
-      {...revealOnView(index * 0.2)}
-      className="group from-muted/30 hover:from-muted/50 border-muted-foreground relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out hover:border-lime-400"
+      {...revealOnView(index * 0.2 + 1)}
+      className="group from-muted/30 hover:from-muted/50 border-muted-foreground hover:border-highlight relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out"
     >
       <div
         className={cn(
@@ -102,10 +102,10 @@ function FeaturedProjectCard({
       <PlusIcons />
       <div className="z-10 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">
-          <h1 className="line-clamp-1 text-xl font-offbit tracking-wider">
+          <h1 className="font-offbit line-clamp-1 text-xl tracking-wider">
             {project?.name}
           </h1>
-          <h2 className="text-muted-foreground transition-colors duration-300 ease-in-out group-hover:text-lime-400">
+          <h2 className="text-muted-foreground group-hover:text-highlight transition-colors duration-300 ease-in-out">
             {project?.type}
           </h2>
         </div>
@@ -114,26 +114,27 @@ function FeaturedProjectCard({
             <Link
               href={project?.repo}
               target="_blank"
-              className="hover:bg-text-lime-400/5 border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-lime-400 hover:text-lime-400"
+              className="hover:bg-text-highlight/5 hover:border-highlight hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
             >
-              <Github size={20} strokeWidth={1} />
+              <GithubLogoIcon size={20} strokeWidth={1} />
             </Link>
           )}
           {project.site && (
             <Link
               href={project?.site}
               target="_blank"
-              className="hover:bg-text-lime-400/5 border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100 hover:border-lime-400 hover:text-lime-400"
+              className="hover:bg-text-highlight/5 hover:border-highlight hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
             >
-              <Globe size={20} strokeWidth={1} />
+              <GlobeIcon size={20} strokeWidth={1} />
             </Link>
           )}
         </div>
       </div>
       <div className="z-10 flex gap-2">
-        <Triangle
+        <TriangleIcon
           size={14}
-          className="fill-muted group-hover:fill-text-lime-400 mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90"
+          weight="duotone"
+          className="fill-muted group-hover:fill-highlight mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90"
         />
         <p className="tracking-wider text-balance">{project.description}</p>
       </div>
@@ -141,7 +142,7 @@ function FeaturedProjectCard({
         {project?.stack.map((tag: string, idx: number) => (
           <span
             key={idx}
-            className="from-accent/30 group-hover:border-text-lime-400/50 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out group-hover:text-lime-400"
+            className="from-accent/30 group-hover:border-text-highlight/50 group-hover:text-highlight inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out"
           >
             {tag}
           </span>

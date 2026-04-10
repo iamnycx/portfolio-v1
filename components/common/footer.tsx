@@ -18,7 +18,7 @@ export default function Footer() {
           <span>api</span>
           <span className="text-muted-foreground">.fetch_data</span>
           <span>{"("}</span>
-          <span className="text-lime-400">{"total_visitors"}</span>
+          <span className="text-highlight">{"total_visitors"}</span>
           <span>{");"}</span>
         </p>
         <div className="flex w-full max-w-full min-w-0 flex-1 items-center overflow-hidden sm:w-auto">
