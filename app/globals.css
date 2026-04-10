@@ -192,6 +192,14 @@ code[data-line-numbers-max-digits="4"] > [data-line]::before {
   height: 8px;
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 ::-webkit-scrollbar-track {
   background: var(--color-background);
 }

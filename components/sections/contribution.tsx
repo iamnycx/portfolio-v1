@@ -148,7 +148,7 @@ export default function Contribution(): JSX.Element {
                 key={dayKey}
                 style={{ backgroundColor: getColor(contributionCount) }}
                 title={`${format(day, "PPP")}: ${contributionCount} contributions`}
-                className="ring-accent text-accent m-[0.15px] grid h-4 w-4 place-items-center rounded-xs text-[0.4rem] font-black ring"
+                className="border-accent text-accent m-[0.15px] grid h-4 w-4 place-items-center rounded-xs border border-dashed text-[0.4rem] font-black"
               >
                 <p>{contributionCount}</p>
               </div>
@@ -161,14 +161,23 @@ export default function Contribution(): JSX.Element {
 
   return (
     <div className="space-y-8 py-6 sm:py-12">
-      <motion.p {...revealOnView(0)} className="text-center">
-        made {contributions.reduce((sum, item) => sum + item.count, 0)}{" "}
-        contributions in the last year
+      <motion.p
+        {...revealOnView(0)}
+        className="text-muted-foreground pb-4 text-center"
+      >
+        made
+        <span className="text-foreground">
+          {" "}
+          {contributions.reduce((sum, item) => sum + item.count, 0)}{" "}
+          contributions{" "}
+        </span>
+        in the last year
       </motion.p>
 
       <motion.div
         {...revealOnView(0.4)}
-        className="overflow-x-auto overflow-y-hidden"
+        className="scroll-hide scrollbar-hide overflow-x-auto overflow-y-hidden"
+        style={{}}
       >
         <div className="flex min-w-max">
           <div className="mt-5.5 mr-2 flex flex-col justify-between">
@@ -205,7 +214,7 @@ export default function Contribution(): JSX.Element {
         {COLORS.map((color, index) => (
           <div
             key={index}
-            className="ring-accent grid h-4 w-4 place-items-center rounded-xs ring"
+            className="border-accent grid h-4 w-4 place-items-center rounded-xs border border-dashed"
             style={{ backgroundColor: color }}
           />
         ))}
