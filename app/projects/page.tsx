@@ -6,15 +6,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { motion as m } from "motion/react";
 import { GithubLogoIcon, GlobeIcon, TriangleIcon } from "@phosphor-icons/react";
-
-interface Project {
-  name: string;
-  type: string;
-  stack: string[];
-  site?: string;
-  repo?: string;
-  description: string;
-}
+import { Project, projects } from "@/lib/projects";
 
 const revealOnView = (delay = 0) => ({
   initial: {
@@ -33,78 +25,6 @@ const revealOnView = (delay = 0) => ({
   },
   viewport: { once: true, margin: "0px" },
 });
-
-const projects: Project[] = [
-  {
-    name: "Support Ticket System",
-    type: "Full Stack Project",
-    stack: ["React", "DRF", "OpenAI", "PostgreSQL", "Docker"],
-    site: "https://social-network-eight-eta.vercel.app",
-    repo: "https://github.com/iamnycx/tickets-manager",
-    description:
-      "A modern support ticket system built with React (TypeScript) and Django REST Framework, featuring LLM-based ticket classification and prioritization.",
-  },
-  {
-    name: "BlackTrack",
-    type: "Full Stack",
-    stack: ["NextJS", "Node", "Drizzle", "Web3", "Ether.js", "Metamask"],
-    site: "https://blacktrack-eta.vercel.app/",
-    repo: "https://www.github.com/iamnycx/blacktrack",
-    description:
-      "Web3-enabled expense tracking application with MetaMask wallet authentication, implementing secure, password-less user access",
-  },
-  {
-    name: "Sandscape",
-    type: "Hackathon Project",
-    stack: ["NextJS", "FastAPI", "Docker", "Machine Learning"],
-    repo: "https://www.github.com/iamnycx/sandscape",
-    description:
-      "Developed the Backend and Frontend for sand grain analysis system, dockerized each service for seamless local setup and deployment",
-  },
-  {
-    name: "Lume - Social Network",
-    type: "Full Stack Project",
-    stack: ["React", "Django", "Djoser", "Docker", "PostgreSQL"],
-    site: "https://social-network-eight-eta.vercel.app",
-    repo: "https://github.com/iamnycx/lume",
-    description:
-      "Full-stack social media app with React for frontend and Django for backend. implemented JWT auth, images, interactions (like/dislike)",
-  },
-  {
-    name: "Therapist Landing Page",
-    type: "Frontend Project",
-    stack: ["NextJS", "TailwindCSS", "Motion.dev"],
-    site: "https://maya-website-kappa.vercel.app/",
-    repo: "https://github.com/iamnycx/maya-website",
-    description:
-      "A minimalist therapist landing page emphasizing clarity, calm visuals, and smooth animations.",
-  },
-  {
-    name: "Tinta - Text to Pallete",
-    type: "Mini Project",
-    stack: ["NextJS", "Gemini", "PostgreSQL"],
-    site: "https://tinta-flax.vercel.app",
-    repo: "https://github.com/iamnycx/tinta",
-    description:
-      "A simple project to generate a color pallete from simple text prompts using large language models. Used Gemini as LLM provider",
-  },
-  {
-    name: "Fund-Me",
-    type: "Smart-Contract",
-    stack: ["Solidity", "Foundry", "Chainlink", "Ethereum"],
-    repo: "https://github.com/iamnycx/fund-me",
-    description:
-      "A Decentralized crowdfunding smart Contract that enforces a minimum USD-based ETH contribution using Chainlink price feeds",
-  },
-  {
-    name: "Raffle",
-    type: "Smart-Contract",
-    stack: ["Solidity", "Foundry", "Chainlink", "Ethereum"],
-    repo: "https://github.com/iamnycx/raffle",
-    description:
-      "A Decentralized automated raffle Contract written with Solidity that picks a provably random winner using Chainlink VRF",
-  },
-];
 
 export default function Projects() {
   return (
@@ -174,15 +94,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </h2>
         </div>
         <div className="flex shrink-0 items-center gap-2">
-          {project.repo && (
-            <Link
-              href={project?.repo}
-              target="_blank"
-              className="hover:border-highlight hover:bg-highlight/5 hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
-            >
-              <GithubLogoIcon size={20} strokeWidth={1} />
-            </Link>
-          )}
           {project.site && (
             <Link
               href={project?.site}
@@ -190,6 +101,15 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               className="hover:border-highlight hover:bg-highlight/5 hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
             >
               <GlobeIcon size={20} strokeWidth={1} />
+            </Link>
+          )}
+          {project.repo && (
+            <Link
+              href={project?.repo}
+              target="_blank"
+              className="hover:border-highlight hover:bg-highlight/5 hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
+            >
+              <GithubLogoIcon size={20} strokeWidth={1} />
             </Link>
           )}
         </div>

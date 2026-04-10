@@ -5,36 +5,7 @@ import PlusIcons from "../plus-icons";
 import { cn } from "@/lib/utils";
 import { motion as m } from "motion/react";
 import { GithubLogoIcon, GlobeIcon, TriangleIcon } from "@phosphor-icons/react";
-
-interface Project {
-  name: string;
-  type: string;
-  stack: string[];
-  site?: string;
-  repo?: string;
-  description: string;
-}
-
-const projects: Project[] = [
-  {
-    name: "Support Ticket System",
-    type: "Full Stack Project",
-    stack: ["React", "DRF", "OpenAI", "PostgreSQL", "Docker"],
-    site: "https://tickets-manager-phi.vercel.app/",
-    repo: "https://github.com/iamnycx/tickets-manager",
-    description:
-      "A modern support ticket system built with React (TypeScript) and Django REST Framework, featuring LLM-based ticket classification and prioritization.",
-  },
-  {
-    name: "BlackTrack",
-    type: "Full Stack",
-    stack: ["NextJS", "Node", "Drizzle", "Web3", "Ether.js", "Metamask"],
-    site: "https://blacktrack-eta.vercel.app/",
-    repo: "https://www.github.com/iamnycx/blacktrack",
-    description:
-      "Web3-enabled expense tracking application with MetaMask wallet authentication, implementing secure, password-less user access",
-  },
-];
+import { projects, type Project } from "@/lib/projects";
 
 const revealOnView = (delay = 0) => ({
   initial: {
@@ -55,10 +26,12 @@ const revealOnView = (delay = 0) => ({
 });
 
 export default function FeaturedProjects() {
+  const featuredProjects = projects.filter((p) => p.featured);
+
   return (
     <div id="featured-projects">
       <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-        {projects.map((project: Project, idx: number) => (
+        {featuredProjects.map((project: Project, idx: number) => (
           <FeaturedProjectCard
             key={project.name}
             project={project}
@@ -110,15 +83,6 @@ function FeaturedProjectCard({
           </h2>
         </div>
         <div className="flex shrink-0 items-center gap-2">
-          {project.repo && (
-            <Link
-              href={project?.repo}
-              target="_blank"
-              className="hover:bg-text-highlight/5 hover:border-highlight hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
-            >
-              <GithubLogoIcon size={20} strokeWidth={1} />
-            </Link>
-          )}
           {project.site && (
             <Link
               href={project?.site}
@@ -126,6 +90,15 @@ function FeaturedProjectCard({
               className="hover:bg-text-highlight/5 hover:border-highlight hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
             >
               <GlobeIcon size={20} strokeWidth={1} />
+            </Link>
+          )}
+          {project.repo && (
+            <Link
+              href={project?.repo}
+              target="_blank"
+              className="hover:bg-text-highlight/5 hover:border-highlight hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
+            >
+              <GithubLogoIcon size={20} strokeWidth={1} />
             </Link>
           )}
         </div>
