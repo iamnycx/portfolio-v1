@@ -85,7 +85,7 @@ export default function DigitalArt() {
             {[
               ["Location", "Delhi, India"],
               ["OS", "Arch Linux (Hyprland)"],
-              ["Editor", "Neovim - Zed - VsCode"],
+              ["Editor", "NVim - Zed - VsCode"],
               ["Focus", "Systems - DX - UX"],
               ["Learning", "Rust - Solana"],
               ["Next", "Applied AI - TUI"],
