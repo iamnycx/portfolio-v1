@@ -41,7 +41,7 @@ export default function Hero() {
           >
             nikhil singh mehta
           </m.h1>
-          <m.div {...revealOnView(0.2)}>
+          <m.div {...revealOnView(0.1)}>
             <InteractiveHoverButton
               href="https://mail.google.com/mail/?view=cm&fs=1&to=25nikmehta%40gmail.com"
               target="_blank"
@@ -54,7 +54,7 @@ export default function Hero() {
         </div>
 
         <m.p
-          {...revealOnView(0.4)}
+          {...revealOnView(0.2)}
           className="text-foreground/75 text-justify text-sm leading-6 md:text-base"
         >
           <b className="text-foreground"> software developer</b> based in{" "}
@@ -68,28 +68,28 @@ export default function Hero() {
 
         <div className="flex uppercase items-center justify-center gap-4 font-bold md:justify-start">
           <m.p
-            {...revealOnView(0.6)}
+            {...revealOnView(0.3)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
             <MapPinHome className="size-4" />
             <span>{"India"}</span>
           </m.p>
           <m.p
-            {...revealOnView(0.7)}
+            {...revealOnView(0.4)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
             <University className="size-4" />
             <span>{"CS"}</span>
           </m.p>
           <m.p
-            {...revealOnView(0.8)}
+            {...revealOnView(0.5)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
             <Computer className="size-4" />
             <span>{"Arch"}</span>
           </m.p>
           <m.p
-            {...revealOnView(0.9)}
+            {...revealOnView(0.6)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
             <Goal className="size-4" />
@@ -97,7 +97,7 @@ export default function Hero() {
           </m.p>
         </div>
         <m.p
-          {...revealOnView(1.2)}
+          {...revealOnView(0.7)}
           className="text-foreground/75 text-center text-sm leading-6 text-balance md:text-left md:text-base"
         >
           and yeah i love to play with{" "}

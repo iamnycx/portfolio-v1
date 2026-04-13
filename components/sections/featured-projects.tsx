@@ -60,7 +60,7 @@ function FeaturedProjectCard({
 }) {
   return (
     <m.div
-      {...revealOnView(index * 0.2 + 1.6)}
+      {...revealOnView(index * 0.2 + 0.8)}
       className="group from-muted/30 hover:from-muted/50 border-muted-foreground hover:border-highlight relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out"
     >
       <div
