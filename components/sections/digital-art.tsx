@@ -36,7 +36,7 @@ export default function DigitalArt() {
         </div>
       </div>
       <div className="border-muted-foreground relative mx-auto h-6 max-w-6xl overflow-hidden border-x border-t border-dashed">
-        <div className="relative flex h-6 w-full before:absolute before:-left-[100vw] before:-z-1 before:h-6 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--muted-foreground)_0,var(--muted-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--muted-foreground:var(--color-muted-foreground)]/40" />
+        <div className="relative flex h-6 w-full before:absolute before:inset-y-0 before:-left-[100vw] before:h-6 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--stripe)_0,var(--stripe)_1px,transparent_1px,transparent_50%)] before:bg-size-[10px_10px] before:opacity-40 before:content-[''] before:[--stripe:var(--color-muted-foreground)]" />
       </div>
       <div className="flex flex-col-reverse md:flex-row">
         <div
@@ -101,15 +101,13 @@ export default function DigitalArt() {
             target="_blank"
             className="border-muted-foreground hover:bg-muted/50 group mt-auto flex w-full cursor-pointer items-center justify-center gap-2 border-t border-dashed py-4 transition-colors duration-300 ease-in-out"
           >
-            <Bell className="fill-muted-foreground size-5 group-hover:fill-foreground stroke-none transition-colors duration-300 ease-in-out" />
-            <span className="text-md translate-y-0.5 font-bold tracking-widest">
-              PING ME
-            </span>
+            <Bell className="fill-muted-foreground group-hover:fill-foreground size-5 stroke-none transition-colors duration-300 ease-in-out" />
+            <span className="text-md font-bold tracking-widest">PING ME</span>
           </Link>
         </div>
       </div>
       <div className="border-muted-foreground mx-auto h-6 max-w-6xl overflow-hidden border-x border-dashed">
-        <div className="relative flex h-6 w-full before:absolute before:-left-[100vw] before:-z-1 before:h-6 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--muted-foreground)_0,var(--muted-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--muted-foreground:var(--color-muted-foreground)]/40" />
+        <div className="relative flex h-6 w-full before:absolute before:inset-y-0 before:-left-[100vw] before:h-6 before:w-[200vw] before:bg-[repeating-linear-gradient(315deg,var(--stripe)_0,var(--stripe)_1px,transparent_1px,transparent_50%)] before:bg-size-[10px_10px] before:opacity-40 before:content-[''] before:[--stripe:var(--color-muted-foreground)]" />
       </div>
     </div>
   );

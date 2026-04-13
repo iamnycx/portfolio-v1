@@ -71,34 +71,34 @@ export default function Hero() {
             {...revealOnView(0.6)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <MapPinHome className="size-4 -translate-y-0.5" />
+            <MapPinHome className="size-4" />
             <span>{"India"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.7)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <University className="size-4 -translate-y-0.5" />
+            <University className="size-4" />
             <span>{"CS"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.8)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <Computer className="size-4 -translate-y-0.5" />
+            <Computer className="size-4" />
             <span>{"Arch"}</span>
           </m.p>
           <m.p
             {...revealOnView(0.9)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
           >
-            <Goal className="size-4 -translate-y-0.5" />
+            <Goal className="size-4" />
             <span>{"Solana"}</span>
           </m.p>
         </div>
         <m.p
           {...revealOnView(1.2)}
-          className="text-foreground/75 text-balance text-center text-sm leading-6 md:text-left md:text-base"
+          className="text-foreground/75 text-center text-sm leading-6 text-balance md:text-left md:text-base"
         >
           and yeah i love to play with{" "}
           <b className="text-foreground inline-flex items-center gap-1">

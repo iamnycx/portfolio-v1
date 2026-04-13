@@ -80,8 +80,8 @@ export default function Stack() {
         {Object.entries(stackData).map(([category, items], categoryIndex) => (
           <motion.div key={category} {...revealOnView(categoryIndex * 0.12)}>
             <h2 className="from-accent/30 border-muted-foreground relative ml-10 flex w-fit items-center gap-1 border border-dotted bg-linear-to-bl to-50% px-2 py-1 font-bold tracking-wide">
-              <Package className="size-4 stroke-1" />
-              <span className="translate-y-0.5">{category}</span>
+              <Package className="size-4.5 stroke-1" />
+              <span>{category}</span>
               <div className="border-muted-foreground absolute top-0 -left-0.5 h-0.5 w-10.5 origin-left rotate-135 border-t border-dashed" />
             </h2>
             <div className="relative ml-6 flex flex-wrap gap-x-3.5 gap-y-2 pt-4">

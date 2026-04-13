@@ -93,7 +93,7 @@ export default function Isometric() {
           <g id="CARDS0">
             <m.path
               animate={{
-                stroke: strokeColor("TOP"),
+                stroke: strokeColor("BOT"),
               }}
               transition={STROKE_TRANSITION}
               id="CONNECTION"
@@ -103,7 +103,7 @@ export default function Isometric() {
             />
             <m.rect
               animate={{
-                stroke: strokeColor("TOP"),
+                stroke: strokeColor("BOT"),
               }}
               transition={STROKE_TRANSITION}
               id="CARD0"
@@ -116,9 +116,9 @@ export default function Isometric() {
             />
             <m.rect
               animate={{
-                stroke: strokeColor("TOP"),
-                attrY: cardOffset("TOP", 10),
-                attrX: -cardOffset("TOP", 10),
+                stroke: strokeColor("BOT"),
+                attrY: cardOffset("BOT", 10),
+                attrX: -cardOffset("BOT", 10),
               }}
               transition={STROKE_TRANSITION}
               id="CARD1"
@@ -131,9 +131,9 @@ export default function Isometric() {
             />
             <m.rect
               animate={{
-                stroke: strokeColor("TOP"),
-                attrY: cardOffset("TOP", 20),
-                attrX: -cardOffset("TOP", 20),
+                stroke: strokeColor("BOT"),
+                attrY: cardOffset("BOT", 20),
+                attrX: -cardOffset("BOT", 20),
               }}
               transition={STROKE_TRANSITION}
               id="CARD2"
@@ -146,9 +146,9 @@ export default function Isometric() {
             />
             <m.rect
               animate={{
-                stroke: strokeColor("TOP"),
-                attrY: cardOffset("TOP", 30),
-                attrX: -cardOffset("TOP", 30),
+                stroke: strokeColor("BOT"),
+                attrY: cardOffset("BOT", 30),
+                attrX: -cardOffset("BOT", 30),
               }}
               transition={STROKE_TRANSITION}
               id="CARD3"
@@ -161,8 +161,8 @@ export default function Isometric() {
             />
             <m.g
               animate={{
-                fill: strokeColor("TOP"),
-                y: cardOffset("TOP", 30),
+                fill: strokeColor("BOT"),
+                y: cardOffset("BOT", 30),
               }}
               transition={STROKE_TRANSITION}
               id="WEB2"
@@ -255,7 +255,7 @@ export default function Isometric() {
           <g id="CARDS2">
             <m.path
               animate={{
-                stroke: strokeColor("BOT"),
+                stroke: strokeColor("TOP"),
               }}
               transition={STROKE_TRANSITION}
               id="CONNECTION_3"
@@ -265,7 +265,7 @@ export default function Isometric() {
             />
             <m.rect
               animate={{
-                stroke: strokeColor("BOT"),
+                stroke: strokeColor("TOP"),
               }}
               transition={STROKE_TRANSITION}
               id="CARD0_3"
@@ -278,9 +278,9 @@ export default function Isometric() {
             />
             <m.rect
               animate={{
-                stroke: strokeColor("BOT"),
-                attrY: cardOffset("BOT", 10),
-                attrX: -cardOffset("BOT", 10),
+                stroke: strokeColor("TOP"),
+                attrY: cardOffset("TOP", 10),
+                attrX: -cardOffset("TOP", 10),
               }}
               transition={STROKE_TRANSITION}
               id="CARD1_3"
@@ -293,9 +293,9 @@ export default function Isometric() {
             />
             <m.rect
               animate={{
-                stroke: strokeColor("BOT"),
-                attrY: cardOffset("BOT", 20),
-                attrX: -cardOffset("BOT", 20),
+                stroke: strokeColor("TOP"),
+                attrY: cardOffset("TOP", 20),
+                attrX: -cardOffset("TOP", 20),
               }}
               transition={STROKE_TRANSITION}
               id="CARD2_3"
@@ -308,9 +308,9 @@ export default function Isometric() {
             />
             <m.rect
               animate={{
-                stroke: strokeColor("BOT"),
-                attrY: cardOffset("BOT", 30),
-                attrX: -cardOffset("BOT", 30),
+                stroke: strokeColor("TOP"),
+                attrY: cardOffset("TOP", 30),
+                attrX: -cardOffset("TOP", 30),
               }}
               transition={STROKE_TRANSITION}
               id="CARD3_3"
@@ -323,8 +323,8 @@ export default function Isometric() {
             />
             <m.g
               animate={{
-                fill: strokeColor("BOT"),
-                y: cardOffset("BOT", 30),
+                fill: strokeColor("TOP"),
+                y: cardOffset("TOP", 30),
               }}
               transition={STROKE_TRANSITION}
               id="WEB3"
@@ -520,7 +520,7 @@ export default function Isometric() {
                   <path
                     d="M563.971 179.439C563.971 191.865 546.063 201.939 523.971 201.939C501.88 201.939 483.971 191.865 483.971 179.439C483.971 167.012 501.88 156.939 523.971 156.939C546.063 156.939 563.971 167.012 563.971 179.439Z"
                     strokeDasharray="1 1"
-                    className="stroke-accent-foreground"
+                    className="stroke-muted-foreground"
                     mask="url(#path-28-inside-11_4_282)"
                   />
                 </g>

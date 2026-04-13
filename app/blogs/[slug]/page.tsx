@@ -5,6 +5,7 @@ import Container from "@/components/common/container";
 import { mdxComponents } from "@/components/mdx";
 import { Date, Heading, NavItems, Reveal } from "./client";
 import { mdxRemoteOptions } from "@/lib/mdx";
+import Link from "next/link";
 
 export default async function BlogPostPage({
   params,
@@ -36,19 +37,19 @@ export default async function BlogPostPage({
             options={mdxRemoteOptions}
           />
         </Reveal>
-        <Reveal
-          delay={0.3}
-          className="border-muted-foreground flex flex-wrap justify-center gap-4 border-t border-dashed pt-8"
-        >
-          {data.tags.map((tag: string, idx: number) => (
-            <span
-              key={idx}
-              className="bg-highlight/5 inline-block border border-dotted border-neutral-600 px-2 py-1 text-neutral-400"
+        <div className="text-muted-foreground border-muted-foreground flex justify-center border-t border-dashed pt-8 text-sm sm:text-base">
+          <p>
+            follow on{" "}
+            <Link
+              href="https://x.com/ok_nycx"
+              target="_blank"
+              className="text-highlight underline-offset-4 hover:underline"
             >
-              {tag}
-            </span>
-          ))}
-        </Reveal>
+              x.com
+            </Link>{" "}
+            for more updates
+          </p>
+        </div>
       </article>
     </Container>
   );

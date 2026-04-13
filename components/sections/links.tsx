@@ -29,10 +29,10 @@ export default function Links() {
             key={link.title}
             href={link.href}
             target="_blank"
-            className="group hover:border-highlight hover:text-highlight flex items-center gap-1 border border-dotted px-2 py-1 text-center uppercase transition-colors duration-300 ease-in-out"
+            className="group hover:border-highlight hover:text-highlight flex items-center gap-1 border border-dotted px-2 py-1 text-sm transition-colors duration-300 ease-in-out"
           >
             {link.title}
-            <ExternalLink className="size-5 opacity-25 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
+            <ExternalLink className="size-5 -translate-y-px opacity-25 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
           </Link>
         ))}
       </div>
