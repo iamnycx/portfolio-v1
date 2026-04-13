@@ -4,8 +4,8 @@ import Link from "next/link";
 import PlusIcons from "../plus-icons";
 import { cn } from "@/lib/utils";
 import { motion as m } from "motion/react";
-import { GithubLogoIcon, GlobeIcon, TriangleIcon } from "@phosphor-icons/react";
 import { projects, type Project } from "@/lib/projects";
+import { ChevronRight2, GitBranch, Globe } from "pixelarticons/react";
 
 const revealOnView = (delay = 0) => ({
   initial: {
@@ -29,8 +29,8 @@ export default function FeaturedProjects() {
   const featuredProjects = projects.filter((p) => p.featured);
 
   return (
-    <div id="featured-projects">
-      <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+    <div id="featured-projects" className="px-4 py-16 md:px-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {featuredProjects.map((project: Project, idx: number) => (
           <FeaturedProjectCard
             key={project.name}
@@ -39,7 +39,7 @@ export default function FeaturedProjects() {
           />
         ))}
       </div>
-      <div className="flex pt-4">
+      <div className="flex pt-16">
         <Link
           href="/projects"
           className="text-highlight mx-auto text-center underline-offset-4 hover:underline"
@@ -60,7 +60,7 @@ function FeaturedProjectCard({
 }) {
   return (
     <m.div
-      {...revealOnView(index * 0.2 + 1)}
+      {...revealOnView(index * 0.2 + 1.2)}
       className="group from-muted/30 hover:from-muted/50 border-muted-foreground hover:border-highlight relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out"
     >
       <div
@@ -75,7 +75,7 @@ function FeaturedProjectCard({
       <PlusIcons />
       <div className="z-10 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">
-          <h1 className="font-offbit line-clamp-1 text-xl tracking-wider">
+          <h1 className="text-md line-clamp-1 font-bold tracking-wider">
             {project?.name}
           </h1>
           <h2 className="text-muted-foreground group-hover:text-highlight transition-colors duration-300 ease-in-out">
@@ -89,7 +89,7 @@ function FeaturedProjectCard({
               target="_blank"
               className="hover:bg-text-highlight/5 hover:border-highlight hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
             >
-              <GlobeIcon size={20} strokeWidth={1} />
+              <Globe className="size-5" />
             </Link>
           )}
           {project.repo && (
@@ -98,17 +98,13 @@ function FeaturedProjectCard({
               target="_blank"
               className="hover:bg-text-highlight/5 hover:border-highlight hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
             >
-              <GithubLogoIcon size={20} strokeWidth={1} />
+              <GitBranch className="size-5" />
             </Link>
           )}
         </div>
       </div>
-      <div className="z-10 flex gap-2">
-        <TriangleIcon
-          size={14}
-          weight="duotone"
-          className="fill-muted group-hover:fill-highlight mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90"
-        />
+      <div className="z-10 flex">
+        <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1 size-8 shrink-0 origin-center rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
         <p className="tracking-wider text-balance">{project.description}</p>
       </div>
       <div className="z-10 flex flex-wrap gap-2 pt-2">

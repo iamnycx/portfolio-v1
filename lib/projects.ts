@@ -17,7 +17,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: "Tarun Thusu Website",
+    name: "Client Website",
     type: "Freelance Project",
     category: "frontend",
     featured: true,

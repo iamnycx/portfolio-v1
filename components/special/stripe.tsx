@@ -5,7 +5,7 @@ interface StripedPatternProps extends React.SVGProps<SVGSVGElement> {
 }
 
 export function StripedPattern({
-  direction = "left",
+  direction = "right",
   className,
   width = 20,
   height = 20,
@@ -18,7 +18,7 @@ export function StripedPattern({
   return (
     <svg
       aria-hidden="true"
-      className={`${className} mask-b-from-5% text-muted-foreground pointer-events-none absolute inset-0 -z-10 h-full w-full bg-transparent stroke-[0.5] opacity-50`}
+      className={`${className} text-muted-foreground pointer-events-none absolute inset-0 -z-10 h-full w-full bg-transparent mask-b-from-5% stroke-[0.5] opacity-50`}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >

@@ -6,7 +6,6 @@ import React, { Suspense } from "react";
 import { ThemeProvider } from "@/app/providers/theme-provider";
 import LenisScrollProvider from "./providers/lenis-provider";
 import { ProgressiveBlur } from "@/components/progressive-blur";
-import { offBit } from "./font";
 import { GeistPixelSquare } from "geist/font/pixel";
 import { StripedPattern } from "@/components/special/stripe";
 
@@ -88,9 +87,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${offBit.variable} ${GeistPixelSquare.className} antialiased`}
-      >
+      <body className={`${GeistPixelSquare.className} antialiased`}>
         <Suspense>
           <ThemeProvider
             attribute="class"
@@ -99,7 +96,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <LenisScrollProvider>
-              <div className="relative">
+              <div className="relative md:pt-32">
                 <Navbar />
                 <StripedPattern />
                 {children}

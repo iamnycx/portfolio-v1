@@ -41,7 +41,7 @@ export function Heading({ title }: { title: string }) {
   return (
     <motion.h2
       layoutId={`blog-title-${title}`}
-      className="font-offbit group-hover:text-highlight z-10 line-clamp-1 text-xl tracking-wide transition-colors duration-300 ease-in-out"
+      className="group-hover:text-highlight z-10 line-clamp-1 text-md font-bold tracking-wide transition-colors duration-300 ease-in-out"
     >
       {title}
     </motion.h2>

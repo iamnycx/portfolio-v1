@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import Logo from "../logo";
 import Link from "next/link";
-import { MailboxIcon } from "@phosphor-icons/react";
+import { Bell } from "pixelarticons/react";
 
 export default function DigitalArt() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,15 +20,15 @@ export default function DigitalArt() {
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <div className="relative">
-      <div>
-        <div className="absolute -top-30 -left-9">
+    <div className="relative px-4 md:px-6">
+      <div className="hidden md:block">
+        <div className="absolute -top-30 -left-2.5">
           <div className="border-muted-foreground bg-background h-9 w-9 origin-bottom-right -rotate-45 border-r border-dashed" />
           <div className="border-muted-foreground bg-background h-12 w-9 border-r border-dashed" />
           <div className="border-muted-foreground bg-background h-9 w-9 origin-top-right rotate-45 border-r border-dashed" />
           <div className="border-muted-foreground h-9 w-9 origin-top-right rotate-45 border-r border-dashed" />
         </div>
-        <div className="absolute -top-30 -right-9">
+        <div className="absolute -top-30 -right-2.5">
           <div className="border-muted-foreground bg-background h-9 w-9 origin-bottom-left rotate-45 border-l border-dashed" />
           <div className="border-muted-foreground bg-background h-12 w-9 border-l border-dashed" />
           <div className="border-muted-foreground bg-background h-9 w-9 origin-top-left -rotate-45 border-l border-dashed" />
@@ -57,7 +57,7 @@ export default function DigitalArt() {
           </motion.div>
           <motion.div
             style={{ y: charY }}
-            className="absolute right-0 -bottom-6 z-20 w-96 scale-140"
+            className="absolute right-0 -bottom-6 z-10 w-96 scale-140"
           >
             <Image
               src="/img/astronaut.png"
@@ -69,19 +69,19 @@ export default function DigitalArt() {
           </motion.div>
           <motion.div
             style={{ opacity }}
-            className="absolute inset-x-0 top-0 z-20 md:inset-0"
+            className="absolute inset-x-0 top-0 z-0 md:inset-0"
           >
-            <h2 className="text-muted-foreground font-offbit absolute top-8 -z-10 w-full text-center text-7xl uppercase md:left-10 md:text-left">
+            <h2 className="text-muted-foreground absolute top-8 -z-10 w-full text-center text-5xl font-bold uppercase md:left-10 md:text-left">
               EN ROUTE
             </h2>
           </motion.div>
         </div>
         <div className="border-muted-foreground flex flex-col space-y-8 border border-dashed md:w-120 md:border-l-0">
           <div className="flex items-baseline-last justify-between p-4">
-            <h1 className="font-offbit text-3xl">TL;DR</h1>
+            <h1 className="text-3xl font-bold">TL;DR</h1>
             <Logo />
           </div>
-          <div className="text-muted-foreground font-offbit flex flex-col gap-2 p-4 pt-0 tracking-wide uppercase">
+          <div className="text-muted-foreground flex flex-col gap-2 p-4 pt-0 tracking-wide uppercase">
             {[
               ["Location", "Delhi, India"],
               ["OS", "Arch Linux (Hyprland)"],
@@ -91,8 +91,8 @@ export default function DigitalArt() {
               ["Next", "Applied AI · TUI"],
             ].map(([label, value]) => (
               <p key={label} className="grid grid-cols-[120px_1fr]">
-                <span>{label}:</span>
-                <span className="text-foreground">{value}</span>
+                <span className="font-bold">{label}:</span>
+                <span className="text-foreground font-semibold">{value}</span>
               </p>
             ))}
           </div>
@@ -101,8 +101,8 @@ export default function DigitalArt() {
             target="_blank"
             className="border-muted-foreground hover:bg-muted/50 group mt-auto flex w-full cursor-pointer items-center justify-center gap-2 border-t border-dashed py-4 transition-colors duration-300 ease-in-out"
           >
-            <MailboxIcon className="fill-muted-foreground group-hover:fill-foreground size-5 stroke-none transition-colors duration-300 ease-in-out" />
-            <span className="font-offbit text-md translate-y-0.5 tracking-widest">
+            <Bell className="fill-muted-foreground group-hover:fill-foreground stroke-none transition-colors duration-300 ease-in-out" />
+            <span className="text-md translate-y-0.5 font-bold tracking-widest">
               PING ME
             </span>
           </Link>

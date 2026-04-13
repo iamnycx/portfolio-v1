@@ -2,8 +2,8 @@
 
 import PlusIcons from "../plus-icons";
 import { cn } from "@/lib/utils";
-import { TriangleIcon } from "@phosphor-icons/react";
 import { motion as m } from "motion/react";
+import { ChevronRight2 } from "pixelarticons/react";
 
 const workData = [
   {
@@ -14,14 +14,7 @@ const workData = [
       "Low-cost camera-based beach sand grain size mapping system to aid coastal management",
     ],
     organizer: "Ministry of Earth Sciences, Govt. of India",
-    techStack: [
-      "Python",
-      "OpenCV",
-      "FastAPI",
-      "React",
-      "Raspberry-Pi",
-      "Docker",
-    ],
+    techStack: ["Python", "OpenCV", "FastAPI", "React", "Docker"],
   },
   {
     title: "Manthan 2025",
@@ -31,11 +24,7 @@ const workData = [
       "Satellite + ground data fusion for safe routing and damage insight",
     ],
     organizer: "COER University, Roorkee",
-    techStack: [
-      "OpenStreetMap (OSM)",
-      "GeoSpatial Analysis",
-      "HDX / UN Datasets",
-    ],
+    techStack: ["OpenStreetMap (OSM)", "HDX / UN Datasets"],
   },
   {
     title: "TechSprint-48",
@@ -88,8 +77,8 @@ const revealOnView = (delay = 0) => ({
 
 export default function Hackathons() {
   return (
-    <div id="work">
-      <div className="grid grid-cols-1 gap-6 py-8 md:grid-cols-2">
+    <div id="work" className="px-4 py-16 md:px-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {workData.map((data, idx: number) => (
           <HackathonCard key={data.title} data={data} index={idx} />
         ))}
@@ -116,7 +105,7 @@ function HackathonCard({ data, index }: { data: workDataType; index: number }) {
       <PlusIcons />
       <div className="z-10 flex flex-col gap-1 sm:flex-row sm:justify-between">
         <div className="space-y-1">
-          <h1 className="font-offbit text-xl tracking-wider">{data.title}</h1>
+          <h1 className="text-md font-bold tracking-wider">{data.title}</h1>
           <h2 className="text-muted-foreground group-hover:text-highlight transition-colors duration-300 ease-in-out">
             {data.organizer}
           </h2>
@@ -125,12 +114,8 @@ function HackathonCard({ data, index }: { data: workDataType; index: number }) {
       </div>
       <ul className="z-10 list-inside space-y-1 tracking-wider text-pretty">
         {data.points.map((d, index) => (
-          <li key={index} className="flex gap-2">
-            <TriangleIcon
-              size={14}
-              weight="duotone"
-              className="fill-muted group-hover:fill-highlight mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90"
-            />
+          <li key={index} className="flex">
+            <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1 size-8 shrink-0 origin-center rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
             <span>{d}</span>
           </li>
         ))}

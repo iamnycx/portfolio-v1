@@ -1,11 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
-import { CaretRightIcon } from "@phosphor-icons/react";
+import {
+  motion,
+  AnimatePresence,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
+import MobileMenu from "./navbar-mobile";
 
 const CLOCK_PLACEHOLDER = "00:00:00";
+const INITIAL_TOP_OFFSET = 100;
 
 const links = [
   {
@@ -26,6 +33,15 @@ export default function Navbar() {
   const [time, setTime] = useState(CLOCK_PLACEHOLDER);
   const [activePage, setActivePage] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  const navbarOffset = useTransform(
+    scrollY,
+    [0, INITIAL_TOP_OFFSET],
+    [INITIAL_TOP_OFFSET, -1],
+    { clamp: true },
+  );
 
   useEffect(() => {
     const update = () => {
@@ -44,9 +60,31 @@ export default function Navbar() {
     return () => clearInterval(interval);
   }, []);
 
+  useLayoutEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+    const syncDesktopState = (event?: MediaQueryListEvent) => {
+      setIsDesktop(event ? event.matches : desktopQuery.matches);
+    };
+
+    syncDesktopState();
+    desktopQuery.addEventListener("change", syncDesktopState);
+    return () => desktopQuery.removeEventListener("change", syncDesktopState);
+  }, []);
+
+  const navbarStyle = prefersReducedMotion
+    ? { y: -1 }
+    : isDesktop === null
+      ? undefined
+      : isDesktop
+        ? { y: navbarOffset }
+        : { y: -1 };
+
   return (
     <>
-      <div className="from-background border-muted-foreground fixed top-0 z-50 mx-auto flex w-screen items-center justify-between border-b border-dashed bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-xs md:inset-x-0 md:max-w-6xl md:border-x md:px-6">
+      <motion.div
+        style={navbarStyle}
+        className="from-background border-muted-foreground fixed top-0 z-50 mx-auto flex w-screen items-center justify-between border-y border-dashed bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-sm md:inset-x-0 md:max-w-6xl md:border-x md:px-6"
+      >
         <div className="flex items-center gap-4 sm:gap-6">
           <Link
             href="/"
@@ -100,93 +138,12 @@ export default function Navbar() {
         >
           {isMobileMenuOpen ? "./close.sh" : "./menu.sh"}
         </button>
-      </div>
+      </motion.div>
       <AnimatePresence>
         {isMobileMenuOpen && (
           <MobileMenu onClose={() => setIsMobileMenuOpen(false)} />
         )}
       </AnimatePresence>
     </>
-  );
-}
-
-const NAVBAR_HEIGHT = "4rem";
-
-function MobileMenu({ onClose }: { onClose: () => void }) {
-  const menuItems = [
-    { text: "Home", href: "/" },
-    { text: "Projects", href: "/projects" },
-    { text: "Blogs", href: "/blogs" },
-    { text: "Contact", href: "mailto:25nikmehta@gmail.com" },
-  ];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 40,
-      }}
-      className="bg-background/60 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      <motion.div
-        initial={{ y: "-100%" }}
-        animate={{ y: 0 }}
-        exit={{ y: "-100%" }}
-        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-        style={{
-          top: NAVBAR_HEIGHT,
-          position: "absolute",
-          left: 0,
-          right: 0,
-        }}
-        className="mx-auto max-w-6xl px-4 md:px-6"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="border-muted-foreground bg-background/50 overflow-hidden border-x border-b border-dashed backdrop-blur-sm">
-          <nav className="divide-muted-foreground divide-y divide-dashed">
-            {menuItems.map((item, idx) => {
-              const isMailto = item.href?.startsWith("mailto:");
-              const content = (
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.08, duration: 0.3 }}
-                  className="group hover:bg-highlight/5 flex items-center justify-between px-6 py-4 transition-colors duration-200"
-                >
-                  <span className="group-hover:text-highlight text-base font-medium transition-colors duration-200">
-                    {item.text}
-                  </span>
-                  <CaretRightIcon
-                    size={18}
-                    className="text-muted-foreground group-hover:text-highlight transition-all duration-200 group-hover:translate-x-1"
-                  />
-                </motion.div>
-              );
-
-              return isMailto ? (
-                <a key={item.text} href={item.href} className="block">
-                  {content}
-                </a>
-              ) : (
-                <Link
-                  key={item.text}
-                  href={item.href ?? "/"}
-                  onClick={onClose}
-                  className="block"
-                >
-                  {content}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-      </motion.div>
-    </motion.div>
   );
 }

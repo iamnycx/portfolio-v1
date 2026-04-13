@@ -5,10 +5,10 @@ import CopyButton from "./common/copy-button";
 
 export const mdxComponents = {
   h2: (props: ComponentProps<"h2">) => (
-    <h2 className="font-offbit my-6 text-2xl tracking-wide" {...props} />
+    <h2 className="my-6 text-2xl font-bold tracking-wide" {...props} />
   ),
   h3: (props: ComponentProps<"h3">) => (
-    <h2 className="font-offbit my-4 mt-8 text-xl tracking-wide" {...props} />
+    <h2 className="my-4 mt-8 text-xl font-bold tracking-wide" {...props} />
   ),
   p: (props: ComponentProps<"p">) => (
     <p
@@ -104,14 +104,6 @@ export const mdxComponents = {
   },
   code: (props: ComponentProps<"code">) => (
     <code className="text-highlight" {...props} />
-  ),
-  hr: (props: ComponentProps<"hr">) => (
-    <div
-      className="text-accent my-8 flex-1 overflow-hidden tracking-widest whitespace-nowrap"
-      {...props}
-    >
-      ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-    </div>
   ),
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table className="">

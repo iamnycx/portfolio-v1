@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowLeftIcon } from "@phosphor-icons/react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { ArrowLeft } from "pixelarticons/react";
 import type { ReactNode } from "react";
 
 const revealOnView = (delay = 0) => ({
@@ -43,7 +43,7 @@ export function Heading({ title }: { title: string }) {
   return (
     <motion.h1
       layoutId={`blog-title-${title}`}
-      className="font-offbit text-4xl tracking-wide"
+      className="text-4xl font-bold tracking-wide"
     >
       {title}
     </motion.h1>
@@ -84,7 +84,7 @@ export function NavItems({ slug }: { slug: string }) {
         href={"/blogs"}
         className="text-muted-foreground hover:text-highlight flex items-center gap-2 transition-colors duration-300 ease-in-out"
       >
-        <ArrowLeftIcon weight="bold" />
+        <ArrowLeft />
         <span>cd ..</span>
       </Link>
       <p className="text-muted-foreground hidden md:block">$ cat {slug}.mdx</p>

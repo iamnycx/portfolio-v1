@@ -160,7 +160,7 @@ export default function Contribution(): JSX.Element {
   }, [contributionByDate, weeksToRender]);
 
   return (
-    <div className="space-y-8 py-6 sm:py-12">
+    <div className="space-y-8 px-4 py-16 md:px-6">
       <motion.p
         {...revealOnView(0)}
         className="text-muted-foreground pb-4 text-center"

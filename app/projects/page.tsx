@@ -5,8 +5,8 @@ import PlusIcons from "@/components/plus-icons";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { motion as m } from "motion/react";
-import { GithubLogoIcon, GlobeIcon, TriangleIcon } from "@phosphor-icons/react";
 import { Project, projects } from "@/lib/projects";
+import { ChevronRight2, GitBranch, Globe } from "pixelarticons/react";
 
 const revealOnView = (delay = 0) => ({
   initial: {
@@ -28,12 +28,12 @@ const revealOnView = (delay = 0) => ({
 
 export default function Projects() {
   return (
-    <Container className="pt-16">
-      <div className="space-y-4 py-12">
+    <Container className="pt-12">
+      <div className="space-y-4 px-4 py-16 md:px-6">
         <div className="flex items-baseline justify-between">
           <m.h1
             {...revealOnView(0)}
-            className="font-offbit text-xl tracking-wider"
+            className="text-xl font-bold tracking-wider"
           >
             projects
           </m.h1>
@@ -86,7 +86,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <PlusIcons />
       <div className="z-10 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">
-          <h1 className="font-offbit line-clamp-1 text-xl tracking-wide">
+          <h1 className="line-clamp-1 text-md font-bold tracking-wide">
             {project?.name}
           </h1>
           <h2 className="text-muted-foreground group-hover:text-highlight transition-colors duration-300 ease-in-out">
@@ -100,7 +100,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               target="_blank"
               className="hover:border-highlight hover:bg-highlight/5 hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
             >
-              <GlobeIcon size={20} strokeWidth={1} />
+              <Globe className="size-5" />
             </Link>
           )}
           {project.repo && (
@@ -109,17 +109,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               target="_blank"
               className="hover:border-highlight hover:bg-highlight/5 hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
             >
-              <GithubLogoIcon size={20} strokeWidth={1} />
+              <GitBranch className="size-5" />
             </Link>
           )}
         </div>
       </div>
-      <div className="z-10 flex gap-2">
-        <TriangleIcon
-          size={14}
-          weight="duotone"
-          className="fill-muted group-hover:fill-highlight mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90"
-        />
+      <div className="z-10 flex">
+        <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1 size-8 shrink-0 origin-center rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
         <p className="tracking-wider text-balance">{project.description}</p>
       </div>
       <div className="z-10 flex flex-wrap gap-2 pt-2">

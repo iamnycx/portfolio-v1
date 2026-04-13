@@ -2,8 +2,8 @@
 
 import PlusIcons from "../plus-icons";
 import { cn } from "@/lib/utils";
-import { TriangleIcon } from "@phosphor-icons/react";
 import { motion as m } from "motion/react";
+import { ChevronRight2 } from "pixelarticons/react";
 
 const workData = [
   {
@@ -52,8 +52,8 @@ const revealOnView = (delay = 0) => ({
 
 export default function Work() {
   return (
-    <div id="work">
-      <div className="space-y-6 py-8">
+    <div id="work" className="px-4 py-16 md:px-6">
+      <div className="space-y-6">
         {workData.map((data, idx: number) => (
           <WorkCard key={data.orgnization} data={data} index={idx} />
         ))}
@@ -80,7 +80,7 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
       <PlusIcons />
       <div className="z-10 flex flex-col gap-2 sm:flex-row sm:justify-between">
         <div className="space-y-1">
-          <h1 className="font-offbit text-xl tracking-wider">
+          <h1 className="text-md font-bold tracking-wider">
             {data.orgnization}
           </h1>
           <h2>
@@ -93,12 +93,8 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
       </div>
       <ul className="z-10 list-inside space-y-1 tracking-wider text-balance">
         {data.points.map((point, index) => (
-          <li key={index} className="flex gap-2">
-            <TriangleIcon
-              size={14}
-              weight="duotone"
-              className="fill-muted group-hover:fill-highlight mt-1 shrink-0 origin-center stroke-none transition-all duration-300 ease-in-out group-hover:rotate-90"
-            />
+          <li key={index} className="flex">
+            <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1 size-8 shrink-0 origin-center rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
             <span>{point}</span>
           </li>
         ))}

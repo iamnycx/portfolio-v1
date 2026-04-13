@@ -23,7 +23,7 @@ export default async function BlogPostPage({
 
   return (
     <Container className="py-12">
-      <article className="space-y-6 pt-16">
+      <article className="space-y-6 px-4 pt-16 md:px-6">
         <NavItems slug={slug} />
         <Reveal delay={0.1} className="space-y-2">
           <Heading title={data.title} />

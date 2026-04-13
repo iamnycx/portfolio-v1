@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, CopySimpleIcon } from "@phosphor-icons/react";
+import { Check, Copy } from "pixelarticons/react";
 import { useState } from "react";
 
 export default function CopyButton({ code }: { code: string }) {
@@ -23,17 +23,9 @@ export default function CopyButton({ code }: { code: string }) {
       aria-label="Copy code"
     >
       {copied ? (
-        <CheckIcon
-          weight="bold"
-          size={18}
-          className="text-highlight w-full origin-center transition-transform duration-300 ease-in-out"
-        />
+        <Check className="text-highlight size-5 w-full origin-center transition-transform duration-300 ease-in-out" />
       ) : (
-        <CopySimpleIcon
-          weight="bold"
-          size={18}
-          className="w-full origin-center transition-transform duration-300 ease-in-out active:scale-50"
-        />
+        <Copy className="size-5 w-full origin-center transition-transform duration-300 ease-in-out active:scale-50" />
       )}
     </button>
   );

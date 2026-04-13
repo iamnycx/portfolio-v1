@@ -9,11 +9,11 @@ export default function Blogs() {
   const blogs = getAllBlogs();
 
   return (
-    <Container className="pt-16">
-      <div className="space-y-4 py-12">
+    <Container className="pt-12">
+      <div className="space-y-4 px-4 py-16 md:px-6">
         <div className="flex items-baseline justify-between">
           <Reveal delay={0}>
-            <h1 className="font-offbit text-xl tracking-wide">blogs</h1>
+            <h1 className="text-xl font-bold tracking-wide">blogs</h1>
           </Reveal>
           <DummyCommand />
         </div>

@@ -1,5 +1,5 @@
-import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import Link from "next/link";
+import { ExternalLink } from "pixelarticons/react";
 
 export default function Links() {
   const links = [
@@ -22,7 +22,7 @@ export default function Links() {
   ];
 
   return (
-    <div id="links" className="space-y-8 pb-16">
+    <div id="links" className="space-y-8 px-4 py-16 md:px-6">
       <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
         {links.map((link) => (
           <Link
@@ -32,11 +32,7 @@ export default function Links() {
             className="group hover:border-highlight hover:text-highlight flex items-center gap-1 border border-dotted px-2 py-1 text-center uppercase transition-colors duration-300 ease-in-out"
           >
             {link.title}
-            <ArrowUpRightIcon
-              weight="bold"
-              size={18}
-              className="opacity-25 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
-            />
+            <ExternalLink className="size-5 opacity-25 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
           </Link>
         ))}
       </div>

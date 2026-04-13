@@ -6,7 +6,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-offbit: var(--font-offbit);
   --font-sans: var(--font-rx100), sans-serif;
   --font-mono: Geist Mono, monospace;
   --color-sidebar-ring: var(--sidebar-ring);
