@@ -22,7 +22,7 @@ const revealOnView = (delay = 0) => ({
     ease: "easeInOut" as const,
     delay,
   },
-  viewport: { once: true, margin: "0px 0px -15% 0px" },
+  viewport: { once: true, margin: "0px 0px -5% 0px" },
 });
 
 export default function FeaturedProjects() {
