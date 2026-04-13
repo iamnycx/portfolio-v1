@@ -509,7 +509,6 @@ export default function Isometric() {
                 id="DISC"
                 filter="url(#filter1_d_4_282)"
                 animate={{
-                  scale: hovered === "TOP" ? 1.02 : 1,
                   y: hovered === "TOP" ? -2 : 0,
                 }}
                 transition={LAYER_TRANSITION}
@@ -521,12 +520,12 @@ export default function Isometric() {
                   <path
                     d="M563.971 179.439C563.971 191.865 546.063 201.939 523.971 201.939C501.88 201.939 483.971 191.865 483.971 179.439C483.971 167.012 501.88 156.939 523.971 156.939C546.063 156.939 563.971 167.012 563.971 179.439Z"
                     strokeDasharray="1 1"
-                    className="stroke-muted-foreground"
+                    className="stroke-accent-foreground"
                     mask="url(#path-28-inside-11_4_282)"
                   />
                 </g>
 
-                <g id="LOGO">
+                <m.g id="LOGO">
                   <rect
                     id="DOT9"
                     x="0.433013"
@@ -587,7 +586,11 @@ export default function Isometric() {
                     transform="matrix(0.866025 -0.5 0.866025 0.5 525.278 173.155)"
                     className="stroke-accent-foreground stroke-[0.5]"
                   />
-                  <path id="DOT2" d={ISO_DOT2_PATH} className="fill-accent-foreground" />
+                  <path
+                    id="DOT2"
+                    d={ISO_DOT2_PATH}
+                    className="fill-accent-foreground"
+                  />
                   <rect
                     id="DOT1"
                     x="0.433013"
@@ -604,7 +607,7 @@ export default function Isometric() {
                     transform="matrix(0.866025 -0.5 0.866025 0.5 519.216 190.655)"
                     className="stroke-accent-foreground stroke-[0.5]"
                   />
-                </g>
+                </m.g>
               </m.g>
             </m.g>
           </g>

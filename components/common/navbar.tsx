@@ -73,17 +73,15 @@ export default function Navbar() {
 
   const navbarStyle = prefersReducedMotion
     ? { y: -1 }
-    : isDesktop === null
-      ? undefined
-      : isDesktop
-        ? { y: navbarOffset }
-        : { y: -1 };
+    : isDesktop === false
+      ? { y: -1 }
+      : { y: navbarOffset };
 
   return (
     <>
       <motion.div
         style={navbarStyle}
-        className="from-background border-muted-foreground fixed top-0 z-50 mx-auto flex w-screen items-center justify-between border-y border-dashed bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-sm md:inset-x-0 md:max-w-6xl md:border-x md:px-6"
+        className="from-background border-muted-foreground fixed top-0 z-50 mx-auto flex items-center justify-between border-y border-dashed bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-sm md:inset-x-0 md:max-w-6xl md:border-x md:px-6"
       >
         <div className="flex items-center gap-4 sm:gap-6">
           <Link
