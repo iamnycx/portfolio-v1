@@ -85,10 +85,10 @@ export default function DigitalArt() {
             {[
               ["Location", "Delhi, India"],
               ["OS", "Arch Linux (Hyprland)"],
-              ["Editor", "Neovim · VS Code"],
-              ["Focus", "Systems · DX · UX"],
-              ["Learning", "Rust · Solana"],
-              ["Next", "Applied AI · TUI"],
+              ["Editor", "Neovim - Zed - VsCode"],
+              ["Focus", "Systems - DX - UX"],
+              ["Learning", "Rust - Solana"],
+              ["Next", "Applied AI - TUI"],
             ].map(([label, value]) => (
               <p key={label} className="grid grid-cols-[120px_1fr]">
                 <span className="font-bold">{label}:</span>
