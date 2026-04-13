@@ -55,7 +55,7 @@ export default function Hero() {
 
         <m.p
           {...revealOnView(0.4)}
-          className="text-foreground/75 text-justify text-sm leading-7 md:text-base"
+          className="text-foreground/75 text-justify text-sm leading-6 md:text-base"
         >
           <b className="text-foreground"> software developer</b> based in{" "}
           <b className="text-foreground">india</b>, final year{" "}
@@ -98,7 +98,7 @@ export default function Hero() {
         </div>
         <m.p
           {...revealOnView(1.2)}
-          className="text-foreground/75 text-center text-sm md:text-left md:text-base"
+          className="text-foreground/75 text-balance text-center text-sm leading-6 md:text-left md:text-base"
         >
           and yeah i love to play with{" "}
           <b className="text-foreground inline-flex items-center gap-1">

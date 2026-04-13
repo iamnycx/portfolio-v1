@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import Link from "next/link";
+import { ChevronRight } from "pixelarticons/react";
 
 const NAVBAR_HEIGHT = "4rem";
 
@@ -53,20 +54,7 @@ export default function MobileMenu({ onClose }: { onClose: () => void }) {
                   <span className="group-hover:text-highlight text-base font-medium transition-colors duration-200">
                     {item.text}
                   </span>
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 16 16"
-                    className="text-muted-foreground group-hover:text-highlight h-[18px] w-[18px] transition-all duration-200 group-hover:translate-x-1"
-                    fill="none"
-                  >
-                    <path
-                      d="M6 3L11 8L6 13"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <ChevronRight className="text-muted-foreground group-hover:text-highlight h-[18px] w-[18px] transition-all duration-200 group-hover:translate-x-1" />
                 </motion.div>
               );
 

@@ -101,7 +101,7 @@ export default function DigitalArt() {
             target="_blank"
             className="border-muted-foreground hover:bg-muted/50 group mt-auto flex w-full cursor-pointer items-center justify-center gap-2 border-t border-dashed py-4 transition-colors duration-300 ease-in-out"
           >
-            <Bell className="fill-muted-foreground group-hover:fill-foreground stroke-none transition-colors duration-300 ease-in-out" />
+            <Bell className="fill-muted-foreground size-5 group-hover:fill-foreground stroke-none transition-colors duration-300 ease-in-out" />
             <span className="text-md translate-y-0.5 font-bold tracking-widest">
               PING ME
             </span>
