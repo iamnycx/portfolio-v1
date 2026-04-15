@@ -41,11 +41,11 @@ export default function FeaturedProjects() {
       </div>
       <div className="flex pt-16">
         <div className="absolute inset-x-0 translate-y-[1.58rem]">
-          <div className="border-muted-foreground absolute left-0 h-0.5 w-md border-b border-dotted">
+          <div className="border-muted-foreground absolute left-0 h-0.5 w-[4.6rem] border-b border-dotted md:w-md">
             <div className="border-muted-foreground absolute -right-12 h-0.5 w-[3rem] origin-bottom-left rotate-35 border-b border-dotted" />
             <div className="border-muted-foreground absolute -right-12 h-0.5 w-[3rem] origin-bottom-left -rotate-35 border-b border-dotted" />
           </div>
-          <div className="border-muted-foreground absolute right-0 h-0.5 w-md border-b border-dotted">
+          <div className="border-muted-foreground absolute right-0 h-0.5 w-[4.6rem] border-b border-dotted md:w-md">
             <div className="border-muted-foreground absolute -left-12 h-0.5 w-[3rem] origin-bottom-right rotate-35 border-b border-dotted" />
             <div className="border-muted-foreground absolute -left-12 h-0.5 w-[3rem] origin-bottom-right -rotate-35 border-b border-dotted" />
           </div>

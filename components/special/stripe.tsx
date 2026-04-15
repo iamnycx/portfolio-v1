@@ -18,7 +18,7 @@ export function StripedPattern({
   return (
     <svg
       aria-hidden="true"
-      className={`${className} text-muted-foreground pointer-events-none absolute inset-0 -z-10 h-full w-full bg-transparent mask-b-from-5% stroke-[0.5] opacity-50`}
+      className={`${className} text-muted-foreground pointer-events-none absolute inset-0 -z-10 h-full w-full bg-transparent mask-b-from-0% stroke-[0.5] opacity-50`}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
