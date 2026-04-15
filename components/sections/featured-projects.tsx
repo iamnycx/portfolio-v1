@@ -52,7 +52,7 @@ export default function FeaturedProjects() {
         </div>
         <Link
           href="/projects"
-          className="hover:text-highlight text-muted-foreground border-muted-foreground mx-auto w-[11rem] border-dotted py-3.5 text-center transition-colors duration-300 ease-in-out md:border-y"
+          className="hover:text-highlight text-highlight md:text-muted-foreground border-muted-foreground mx-auto w-[11rem] border-dotted text-center transition-colors duration-300 ease-in-out md:border-y lg:py-3.5"
         >
           /projects
         </Link>

@@ -35,13 +35,13 @@ export default function Links() {
           <div className="border-muted-foreground bg-background h-9 w-9 origin-top-left -rotate-45 border-l border-dashed" />
         </div>
       </div>
-      <div className="mx-auto grid w-fit grid-cols-2 gap-x-4 sm:gap-x-8 md:grid-cols-4">
+      <div className="mx-auto grid w-fit grid-cols-2 gap-4 sm:gap-8 md:grid-cols-4">
         {links.map((link) => (
           <Link
             key={link.title}
             href={link.href}
             target="_blank"
-            className="group hover:text-highlight flex items-center gap-1 px-2 py-1 text-sm transition-colors duration-300 ease-in-out"
+            className="group hover:text-highlight flex justify-center items-center gap-1 px-2 py-1 text-sm transition-colors duration-300 ease-in-out"
           >
             {link.title}
             <ExternalLink className="size-5 -translate-y-px opacity-25 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />

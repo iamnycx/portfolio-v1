@@ -10,7 +10,6 @@ import {
   Leaf,
   MagicEdit,
   MapPinHome,
-  Smile,
   University,
 } from "pixelarticons/react";
 
@@ -110,16 +109,13 @@ export default function Hero() {
         </m.p>
         <m.p
           {...revealOnView(0.8)}
-          className="text-foreground/75 px-4 text-center text-sm leading-6 text-balance md:text-left md:text-base lg:hidden"
+          className="text-foreground/75 px-4 text-center text-xs leading-6 text-balance md:text-left md:text-base lg:hidden"
         >
           open in{" "}
           <span>
-            desktop <ComputerSharp className="inline size-4" />
+            desktop <ComputerSharp className="inline size-3" />
           </span>{" "}
-          for better{" "}
-          <span>
-            experience <Smile className="inline size-4" />
-          </span>
+          for better experience
         </m.p>
       </div>
 
