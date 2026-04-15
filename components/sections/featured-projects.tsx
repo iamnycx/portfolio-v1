@@ -40,7 +40,7 @@ export default function FeaturedProjects() {
         ))}
       </div>
       <div className="flex pt-16">
-        <div className="absolute inset-x-0 translate-y-[1.58rem]">
+        <div className="absolute inset-x-0 hidden translate-y-[1.58rem] md:block">
           <div className="border-muted-foreground absolute left-0 h-0.5 w-[4.6rem] border-b border-dotted md:w-md">
             <div className="border-muted-foreground absolute -right-12 h-0.5 w-[3rem] origin-bottom-left rotate-35 border-b border-dotted" />
             <div className="border-muted-foreground absolute -right-12 h-0.5 w-[3rem] origin-bottom-left -rotate-35 border-b border-dotted" />
@@ -52,7 +52,7 @@ export default function FeaturedProjects() {
         </div>
         <Link
           href="/projects"
-          className="hover:text-highlight text-muted-foreground border-muted-foreground mx-auto w-[11rem] border-y border-dotted py-3.5 text-center transition-colors duration-300 ease-in-out"
+          className="hover:text-highlight text-muted-foreground border-muted-foreground mx-auto w-[11rem] border-dotted py-3.5 text-center transition-colors duration-300 ease-in-out md:border-y"
         >
           /projects
         </Link>

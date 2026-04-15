@@ -5,10 +5,12 @@ import { motion as m } from "motion/react";
 import Isometric from "../special/isometric";
 import {
   Computer,
+  ComputerSharp,
   Goal,
   Leaf,
   MagicEdit,
   MapPinHome,
+  Smile,
   University,
 } from "pixelarticons/react";
 
@@ -35,10 +37,7 @@ export default function Hero() {
     <div className="relative flex py-12 md:pb-0">
       <div className="space-y-8 px-4 md:w-2/3 md:px-6">
         <div className="flex items-center justify-center gap-4 md:justify-start">
-          <m.h1
-            {...revealOnView(0)}
-            className="text-xl font-bold"
-          >
+          <m.h1 {...revealOnView(0)} className="text-xl font-bold">
             nikhil singh mehta
           </m.h1>
           <m.div {...revealOnView(0.1)}>
@@ -66,7 +65,7 @@ export default function Hero() {
           <b className="text-foreground">web3</b> development.
         </m.p>
 
-        <div className="flex uppercase items-center justify-center gap-4 font-bold md:justify-start">
+        <div className="flex items-center justify-center gap-4 font-bold uppercase md:justify-start">
           <m.p
             {...revealOnView(0.3)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
@@ -108,6 +107,19 @@ export default function Hero() {
           <b className="text-foreground inline-flex items-center gap-1">
             motion <MagicEdit className="size-4" />
           </b>
+        </m.p>
+        <m.p
+          {...revealOnView(0.8)}
+          className="text-foreground/75 px-4 text-center text-sm leading-6 text-balance md:text-left md:text-base lg:hidden"
+        >
+          open in{" "}
+          <span>
+            desktop <ComputerSharp className="inline size-4" />
+          </span>{" "}
+          for better{" "}
+          <span>
+            experience <Smile className="inline size-4" />
+          </span>
         </m.p>
       </div>
 
