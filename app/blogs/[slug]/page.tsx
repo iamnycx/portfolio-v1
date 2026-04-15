@@ -26,10 +26,10 @@ export default async function BlogPostPage({
     <Container className="py-12">
       <article className="space-y-6 px-4 pt-16 md:px-6">
         <NavItems slug={slug} />
-        <Reveal delay={0.1} className="space-y-2">
+        <div className="space-y-2">
           <Heading title={data.title} />
           <Date date={data.date} readTime={data.readTime} title={data.title} />
-        </Reveal>
+        </div>
         <Reveal delay={0.2} className="my-8">
           <MDXRemote
             source={content}

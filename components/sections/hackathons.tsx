@@ -115,7 +115,7 @@ function HackathonCard({ data, index }: { data: workDataType; index: number }) {
       <ul className="z-10 list-inside space-y-1 tracking-wider text-pretty">
         {data.points.map((d, index) => (
           <li key={index} className="flex">
-            <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1 size-8 shrink-0 origin-center rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
+            <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1.5 size-8 shrink-0 origin-center -rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
             <span>{d}</span>
           </li>
         ))}

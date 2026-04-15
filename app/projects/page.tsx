@@ -86,7 +86,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <PlusIcons />
       <div className="z-10 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1 space-y-1">
-          <h1 className="line-clamp-1 text-md font-bold tracking-wide">
+          <h1 className="text-md line-clamp-1 font-bold tracking-wide">
             {project?.name}
           </h1>
           <h2 className="text-muted-foreground group-hover:text-highlight transition-colors duration-300 ease-in-out">
@@ -115,7 +115,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
       </div>
       <div className="z-10 flex">
-        <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1 size-8 shrink-0 origin-center rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
+        <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1.5 size-8 shrink-0 origin-center -rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
         <p className="tracking-wider text-balance">{project.description}</p>
       </div>
       <div className="z-10 flex flex-wrap gap-2 pt-2">

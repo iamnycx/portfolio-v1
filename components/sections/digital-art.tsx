@@ -21,7 +21,25 @@ export default function DigitalArt() {
 
   return (
     <div className="relative px-4 md:px-6">
-      <p className="text-center pb-16 text-balance">“Simplicity is the ultimate sophistication.” <span className="md:inline block">— Leonardo da Vinci</span></p>
+      <motion.p
+        initial={{
+          opacity: 0,
+          filter: "blur(3px)",
+        }}
+        whileInView={{
+          opacity: 1,
+          filter: "blur(0)",
+        }}
+        transition={{
+          duration: 0.5,
+          ease: "easeInOut",
+        }}
+        viewport={{ once: true, margin: "0px 0px -50% 0px" }}
+        className="pb-16 text-center text-balance"
+      >
+        “Simplicity is the ultimate sophistication.”{" "}
+        <span className="block md:inline">— Leonardo da Vinci</span>
+      </motion.p>
       <div className="hidden md:block">
         <div className="absolute -left-2.5">
           <div className="border-muted-foreground h-9 w-9 origin-top-right rotate-45 border-r border-dashed" />
@@ -36,7 +54,7 @@ export default function DigitalArt() {
       <div className="flex flex-col-reverse md:flex-row">
         <div
           ref={containerRef}
-          className="border-muted-foreground min-h-[55vh] relative w-full overflow-clip border border-dashed pb-16"
+          className="border-muted-foreground relative min-h-[55vh] w-full overflow-clip border border-dashed pb-16"
         >
           <motion.div
             style={{ y: bgY }}

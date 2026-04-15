@@ -40,9 +40,19 @@ export default function FeaturedProjects() {
         ))}
       </div>
       <div className="flex pt-16">
+        <div className="absolute inset-x-0 translate-y-[1.58rem]">
+          <div className="border-muted-foreground absolute left-0 h-0.5 w-md border-b border-dotted">
+            <div className="border-muted-foreground absolute -right-12 h-0.5 w-[3rem] origin-bottom-left rotate-35 border-b border-dotted" />
+            <div className="border-muted-foreground absolute -right-12 h-0.5 w-[3rem] origin-bottom-left -rotate-35 border-b border-dotted" />
+          </div>
+          <div className="border-muted-foreground absolute right-0 h-0.5 w-md border-b border-dotted">
+            <div className="border-muted-foreground absolute -left-12 h-0.5 w-[3rem] origin-bottom-right rotate-35 border-b border-dotted" />
+            <div className="border-muted-foreground absolute -left-12 h-0.5 w-[3rem] origin-bottom-right -rotate-35 border-b border-dotted" />
+          </div>
+        </div>
         <Link
           href="/projects"
-          className="text-highlight mx-auto text-center underline-offset-4 hover:underline"
+          className="hover:text-highlight text-muted-foreground border-muted-foreground mx-auto w-[11rem] border-y border-dotted py-3.5 text-center transition-colors duration-300 ease-in-out"
         >
           /projects
         </Link>
@@ -104,7 +114,7 @@ function FeaturedProjectCard({
         </div>
       </div>
       <div className="z-10 flex">
-        <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1 size-8 shrink-0 origin-center rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
+        <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1.5 size-8 shrink-0 origin-center -rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
         <p className="tracking-wider text-balance">{project.description}</p>
       </div>
       <div className="z-10 flex flex-wrap gap-2 pt-2">
