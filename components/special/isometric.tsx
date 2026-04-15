@@ -77,7 +77,7 @@ export default function Isometric() {
           y1="162.628"
           x2="606.343"
           y2="512.628"
-          className="stroke-muted-foreground mask-b-from-75% stroke-[0.5]"
+          className="stroke-muted-foreground mask-b-from-50% mask-t-from-50% stroke-[0.5]"
           strokeDasharray="2 2"
         />
         <line
@@ -86,7 +86,7 @@ export default function Isometric() {
           y1="482.629"
           x2="735.388"
           y2="236.959"
-          className="stroke-muted-foreground mask-b-from-50% stroke-[0.5]"
+          className="stroke-muted-foreground mask-b-from-50% mask-t-from-50% stroke-[0.5]"
           strokeDasharray="2 2"
         />
         <g id="MAIN" filter="url(#filter0_d_4_282)">

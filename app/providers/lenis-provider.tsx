@@ -14,7 +14,7 @@ const LenisScrollProvider: FC<LenisScrollProviderProps> = ({ children }) => {
       autoRaf: true,
       smoothWheel: true,
       syncTouch: false,
-      lerp: 0.05,
+      lerp: 0.2,
       gestureOrientation: "vertical",
       wheelMultiplier: 1,
       touchMultiplier: 1,

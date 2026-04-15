@@ -165,7 +165,7 @@ export default function Contribution(): JSX.Element {
         {...revealOnView(0)}
         className="text-muted-foreground pb-4 text-center"
       >
-        made
+       made
         <span className="text-foreground">
           {" "}
           {contributions.reduce((sum, item) => sum + item.count, 0)}{" "}

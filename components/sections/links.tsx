@@ -22,7 +22,21 @@ export default function Links() {
   ];
 
   return (
-    <div id="links" className="space-y-8 px-4 py-16 md:px-6">
+    <div id="links" className="space-y-8 px-4 py-16 md:px-6 relative">
+       <div className="hidden md:block">
+        <div className="absolute top-1/2 -translate-y-1/2 -left-2.5">
+          <div className="border-muted-foreground bg-background h-9 w-9 origin-bottom-right -rotate-45 border-r border-dashed" />
+          <div className="border-muted-foreground bg-background h-12 w-9 border-r border-dashed" />
+          <div className="border-muted-foreground bg-background h-9 w-9 origin-top-right rotate-45 border-r border-dashed" />
+          {/* <div className="border-muted-foreground h-9 w-9 origin-top-right rotate-45 border-r border-dashed" /> */}
+        </div>
+        <div className="absolute top-1/2 -translate-y-1/2 -right-2.5">
+          <div className="border-muted-foreground bg-background h-9 w-9 origin-bottom-left rotate-45 border-l border-dashed" />
+          <div className="border-muted-foreground bg-background h-12 w-9 border-l border-dashed" />
+          <div className="border-muted-foreground bg-background h-9 w-9 origin-top-left -rotate-45 border-l border-dashed" />
+          {/* <div className="border-muted-foreground h-9 w-9 origin-top-left -rotate-45 border-l border-dashed" /> */}
+        </div>
+      </div>
       <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
         {links.map((link) => (
           <Link

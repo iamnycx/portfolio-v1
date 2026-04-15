@@ -21,17 +21,12 @@ export default function DigitalArt() {
 
   return (
     <div className="relative px-4 md:px-6">
+      <p className="text-center pb-16 text-balance">“Simplicity is the ultimate sophistication.” <span className="md:inline block">— Leonardo da Vinci</span></p>
       <div className="hidden md:block">
-        <div className="absolute -top-30 -left-2.5">
-          <div className="border-muted-foreground bg-background h-9 w-9 origin-bottom-right -rotate-45 border-r border-dashed" />
-          <div className="border-muted-foreground bg-background h-12 w-9 border-r border-dashed" />
-          <div className="border-muted-foreground bg-background h-9 w-9 origin-top-right rotate-45 border-r border-dashed" />
+        <div className="absolute -left-2.5">
           <div className="border-muted-foreground h-9 w-9 origin-top-right rotate-45 border-r border-dashed" />
         </div>
-        <div className="absolute -top-30 -right-2.5">
-          <div className="border-muted-foreground bg-background h-9 w-9 origin-bottom-left rotate-45 border-l border-dashed" />
-          <div className="border-muted-foreground bg-background h-12 w-9 border-l border-dashed" />
-          <div className="border-muted-foreground bg-background h-9 w-9 origin-top-left -rotate-45 border-l border-dashed" />
+        <div className="absolute -right-2.5">
           <div className="border-muted-foreground h-9 w-9 origin-top-left -rotate-45 border-l border-dashed" />
         </div>
       </div>
@@ -41,7 +36,7 @@ export default function DigitalArt() {
       <div className="flex flex-col-reverse md:flex-row">
         <div
           ref={containerRef}
-          className="border-muted-foreground lg:h-300px relative h-[50vh] w-full overflow-clip border border-dashed pb-16"
+          className="border-muted-foreground min-h-[55vh] relative w-full overflow-clip border border-dashed pb-16"
         >
           <motion.div
             style={{ y: bgY }}
