@@ -1,30 +1,27 @@
 "use client";
 
 import { ReactLenis } from "lenis/react";
-import type { LenisOptions } from "lenis";
-import { memo, type FC, type ReactNode, useMemo } from "react";
+import { type FC, type ReactNode } from "react";
 
 type LenisScrollProviderProps = {
   children: ReactNode;
 };
 
 const LenisScrollProvider: FC<LenisScrollProviderProps> = ({ children }) => {
-  const options = useMemo<LenisOptions>(
-    () => ({
-      autoRaf: true,
-      smoothWheel: true,
-      syncTouch: false,
-      lerp: 0.5,
-      gestureOrientation: "vertical",
-      wheelMultiplier: 2,
-      touchMultiplier: 1,
-      autoResize: true,
-    }),
-    [],
-  );
-
   return (
-    <ReactLenis root options={options}>
+    <ReactLenis
+      root
+      options={{
+        autoRaf: true,
+        smoothWheel: true,
+        syncTouch: true,
+        lerp: 0.1,
+        gestureOrientation: "vertical",
+        wheelMultiplier: 1,
+        touchMultiplier: 1,
+        autoResize: true,
+      }}
+    >
       {children}
     </ReactLenis>
   );
@@ -32,4 +29,4 @@ const LenisScrollProvider: FC<LenisScrollProviderProps> = ({ children }) => {
 
 LenisScrollProvider.displayName = "LenisScrollProvider";
 
-export default memo(LenisScrollProvider);
+export default LenisScrollProvider;

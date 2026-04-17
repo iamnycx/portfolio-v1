@@ -21,7 +21,6 @@ export default function Isometric() {
   };
   const HOVER_MOVE_OFFSET = 8;
   const HOVER_ABOVE_GAP_OFFSET = 4;
-  const HOVER_TOP_FACE_LIFT = 3;
 
   const strokeColor = (layer: HOVER_STATE) =>
     hovered === layer ? "var(--color-highlight)" : "var(--muted-foreground)";
@@ -55,9 +54,6 @@ export default function Isometric() {
     return 0;
   };
 
-  const topFaceYOffset = (layer: HOVER_STATE) =>
-    hovered === layer ? -HOVER_TOP_FACE_LIFT : 0;
-
   return (
     <m.svg
       width="801"
@@ -77,7 +73,7 @@ export default function Isometric() {
           y1="162.628"
           x2="606.343"
           y2="512.628"
-          className="stroke-muted-foreground mask-b-from-50% mask-t-from-50% stroke-[0.5]"
+          className="stroke-muted-foreground mask-t-from-50% mask-b-from-50% stroke-[0.5]"
           strokeDasharray="2 2"
         />
         <line
@@ -86,7 +82,7 @@ export default function Isometric() {
           y1="482.629"
           x2="735.388"
           y2="236.959"
-          className="stroke-muted-foreground mask-b-from-50% mask-t-from-50% stroke-[0.5]"
+          className="stroke-muted-foreground mask-t-from-50% mask-b-from-50% stroke-[0.5]"
           strokeDasharray="2 2"
         />
         <g id="MAIN" filter="url(#filter0_d_4_282)">
@@ -365,11 +361,7 @@ export default function Isometric() {
                   className="fill-background"
                 />
               </g>
-              <m.g
-                id="TOP"
-                animate={{ y: topFaceYOffset("BOT") }}
-                transition={LAYER_TRANSITION}
-              >
+              <g id="TOP">
                 <mask id="path-20-inside-3_4_282" fill="white">
                   <path d="M452.55 238.994C451.871 238.61 451.874 237.63 452.556 237.25L524.432 197.207C524.735 197.038 525.105 197.038 525.408 197.208L596.464 237.051C597.141 237.43 597.146 238.403 596.473 238.79L525.414 279.65C525.108 279.827 524.731 279.828 524.424 279.654L452.55 238.994Z" />
                 </mask>
@@ -382,7 +374,7 @@ export default function Isometric() {
                   mask="url(#path-20-inside-3_4_282)"
                   className="fill-background"
                 />
-              </m.g>
+              </g>
               <g id="RIGHT">
                 <mask id="path-21-inside-4_4_282" fill="white">
                   <path d="M525 280.651C525 280.294 525.191 279.964 525.5 279.785L596.5 238.804C597.167 238.42 598 238.901 598 239.671L598 260.021C598 260.377 597.81 260.707 597.502 260.886L526.502 302.068C525.835 302.454 525 301.973 525 301.203L525 280.651Z" />
@@ -418,11 +410,7 @@ export default function Isometric() {
                   className="fill-background"
                 />
               </g>
-              <m.g
-                id="TOP"
-                animate={{ y: topFaceYOffset("MID") }}
-                transition={LAYER_TRANSITION}
-              >
+              <g id="TOP">
                 <mask id="path-23-inside-6_4_282" fill="white">
                   <path d="M452.55 208.994C451.871 208.61 451.874 207.63 452.556 207.25L524.432 167.207C524.735 167.038 525.105 167.038 525.408 167.208L596.464 207.051C597.141 207.43 597.146 208.403 596.473 208.79L525.414 249.65C525.108 249.827 524.731 249.828 524.424 249.654L452.55 208.994Z" />
                 </mask>
@@ -435,7 +423,7 @@ export default function Isometric() {
                   mask="url(#path-23-inside-6_4_282)"
                   className="fill-background"
                 />
-              </m.g>
+              </g>
               <g id="RIGHT">
                 <mask id="path-24-inside-7_4_282" fill="white">
                   <path d="M525 250.651C525 250.294 525.191 249.964 525.5 249.785L596.5 208.804C597.167 208.42 598 208.901 598 209.671L598 230.021C598 230.377 597.81 230.707 597.502 230.886L526.502 272.068C525.835 272.454 525 271.973 525 271.203L525 250.651Z" />
@@ -457,11 +445,7 @@ export default function Isometric() {
               animate={{ y: layerYOffset("TOP") }}
               transition={LAYER_TRANSITION}
             >
-              <m.g
-                id="TOP"
-                animate={{ y: topFaceYOffset("TOP") }}
-                transition={LAYER_TRANSITION}
-              >
+              <g id="TOP">
                 <g id="LEFT">
                   <mask id="path-25-inside-8_4_282" fill="white">
                     <path d="M452.5 201.092L523.5 242.073C524.167 242.458 525 241.977 525 241.207L525 220.857C525 220.5 524.81 220.171 524.502 219.992L453.502 178.81C452.835 178.423 452 178.904 452 179.675L452 200.226C452 200.583 452.191 200.913 452.5 201.092Z" />
@@ -504,7 +488,7 @@ export default function Isometric() {
                     className="fill-background"
                   />
                 </g>
-              </m.g>
+              </g>
               <m.g
                 id="DISC"
                 filter="url(#filter1_d_4_282)"
