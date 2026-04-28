@@ -17,6 +17,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "Next Flow",
+    type: "Full Stack Project",
+    category: "fullstack",
+    featured: true,
+    site: "https://next-flow-mocha-mu.vercel.app/",
+    stack: ["NextJS", "TypeScript", "Trigger.dev", "React Flow", "Tailwind"],
+    description:
+      "Visual AI workflow builder where nodes pipe into each other. Supports LLM calls, image crop, video frame extraction, and a pipeline executor that runs the full graph.",
+  },
+  {
     name: "Client Website",
     type: "Freelance Project",
     category: "frontend",
@@ -30,7 +40,7 @@ export const projects: Project[] = [
     name: "Calender Component",
     type: "Frontend Project",
     category: "frontend",
-    featured: true,
+    featured: false,
     stack: ["NextJs", "Motion.dev", "Zustand", "TypeScript"],
     site: "https://calender-one-self.vercel.app/",
     repo: "https://github.com/iamnycx/calender",
