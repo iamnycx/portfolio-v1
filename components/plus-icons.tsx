@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Gps2 } from "pixelarticons/react";
+import { Gps2, Plus } from "pixelarticons/react";
 
 export default function PlusIcons() {
   return (
@@ -27,7 +27,7 @@ function Marker({
         position === "bottom-right" && "-right-4 -bottom-4",
       )}
     >
-      <Gps2 className="text-highlight absolute size-4 opacity-0 transition-opacity duration-150 ease-out group-hover:animate-[marker-flicker_500ms_ease-in-out_1] group-hover:opacity-100 motion-reduce:group-hover:animate-none" />
+      <Plus className="text-highlight absolute size-4 opacity-0 transition-opacity duration-150 ease-out group-hover:animate-[marker-flicker_500ms_ease-in-out_1] group-hover:opacity-100 motion-reduce:group-hover:animate-none" />
     </div>
   );
 }

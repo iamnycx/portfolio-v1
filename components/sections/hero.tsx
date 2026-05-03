@@ -12,6 +12,7 @@ import {
   MapPinHome,
   University,
 } from "pixelarticons/react";
+import Link from "next/link";
 
 const revealOnView = (delay = 0) => ({
   initial: {
@@ -36,10 +37,10 @@ export default function Hero() {
     <div className="relative flex py-12 md:pb-0">
       <div className="space-y-8 px-4 md:w-2/3 md:px-6">
         <div className="flex items-center justify-center gap-4 md:justify-start">
-          <m.h1 {...revealOnView(0)} className="text-xl font-bold">
+          <m.h1 {...revealOnView(0.1)} className="text-xl font-bold">
             nikhil singh mehta
           </m.h1>
-          <m.div {...revealOnView(0.1)}>
+          {/* <m.div {...revealOnView(0.1)}>
             <InteractiveHoverButton
               href="https://mail.google.com/mail/?view=cm&fs=1&to=25nikmehta%40gmail.com"
               target="_blank"
@@ -48,7 +49,7 @@ export default function Hero() {
             >
               Open to work
             </InteractiveHoverButton>
-          </m.div>
+          </m.div> */}
         </div>
 
         <m.p
@@ -64,7 +65,7 @@ export default function Hero() {
           <b className="text-foreground">web3</b> development.
         </m.p>
 
-        <div className="flex items-center justify-center gap-4 font-bold uppercase md:justify-start">
+        {/* <div className="flex items-center justify-center gap-4 font-bold uppercase md:justify-start">
           <m.p
             {...revealOnView(0.3)}
             className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base"
@@ -93,9 +94,10 @@ export default function Hero() {
             <Goal className="size-4" />
             <span>{"Solana"}</span>
           </m.p>
-        </div>
+        </div> */}
+
         <m.p
-          {...revealOnView(0.7)}
+          {...revealOnView(0.3)}
           className="text-foreground/75 text-center text-sm leading-6 text-balance md:text-left md:text-base"
         >
           and yeah i love to play with{" "}
@@ -117,6 +119,49 @@ export default function Hero() {
           </span>{" "}
           for better experience
         </m.p>
+
+        <div className="flex gap-6">
+          <m.span {...revealOnView(0.4)}>
+            <Link
+              href="https://x.com/nycxdotrs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-4 hover:text-lime-400 hover:underline"
+            >
+              x.com
+            </Link>
+          </m.span>
+          <m.span {...revealOnView(0.5)}>
+            <Link
+              href="https://github.com/iamnycx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-4 hover:text-lime-400 hover:underline"
+            >
+              github
+            </Link>
+          </m.span>
+          <m.span {...revealOnView(0.6)}>
+            <Link
+              href="https://linkedin.com/in/nycx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-4 hover:text-lime-400 hover:underline"
+            >
+              linkedin
+            </Link>
+          </m.span>
+          <m.span {...revealOnView(0.7)}>
+            <Link
+              href="mailto:25nikmehta@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-4 hover:text-lime-400 hover:underline"
+            >
+              email
+            </Link>
+          </m.span>
+        </div>
       </div>
 
       <div className="relative hidden h-90 overflow-hidden md:block">

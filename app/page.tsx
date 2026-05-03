@@ -19,15 +19,15 @@ export default function Home() {
         <Hero />
         <Seperator title="proof of work" />
         <FeaturedProjects />
-        <Seperator title="work history" position="right"/>
+        <Seperator title="work history"/>
         <Work />
         <Seperator title="tech stack" />
         <Stack />
-        <Seperator title="social links"  position="right"/>
+        <Seperator title="social links" />
         <Links />
         <Seperator title="contribution" />
         <Contribution />
-        <Seperator title="hackathons" position="right"/>
+        <Seperator title="hackathons"/>
         <Hackathons />
         <DigitalArt />
       </div>

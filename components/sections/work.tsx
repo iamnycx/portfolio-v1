@@ -19,6 +19,17 @@ const workData = [
     ],
     technologies: ["React", "Next.js", "Tailwind", "Motion", "Figma"],
   },
+  {
+    orgnization: "The Misty",
+    designation: "Full Stack Developer",
+    location: "Remote, Canada",
+    from: "May 26",
+    to: "Present",
+    points: [
+      "Joined The Misty as a Full Stack Developer Intern, will be working mostly on Frontend",
+    ],
+    technologies: ["React", "Next.js", "Tailwind", "Motion", "Figma"],
+  },
 ];
 
 type workDataType = {
