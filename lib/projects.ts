@@ -26,11 +26,21 @@ export const projects: Project[] = [
     description:
       "Visual AI workflow builder where nodes pipe into each other. Supports LLM calls, image crop, video frame extraction, and a pipeline executor that runs the full graph.",
   },
+   {
+    name: "Dead Pixel Icons",
+    type: "Personal Project",
+    category: "frontend",
+    featured: true,
+    stack: ["NextJs", "Motion.dev", "Tailwind", "TypeScript", "Turborepo"],
+    site: "https://dead-pixel-web.vercel.app/",
+    description:
+      "Animated pixel style icon library built with NextJs and Motion.dev, featuring a collection of customizable icons with smooth animations",
+  },
   {
     name: "Client Website",
     type: "Freelance Project",
     category: "frontend",
-    featured: true,
+    featured: false,
     stack: ["NextJs", "Motion.dev", "Tailwind", "TypeScript"],
     site: "https://tarun-thusu.vercel.app/",
     description:

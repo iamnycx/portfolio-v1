@@ -7,6 +7,17 @@ import { ChevronRight2 } from "pixelarticons/react";
 
 const workData = [
   {
+    orgnization: "The Misty",
+    designation: "Full Stack Developer",
+    location: "Remote, Canada",
+    from: "May 26",
+    to: "Present",
+    points: [
+      "Joined The Misty as a Full Stack Developer Intern, will be working mostly on Frontend",
+    ],
+    technologies: ["React", "Next.js", "Tailwind", "Motion", "Figma"],
+  },
+  {
     orgnization: "Freelance",
     designation: "Frontend Developer",
     location: "Remote, India",
@@ -16,17 +27,6 @@ const workData = [
       "Worked with teams to develop websites for client using modern web technologies",
       "Leveraged frameworks like React and Next.js to build dynamic web applications",
       "Gained experience in frontend development, ensuring responsive design",
-    ],
-    technologies: ["React", "Next.js", "Tailwind", "Motion", "Figma"],
-  },
-  {
-    orgnization: "The Misty",
-    designation: "Full Stack Developer",
-    location: "Remote, Canada",
-    from: "May 26",
-    to: "Present",
-    points: [
-      "Joined The Misty as a Full Stack Developer Intern, will be working mostly on Frontend",
     ],
     technologies: ["React", "Next.js", "Tailwind", "Motion", "Figma"],
   },
