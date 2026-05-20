@@ -16,10 +16,10 @@ export default function Home() {
     <Container>
       <div className="pt-16">
         <Hero />
-        <Seperator title="work history" />
-        <Work />
         <Seperator title="proof of work" />
         <FeaturedProjects />
+        <Seperator title="work history" />
+        <Work />
         <Seperator title="tech stack" />
         <Stack />
         <Seperator title="contribution" />

@@ -6,13 +6,14 @@ import { ChevronRight2 } from "pixelarticons/react";
 
 const workData = [
   {
-    orgnization: "The Misty",
+    orgnization: "Misty Interactive Studios Inc.",
     designation: "Full Stack Developer",
     location: "Remote, Canada",
-    from: "May 26",
+    from: "May '26",
     to: "Present",
+    active: true,
     points: [
-      "Joined The Misty as a Full Stack Developer Intern, will be working mostly on Frontend",
+      "Working on Nonilion, a virtual workspace where human and AI agents collaborate",
     ],
     technologies: ["React", "Next.js", "Tailwind", "Motion", "Figma"],
   },
@@ -20,10 +21,11 @@ const workData = [
     orgnization: "Freelance",
     designation: "Frontend Developer",
     location: "Remote, India",
-    from: "June 25",
-    to: "Sept 25",
+    from: "Jun '25",
+    to: "Sep '25",
+    active: false,
     points: [
-      "Worked with teams to develop websites for client using modern web technologies",
+      "Worked with teams to develop websites for clients using modern web technologies",
       "Leveraged frameworks like React and Next.js to build dynamic web applications",
       "Gained experience in frontend development, ensuring responsive design",
     ],
@@ -31,83 +33,103 @@ const workData = [
   },
 ];
 
-type workDataType = {
+type WorkDataType = {
   orgnization: string;
   designation: string;
   location: string;
   from: string;
   to: string;
+  active: boolean;
   points: string[];
   technologies: string[];
 };
 
 const revealOnView = (delay = 0) => ({
-  initial: {
-    y: 10,
-    filter: "blur(3px)",
-    opacity: 0,
-  },
-  whileInView: {
-    y: 0,
-    filter: "blur(0px)",
-    opacity: 1,
-  },
-  transition: {
-    duration: 0.4,
-    ease: "easeInOut" as const,
-    delay,
-  },
+  initial: { y: 10, filter: "blur(3px)", opacity: 0 },
+  whileInView: { y: 0, filter: "blur(0px)", opacity: 1 },
+  transition: { duration: 0.4, ease: "easeInOut" as const, delay },
   viewport: { once: true, margin: "0px 0px -15% 0px" },
 });
 
 export default function Work() {
   return (
     <div id="work" className="px-4 py-16 md:px-6">
-      <div className="space-y-6">
-        {workData.map((data, idx: number) => (
-          <WorkCard key={data.orgnization} data={data} index={idx} />
-        ))}
+      {/* Timeline container — dashed vertical rail */}
+      <div className="relative pl-0">
+        {/* Dashed vertical line */}
+        <div className="absolute top-3 bottom-3 left-2 w-px border-l border-dashed border-neutral-600" />
+
+        <div className="space-y-12">
+          {workData.map((data, idx) => (
+            <WorkCard key={data.orgnization} data={data} index={idx} />
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
-function WorkCard({ data, index }: { data: workDataType; index: number }) {
+function WorkCard({ data, index }: { data: WorkDataType; index: number }) {
   return (
-    <m.div
-      {...revealOnView(index * 0.2)}
-      className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground hover:border-yellow-400 relative flex flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out"
-    >
-      <div className="z-10 flex flex-col gap-2 sm:flex-row sm:justify-between">
-        <div className="space-y-1">
-          <h1 className="text-md font-bold tracking-wider">
+    <m.div {...revealOnView(index * 0.15)} className="relative pl-10">
+      {/* Diamond node on the rail */}
+      <span
+        className={cn(
+          "absolute top-[10px] left-[0.2rem] h-[11px] w-[11px] rotate-45 border transition-colors duration-300",
+          data.active
+            ? "border-yellow-400 bg-yellow-400/50 shadow-[0_0_0_4px_rgba(234,179,8,0.06)] backdrop-blur-xs"
+            : "border-neutral-400 bg-neutral-400/50 backdrop-blur-xs",
+        )}
+      />
+
+      {/* Top row: org + meta */}
+      <div className="mb-3 flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
+        <div className="space-y-0.5">
+          <h2 className="font-semibold tracking-widest text-neutral-200 uppercase">
             {data.orgnization}
-          </h1>
-          <h2>
-            {data.designation} <span>~ {data.location}</span>
           </h2>
-          <p className="text-muted-foreground group-hover:text-yellow-400 text-sm transition-colors duration-300 ease-in-out">
-            {data.from} - {data.to}
+          <p className="text-sm tracking-wide text-neutral-400">
+            {data.designation}{" "}
+            <span className="text-neutral-400/50">~ {data.location}</span>
+          </p>
+        </div>
+
+        <div className="shrink-0 text-right">
+          <p
+            className={cn(
+              "text-xs tracking-widest uppercase",
+              data.active ? "text-yellow-400" : "text-muted-foreground/50",
+            )}
+          >
+            {data.from} – {data.to}
           </p>
         </div>
       </div>
-      <ul className="z-10 list-inside space-y-1 tracking-wider text-balance">
-        {data.points.map((point, index) => (
-          <li key={index} className="flex">
-            <ChevronRight2 className="fill-muted group-hover:fill-yellow-400 -mt-1.5 size-8 shrink-0 origin-center -rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
-            <span>{point}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="z-10 flex flex-wrap gap-2 pt-2">
-        {data.technologies.map((tech) => (
-          <span
-            key={tech}
-            className="from-accent/30 group-hover:border-yellow-400/50 group-hover:text-yellow-400 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out"
-          >
-            {tech}
-          </span>
-        ))}
+
+      {/* Card body */}
+      <div>
+        {/* Bullet points */}
+        <ul className="mb-4 space-y-2">
+          {data.points.map((point, i) => (
+            <li key={i} className="flex items-start gap-2">
+              <span className="text-muted-foreground text-xs leading-relaxed tracking-wide">
+                {point}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Tech tags */}
+        <div className="flex flex-wrap gap-1.5">
+          {data.technologies.map((tech) => (
+            <span
+              key={tech}
+              className="bg-neutral-800 px-2 py-0.5 border border-neutral-600 text-xs tracking-widest uppercase"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
       </div>
     </m.div>
   );

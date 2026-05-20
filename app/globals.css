@@ -144,11 +144,11 @@
 }
 
 ::selection {
-  @apply bg-highlight text-black;
+  @apply bg-yellow-400 text-black;
 }
 
 ::-moz-selection {
-  @apply bg-highlight text-black;
+  @apply bg-yellow-400 text-black;
 }
 
 pre [data-line] {
