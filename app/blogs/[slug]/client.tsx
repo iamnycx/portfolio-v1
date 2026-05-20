@@ -62,11 +62,11 @@ export function Date({
   return (
     <motion.p
       layoutId={`blog-date-${title}-${date}`}
-      className="text-muted-foreground"
+      className="text-neutral-400"
     >
       {date}{" "}
       {readTime && (
-        <span className="text-muted-foreground py-2">
+        <span className="text-neutral-400 py-2">
           ({readTime} min read)
         </span>
       )}
@@ -82,12 +82,12 @@ export function NavItems({ slug }: { slug: string }) {
     >
       <Link
         href={"/blogs"}
-        className="text-muted-foreground hover:text-highlight flex items-center gap-2 transition-colors duration-300 ease-in-out"
+        className="text-neutral-400 hover:text-yellow-400 flex items-center gap-2 transition-colors duration-300 ease-in-out"
       >
         <ArrowLeft />
         <span>cd ..</span>
       </Link>
-      <p className="text-muted-foreground hidden md:block">$ cat {slug}.mdx</p>
+      <p className="text-neutral-400 hidden md:block">$ cat {slug}.mdx</p>
     </motion.div>
   );
 }

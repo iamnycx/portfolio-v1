@@ -19,11 +19,11 @@ export default function CopyButton({ code }: { code: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="text-muted-foreground hover:from-highlight/10 hover:text-highlight h-full w-10 cursor-pointer bg-radial transition-colors duration-300 ease-in-out"
+      className="text-neutral-400 hover:from-yellow-400/10 hover:text-yellow-400 h-full w-10 cursor-pointer bg-radial transition-colors duration-300 ease-in-out"
       aria-label="Copy code"
     >
       {copied ? (
-        <Check className="text-highlight size-5 w-full origin-center transition-transform duration-300 ease-in-out" />
+        <Check className="text-yellow-400 size-5 w-full origin-center transition-transform duration-300 ease-in-out" />
       ) : (
         <Copy className="size-5 w-full origin-center transition-transform duration-300 ease-in-out active:scale-50" />
       )}

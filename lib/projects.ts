@@ -22,7 +22,7 @@ export const projects: Project[] = [
     category: "fullstack",
     featured: true,
     site: "https://next-flow-mocha-mu.vercel.app/",
-    stack: ["NextJS", "TypeScript", "Trigger.dev", "React Flow", "Tailwind"],
+    stack: ["NextJS", "TypeScript", "Trigger.dev", "ReactFlow", "Tailwind"],
     description:
       "Visual AI workflow builder where nodes pipe into each other. Supports LLM calls, image crop, video frame extraction, and a pipeline executor that runs the full graph.",
   },

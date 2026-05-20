@@ -2,8 +2,6 @@ import Container from "@/components/common/container";
 import { getAllBlogs } from "@/lib/blog";
 import Link from "next/link";
 import { Date, DummyCommand, Heading, Reveal } from "./client";
-import PlusIcons from "@/components/plus-icons";
-import { cn } from "@/lib/utils";
 
 export default function Blogs() {
   const blogs = getAllBlogs();
@@ -21,35 +19,27 @@ export default function Blogs() {
           {blogs.map((blog, idx) => (
             <Reveal key={blog.slug} delay={idx * 0.12}>
               <Link href={`/blogs/${blog.slug}`}>
-                <div className="group from-muted/30 hover:from-muted/50 border-muted-foreground hover:border-highlight relative flex w-full flex-col gap-2 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out">
-                  <div
-                    className={cn(
-                      "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
-                      "bg-size-[8px_8px]",
-                      "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]",
-                    )}
-                  />
-                  <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_50%,black)]" />{" "}
-                  <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-r-from-10%" />
-                  <PlusIcons />
-                  <Heading title={blog.title} />
-                  <Date
-                    date={blog.date}
-                    readTime={blog.readTime}
-                    title={blog.title}
-                  />
-                  <p className="text-muted-foreground z-10 line-clamp-2 tracking-wider">
-                    {blog.description}
-                  </p>
-                  <div className="z-10 flex flex-wrap gap-2 pt-2">
-                    {blog.tags.map((tag: string, idx: number) => (
-                      <span
-                        key={idx}
-                        className="from-accent/30 group-hover:border-highlight/50 group-hover:text-highlight inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                <div className="group relative flex w-full flex-col border border-dashed border-neutral-600 p-2 transition-colors duration-300 ease-out hover:border-yellow-400">
+                  <div className="flex h-full flex-col gap-2 bg-neutral-800/50 p-4">
+                    <Heading title={blog.title} />
+                    <Date
+                      date={blog.date}
+                      readTime={blog.readTime}
+                      title={blog.title}
+                    />
+                    <p className="text-muted-foreground z-10 line-clamp-2 tracking-wider">
+                      {blog.description}
+                    </p>
+                    <div className="z-10 flex flex-wrap gap-2 pt-2">
+                      {blog.tags.map((tag: string, idx: number) => (
+                        <span
+                          key={idx}
+                          className="from-accent/30 group-hover:border-yellow-400/50 group-hover:text-yellow-400 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -62,7 +52,7 @@ export default function Blogs() {
             <Link
               href="https://x.com/ok_nycx"
               target="_blank"
-              className="text-highlight underline-offset-4 hover:underline"
+              className="text-yellow-400 underline-offset-4 hover:underline"
             >
               x.com
             </Link>{" "}

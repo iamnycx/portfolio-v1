@@ -25,7 +25,7 @@ export const mdxComponents = {
   li: (props: ComponentProps<"li">) => <li className="pl-1" {...props} />,
   a: ({ href, children, ...props }: ComponentProps<"a">) => {
     const className = [
-      "text-highlight underline-offset-4 hover:underline",
+      "text-yellow-400 underline-offset-4 hover:underline",
       props.className,
     ]
       .filter(Boolean)
@@ -90,20 +90,20 @@ export const mdxComponents = {
     const codeText = extractCodeText(props.children);
 
     return (
-      <div className="group border-foreground/25 hover:border-foreground/50 my-6 border border-dashed p-2 transition-colors duration-300 ease-in-out">
-        <figcaption className="bg-muted/50 text-muted-foreground group-hover:text-highlight flex h-8 items-center justify-between pl-4 tracking-wide transition-colors duration-300 ease-in-out">
+      <div className="group border-neutral-600 hover:border-yellow-400 my-6 border border-dashed p-2 transition-colors duration-300 ease-in-out">
+        <figcaption className="bg-neutral-800/50 text-muted-foreground group-hover:text-yellow-400 flex h-8 items-center justify-between pl-4 tracking-wide transition-colors duration-300 ease-in-out">
           {props["data-language"]}
           <CopyButton code={codeText} />
         </figcaption>
         <pre
-          className="bg-muted/50 border-foreground/25 relative overflow-x-auto border-t border-dashed px-0 py-4 leading-relaxed tracking-wide normal-case"
+          className="bg-neutral-800/50 border-neutral-700/50 relative overflow-x-auto border-t px-0 py-4 leading-relaxed tracking-wide normal-case"
           {...props}
         />
       </div>
     );
   },
   code: (props: ComponentProps<"code">) => (
-    <code className="text-highlight" {...props} />
+    <code className="text-yellow-400" {...props} />
   ),
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table className="">

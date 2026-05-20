@@ -1,6 +1,5 @@
 "use client";
 
-import PlusIcons from "../plus-icons";
 import { cn } from "@/lib/utils";
 import { motion as m } from "motion/react";
 import { ChevronRight2 } from "pixelarticons/react";
@@ -77,18 +76,8 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
   return (
     <m.div
       {...revealOnView(index * 0.2)}
-      className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground hover:border-highlight relative flex flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out"
+      className="group group-[card] from-muted/30 hover:from-muted/50 border-muted-foreground hover:border-yellow-400 relative flex flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-6 transition-colors duration-300 ease-in-out"
     >
-      <div
-        className={cn(
-          "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
-          "bg-size-[8px_8px]",
-          "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]",
-        )}
-      />
-      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_50%,black)]" />{" "}
-      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-r-from-10%" />
-      <PlusIcons />
       <div className="z-10 flex flex-col gap-2 sm:flex-row sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-md font-bold tracking-wider">
@@ -97,7 +86,7 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
           <h2>
             {data.designation} <span>~ {data.location}</span>
           </h2>
-          <p className="text-muted-foreground group-hover:text-highlight text-sm transition-colors duration-300 ease-in-out">
+          <p className="text-muted-foreground group-hover:text-yellow-400 text-sm transition-colors duration-300 ease-in-out">
             {data.from} - {data.to}
           </p>
         </div>
@@ -105,7 +94,7 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
       <ul className="z-10 list-inside space-y-1 tracking-wider text-balance">
         {data.points.map((point, index) => (
           <li key={index} className="flex">
-            <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1.5 size-8 shrink-0 origin-center -rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
+            <ChevronRight2 className="fill-muted group-hover:fill-yellow-400 -mt-1.5 size-8 shrink-0 origin-center -rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
             <span>{point}</span>
           </li>
         ))}
@@ -114,7 +103,7 @@ function WorkCard({ data, index }: { data: workDataType; index: number }) {
         {data.technologies.map((tech) => (
           <span
             key={tech}
-            className="from-accent/30 group-hover:border-highlight/50 group-hover:text-highlight inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out"
+            className="from-accent/30 group-hover:border-yellow-400/50 group-hover:text-yellow-400 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out"
           >
             {tech}
           </span>

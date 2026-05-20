@@ -43,7 +43,7 @@ export default async function BlogPostPage({
             <Link
               href="https://x.com/ok_nycx"
               target="_blank"
-              className="text-highlight underline-offset-4 hover:underline"
+              className="text-yellow-400 underline-offset-4 hover:underline"
             >
               x.com
             </Link>{" "}

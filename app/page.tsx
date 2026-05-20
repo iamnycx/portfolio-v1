@@ -3,7 +3,6 @@
 import Container from "@/components/common/container";
 import Contribution from "@/components/sections/contribution";
 import Hero from "@/components/sections/hero";
-import Links from "@/components/sections/links";
 import Stack from "@/components/sections/stack";
 
 import Work from "@/components/sections/work";
@@ -17,17 +16,15 @@ export default function Home() {
     <Container>
       <div className="pt-16">
         <Hero />
+        <Seperator title="work history" />
+        <Work />
         <Seperator title="proof of work" />
         <FeaturedProjects />
-        <Seperator title="work history"/>
-        <Work />
         <Seperator title="tech stack" />
         <Stack />
-        <Seperator title="social links" />
-        <Links />
         <Seperator title="contribution" />
         <Contribution />
-        <Seperator title="hackathons"/>
+        <Seperator title="hackathons" />
         <Hackathons />
         <DigitalArt />
       </div>

@@ -87,7 +87,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${GeistPixelSquare.className} antialiased`}>
+      <body className={`${GeistPixelSquare.className} antialiased bg-neutral-900`}>
         <Suspense>
           <ThemeProvider
             attribute="class"

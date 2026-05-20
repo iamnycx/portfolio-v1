@@ -81,7 +81,7 @@ export default function Navbar() {
     <>
       <motion.div
         style={navbarStyle}
-        className="from-background border-muted-foreground fixed inset-x-0 top-0 z-50 mx-auto flex items-center justify-between border-y border-dashed bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-sm md:inset-x-0 md:max-w-6xl md:border-x md:px-6"
+        className="from-neutral-900 border-muted-foreground fixed inset-x-0 top-0 z-50 mx-auto flex items-center justify-between border-y border-dashed bg-linear-to-b to-transparent px-4 py-4 backdrop-blur-sm md:inset-x-0 md:max-w-6xl md:border-x md:px-6"
       >
         <div className="flex items-center gap-4 sm:gap-6">
           <Link
@@ -89,7 +89,7 @@ export default function Navbar() {
             className="flex cursor-pointer items-center gap-2 text-sm sm:text-base"
           >
             <span>{"nycx@dev"}</span>
-            <span className="text-highlight">{"~"}</span>
+            <span className="text-yellow-400">{"~"}</span>
             <span>{"$"}</span>
           </Link>
           <h2 className="hidden text-sm sm:text-base md:block">
@@ -115,10 +115,10 @@ export default function Navbar() {
                   transition={{
                     ease: "easeInOut",
                   }}
-                  className="border-highlight absolute inset-0 border border-dotted"
+                  className="border-yellow-400 absolute inset-0 border border-dotted"
                 />
               )}
-              <span className="group-hover:text-highlight transition-colors duration-300 ease-in-out">
+              <span className="group-hover:text-yellow-400 transition-colors duration-300 ease-in-out">
                 {link.text}
               </span>
             </Link>
@@ -126,13 +126,13 @@ export default function Navbar() {
         </div>
         <Link
           href={"mailto:25nikmehta@gmail.com"}
-          className="border-background hover:border-highlight/50 hover:text-highlight hidden border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out sm:text-base lg:block"
+          className="border-background hover:border-yellow-400/50 hover:text-yellow-400 hidden border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out sm:text-base lg:block"
         >
           {"/contact.sh"}
         </Link>
         <button
           onClick={() => setIsMobileMenuOpen((open) => !open)}
-          className="border-muted-foreground hover:border-highlight hover:text-highlight block border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out sm:text-base lg:hidden"
+          className="border-muted-foreground hover:border-ye hover:text-ye block border border-dashed px-2 py-1 text-sm transition-colors duration-300 ease-in-out sm:text-base lg:hidden"
         >
           {isMobileMenuOpen ? "./close.sh" : "./menu.sh"}
         </button>

@@ -126,7 +126,7 @@ export default function Hero() {
               href="https://x.com/nycxdotrs"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline-offset-4 hover:text-lime-400 hover:underline"
+              className="underline-offset-4 hover:text-yellow-400 hover:underline"
             >
               x.com
             </Link>
@@ -136,7 +136,7 @@ export default function Hero() {
               href="https://github.com/iamnycx"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline-offset-4 hover:text-lime-400 hover:underline"
+              className="underline-offset-4 hover:text-yellow-400 hover:underline"
             >
               github
             </Link>
@@ -146,7 +146,7 @@ export default function Hero() {
               href="https://linkedin.com/in/nycx"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline-offset-4 hover:text-lime-400 hover:underline"
+              className="underline-offset-4 hover:text-yellow-400 hover:underline"
             >
               linkedin
             </Link>
@@ -156,7 +156,7 @@ export default function Hero() {
               href="mailto:25nikmehta@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline-offset-4 hover:text-lime-400 hover:underline"
+              className="underline-offset-4 hover:text-yellow-400 hover:underline"
             >
               email
             </Link>

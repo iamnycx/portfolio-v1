@@ -1,9 +1,7 @@
 "use client";
 
 import Container from "@/components/common/container";
-import PlusIcons from "@/components/plus-icons";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { motion as m } from "motion/react";
 import { Project, projects } from "@/lib/projects";
 import { ChevronRight2, GitBranch, Globe } from "pixelarticons/react";
@@ -57,7 +55,7 @@ export default function Projects() {
             <Link
               href="https://github.com/iamnycx"
               target="_blank"
-              className="text-highlight underline-offset-4 hover:underline"
+              className="text-yellow-400 underline-offset-4 hover:underline"
             >
               Github
             </Link>
@@ -72,61 +70,53 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <m.div
       {...revealOnView(index * 0.2)}
-      className="group from-muted/30 hover:from-muted/50 border-muted-foreground hover:border-highlight relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out"
+      className="group relative flex w-full flex-col gap-4 border border-dashed border-neutral-600 p-2 transition-colors duration-300 ease-out hover:border-yellow-400"
     >
-      <div
-        className={cn(
-          "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
-          "bg-size-[8px_8px]",
-          "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]",
-        )}
-      />
-      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_50%,black)]" />{" "}
-      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-r-from-10%" />
-      <PlusIcons />
-      <div className="z-10 flex items-start justify-between gap-2">
-        <div className="min-w-0 flex-1 space-y-1">
-          <h1 className="text-md line-clamp-1 font-bold tracking-wide">
-            {project?.name}
-          </h1>
-          <h2 className="text-muted-foreground group-hover:text-highlight transition-colors duration-300 ease-in-out">
-            {project?.type}
-          </h2>
+      <div className="flex h-full flex-col bg-neutral-800/50 p-4">
+        <div className="z-10 flex items-start justify-between gap-2">
+          <div className="min-w-0 flex-1 space-y-1">
+            <h1 className="line-clamp-1 font-bold tracking-wide">
+              {project?.name}
+            </h1>
+            <h2 className="text-muted-foreground group-hover:text-yellow-400 transition-colors duration-300 ease-in-out">
+              {project?.type}
+            </h2>
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
+            {project.site && (
+              <Link
+                href={project?.site}
+                target="_blank"
+                className="hover:border-yellow-400 hover:bg-yellow-400/5 hover:text-yellow-400 border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
+              >
+                <Globe className="size-5" />
+              </Link>
+            )}
+            {project.repo && (
+              <Link
+                href={project?.repo}
+                target="_blank"
+                className="hover:border-yellow-400 hover:bg-yellow-400/5 hover:text-yellow-400 border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
+              >
+                <GitBranch className="size-5" />
+              </Link>
+            )}
+          </div>
         </div>
-        <div className="flex shrink-0 items-center gap-2">
-          {project.site && (
-            <Link
-              href={project?.site}
-              target="_blank"
-              className="hover:border-highlight hover:bg-highlight/5 hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
-            >
-              <Globe className="size-5" />
-            </Link>
-          )}
-          {project.repo && (
-            <Link
-              href={project?.repo}
-              target="_blank"
-              className="hover:border-highlight hover:bg-highlight/5 hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
-            >
-              <GitBranch className="size-5" />
-            </Link>
-          )}
+        <div className="z-10 my-4 -translate-x-2 flex">
+          <ChevronRight2 className="fill-neutral-600 group-hover:fill-yellow-400 -mt-1 size-8 shrink-0 origin-center -rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
+          <p className="tracking-wider text-balance">{project.description}</p>
         </div>
-      </div>
-      <div className="z-10 flex">
-        <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1.5 size-8 shrink-0 origin-center -rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
-        <p className="tracking-wider text-balance">{project.description}</p>
-      </div>
-      <div className="z-10 flex flex-wrap gap-2 pt-2">
-        {project?.stack.map((tag: string, idx: number) => (
-          <span
-            key={idx}
-            className="from-accent/30 group-hover:border-highlight/50 group-hover:text-highlight inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out"
-          >
-            {tag}
-          </span>
-        ))}
+        <div className="z-10 mt-auto flex flex-wrap gap-2 pt-2">
+          {project?.stack.map((tag: string, idx: number) => (
+            <span
+              key={idx}
+              className="from-accent/30 group-hover:border-yellow-400/50 group-hover:text-yellow-400 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </m.div>
   );

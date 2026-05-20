@@ -79,7 +79,7 @@ export default function Stack() {
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
         {Object.entries(stackData).map(([category, items], categoryIndex) => (
           <motion.div key={category} {...revealOnView(categoryIndex * 0.12)}>
-            <h2 className="from-accent/30 border-muted-foreground relative ml-10 flex w-fit items-center gap-1 border border-dotted bg-linear-to-bl to-50% px-2 py-1 font-bold tracking-wide">
+            <h2 className="from-accent/30 border-muted-foreground relative ml-10 flex w-fit items-center gap-1 border border-dotted bg-linear-to-bl to-50% px-2 py-1 text-sm font-bold tracking-wide">
               <Package className="size-4.5 stroke-1" />
               <span>{category}</span>
               <div className="border-muted-foreground absolute top-0 -left-0.5 h-0.5 w-10.5 origin-left rotate-135 border-t border-dashed" />
@@ -94,9 +94,9 @@ export default function Stack() {
                   )}
                   className="from-accent/30 relative bg-linear-to-bl to-50% tracking-wide"
                 >
-                  <div className="border-muted-foreground absolute top-1/2 left-0 w-4 -translate-x-4 border-b border-dashed" />
-                  <div className="border-muted-foreground hover:border-highlight hover:text-highlight cursor-default border border-dotted px-2 py-1 transition-colors duration-300 ease-in-out">
-                    {data.title}
+                  <span className="border-muted-foreground absolute top-1/2 left-0 w-4 -translate-x-4 border-b border-dashed" />
+                  <div className="border-neutral-600 cursor-default border border-dotted px-1 py-2  transition-colors duration-300 ease-in-out hover:border-yellow-400 hover:text-yellow-400">
+                    <span className="bg-neutral-700/50 px-2 py-1">{data.title}</span>
                   </div>
                 </motion.div>
               ))}

@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import PlusIcons from "../plus-icons";
-import { cn } from "@/lib/utils";
 import { motion as m } from "motion/react";
 import { projects, type Project } from "@/lib/projects";
 import { ChevronRight2, GitBranch, Globe } from "pixelarticons/react";
@@ -29,7 +27,7 @@ export default function FeaturedProjects() {
   const featuredProjects = projects.filter((p) => p.featured);
 
   return (
-    <div id="featured-projects" className="px-4 py-16 md:px-6">
+    <div id="featured-projects" className="relative px-4 py-16 md:px-6">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {featuredProjects.map((project: Project, idx: number) => (
           <FeaturedProjectCard
@@ -39,20 +37,22 @@ export default function FeaturedProjects() {
           />
         ))}
       </div>
-      <div className="flex pt-16">
-        <div className="absolute inset-x-0 hidden translate-y-[1.58rem] md:block">
-          <div className="border-muted-foreground absolute left-0 h-0.5 w-[4.6rem] border-b border-dotted md:w-md">
-            <div className="border-muted-foreground absolute -right-12 h-0.5 w-[3rem] origin-bottom-left rotate-35 border-b border-dotted" />
-            <div className="border-muted-foreground absolute -right-12 h-0.5 w-[3rem] origin-bottom-left -rotate-35 border-b border-dotted" />
-          </div>
-          <div className="border-muted-foreground absolute right-0 h-0.5 w-[4.6rem] border-b border-dotted md:w-md">
-            <div className="border-muted-foreground absolute -left-12 h-0.5 w-[3rem] origin-bottom-right rotate-35 border-b border-dotted" />
-            <div className="border-muted-foreground absolute -left-12 h-0.5 w-[3rem] origin-bottom-right -rotate-35 border-b border-dotted" />
-          </div>
+      <div className="absolute inset-x-0 bottom-22 hidden md:block">
+        <div className="absolute top-1/2 -left-2.5 -translate-y-1/2">
+          <div className="border-muted-foreground h-9 w-9 origin-bottom-right -rotate-45 border-r border-dashed bg-neutral-900" />
+          <div className="border-muted-foreground h-12 w-9 border-r border-dashed bg-neutral-900" />
+          <div className="border-muted-foreground h-9 w-9 origin-top-right rotate-45 border-r border-dashed bg-neutral-900" />
         </div>
+        <div className="absolute top-1/2 -right-2.5 -translate-y-1/2">
+          <div className="border-muted-foreground h-9 w-9 origin-bottom-left rotate-45 border-l border-dashed bg-neutral-900" />
+          <div className="border-muted-foreground h-12 w-9 border-l border-dashed bg-neutral-900" />
+          <div className="border-muted-foreground h-9 w-9 origin-top-left -rotate-45 border-l border-dashed bg-neutral-900" />
+        </div>
+      </div>
+      <div className="flex pt-16">
         <Link
           href="/projects"
-          className="hover:text-highlight text-highlight md:text-muted-foreground border-muted-foreground mx-auto w-[11rem] border-dotted text-center transition-colors duration-300 ease-in-out md:border-y lg:py-3.5"
+          className="md:text-muted-foreground mx-auto w-[11rem] border-dotted text-center text-yellow-400 transition-colors duration-300 ease-out hover:text-yellow-400 lg:py-3.5"
         >
           /projects
         </Link>
@@ -71,61 +71,51 @@ function FeaturedProjectCard({
   return (
     <m.div
       {...revealOnView(index * 0.2 + 0.8)}
-      className="group from-muted/30 hover:from-muted/50 border-muted-foreground hover:border-highlight relative flex w-full flex-col gap-4 border border-dashed bg-linear-to-bl to-50% p-4 transition-colors duration-300 ease-in-out"
+      className="group relative flex w-full flex-col gap-4 border border-dashed border-neutral-600 p-2 transition-colors duration-300 ease-out hover:border-yellow-400"
     >
-      <div
-        className={cn(
-          "absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100",
-          "bg-size-[8px_8px]",
-          "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]",
-        )}
-      />
-      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_50%,black)]" />{" "}
-      <div className="bg-background pointer-events-none absolute inset-0 flex items-center justify-center mask-r-from-10%" />
-      <PlusIcons />
-      <div className="z-10 flex items-start justify-between gap-2">
-        <div className="min-w-0 flex-1 space-y-1">
-          <h1 className="text-md line-clamp-1 font-bold tracking-wider">
-            {project?.name}
-          </h1>
-          <h2 className="text-muted-foreground group-hover:text-highlight transition-colors duration-300 ease-in-out">
-            {project?.type}
-          </h2>
+      <div className="flex h-full flex-col bg-neutral-800/50 p-4">
+        <div className="z-10 flex items-start justify-between gap-2">
+          <div className="min-w-0 flex-1 space-y-1">
+            <h1 className="line-clamp-1 font-bold">{project?.name}</h1>
+            <h2 className="text-muted-foreground transition-colors duration-300 ease-out group-hover:text-yellow-400">
+              {project?.type}
+            </h2>
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
+            {project.site && (
+              <Link
+                href={project?.site}
+                target="_blank"
+                className="hover:bg-text-yellow-400/5 border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-out group-hover:opacity-100 hover:border-yellow-400 hover:text-yellow-400"
+              >
+                <Globe className="size-5" />
+              </Link>
+            )}
+            {project.repo && (
+              <Link
+                href={project?.repo}
+                target="_blank"
+                className="hover:bg-text-yellow-400/5 border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-out group-hover:opacity-100 hover:border-yellow-400 hover:text-yellow-400"
+              >
+                <GitBranch className="size-5" />
+              </Link>
+            )}
+          </div>
         </div>
-        <div className="flex shrink-0 items-center gap-2">
-          {project.site && (
-            <Link
-              href={project?.site}
-              target="_blank"
-              className="hover:bg-text-highlight/5 hover:border-highlight hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
-            >
-              <Globe className="size-5" />
-            </Link>
-          )}
-          {project.repo && (
-            <Link
-              href={project?.repo}
-              target="_blank"
-              className="hover:bg-text-highlight/5 hover:border-highlight hover:text-highlight border border-dashed border-transparent p-1 opacity-40 transition-all duration-300 ease-in-out group-hover:opacity-100"
-            >
-              <GitBranch className="size-5" />
-            </Link>
-          )}
+        <div className="z-10 my-4 flex -translate-x-2">
+          <ChevronRight2 className="-mt-1 size-8 shrink-0 origin-center -rotate-90 fill-neutral-600 stroke-none transition-all duration-300 ease-out group-hover:rotate-0 group-hover:fill-yellow-400" />
+          <p className="tracking-wider text-balance">{project.description}</p>
         </div>
-      </div>
-      <div className="z-10 flex">
-        <ChevronRight2 className="fill-muted group-hover:fill-highlight -mt-1.5 size-8 shrink-0 origin-center -rotate-90 stroke-none transition-all duration-300 ease-in-out group-hover:rotate-0" />
-        <p className="tracking-wider text-balance">{project.description}</p>
-      </div>
-      <div className="z-10 flex flex-wrap gap-2 pt-2">
-        {project?.stack.map((tag: string, idx: number) => (
-          <span
-            key={idx}
-            className="from-accent/30 group-hover:border-text-highlight/50 group-hover:text-highlight inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-in-out"
-          >
-            {tag}
-          </span>
-        ))}
+        <div className="z-10 mt-auto flex flex-wrap gap-2 pt-2">
+          {project?.stack.map((tag: string, idx: number) => (
+            <span
+              key={idx}
+              className="from-accent/30 inline-block border border-dashed bg-linear-to-bl to-50% px-2 py-1 transition-colors duration-300 ease-out group-hover:border-yellow-400/50 group-hover:text-yellow-400"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </m.div>
   );

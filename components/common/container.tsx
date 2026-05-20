@@ -7,7 +7,7 @@ export default function Container({
 }) {
   return (
     <div
-      className={`${className} bg-background border-muted-foreground relative mx-auto min-h-[90vh] border-dashed md:max-w-6xl md:border-x`}
+      className={`${className} bg-neutral-900 border-muted-foreground relative mx-auto min-h-[90vh] border-dashed md:max-w-6xl md:border-x`}
     >
       {children}
     </div>

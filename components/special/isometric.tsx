@@ -23,7 +23,7 @@ export default function Isometric() {
   const HOVER_ABOVE_GAP_OFFSET = 4;
 
   const strokeColor = (layer: HOVER_STATE) =>
-    hovered === layer ? "var(--color-highlight)" : "var(--muted-foreground)";
+    hovered === layer ? "var(--color-yellow-400)" : "var(--color-neutral-500)";
 
   const cardOffset = (layer: HOVER_STATE, offset: number) =>
     hovered === layer ? 0 : offset;
@@ -108,7 +108,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 243.321 282.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.rect
               animate={{
@@ -123,7 +123,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 243.321 272.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.rect
               animate={{
@@ -138,7 +138,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 243.32 262.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.rect
               animate={{
@@ -153,7 +153,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 243.32 252.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.g
               animate={{
@@ -189,7 +189,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 174.321 242.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.rect
               animate={{
@@ -204,7 +204,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 174.321 232.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.rect
               animate={{
@@ -219,7 +219,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 174.321 222.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.rect
               animate={{
@@ -234,7 +234,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 174.32 212.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.g
               animate={{
@@ -270,7 +270,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 106.321 203.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.rect
               animate={{
@@ -285,7 +285,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 106.321 193.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.rect
               animate={{
@@ -300,7 +300,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 106.321 183.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.rect
               animate={{
@@ -315,7 +315,7 @@ export default function Isometric() {
               height="31.5"
               transform="matrix(0.866025 -0.5 0.866025 0.5 106.32 173.061)"
               strokeDasharray="2 2"
-              className="fill-background stroke-[0.5]"
+              className="fill-neutral-900 stroke-[0.5]"
             />
             <m.g
               animate={{
@@ -336,7 +336,7 @@ export default function Isometric() {
               </mask>
               <path
                 d="M416 265.968L443.406 250.711L470.811 235.453L498.217 220.196L525.623 204.939L634 265.664L525.623 327.939L416 265.968Z"
-                className="fill-background stroke-muted-foreground"
+                className="fill-neutral-900 stroke-muted-foreground"
                 strokeDasharray="1 1"
                 mask="url(#path-18-inside-1_4_282)"
               />
@@ -358,7 +358,7 @@ export default function Isometric() {
                   transition={STROKE_TRANSITION}
                   d="M452.5 261.092L523.5 302.073C524.167 302.458 525 301.977 525 301.207L525 280.857C525 280.5 524.81 280.171 524.502 279.992L453.502 238.81C452.835 238.423 452 238.904 452 239.675L452 260.226C452 260.583 452.191 260.913 452.5 261.092Z"
                   mask="url(#path-19-inside-2_4_282)"
-                  className="fill-background"
+                  className="fill-neutral-900"
                 />
               </g>
               <g id="TOP">
@@ -372,7 +372,7 @@ export default function Isometric() {
                   transition={STROKE_TRANSITION}
                   d="M452.55 238.994C451.871 238.61 451.874 237.63 452.556 237.25L524.432 197.207C524.735 197.038 525.105 197.038 525.408 197.208L596.464 237.051C597.141 237.43 597.146 238.403 596.473 238.79L525.414 279.65C525.108 279.827 524.731 279.828 524.424 279.654L452.55 238.994Z"
                   mask="url(#path-20-inside-3_4_282)"
-                  className="fill-background"
+                  className="fill-neutral-900"
                 />
               </g>
               <g id="RIGHT">
@@ -386,7 +386,7 @@ export default function Isometric() {
                   transition={STROKE_TRANSITION}
                   d="M525 280.651C525 280.294 525.191 279.964 525.5 279.785L596.5 238.804C597.167 238.42 598 238.901 598 239.671L598 260.021C598 260.377 597.81 260.707 597.502 260.886L526.502 302.068C525.835 302.454 525 301.973 525 301.203L525 280.651Z"
                   mask="url(#path-21-inside-4_4_282)"
-                  className="fill-background"
+                  className="fill-neutral-900"
                 />
               </g>
             </m.g>
@@ -407,7 +407,7 @@ export default function Isometric() {
                   transition={STROKE_TRANSITION}
                   d="M452.5 231.092L523.5 272.073C524.167 272.458 525 271.977 525 271.207L525 250.857C525 250.5 524.81 250.171 524.502 249.992L453.502 208.81C452.835 208.423 452 208.904 452 209.675L452 230.226C452 230.583 452.191 230.913 452.5 231.092Z"
                   mask="url(#path-22-inside-5_4_282)"
-                  className="fill-background"
+                  className="fill-neutral-900"
                 />
               </g>
               <g id="TOP">
@@ -421,7 +421,7 @@ export default function Isometric() {
                   transition={STROKE_TRANSITION}
                   d="M452.55 208.994C451.871 208.61 451.874 207.63 452.556 207.25L524.432 167.207C524.735 167.038 525.105 167.038 525.408 167.208L596.464 207.051C597.141 207.43 597.146 208.403 596.473 208.79L525.414 249.65C525.108 249.827 524.731 249.828 524.424 249.654L452.55 208.994Z"
                   mask="url(#path-23-inside-6_4_282)"
-                  className="fill-background"
+                  className="fill-neutral-900"
                 />
               </g>
               <g id="RIGHT">
@@ -435,7 +435,7 @@ export default function Isometric() {
                   transition={STROKE_TRANSITION}
                   d="M525 250.651C525 250.294 525.191 249.964 525.5 249.785L596.5 208.804C597.167 208.42 598 208.901 598 209.671L598 230.021C598 230.377 597.81 230.707 597.502 230.886L526.502 272.068C525.835 272.454 525 271.973 525 271.203L525 250.651Z"
                   mask="url(#path-24-inside-7_4_282)"
-                  className="fill-background"
+                  className="fill-neutral-900"
                 />
               </g>
             </m.g>
@@ -457,7 +457,7 @@ export default function Isometric() {
                     transition={STROKE_TRANSITION}
                     d="M452.5 201.092L523.5 242.073C524.167 242.458 525 241.977 525 241.207L525 220.857C525 220.5 524.81 220.171 524.502 219.992L453.502 178.81C452.835 178.423 452 178.904 452 179.675L452 200.226C452 200.583 452.191 200.913 452.5 201.092Z"
                     mask="url(#path-25-inside-8_4_282)"
-                    className="fill-background"
+                    className="fill-neutral-900"
                   />
                 </g>
                 <g id="TOP">
@@ -471,7 +471,7 @@ export default function Isometric() {
                     transition={STROKE_TRANSITION}
                     d="M452.55 178.994C451.871 178.61 451.874 177.63 452.556 177.25L524.432 137.207C524.735 137.038 525.105 137.038 525.408 137.208L596.464 177.051C597.141 177.43 597.146 178.403 596.473 178.79L525.414 219.65C525.108 219.827 524.731 219.828 524.424 219.654L452.55 178.994Z"
                     mask="url(#path-26-inside-9_4_282)"
-                    className="fill-background"
+                    className="fill-neutral-900"
                   />
                 </g>
                 <g id="RIGHT">
@@ -485,7 +485,7 @@ export default function Isometric() {
                     transition={STROKE_TRANSITION}
                     d="M525 220.651C525 220.294 525.191 219.964 525.5 219.785L596.5 178.804C597.167 178.42 598 178.901 598 179.671L598 200.021C598 200.377 597.81 200.707 597.502 200.886L526.502 242.068C525.835 242.454 525 241.973 525 241.203L525 220.651Z"
                     mask="url(#path-27-inside-10_4_282)"
-                    className="fill-background"
+                    className="fill-neutral-900"
                   />
                 </g>
               </g>

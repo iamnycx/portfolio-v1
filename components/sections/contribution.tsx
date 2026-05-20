@@ -26,7 +26,15 @@ const CACHE_KEY = "github_contributions_cache";
 const CACHE_DURATION = 24 * 60 * 60 * 1000;
 const WEEKS = 53;
 const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const COLORS = ["#1a1a1a55", "#ecfccb", "#d9f99d", "#a3e635", "#65a30d"];
+// Use the same yellow-400 hue with different opacities (400 is primary)
+// rgb(250,204,21) is the hex #facc15 (Tailwind yellow-400)
+const COLORS = [
+  "rgba(250,204,21,0.06)",
+  "rgba(250,204,21,0.25)",
+  "rgba(250,204,21,0.5)",
+  "rgba(250,204,21,0.8)",
+  "rgba(250,204,21,1)",
+];
 
 const revealOnView = (delay = 0) => ({
   initial: {
@@ -184,7 +192,7 @@ export default function Contribution(): JSX.Element {
             {DAY_LABELS.map((day, index) => (
               <span
                 key={index}
-                className="h-3 text-xs text-lime-700/80 dark:text-lime-300/80"
+                className="h-3 text-xs text-yellow-400/80 dark:text-yellow-400/40"
               >
                 {day}
               </span>
@@ -195,7 +203,7 @@ export default function Contribution(): JSX.Element {
               {monthLabels.map((monthDate, index) => (
                 <span
                   key={`${format(monthDate, "MMM")}-${index}`}
-                  className="text-xs text-lime-700/80 dark:text-lime-300/80"
+                  className="text-xs text-yellow-400/80 dark:text-yellow-400/40"
                 >
                   {format(monthDate, "MMM")}
                 </span>
@@ -210,7 +218,7 @@ export default function Contribution(): JSX.Element {
         {...revealOnView(0.2)}
         className="mx-auto flex w-fit items-center gap-2 pt-4"
       >
-        <span className="text-sm text-lime-700 dark:text-lime-300">Less</span>
+        <span className="text-sm text-yellow-400/80 dark:text-yellow-400/40">Less</span>
         {COLORS.map((color, index) => (
           <div
             key={index}
@@ -218,7 +226,7 @@ export default function Contribution(): JSX.Element {
             style={{ backgroundColor: color }}
           />
         ))}
-        <span className="text-sm text-lime-700 dark:text-lime-300">More</span>
+        <span className="text-sm text-yellow-400/80 dark:text-yellow-400/40">More</span>
       </motion.div>
     </div>
   );
