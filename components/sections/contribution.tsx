@@ -24,7 +24,7 @@ type CachedData = {
 
 const CACHE_KEY = "github_contributions_cache";
 const CACHE_DURATION = 24 * 60 * 60 * 1000;
-const WEEKS = 53;
+// Weeks will be computed for the current calendar year
 const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 // Use the same yellow-400 hue with different opacities (400 is primary)
 // rgb(250,204,21) is the hex #facc15 (Tailwind yellow-400)
@@ -68,7 +68,13 @@ export default function Contribution(): JSX.Element {
     return new Date(year ?? 1970, (month ?? 1) - 1, day ?? 1);
   }, []);
 
-  const startDate = useMemo(() => subDays(baseDate, 364), [baseDate]);
+  // Show contributions for the current calendar year (Jan 1 -> Dec 31)
+  const yearBounds = useMemo(() => {
+    const year = baseDate.getFullYear();
+    const yearStart = new Date(year, 0, 1);
+    const yearEnd = new Date(year, 11, 31);
+    return { year, yearStart, yearEnd };
+  }, [baseDate]);
 
   useEffect(() => {
     (async (): Promise<void> => {
@@ -123,17 +129,20 @@ export default function Contribution(): JSX.Element {
   }, [contributions]);
 
   const weeksToRender = useMemo(() => {
-    const firstWeekStart = startOfWeek(startDate, { weekStartsOn: 0 });
-    return Array.from({ length: WEEKS }, (_, weekIndex) =>
-      addDays(firstWeekStart, weekIndex * 7),
-    );
-  }, [startDate]);
+    const { yearStart, yearEnd } = yearBounds;
+    const weeks: Date[] = [];
+    let weekStart = startOfWeek(yearStart, { weekStartsOn: 0 });
+    while (weekStart <= yearEnd) {
+      weeks.push(weekStart);
+      weekStart = addDays(weekStart, 7);
+    }
+    return weeks;
+  }, [yearBounds]);
 
   const monthLabels = useMemo(() => {
-    return Array.from({ length: 12 }, (_, index) =>
-      addDays(startDate, index * 30),
-    );
-  }, [startDate]);
+    const { year } = yearBounds;
+    return Array.from({ length: 12 }, (_, index) => new Date(year, index, 1));
+  }, [yearBounds]);
 
   const weeksGrid = useMemo(() => {
     return weeksToRender.map((weekStart) => {
@@ -150,15 +159,25 @@ export default function Contribution(): JSX.Element {
           {weekDays.map((day) => {
             const dayKey = format(day, "yyyy-MM-dd");
             const contributionCount = contributionByDate.get(dayKey) ?? 0;
+            const inRange =
+              +day >= +yearBounds.yearStart && +day <= +yearBounds.yearEnd;
 
             return (
               <div
                 key={dayKey}
-                style={{ backgroundColor: getColor(contributionCount) }}
-                title={`${format(day, "PPP")}: ${contributionCount} contributions`}
-                className="border-accent text-accent m-[0.15px] grid h-4 w-4 place-items-center rounded-xs border border-dashed text-[0.4rem] font-black"
+                style={{
+                  backgroundColor: inRange
+                    ? getColor(contributionCount)
+                    : "transparent",
+                }}
+                title={
+                  inRange
+                    ? `${format(day, "PPP")}: ${contributionCount} contributions`
+                    : ""
+                }
+                className={`border-accent text-accent m-[0.15px] grid h-4 w-4 place-items-center rounded-xs border border-dashed text-[0.4rem] font-black ${inRange ? "" : "opacity-30"}`}
               >
-                <p>{contributionCount}</p>
+                {inRange ? <p>{contributionCount}</p> : <span />}
               </div>
             );
           })}
@@ -173,13 +192,13 @@ export default function Contribution(): JSX.Element {
         {...revealOnView(0)}
         className="text-muted-foreground pb-4 text-center"
       >
-       made
+        made
         <span className="text-foreground">
           {" "}
           {contributions.reduce((sum, item) => sum + item.count, 0)}{" "}
           contributions{" "}
         </span>
-        in the last year
+        this year
       </motion.p>
 
       <motion.div
@@ -218,7 +237,9 @@ export default function Contribution(): JSX.Element {
         {...revealOnView(0.2)}
         className="mx-auto flex w-fit items-center gap-2 pt-4"
       >
-        <span className="text-sm text-yellow-400/80 dark:text-yellow-400/40">Less</span>
+        <span className="text-sm text-yellow-400/80 dark:text-yellow-400/40">
+          Less
+        </span>
         {COLORS.map((color, index) => (
           <div
             key={index}
@@ -226,7 +247,9 @@ export default function Contribution(): JSX.Element {
             style={{ backgroundColor: color }}
           />
         ))}
-        <span className="text-sm text-yellow-400/80 dark:text-yellow-400/40">More</span>
+        <span className="text-sm text-yellow-400/80 dark:text-yellow-400/40">
+          More
+        </span>
       </motion.div>
     </div>
   );

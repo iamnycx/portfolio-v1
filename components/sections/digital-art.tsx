@@ -41,9 +41,6 @@ export default function DigitalArt() {
         <span className="block md:inline">— Leonardo da Vinci</span>
       </motion.p>
       <div className="hidden md:block">
-        <div className="absolute -left-2.5">
-          <div className="border-muted-foreground h-9 w-9 origin-top-right rotate-45 border-r border-dashed" />
-        </div>
         <div className="absolute -right-2.5">
           <div className="border-muted-foreground h-9 w-9 origin-top-left -rotate-45 border-l border-dashed" />
         </div>

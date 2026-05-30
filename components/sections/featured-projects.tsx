@@ -52,9 +52,9 @@ export default function FeaturedProjects() {
       <div className="flex pt-16">
         <Link
           href="/projects"
-          className="md:text-muted-foreground mx-auto w-[11rem] border-dotted text-center text-yellow-400 transition-colors duration-300 ease-out hover:text-yellow-400 lg:py-3.5"
+          className="group mx-auto inline-flex items-center gap-2 border border-dashed border-neutral-600 px-6 py-2 transition-all duration-300 ease-out hover:border-yellow-400 hover:text-yellow-400"
         >
-          /projects
+          <span className="text-center font-medium">/projects</span>
         </Link>
       </div>
     </div>

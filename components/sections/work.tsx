@@ -71,7 +71,7 @@ export default function Work() {
 
 function WorkCard({ data, index }: { data: WorkDataType; index: number }) {
   return (
-    <m.div {...revealOnView(index * 0.15)} className="relative pl-10">
+    <m.div {...revealOnView(index * 0.15)} className="relative pb-3 pl-10">
       {/* Diamond node on the rail */}
       <span
         className={cn(
@@ -112,7 +112,7 @@ function WorkCard({ data, index }: { data: WorkDataType; index: number }) {
         <ul className="mb-4 space-y-2">
           {data.points.map((point, i) => (
             <li key={i} className="flex items-start gap-2">
-              <span className="text-muted-foreground text-xs leading-relaxed tracking-wide">
+              <span className="text-muted-foreground text-sm leading-relaxed tracking-wide md:text-base">
                 {point}
               </span>
             </li>
@@ -120,14 +120,16 @@ function WorkCard({ data, index }: { data: WorkDataType; index: number }) {
         </ul>
 
         {/* Tech tags */}
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-2">
           {data.technologies.map((tech) => (
-            <span
+            <div
               key={tech}
-              className="bg-neutral-800 px-2 py-0.5 border border-neutral-600 text-xs tracking-widest uppercase"
+              className="cursor-default border border-dotted border-neutral-600 px-1.5 py-1.5 transition-colors duration-300 ease-in-out hover:border-yellow-400 hover:text-yellow-400"
             >
-              {tech}
-            </span>
+              <span className="bg-neutral-700/50 px-3 py-1 text-sm font-medium md:text-base">
+                {tech}
+              </span>
+            </div>
           ))}
         </div>
       </div>
